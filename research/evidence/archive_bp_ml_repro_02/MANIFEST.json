@@ -1,0 +1,108 @@
+{
+  "task": "BP-ML-REPRO-02",
+  "task_attachment_sha256": "a1f2f5e87154ac5db8287c5ad3e258c83bad0f2954428b0572665071cdf1e7ea",
+  "accepted_bases": {
+    "BUILDINGPULSE_G6_0_GATE_REVIEW.zip": "6cf3f518734abebc24281cb5cc7b38019052d5a4961e3a005ce79cc5c0a7209f",
+    "BUILDINGPULSE_BP_ML_REPRO_01_REVIEW.zip": "04c4159590ddc401601fdec02de394647d0c71812a92f4cead469cce562b8754"
+  },
+  "decision": "GO_RESEARCH_ONLY_PRODUCT_PILOT",
+  "published_reproduction": "PARTIAL_REPLICATION_INDEPENDENT_REIMPLEMENTATION",
+  "dataset_doi": "10.25984/1881324",
+  "article_doi": "10.3390/s26113465",
+  "source_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471",
+  "ttl_sha256": "7dbd8403cc85d49c047173f910aae8a85a297d02f9b7ddb779de7a1887d3aa93",
+  "schema_sha256": "19c808b25bcccd4db64b478485fa448b3e5d4e236f84f2d92f7ac5fc86bc2d29",
+  "protocol_v1_sha256": "50e4fbf3e84cdbed3edd2eccd9fecdb49ce2eaeb219206d02fd624d1b18a966c",
+  "protocol_v2_sha256": "b71d0f2c0cbef0bddc5d2be9a52fd26da8f453641b4e9afcdcff82862dba5e46",
+  "bagging_hypothesis_sha256": "d10ca33b71c55633b080592fd0b29bbc99e58bc3be196d6f7178afe74d789313",
+  "patch_sha256": "d4662712412de473019c039e8d6947b3b134007e257b3810761ff9dc5c1ffb9d",
+  "changed_files": {
+    "backend/app/api/endpoints/virtual_sensor_research.py": {
+      "base": null,
+      "repro02": "df043074e04241b5de5248cd1d398aaf07c6ed2d34d50909029791e8cb2919bf"
+    },
+    "backend/app/api/router.py": {
+      "base": "6802c021d3beae6c451d5795c4abd4569e0a031d66da8f55178331746a45e6a6",
+      "repro02": "73de513908c19d430ee4b4a8005edfe702f910e670ab5f8e22eb023976f67f58"
+    },
+    "backend/app/core/config.py": {
+      "base": "7c4502c8157a404e442e1f6dd15e60035dab5b5323cdbf3ef3b1c4168e91b367",
+      "repro02": "296dc79b00238b4d0ccdd76d9aea6da69de968df721a471a67020c9409446d6c"
+    },
+    "backend/app/services/virtual_sensor_research.py": {
+      "base": null,
+      "repro02": "a2a972b12024a4439fec19892aedae5985f0f212888e61b9ddbd6ece84b3adf4"
+    },
+    "contracts/openapi-virtual-sensor-research.json": {
+      "base": null,
+      "repro02": "a4d7e18a371e4c2eadf3715d900615b00c3ad38835d8a291c72279957ceb063b"
+    },
+    "frontend/src/App.tsx": {
+      "base": "35b98298a23c1a285582288833ca4438b28e2dd7ecfb6d85472a71e167330870",
+      "repro02": "cb34b005971e857bf5e3c4b81f2ef983dd6a79ece83508f4eb0719fa75672f8f"
+    },
+    "frontend/src/components/TopNavigationBar.tsx": {
+      "base": "ea7f62aaf401a20bfb7bbbfec5a9449e004080442f8a32a5f9a8f3ffece26589",
+      "repro02": "5a3a2dfc40485bf4f9dbb2057b8accc49f772a94a24a8647232483accddae43c"
+    },
+    "frontend/src/pages/VirtualSensorResearchPage.tsx": {
+      "base": null,
+      "repro02": "99fa4029427826d813402538e2115eb1bbbc0adfb0c8fdb0550cd23ea4951a6f"
+    },
+    "frontend/src/types/virtual-sensor-research.generated.ts": {
+      "base": null,
+      "repro02": "da891fc6edf95ce3eff1b36886638de541b8721b7d4907a634f7740263ba50a8"
+    },
+    "research/ml_repro_02/BAGGING_HYPOTHESIS.yaml": {
+      "base": null,
+      "repro02": "d10ca33b71c55633b080592fd0b29bbc99e58bc3be196d6f7178afe74d789313"
+    },
+    "research/ml_repro_02/PROTOCOL.yaml": {
+      "base": null,
+      "repro02": "b71d0f2c0cbef0bddc5d2be9a52fd26da8f453641b4e9afcdcff82862dba5e46"
+    },
+    "research/ml_repro_02/bagging.py": {
+      "base": null,
+      "repro02": "824e577778cd5c66f11e5ae5c8059f4b0f6ef67b5220ac4d579ba4f321390859"
+    },
+    "research/ml_repro_02/build_registry.py": {
+      "base": null,
+      "repro02": "f68733cd52e12434527003c1c11345fd01a66b4334950bfcb35195acfa9a1106"
+    },
+    "research/ml_repro_02/check_replay.py": {
+      "base": null,
+      "repro02": "0cb27fe595afea9968dd444691c8fc7516da1116989a90963473b9edb0fbf639"
+    },
+    "research/ml_repro_02/controls.py": {
+      "base": null,
+      "repro02": "4d9a80b4041f25af9d631a149a1d10c5de54597bb48dfec72667ef7cf063ef5a"
+    },
+    "research/ml_repro_02/export_openapi.py": {
+      "base": null,
+      "repro02": "2f28f55ee444deddc99f59a396b6c6b8d99276b035075d6e209f775fa55e2f17"
+    },
+    "research/ml_repro_02/gate.py": {
+      "base": null,
+      "repro02": "2dd123bd7b5188302762f16070099ebcb5fb2d623a417d43f1681c75cc6a416e"
+    },
+    "research/ml_repro_02/test_research.py": {
+      "base": null,
+      "repro02": "42beb196d2b0a5873ef4a2bb2fb0c430f255f25028b3f65901c6592feb2e4631"
+    }
+  },
+  "registry_manifest_sha256": "359afbe1d3022e64c52ec5e1d916bb731a8c4c45aef9a835d0c9ab6ba73c0734",
+  "registry_manifest": "registry/MODEL_ARTIFACT_MANIFEST.json",
+  "model_count": 8,
+  "runtime_target": "SA_TEMP",
+  "checks": {
+    "pytest": 339,
+    "strict_typescript": "PASS",
+    "openapi": "PASS",
+    "legacy_http_and_playwright": "PASS",
+    "research_http_parity_points": 10981,
+    "research_playwright": "PASS_DESKTOP_MOBILE",
+    "docker_backend": "PASS",
+    "compose": "NOT_RUN",
+    "source_storage": "PASS_SHA256"
+  }
+}

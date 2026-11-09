@@ -1,0 +1,10 @@
+PASS AHU2 excluded: missing reported SAT at all 48 candidate WINDOW ticks
+PASS AHU8 excluded: missing reported SAT at all 48 candidate WINDOW ticks
+PASS row 18 AHU18, 120 minutes, comparator 2019-04-19
+PASS row 19 AHU23, 120 minutes, comparator 2019-04-19
+PASS row 20 AHU24, 120 minutes, comparator 2019-05-03
+PASS row 25 AHU1, 120 minutes, comparator 2019-05-03
+PASS row 28 AHU18, 120 minutes, comparator 2019-04-19
+PASS row 30 AHU24, 120 minutes, comparator 2019-05-03
+PASS row 29 AHU23, 30 minutes, comparator 2019-04-19
+PASS 8 source hashes, 118 schedule rows, 182 comparator masks, 468 native rows, 4680 cells, 56 metric rows

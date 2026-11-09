@@ -1,0 +1,127 @@
+{
+  "fixture": true,
+  "provenance": "SYNTHETIC_UI_ONLY",
+  "label_status": "NO_GROUND_TRUTH",
+  "run_id": "ui-demo-datasets-v0",
+  "comment": "Синтетический фикстурный набор для прототипа UI_MOCK_V0. Числа декоративные.",
+  "items": [
+    {
+      "id": "ds-lbnl-sdahu",
+      "name": "LBNL SD-AHU Simulation Benchmark",
+      "source_kind": "SIMULATED_BENCHMARK",
+      "provenance_badge": "Simulation (LBNL)",
+      "equipment_list": [
+        {
+          "id": "ahu-sd",
+          "name": "LBNL SD-AHU 01 (VAV with Economizer)",
+          "building": "Simulation Facility",
+          "climate_zone": "Chicago TMY",
+          "sensors_available": 14,
+          "has_cooling_coil": true,
+          "has_heating_coil": false,
+          "has_economizer": true,
+          "has_relief_damper": true,
+          "basic_channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM"],
+          "extra_channels": ["CHWC_VLV", "OA_DMPR", "SA_CFM"],
+          "unmeasured_channels": ["SA_CFM", "RA_DMPR"]
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "sc-lbnl-baseline-annual",
+          "name": "LBNL Нормальный режим (Годовой срез)",
+          "equipment_id": "ahu-sd",
+          "source_type": "SIMULATION_PHYSICS",
+          "has_ground_truth": false,
+          "matched_pair_id": "pair-lbnl-summer-25"
+        },
+        {
+          "id": "sc-lbnl-valve-stuck-25",
+          "name": "LBNL Заклинивание охлаждающего клапана 25%",
+          "equipment_id": "ahu-sd",
+          "source_type": "SIMULATION_PHYSICS",
+          "has_ground_truth": true,
+          "matched_pair_id": "pair-lbnl-summer-25"
+        }
+      ]
+    },
+    {
+      "id": "ds-csiro-field",
+      "name": "CSIRO Energy Centre Real Building (Australia)",
+      "source_kind": "FIELD_BMS",
+      "provenance_badge": "Field (CSIRO)",
+      "equipment_list": [
+        {
+          "id": "ahu-10",
+          "name": "CSIRO AHU-10 (Натурная установка)",
+          "building": "CSIRO Energy Centre Newcastle",
+          "climate_zone": "Subtropical Coastal",
+          "sensors_available": 11,
+          "has_cooling_coil": true,
+          "has_heating_coil": true,
+          "has_economizer": true,
+          "has_relief_damper": false,
+          "basic_channels": ["OA_TEMP", "RA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM"],
+          "extra_channels": ["CHWC_VLV"],
+          "unmeasured_channels": ["MA_TEMP", "SA_CFM"]
+        },
+        {
+          "id": "ahu-09",
+          "name": "CSIRO AHU-09 (Разведочная установка)",
+          "building": "CSIRO Energy Centre Newcastle",
+          "climate_zone": "Subtropical Coastal",
+          "sensors_available": 11,
+          "has_cooling_coil": true,
+          "has_heating_coil": true,
+          "has_economizer": true,
+          "has_relief_damper": false,
+          "basic_channels": ["OA_TEMP", "RA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM"],
+          "extra_channels": ["CHWC_VLV"],
+          "unmeasured_channels": ["MA_TEMP", "SA_CFM"]
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "sc-csiro-ahu10-spring-exp",
+          "name": "CSIRO AHU-10 Полевые испытания (Октябрь 2013)",
+          "equipment_id": "ahu-10",
+          "source_type": "FIELD_TELEMETRY",
+          "has_ground_truth": false,
+          "matched_pair_id": null
+        }
+      ]
+    },
+    {
+      "id": "ds-synthetic-fixture",
+      "name": "UI Demo Fixture (Синтетический прототип)",
+      "source_kind": "DEMO_FIXTURE",
+      "provenance_badge": "Demo Fixture",
+      "equipment_list": [
+        {
+          "id": "ahu-demo",
+          "name": "AHU-Demo Reference Unit",
+          "building": "Virtual Test Bench",
+          "climate_zone": "ISO 52000 Reference",
+          "sensors_available": 8,
+          "has_cooling_coil": true,
+          "has_heating_coil": false,
+          "has_economizer": true,
+          "has_relief_damper": true,
+          "basic_channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM"],
+          "extra_channels": ["CHWC_VLV"],
+          "unmeasured_channels": ["SA_CFM"]
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "sc-demo-cooling-divergence",
+          "name": "Демонстрация: Расхождение SAT в режиме охлаждения",
+          "equipment_id": "ahu-demo",
+          "source_type": "SYNTHETIC_UI_ONLY",
+          "has_ground_truth": false,
+          "matched_pair_id": "pair-demo-cooling"
+        }
+      ]
+    }
+  ]
+}

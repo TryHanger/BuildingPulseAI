@@ -1,0 +1,281 @@
+{
+  "decision": "ACCEPT_NEGATIVE_TRANSFER_RESULT",
+  "candidate": "reduced-thermal-sat-v1",
+  "source_calibration_domain": "LBNL_SIMULATED_SDAHU_2018",
+  "training_setpoint_support": {
+    "unit": "degF",
+    "span": [
+      "55.184006",
+      "55.184006"
+    ],
+    "unique_count": 1
+  },
+  "setpoint_used_as_feature": false,
+  "transfer_normal_gate": "STOP_OOD_HEALTHY",
+  "target_fault_eval_allowed": false,
+  "external_field_validation": false,
+  "deployment_eligible": false,
+  "source_fit_versions": {
+    "python": "3.12.3",
+    "lightgbm": "4.6.0",
+    "scikit-learn": "1.9.1",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4"
+  },
+  "model_feature_order": [
+    "MA_TEMP",
+    "OA_TEMP",
+    "RA_TEMP"
+  ],
+  "frozen_alarm": {
+    "operator": ">",
+    "z": 3
+  },
+  "source_calibration": {
+    "lightgbm_reduced": {
+      "center": 0.062747763227272,
+      "scale": 0.1199159960315784,
+      "days": 53
+    },
+    "ridge_reduced": {
+      "center": 0.038583070773153705,
+      "scale": 0.03567196291402695,
+      "days": 53
+    },
+    "sat_minus_sp": {
+      "center": 0.021867197011131892,
+      "scale": 0.02529838361134594,
+      "days": 53
+    }
+  },
+  "publisher": {
+    "source_inventory": "https://fdddata.lbl.gov/data/Simulated_LBNL_FDD_Data_Sets_SDAHU/LBNL_FDD_Data_Sets_SDAHU.pdf",
+    "target_inventory": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12796274/",
+    "target_repository": "https://doi.org/10.6084/m9.figshare.29297999"
+  },
+  "sha256": {
+    "accepted_stage_05_zip": "2febd05cdfe42efb9dbe65c39a5b0f1c42a22c07fba657f691e33bcde2113b7b",
+    "accepted_stage_06_zip": "64ce1a8c46e163ae346df4d3bfec82d486d3a0052fc5da47a4cd2112a45e6bcf",
+    "protocol": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+    "source_fit_receipt": "1187a8aa96ff7c64ef4e4c0613bee91e8acf5d3bbc794c7d314889ee451fff84",
+    "target_normal_receipt": "11b0c5532a454ce5de042334b7442628136e9c9abacb93bd35315f8aa6f7a0fa",
+    "audit_script": "2bb2cc4425f8c19f7131b152acb22c32d77d274efa1e8cc07b7b33349226c6c9",
+    "TRANSFER_05_PROTOCOL.json": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+    "AHU_annual.csv": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+    "BaselineSystem.csv": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+    "SOURCE_FIT_RECEIPT.json": "1187a8aa96ff7c64ef4e4c0613bee91e8acf5d3bbc794c7d314889ee451fff84",
+    "REDUCED_SAT.lightgbm.txt": "643f08b6f50edef8487783f41ea7067e9863c83c9860181df4eda152d5751625",
+    "REDUCED_SAT_RIDGE.json": "a0e122b112ad2ae6b914635bf161d8977b5a11283b75260b620504dfd317f7de",
+    "TARGET_NORMAL_06_MINUTE_TRACE.csv.gz": "3ea7c708f56c43e3738c2ebe2afc7e3b3360d32ac1617a457d5a0bd1c4a80161",
+    "TARGET_NORMAL_06_BLOCKS.csv": "50f63ab75abf8253709bde64ff96bcdf96783df0d254c6f638753b34118c0171"
+  },
+  "source_training_audit": {
+    "eligible_training_minutes": 70842,
+    "train_period": [
+      "2018-01-02",
+      "2018-08-08"
+    ],
+    "training_setpoint_support": {
+      "unit": "degF",
+      "span": [
+        "55.184006",
+        "55.184006"
+      ],
+      "unique_count": 1
+    },
+    "setpoint_counts": {
+      "55.184006": 70842
+    },
+    "sat_degF": {
+      "min": 54.850628,
+      "mean": 55.191977762019704,
+      "max": 70.191
+    },
+    "features": {
+      "summary_degF": {
+        "MA_TEMP": {
+          "min": 59.861824,
+          "mean": 70.40469626868241,
+          "max": 109.07821
+        },
+        "OA_TEMP": {
+          "min": 60.007996,
+          "mean": 75.12766805225714,
+          "max": 95.0
+        },
+        "RA_TEMP": {
+          "min": 67.0176,
+          "mean": 70.33463627147738,
+          "max": 109.50728
+        }
+      },
+      "pairwise_pearson": {
+        "MA_TEMP/OA_TEMP": 0.26421254543732126,
+        "MA_TEMP/RA_TEMP": 0.9861722897486862,
+        "OA_TEMP/RA_TEMP": 0.19005920142190705
+      }
+    }
+  },
+  "saved_target_trace_audit": {
+    "scope": "ONE_PREVIOUSLY_SCORED_G36_SIMULATED_NORMAL_RUN",
+    "dependent_blocks": true,
+    "external_field_validation": false,
+    "calendar_minutes": 10080,
+    "eligible_minutes": 5425,
+    "warm_running_minutes": 5425,
+    "evaluated_blocks": 7,
+    "all_eligible_features_inside_frozen_1d_support": true,
+    "mode_4_eligible_count": 6,
+    "mode_4_eligible_model_seconds": [
+      18165900,
+      18165960,
+      18166020,
+      18166080,
+      18166140,
+      18166200
+    ],
+    "mode_4_sensitivity_policy": "AUDIT_ONLY_NO_RESCORING_NO_GATE_CHANGE",
+    "last_block_minutes_as_recorded": 775,
+    "last_block_minutes_without_mode_4": 769,
+    "sat_degF": {
+      "min": 52.805677490234416,
+      "mean": 53.35229391268545,
+      "max": 65.76718261718754
+    },
+    "setpoint_degF": {
+      "min": 53.240021972656294,
+      "mean": 53.27651947612151,
+      "max": 62.30165527343755
+    },
+    "lightgbm_prediction_degF": {
+      "min": 54.93313605017584,
+      "mean": 55.19267657217716,
+      "max": 55.66895207266318
+    },
+    "features": {
+      "summary_degF": {
+        "MA_TEMP": {
+          "min": 63.48614624023442,
+          "mean": 76.78224479991724,
+          "max": 82.23574340820318
+        },
+        "OA_TEMP": {
+          "min": 62.49221313476566,
+          "mean": 80.3451393525436,
+          "max": 89.96281250000004
+        },
+        "RA_TEMP": {
+          "min": 74.61666992187504,
+          "mean": 75.41317662505404,
+          "max": 78.01182983398442
+        }
+      },
+      "pairwise_pearson": {
+        "MA_TEMP/OA_TEMP": 0.9406510779652619,
+        "MA_TEMP/RA_TEMP": -0.42380202645177895,
+        "OA_TEMP/RA_TEMP": -0.4387365046202245
+      }
+    },
+    "methods": {
+      "lightgbm_reduced": {
+        "alarm_blocks": 7,
+        "mae_degF": 1.886578433218974,
+        "z_range": [
+          14.62051264566723,
+          15.889693951159682
+        ],
+        "source_daily_mae_alarm_threshold_degF": 0.4224957513220072,
+        "audit_only_last_block": {
+          "as_recorded_z": 15.889693951159682,
+          "without_mode_4_z": 15.460416523122575,
+          "as_recorded_mae_degF": 1.9681762400175318,
+          "without_mode_4_mae_degF": 1.9166990096605878,
+          "without_mode_4_would_exceed_frozen_threshold": true
+        }
+      },
+      "ridge_reduced": {
+        "alarm_blocks": 7,
+        "mae_degF": 1.8670114161803832,
+        "z_range": [
+          48.74120219163598,
+          54.205959922454106
+        ],
+        "source_daily_mae_alarm_threshold_degF": 0.14559895951523455,
+        "audit_only_last_block": {
+          "as_recorded_z": 54.205959922454106,
+          "without_mode_4_z": 52.88680055359351,
+          "as_recorded_mae_degF": 1.972216062846168,
+          "without_mode_4_mae_degF": 1.9251590587624814,
+          "without_mode_4_would_exceed_frozen_threshold": true
+        }
+      },
+      "sat_minus_sp": {
+        "alarm_blocks": 7,
+        "mae_degF": 0.1806425331221198,
+        "z_range": [
+          3.1705009623886777,
+          7.615926455804278
+        ],
+        "source_daily_mae_alarm_threshold_degF": 0.09776234784516971,
+        "audit_only_last_block": {
+          "as_recorded_z": 6.113696996666281,
+          "without_mode_4_z": 5.5336704581959975,
+          "as_recorded_mae_degF": 0.17653384891632903,
+          "without_mode_4_mae_degF": 0.1618601150413467,
+          "without_mode_4_would_exceed_frozen_threshold": true
+        }
+      }
+    },
+    "transfer_normal_gate": "STOP_OOD_HEALTHY",
+    "target_fault_eval_allowed": false
+  },
+  "historic_lbnl_within_source": {
+    "member": "coi_bias_2_annual.csv",
+    "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+    "policy": "sat-daily-coverage@1.0.0",
+    "scope": "MATCHED_MINUTES",
+    "calendar_days": 73,
+    "evaluated_days": 59,
+    "not_evaluated_days": 14,
+    "evaluated_paired_minutes_per_side": 53088,
+    "calendar_minutes_per_side": 105120,
+    "metrics": {
+      "sat_only": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9810399310542948
+      },
+      "system_max_8": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9485779948290721
+      },
+      "sat_minus_setpoint": {
+        "tp": 33,
+        "fp": 0,
+        "fn": 26,
+        "tn": 59,
+        "auc": 0.709566216604424
+      }
+    },
+    "ridge_pca_common_dates": {
+      "ridge": 6,
+      "pca_paper": 6,
+      "pca_input_matched": 6
+    },
+    "sat_only_days_vs_setpoint": [
+      "2018-10-20",
+      "2018-11-04",
+      "2018-11-29",
+      "2018-12-14"
+    ],
+    "setpoint_only_days_vs_sat": []
+  },
+  "target_raw_opened": false,
+  "model_loaded": false,
+  "prediction_calls": 0
+}

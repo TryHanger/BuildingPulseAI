@@ -1,0 +1,274 @@
+{
+  "status": "PASS_TRACE_RECONCILIATION",
+  "model_calls": 0,
+  "gate": "STOP_OOD_HEALTHY",
+  "gate_failed_conditions": [
+    "LIGHTGBM_NORMAL_ALARM"
+  ],
+  "rows": 10080,
+  "eligible_minutes": 5425,
+  "evaluated_blocks": 7,
+  "alarm_blocks": {
+    "lightgbm_reduced": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "ridge_reduced": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "sat_minus_sp": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "blocks": [
+    {
+      "block": 0,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.9605698034368528,
+          "z": 15.826262575593441,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.7912689568247198,
+          "z": 49.13342981084939,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.10207574659778215,
+          "z": 3.1705009623886777,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 1,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.8903726309500164,
+          "z": 15.240876348485333,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.9003969434257437,
+          "z": 52.19263871572613,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.17932515593498008,
+          "z": 6.224032386528864,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 2,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.8613754732780283,
+          "z": 14.999064091308634,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.9116410428665456,
+          "z": 52.50784703403206,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.19002938350554383,
+          "z": 6.647151417966236,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 3,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.863828851661911,
+          "z": 15.01952323325027,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.7772774277382815,
+          "z": 48.74120219163598,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.2145378260458668,
+          "z": 7.615926455804278,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 4,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.8159810996247454,
+          "z": 14.62051264566723,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.8182642809324543,
+          "z": 49.89019568248916,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.19602281533518265,
+          "z": 6.884061092580816,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 5,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.8457449335637313,
+          "z": 14.86871834735817,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.8980151986287699,
+          "z": 52.12587073879383,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.20597295551915412,
+          "z": 7.277372394078712,
+          "decision": "ALERT"
+        }
+      }
+    },
+    {
+      "block": 6,
+      "evaluated": true,
+      "methods": {
+        "lightgbm_reduced": {
+          "mae_degF": 1.9681762400175318,
+          "z": 15.889693951159682,
+          "decision": "ALERT"
+        },
+        "ridge_reduced": {
+          "mae_degF": 1.972216062846168,
+          "z": 54.205959922454106,
+          "decision": "ALERT"
+        },
+        "sat_minus_sp": {
+          "mae_degF": 0.17653384891632903,
+          "z": 6.113696996666281,
+          "decision": "ALERT"
+        }
+      }
+    }
+  ],
+  "mode_summary": {
+    "1": {
+      "calendar_minutes": 0,
+      "warm_running_minutes": 0,
+      "eligible_minutes": 0,
+      "pooled_mae_degF": {
+        "lightgbm_reduced": null,
+        "ridge_reduced": null,
+        "sat_minus_sp": null
+      }
+    },
+    "2": {
+      "calendar_minutes": 0,
+      "warm_running_minutes": 0,
+      "eligible_minutes": 0,
+      "pooled_mae_degF": {
+        "lightgbm_reduced": null,
+        "ridge_reduced": null,
+        "sat_minus_sp": null
+      }
+    },
+    "3": {
+      "calendar_minutes": 5433,
+      "warm_running_minutes": 5419,
+      "eligible_minutes": 5419,
+      "pooled_mae_degF": {
+        "lightgbm_reduced": 1.8791830508633214,
+        "ridge_reduced": 1.8602171618861687,
+        "sat_minus_sp": 0.17856476060973253
+      }
+    },
+    "4": {
+      "calendar_minutes": 4647,
+      "warm_running_minutes": 6,
+      "eligible_minutes": 6,
+      "pooled_mae_degF": {
+        "lightgbm_reduced": 8.565841264099193,
+        "ridge_reduced": 8.003355419571989,
+        "sat_minus_sp": 2.057217407226563
+      }
+    }
+  },
+  "eligible_input_ranges_degF": {
+    "MA_TEMP": {
+      "min": 63.48614624023442,
+      "mean": 76.78224479991724,
+      "max": 82.23574340820318
+    },
+    "OA_TEMP": {
+      "min": 62.49221313476566,
+      "mean": 80.3451393525436,
+      "max": 89.96281250000004
+    },
+    "RA_TEMP": {
+      "min": 74.61666992187504,
+      "mean": 75.41317662505404,
+      "max": 78.01182983398442
+    }
+  },
+  "eligible_measured_sat_degF": {
+    "min": 52.805677490234416,
+    "mean": 53.35229391268545,
+    "max": 65.76718261718754
+  },
+  "eligible_active_setpoint_degF": {
+    "min": 53.240021972656294,
+    "mean": 53.27651947612151,
+    "max": 62.30165527343755
+  },
+  "eligible_lightgbm_prediction_degF": {
+    "min": 54.93313605017584,
+    "mean": 55.19267657217716,
+    "max": 55.66895207266318
+  },
+  "eligible_ridge_prediction_degF": {
+    "min": 54.91580876502745,
+    "mean": 55.17915758539562,
+    "max": 55.934506987445246
+  },
+  "pooled_signed_actual_minus_prediction_degF": {
+    "lightgbm_reduced": -1.840382659491719,
+    "ridge_reduced": -1.8268636727101686,
+    "sat_minus_sp": 0.07577443656393261
+  },
+  "tolerance": 1e-10
+}

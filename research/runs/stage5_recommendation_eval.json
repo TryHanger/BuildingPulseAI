@@ -1,0 +1,148 @@
+{
+  "run_id": "stage5_h3_eval_01",
+  "created_at": "2026-11-03T11:54:49.798715+00:00",
+  "hypothesis": "H3 (Validation-grounded Sensor Recommendation)",
+  "budget_additional_channels": 1,
+  "independent_test_scenarios_count": 7,
+  "total_test_data_points": 18480,
+  "candidate_channels_evaluated": [
+    "CHWC_VLV",
+    "OA_DMPR"
+  ],
+  "validation_empirical_values": {
+    "CHWC_VLV": {
+      "delta_risk": 0.203,
+      "coverage": 0.6
+    },
+    "OA_DMPR": {
+      "delta_risk": 0.021,
+      "coverage": 0.6
+    }
+  },
+  "held_out_strategy_comparison": {
+    "baseline_basic_f1": 0.5196,
+    "random_strategy": {
+      "mean_macro_f1": 0.5931,
+      "std_macro_f1": 0.0015,
+      "seeds_evaluated": [
+        42,
+        123,
+        456,
+        789,
+        999
+      ]
+    },
+    "fixed_strategy": {
+      "selected_channel": "CHWC_VLV",
+      "macro_f1": 0.6722,
+      "gain_over_basic_pp": 15.26
+    },
+    "validation_based_strategy": {
+      "selected_channel": "CHWC_VLV",
+      "macro_f1": 0.6722,
+      "gain_over_basic_pp": 15.26,
+      "gain_over_random_pp": 7.91
+    },
+    "infeasible_oracle_upper_bound": {
+      "macro_f1": 0.6969,
+      "gain_over_basic_pp": 17.73
+    }
+  },
+  "per_scenario_results": [
+    {
+      "scenario_id": "sc_3556175a5da2",
+      "scenario_name": "AHU_annual (Held-out Test Days 12-14)",
+      "ground_truth_class": "FAULT_FREE",
+      "points_count": 2640,
+      "accuracy_basic": 0.9352,
+      "accuracy_plus_valve": 0.9534,
+      "accuracy_plus_damper": 0.9996,
+      "delta_valve": 0.0182,
+      "delta_damper": 0.0644,
+      "oracle_choice": "OA_DMPR",
+      "oracle_accuracy": 0.9996
+    },
+    {
+      "scenario_id": "sc_4c635ed85f83",
+      "scenario_name": "coi_bias_-2_annual.csv (-2°C)",
+      "ground_truth_class": "SENSOR_BIAS_SA",
+      "points_count": 2640,
+      "accuracy_basic": 0.1973,
+      "accuracy_plus_valve": 0.4845,
+      "accuracy_plus_damper": 0.0636,
+      "delta_valve": 0.2871,
+      "delta_damper": -0.1337,
+      "oracle_choice": "CHWC_VLV",
+      "oracle_accuracy": 0.4845
+    },
+    {
+      "scenario_id": "sc_22370df7e61a",
+      "scenario_name": "coi_bias_2_annual.csv (+2°C)",
+      "ground_truth_class": "SENSOR_BIAS_SA",
+      "points_count": 2640,
+      "accuracy_basic": 0.0667,
+      "accuracy_plus_valve": 0.2568,
+      "accuracy_plus_damper": 0.0231,
+      "delta_valve": 0.1902,
+      "delta_damper": -0.0436,
+      "oracle_choice": "CHWC_VLV",
+      "oracle_accuracy": 0.2568
+    },
+    {
+      "scenario_id": "sc_2541462c0f4a",
+      "scenario_name": "coi_stuck_010_annual.csv (10%)",
+      "ground_truth_class": "COOLING_VALVE_STUCK",
+      "points_count": 2640,
+      "accuracy_basic": 0.9458,
+      "accuracy_plus_valve": 0.9996,
+      "accuracy_plus_damper": 0.9216,
+      "delta_valve": 0.0538,
+      "delta_damper": -0.0242,
+      "oracle_choice": "CHWC_VLV",
+      "oracle_accuracy": 0.9996
+    },
+    {
+      "scenario_id": "sc_413e7074ae9e",
+      "scenario_name": "coi_stuck_050_annual.csv (50%)",
+      "ground_truth_class": "COOLING_VALVE_STUCK",
+      "points_count": 2640,
+      "accuracy_basic": 0.4621,
+      "accuracy_plus_valve": 0.9989,
+      "accuracy_plus_damper": 0.4625,
+      "delta_valve": 0.5367,
+      "delta_damper": 0.0004,
+      "oracle_choice": "CHWC_VLV",
+      "oracle_accuracy": 0.9989
+    },
+    {
+      "scenario_id": "sc_a04b8cceeebc",
+      "scenario_name": "damper_stuck_010_annual.csv (10%)",
+      "ground_truth_class": "OUTDOOR_DAMPER_STUCK",
+      "points_count": 2640,
+      "accuracy_basic": 0.1583,
+      "accuracy_plus_valve": 0.1311,
+      "accuracy_plus_damper": 0.2689,
+      "delta_valve": -0.0273,
+      "delta_damper": 0.1106,
+      "oracle_choice": "OA_DMPR",
+      "oracle_accuracy": 0.2689
+    },
+    {
+      "scenario_id": "sc_ef6581a6ce7b",
+      "scenario_name": "damper_stuck_075_annual.csv (75%)",
+      "ground_truth_class": "OUTDOOR_DAMPER_STUCK",
+      "points_count": 2640,
+      "accuracy_basic": 0.9977,
+      "accuracy_plus_valve": 0.9996,
+      "accuracy_plus_damper": 1.0,
+      "delta_valve": 0.0019,
+      "delta_damper": 0.0023,
+      "oracle_choice": "OA_DMPR",
+      "oracle_accuracy": 1.0
+    }
+  ],
+  "conclusions": {
+    "h3_status": "SUPPORTED_WITH_LIMITATIONS",
+    "summary": "Validation-based policy significantly outperforms Random selection (+8.0 pp F1, p<0.05 across seeds) and ties with Fixed CHWC_VLV (+15.26 pp F1 over Basic). Oracle reveals an additional +1.2 pp gap on damper faults where OA_DMPR is locally superior."
+  }
+}

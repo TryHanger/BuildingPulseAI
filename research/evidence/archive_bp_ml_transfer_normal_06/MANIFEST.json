@@ -1,0 +1,28 @@
+{
+  "task": "BP-ML-TRANSFER-NORMAL-06",
+  "gate": "STOP_OOD_HEALTHY",
+  "failed_conditions": [
+    "LIGHTGBM_NORMAL_ALARM"
+  ],
+  "authorization": "GO_TARGET_NORMAL_ONLY",
+  "base_archive": "BUILDINGPULSE_BP_ML_TRANSFER_DESIGN_05_REVIEW.zip",
+  "base_archive_sha256": "2febd05cdfe42efb9dbe65c39a5b0f1c42a22c07fba657f691e33bcde2113b7b",
+  "independent_review_archive_sha256": "c09fd4ebb670931b636dee9a5be61b543c4571b5de648309ffc7de975bf4ecaa",
+  "git_head": null,
+  "target_reference_native_calls": 1,
+  "fault_phase_authorized": false,
+  "target_fault_prediction_executed": false,
+  "execution_note": "Frozen run wrote all trace and block data. Receipt sealed from these files after post-write read denial.",
+  "patch_sha256": "14003bb2fd9297622aa46609b15f170dacf6a7da8b1792b69a8d2a9915c39735",
+  "overlay_sha256": {
+    "research/ml_transfer_06/audit_execute_06.py": "2616bfa1e23c5db5d1b3a4c808efaff211ad64a1a8cb9a52aff0460838d0c570",
+    "research/ml_transfer_06/seal_existing_trace_06.py": "abdeb10f0b14166e65bec1c71a8c41c284f56d41213642c1646626e8ff091fb6",
+    "research/ml_transfer_06/target_normal_06.py": "a78edde329c8f7f4bd06e4a868c023614b7b89cdde1f16df2fba2be0162be3ea",
+    "research/ml_transfer_06/test_output_audit_06.py": "4c3687483e0c0d33aefb6d3a8edcea53fc9915d908c7f5b9ebd2b7f457448738",
+    "research/ml_transfer_06/test_target_normal_06.py": "dba38725788d4538554a5d033cc057753bdba695e779f461e195397b26d3fd39",
+    "research/ml_transfer_06/verify_trace_06.py": "65875a0ce0fe3f081aaf0b5aca37fc07218b49ee598defd89118a931b4146501"
+  },
+  "frozen_code_receipt_sha256": "cf71d90d99143b9494d52bb25efad3d640195fff4b42d2e28e150f6b662cfce6",
+  "actual_wrapper_sha256": "fa42bdf6d606f66c95b35e994229fac82540a4713a9a5a2592b825158b94747e",
+  "target_receipt_sha256": "11b0c5532a454ce5de042334b7442628136e9c9abacb93bd35315f8aa6f7a0fa"
+}

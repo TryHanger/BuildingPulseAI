@@ -1,0 +1,174 @@
+{
+  "archive_sha256": {
+    "BUILDINGPULSE_BP_ML_REPRO_02_REVIEW.zip": "d9b3187756ab98d001305c92dbf04c2fc82393896d1d64faaa016cb48c85faf7",
+    "BUILDINGPULSE_BP_ML_REPRO_03_REVIEW.zip": "69322d88eff8701ead17111dd04c89678461d006230ea16ac227ba9c9fc280b2",
+    "BUILDINGPULSE_BP_ML_VALIDATION_04_REVIEW.zip": "fef1ef065036620e3416b3462123faf6cf1fe1b158b9f2d32e7954c31bbd855e"
+  },
+  "independent_task_archive_sha256": "3dc9a902c468ad47c9219b203e755bf3d53f97f7545e95019a0a05aaf3da6cad",
+  "historical_external_validation": "BLOCKED_EXTERNAL_VALIDATION",
+  "validation04_freeze_sha256": "32a90e24c1cbb2b90b789ff76f9fa78a9c15dcbdf464aa3dd652fe22ae68f725",
+  "native_manifest_sha256": "359afbe1d3022e64c52ec5e1d916bb731a8c4c45aef9a835d0c9ab6ba73c0734",
+  "native_model_sha256": {
+    "MA_TEMP": "dc2559c56b9208e3223b682dbb0032c391defbc12b4eb3b6132fe4cf8567aaef",
+    "RA_TEMP": "99cbd12704f899693ee894fd80c3e982e4693baf4647834888583db9708f17a6",
+    "SA_TEMP": "993f42a7994599a6bd7fc6ba2707b327458db58fc51fbb7d6a6a631767f76e9c",
+    "ZONE_TEMP_1": "5e397c84bc12ddbe12b2d0a11bfa36aa4d58571d40c781f133684a9e4c9d9931",
+    "ZONE_TEMP_2": "74d3466f970a6e8dfee94b2efc8c9f9aba98bca748b1d64a8e83533eabd0da49",
+    "ZONE_TEMP_3": "f9d13c70949427b79e4814b30f7a1d13b5523339b9ec6791fe766150f3063e58",
+    "ZONE_TEMP_4": "242a416fc0f15d635ac96a6439dc7a5150323c2d3efd03a4bcd95dad28660f7b",
+    "ZONE_TEMP_5": "f08bfb042b47d9faa637bd130b873f10cc01c1075aa04898d93ce329ed23b7e4"
+  },
+  "lightgbm_version": "4.6.0",
+  "native_sat_feature_order": [
+    "CHWC_VLV_DM",
+    "MA_TEMP",
+    "OA_DMPR_DM",
+    "OA_TEMP",
+    "RA_DMPR_DM",
+    "RA_TEMP",
+    "RF_CS",
+    "RF_SPD_DM",
+    "SA_TEMPSPT",
+    "SF_CS",
+    "SF_SPD_DM",
+    "ZONE_TEMP_1",
+    "ZONE_TEMP_2",
+    "ZONE_TEMP_3",
+    "ZONE_TEMP_4",
+    "ZONE_TEMP_5",
+    "hour",
+    "month",
+    "day_of_week"
+  ],
+  "coverage_policy": "sat-daily-coverage@1.0.0",
+  "coverage_policy_sha256": "a8c62109991f3f5c3ebea3a5c8469d3cfcb8fb652c7c6f03742577abc9535c30",
+  "alarm_operator": ">",
+  "alarm_z": 3,
+  "historical_cohort_sha256": "5adb2e3656e053aa29112ee86acfb06ce3ab81c49ddd802e6dca34640249786a",
+  "historical_primary": {
+    "member": "coi_bias_2_annual.csv",
+    "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+    "policy": "sat-daily-coverage@1.0.0",
+    "scope": "MATCHED_MINUTES",
+    "calendar_days": 73,
+    "evaluated_days": 59,
+    "not_evaluated_days": 14,
+    "evaluated_paired_minutes_per_side": 53088,
+    "calendar_minutes_per_side": 105120,
+    "metrics": {
+      "sat_only": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9810399310542948
+      },
+      "system_max_8": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9485779948290721
+      },
+      "sat_minus_setpoint": {
+        "tp": 33,
+        "fp": 0,
+        "fn": 26,
+        "tn": 59,
+        "auc": 0.709566216604424
+      }
+    },
+    "ridge_pca_common_dates": {
+      "ridge": 6,
+      "pca_paper": 6,
+      "pca_input_matched": 6
+    },
+    "sat_only_days_vs_setpoint": [
+      "2018-10-20",
+      "2018-11-04",
+      "2018-11-29",
+      "2018-12-14"
+    ],
+    "setpoint_only_days_vs_sat": []
+  },
+  "historical_11_scenarios": [
+    {
+      "member": "coi_bias_-2_annual.csv",
+      "scenario": "SA -2 C",
+      "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+      "sat_only_tp": "58",
+      "system_max_8_tp": "58"
+    },
+    {
+      "member": "coi_bias_-4_annual.csv",
+      "scenario": "SA -4 C",
+      "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+      "sat_only_tp": "59",
+      "system_max_8_tp": "59"
+    },
+    {
+      "member": "coi_bias_2_annual.csv",
+      "scenario": "SA +2 C",
+      "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+      "sat_only_tp": "37",
+      "system_max_8_tp": "37"
+    },
+    {
+      "member": "coi_bias_4_annual.csv",
+      "scenario": "SA +4 C",
+      "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+      "sat_only_tp": "40",
+      "system_max_8_tp": "41"
+    },
+    {
+      "member": "coi_leakage_010_annual.csv",
+      "scenario": "Valve leak (unique payload)",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "35",
+      "system_max_8_tp": "35"
+    },
+    {
+      "member": "coi_stuck_010_annual.csv",
+      "scenario": "Valve stuck 10%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "59",
+      "system_max_8_tp": "59"
+    },
+    {
+      "member": "coi_stuck_050_annual.csv",
+      "scenario": "Valve stuck 50%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "59",
+      "system_max_8_tp": "59"
+    },
+    {
+      "member": "coi_stuck_075_annual.csv",
+      "scenario": "Valve stuck 75%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "59",
+      "system_max_8_tp": "59"
+    },
+    {
+      "member": "damper_stuck_010_annual.csv",
+      "scenario": "Damper stuck 10%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "43",
+      "system_max_8_tp": "43"
+    },
+    {
+      "member": "damper_stuck_025_annual.csv",
+      "scenario": "Damper stuck 25%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "43",
+      "system_max_8_tp": "58"
+    },
+    {
+      "member": "damper_stuck_075_annual.csv",
+      "scenario": "Damper stuck 75%",
+      "alias_status": "NO_BIAS_ALIAS_APPLIED",
+      "sat_only_tp": "58",
+      "system_max_8_tp": "59"
+    }
+  ],
+  "publisher_source_inventory_pdf_sha256": "fd439082e4f7c33bec6d440999730fd97b5c0222284e29f71290415b0ca8790b"
+}

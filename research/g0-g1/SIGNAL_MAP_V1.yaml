@@ -1,0 +1,216 @@
+version: 1.0.0
+source_profile: LBNL_SDAHU
+source_type: SIMULATION
+release_id: "sha256:8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471"
+authority: LBNL PDF Table 2, printed pages 5–7
+time_column: Datetime
+timezone_status: UNKNOWN
+timezone: null
+raw_immutable: true
+basic_panel: only Basic Y
+extra_panel: explicit Basic N opt-in with simulated origin
+analytic_exclusions: [SYS_CTL, FAULT_ORACLE]
+temperature:
+  absolute: "(F - 32) * 5/9"
+  delta: "deltaF * 5/9"
+  native_decision_thresholds_degF: [33.8, 55, 60]
+signals:
+  SA_TEMP:
+    source_column: SA_TEMP
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+    alias_policy: SAT only if source registry explicitly binds it to this physical point
+  OA_TEMP:
+    source_column: OA_TEMP
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  MA_TEMP:
+    source_column: MA_TEMP
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  RA_TEMP:
+    source_column: RA_TEMP
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  ZONE_TEMP_1:
+    source_column: ZONE_TEMP_1
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  ZONE_TEMP_2:
+    source_column: ZONE_TEMP_2
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  ZONE_TEMP_3:
+    source_column: ZONE_TEMP_3
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  ZONE_TEMP_4:
+    source_column: ZONE_TEMP_4
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  ZONE_TEMP_5:
+    source_column: ZONE_TEMP_5
+    kind: MEASUREMENT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  SA_TEMPSPT:
+    source_column: SA_TEMPSPT
+    kind: SETPOINT
+    source_unit: degF
+    unit: degC
+    basic_eligible: true
+  SF_SPD_DM:
+    source_column: SF_SPD_DM
+    kind: STATUS
+    source_unit: binary
+    unit: binary
+    basic_eligible: true
+    code_meaning: 0 off, 1 on
+  RF_SPD_DM:
+    source_column: RF_SPD_DM
+    kind: STATUS
+    source_unit: binary
+    unit: binary
+    basic_eligible: true
+    code_meaning: 0 off, 1 on
+  SF_CS:
+    source_column: SF_CS
+    kind: COMMAND
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: true
+  RF_CS:
+    source_column: RF_CS
+    kind: COMMAND
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: true
+  OA_DMPR_DM:
+    source_column: OA_DMPR_DM
+    kind: COMMAND
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: true
+  RA_DMPR_DM:
+    source_column: RA_DMPR_DM
+    kind: COMMAND
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: true
+  CHWC_VLV_DM:
+    source_column: CHWC_VLV_DM
+    kind: COMMAND
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: true
+  SA_SP:
+    source_column: SA_SP
+    kind: MEASUREMENT
+    source_unit: null
+    unit: null
+    value_status: UNVERIFIED_UNIT
+    warning_code: SEMANTICS_UNVERIFIED
+    basic_eligible: true
+  SA_SPSPT:
+    source_column: SA_SPSPT
+    kind: SETPOINT
+    source_unit: null
+    unit: null
+    value_status: UNVERIFIED_UNIT
+    warning_code: SEMANTICS_UNVERIFIED
+    basic_eligible: true
+  OA_CFM:
+    source_column: OA_CFM
+    kind: MEASUREMENT
+    source_unit: cfm
+    unit: cfm
+    basic_eligible: false
+  RA_CFM:
+    source_column: RA_CFM
+    kind: MEASUREMENT
+    source_unit: cfm
+    unit: cfm
+    basic_eligible: false
+  SA_CFM:
+    source_column: SA_CFM
+    kind: MEASUREMENT
+    source_unit: cfm
+    unit: cfm
+    basic_eligible: false
+  SF_SPD:
+    source_column: SF_SPD
+    kind: MEASUREMENT
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: false
+    origin: SIMULATED_POSITION_OR_SPEED
+  RF_SPD:
+    source_column: RF_SPD
+    kind: MEASUREMENT
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: false
+    origin: SIMULATED_POSITION_OR_SPEED
+  OA_DMPR:
+    source_column: OA_DMPR
+    kind: MEASUREMENT
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: false
+    origin: SIMULATED_POSITION_OR_SPEED
+  RA_DMPR:
+    source_column: RA_DMPR
+    kind: MEASUREMENT
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: false
+    origin: SIMULATED_POSITION_OR_SPEED
+  CHWC_VLV:
+    source_column: CHWC_VLV
+    kind: MEASUREMENT
+    source_unit: fraction
+    unit: fraction
+    basic_eligible: false
+    origin: SIMULATED_POSITION_OR_SPEED
+  SF_WAT:
+    source_column: SF_WAT
+    kind: MEASUREMENT
+    source_unit: W
+    unit: W
+    basic_eligible: false
+  RF_WAT:
+    source_column: RF_WAT
+    kind: MEASUREMENT
+    source_unit: W
+    unit: W
+    basic_eligible: false
+  SYS_CTL:
+    source_column: SYS_CTL
+    kind: MODEL_INTERNAL
+    source_unit: binary
+    unit: binary
+    basic_eligible: false
+    code_meaning: 0 unoccupied, 1 occupied
+truth_is_separate:
+  value_class: VERIFIED_TRUTH
+  source: independent validated source registry only
+  scenario_filename: SOURCE_OBSERVATION
+  inference_access: false
+  BASIC_access: false

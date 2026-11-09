@@ -1,0 +1,10 @@
+DESCRIPTIVE_OBSERVED preparation sealed; 26 comparator dates, 1 eligible, 72 native selected ticks. No medians computed.
+DESCRIPTIVE_OBSERVED SAT changes {'event': -5.577857076350099, 'comparison': 2.20259776536313} descriptive event minus comparison -7.7804548417132295
+PASS Stage12 RAW_SLICE_12.csv byte-identical
+PASS Stage12 DESCRIPTIVE_12.csv byte-identical
+PASS Stage12 ELIGIBILITY_12.csv byte-identical
+PASS Stage12 CONTROLS_12.csv byte-identical
+PASS Stage12 FEASIBILITY_12.csv byte-identical
+PASS Stage12 PUBLISHER_ANNOTATIONS_12.csv byte-identical
+..............                                                           [100%]
+14 passed in 0.59s

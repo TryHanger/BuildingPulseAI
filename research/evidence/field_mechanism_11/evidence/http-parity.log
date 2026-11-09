@@ -1,0 +1,11 @@
+PASS byte-identical GET /api/v1/openapi.json HTTP 200
+PASS byte-identical GET /api/v1/incidents?dataset_id=ds_8e5b1ddfdd14&start=2018-01-02T11%3A08%3A00&limit=1 HTTP 200
+PASS byte-identical GET /api/research/domain-shift-07 HTTP 200
+PASS byte-identical POST /api/research/domain-shift-07/applicability HTTP 200
+PASS byte-identical POST /api/research/domain-shift-07/applicability HTTP 200
+PASS byte-identical POST /api/research/domain-shift-07/applicability HTTP 200
+PASS byte-identical GET /api/research/virtual-sensors HTTP 200
+PASS byte-identical GET /api/research/virtual-sensors/day?case=healthy&day=2018-10-20 HTTP 200
+PASS byte-identical GET /api/ml/models HTTP 200
+PASS additive full OpenAPI diff: one research GET and five schemas. Diagnostic OpenAPI is byte-identical.
+PASS Stage10 full OpenAPI byte-identical to accepted receipt

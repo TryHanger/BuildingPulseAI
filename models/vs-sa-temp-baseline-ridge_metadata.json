@@ -1,0 +1,58 @@
+{
+  "model_id": "vs-sa-temp-baseline-ridge",
+  "name": "Virtual Sensor SA_TEMP (RIDGE)",
+  "description": "Виртуальный датчик приточной температуры SA_TEMP на основе признаков Basic AHU (ridge)",
+  "model_type": "ridge",
+  "target": "SA_TEMP",
+  "target_unit": "degC",
+  "features": [
+    "MA_TEMP",
+    "OA_TEMP",
+    "RA_TEMP",
+    "CHWC_VLV_DM",
+    "OA_DMPR_DM",
+    "SF_SPD_DM",
+    "SA_TEMPSPT"
+  ],
+  "feature_units": {
+    "MA_TEMP": "degC",
+    "OA_TEMP": "degC",
+    "RA_TEMP": "degC",
+    "CHWC_VLV_DM": "ratio_0_1",
+    "OA_DMPR_DM": "ratio_0_1",
+    "SF_SPD_DM": "binary_0_1",
+    "SA_TEMPSPT": "degC"
+  },
+  "operational_gating_feature": "SF_SPD_DM",
+  "train_scenario_id": "sc_3556175a5da2",
+  "train_range": "2018-01-01 01:00:00 to 2018-01-10 00:59:00",
+  "val_range": "2018-01-10 01:00:00 to 2018-01-12 00:59:00",
+  "test_range": "2018-01-12 01:00:00 to 2018-01-15 00:59:00",
+  "split_hash": "ccfe30285bd8a944",
+  "random_state": 42,
+  "hyperparameters": {
+    "alpha": 1.0,
+    "random_state": 42
+  },
+  "validation_metrics": {
+    "mae_degC": 0.3077,
+    "rmse_degC": 0.5355,
+    "r2": 0.5633
+  },
+  "thresholds": {
+    "q95": 0.842,
+    "q99": 2.25,
+    "three_sigma": 1.623,
+    "mad": 0.65
+  },
+  "persistence_filter": {
+    "k": 10,
+    "n": 15
+  },
+  "library_versions": {
+    "lightgbm": "4.6.0",
+    "pandas": "3.0.2",
+    "numpy": "2.0.2"
+  },
+  "created_at": "2026-11-02T15:49:10.100089+00:00"
+}

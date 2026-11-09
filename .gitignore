@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment & secrets
+.env
+.env.*.local
+
+# Database
+*.db
+*.sqlite3
+postgres_data/
+
+# Heavy datasets (raw and processed data)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local data and original handoffs
+*.zip
+*.xlsx
+*.xls
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3-*
+*.pem
+*.key
+.env.*
+!.env.example
+data/g36-5wk/
+data/g36-1wk/
+!research/evidence/**/*.log

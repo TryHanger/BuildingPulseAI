@@ -1,0 +1,149 @@
+{
+  "stage": "G5.5",
+  "contract_version": "1.0.0-rc.11",
+  "policy": "g36-sat-high@1.0.0",
+  "base": {
+    "accepted_artifact": "BUILDINGPULSE_G5_4_GATE_REVIEW.zip",
+    "sha256": "edebf001020e5ddd13efb76c046e2c22a99ac10ae5819d04a3d3fd0b702b3417",
+    "revision_kind": "accepted overlay; supplied workspace has no .git metadata"
+  },
+  "patch": {
+    "path": "G5_5.patch",
+    "sha256": "b4b3d0161f55cbf7ec3634810e80e120c1bfd22f2be2b5ea8ad1a28654c1285a"
+  },
+  "gate": "STOP_METHOD_NOT_EVALUABLE",
+  "observability": "AMBIGUOUS_BY_OBSERVABILITY",
+  "qualified_candidates": 0,
+  "candidates_reviewed": 2,
+  "new_experimental_scoring": false,
+  "integration": {
+    "paired_causal_gate": "STOP",
+    "unpaired_descriptive_gate": "PASS",
+    "runs_per_scenario": 1
+  },
+  "signal_audit": {
+    "path": "SIGNAL_ROLE_AUDIT_G5_5.csv",
+    "sha256": "0817f64598d383557e6a7fe2310fe7dd228d9fcdc9f1e8fa4bacae8317596cbf",
+    "frozen_utc": "2026-11-07T19:20:27Z",
+    "source_receipt": "evidence/source-headers.json",
+    "source_receipt_sha256": "cff3bde3a1aa804d675b59aa893f6d026427f998bad03eee40cd28cecf0e9052"
+  },
+  "source_release": {
+    "doi": "10.6084/m9.figshare.29297999.v3",
+    "license": "CC BY 4.0",
+    "members": {
+      "BaselineSystem.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+        "member": "g36-1wk/CoolingSeason/BaselineSystem.csv",
+        "sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+        "bytes": 13976350,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/BaselineSystem.csv"
+      },
+      "CooCoiValStuck_0.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/CooCoiValStuck_0.csv",
+        "sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59",
+        "bytes": 13708123,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/CooCoiValStuck_0.csv"
+      },
+      "00_explanations.pdf": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/00_explanations.pdf",
+        "sha256": "989ab517b05bffebf92103430cf26f4662836971ec7eb077b14664f158d32999",
+        "bytes": 650058,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/00_explanations.pdf"
+      }
+    }
+  },
+  "g36_audited_headers": {
+    "g36-5wk/BaselineSystem.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "fe744430e7800d6d33847137346032501e63f0cd30fec6bef9b41b0f8ec1569d"
+    },
+    "g36-5wk/CooCoiValStuck_0.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "b71d2aa060bd126376848c2826e4990f53986b3f665b2c670c75ad01ebef0ff9"
+    },
+    "g36-5wk/OADamStuck_100.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "18dd3dbc16adead32dc9233b408b42462994a353c4badc1c5efe409977f610b0"
+    },
+    "g36-5wk/SupDucLea_20.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "793fc4819831b71bd065c549f9a8903a8ee86391b5f80ec207ba74ccf5ebce46"
+    },
+    "g36-1wk-probe/CooCoiValStuck_0.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59"
+    },
+    "g36-1wk/CoolingSeason/BaselineSystem.csv": {
+      "archive": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+      "archive_sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+      "member_sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3"
+    }
+  },
+  "changed_files": {
+    "API_CHANGELOG.md": {
+      "base_sha256": "bb4e7a90b880fecec2c1887df6b7ffa2272a7be5341a480c7d07403b86f370e0",
+      "g55_sha256": "80cc3151672b86e733f942bf1dcfd50f263458c67ae7eb1a244621e8dc3b6c23"
+    },
+    "backend/app/services/g36_week_benchmark.py": {
+      "base_sha256": "023ed235b9e0e76757da274dd4455e95e381e293d001dbc3555b4f6abd618198",
+      "g55_sha256": "9b1c51abf2e449a12eef67331cc28aa09c7d32e6198f0d945c90edd7c4e3fe77"
+    },
+    "backend/tests/test_g36_week.py": {
+      "base_sha256": "b820b2332f7e4c231adcdb2332f9860659f5643095a7844556f8bd666303a450",
+      "g55_sha256": "093676bb4e9adb6d9b89d8196225beddf750a03f474789189c03cb79497edff5"
+    },
+    "contracts/CONTRACT_V1.md": {
+      "base_sha256": "a33561e405809a553afd0c8d96ddcac9992814c275c3f0226c16c0ef02b1a2ee",
+      "g55_sha256": "fe3b40ecb722220e16f5bdde2b8a7a3a49487ba7d65ea5c3d0a4114b6363f2f3"
+    },
+    "contracts/fixtures/demo_manifest.json": {
+      "base_sha256": "efd75ee87c23d5f4fb82a6ff887f804debdaefd86b3028a3f98592cd18e5ec14",
+      "g55_sha256": "e980856b3759a493af74c62d9e26e76c92d2418b7ff2dcd2be1df4d3da975790"
+    },
+    "contracts/openapi-v1.yaml": {
+      "base_sha256": "9547387e6a8b8cf3e825768abc8b0a7974f313688e80e76eb3425ea463c9d7b1",
+      "g55_sha256": "75d2b37b0f1859edad2c7866e668d90974845ea386d150044b58959a62b323f2"
+    },
+    "frontend/src/pages/G36BenchmarkPage.tsx": {
+      "base_sha256": "5dd9c6af76b0935deb5e9b32fecb87fd7e7ea28ce13581c3b074825bf4789557",
+      "g55_sha256": "669973ffe9f302e645f01ace3906c98d01bcb50ca5043f36acd93e3bcf8b4b5e"
+    },
+    "frontend/src/types/openapi-v1.generated.ts": {
+      "base_sha256": "7e9523cfa1c6e86c572ce9f98cc5976a02657468da6bd2520cba413c16ad40b6",
+      "g55_sha256": "dd48eaed214eb2b95c1e83fbe03e02af5530ea5a78d670c72ebcfcf8d22b1da8"
+    },
+    "research/g55/SOURCE_AUDIT_G5_5.py": {
+      "base_sha256": null,
+      "g55_sha256": "136e361743baa096f64b0f64fe19550f256b603c0fa1abf74d64d1775d5010ab"
+    },
+    "scripts/smoke_g01_container.py": {
+      "base_sha256": "f363c7068f9d4ca3bbb9f13d4beee7878f56ee3449d9dc412712b84c1cc9dd22",
+      "g55_sha256": "e102d25482b19572bf415775ec74d33ad6bef8cee15da84fba211beb0a7d486d"
+    },
+    "scripts/test_playwright_g54.py": {
+      "base_sha256": "38b0b0d1b0a00131e2fd73f0175d1bccaefe2ef8ad02ce51c96d64b0d374f6d7",
+      "g55_sha256": "b9e9067bfb73844d8f05187a51b8717251b77aae731f3f6580f91e1942d051d6"
+    }
+  },
+  "checks": {
+    "pytest": 310,
+    "strict_typescript": "PASS",
+    "openapi": "PASS",
+    "http": "PASS",
+    "playwright": "PASS",
+    "docker_backend_smoke": "PASS",
+    "full_compose": "NOT_RUN",
+    "source_integrity": "PASS"
+  }
+}

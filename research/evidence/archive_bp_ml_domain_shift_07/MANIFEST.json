@@ -1,0 +1,38 @@
+{
+  "task": "BP-ML-DOMAIN-SHIFT-07",
+  "decision": "ACCEPT_NEGATIVE_TRANSFER_RESULT",
+  "historical_normal_gate": "STOP_OOD_HEALTHY",
+  "fault_phase": "NOT_AUTHORIZED",
+  "path_1": "STOP_NO_SETPOINT_VARIATION",
+  "path_2": "STOP_NO_FRESH_SITE_NORMAL_HOLDOUT",
+  "target_raw_audit": false,
+  "model_loaded": false,
+  "prediction_calls": 0,
+  "training_executed": false,
+  "git_head": null,
+  "git_commit": false,
+  "git_push": false,
+  "deploy": false,
+  "base_archive": "BUILDINGPULSE_BP_ML_TRANSFER_NORMAL_06_REVIEW.zip",
+  "base_and_reference_archives_sha256": {
+    "BUILDINGPULSE_BP_ML_TRANSFER_DESIGN_05_REVIEW.zip": "2febd05cdfe42efb9dbe65c39a5b0f1c42a22c07fba657f691e33bcde2113b7b",
+    "BUILDINGPULSE_BP_ML_TRANSFER_NORMAL_06_REVIEW.zip": "64ce1a8c46e163ae346df4d3bfec82d486d3a0052fc5da47a4cd2112a45e6bcf",
+    "BUILDINGPULSE_BP_ML_TRANSFER_NORMAL_06_INDEPENDENT_AUDIT_AND_DOMAIN_SHIFT_07_TASK.zip": "b66be9f2b491256f3df8f5f53d5426a0843c2e42c4d830409459066ae904732a"
+  },
+  "register_sha256": "b742aa02f88c591d0fe455665614ff0673734c8d082be4f7fed118c47ef4749e",
+  "patch_sha256": "ac760406a6e95a4853c5df68ecfe708eaae65f82f837743d2d3e1dc75bd3521a",
+  "overlay_sha256": {
+    "backend/app/api/endpoints/domain_shift_07.py": "5b43fb28fadb6cc61601020c527e920518277e92c27d347f3f6da1bc64045667",
+    "backend/app/api/router.py": "d8c0614b5b18a51aa5712c278f1525125a86b902dd789791f9cb3d4336e8c45d",
+    "backend/app/services/domain_shift_07.py": "e2d44d6eaeb8901d2c55556a44efc384d242192e68e8b4ad0401764eaa5b529b",
+    "contracts/openapi-domain-shift-07.json": "95ce308e4fd933c474cf72e97f67efccb6355d5e229b986417cb570c0c026884",
+    "research/ml_domain_shift_07/DOMAIN_SHIFT_07_EVIDENCE.md": "b4ce266189fe1db86b8c6dc52cb878be3a19af128e73bb8987f07d5771f1cd9a",
+    "research/ml_domain_shift_07/DOMAIN_SHIFT_07_REGISTER.json": "b742aa02f88c591d0fe455665614ff0673734c8d082be4f7fed118c47ef4749e",
+    "research/ml_domain_shift_07/SITE_ADAPTATION_FEASIBILITY_V1.md": "d6aa4ca5bd8b479392b248ebb521c48e787f3feea089d196735802ef96cafa71",
+    "research/ml_domain_shift_07/audit_07.py": "2bb2cc4425f8c19f7131b152acb22c32d77d274efa1e8cc07b7b33349226c6c9",
+    "research/ml_domain_shift_07/export_contract_07.py": "0e0d87f7a3e8f2f99d995cdb83ce34f1bd242b69d0f23de7788fb790a49b7665",
+    "research/ml_domain_shift_07/test_applicability.py": "5a69ddc3e826803f4c6e0998b100e359fe32e4f2137002d267b00814633f6f4f",
+    "research/ml_domain_shift_07/verify_http_07.py": "2fd3ad7bcbd45d292297c358ba328535cfcef247e5e948d8d5aa7f24c952a33f",
+    "research/ml_domain_shift_07/verify_no_model_07.py": "5503e2651217d16c80bb98b2e3a5ddcc7a5973f796cc6693661f2f71cf99241d"
+  }
+}

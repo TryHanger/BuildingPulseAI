@@ -1,0 +1,106 @@
+{
+  "dataset_doi": "10.17632/jkw85sm4v4.1",
+  "cadence_seconds": 300,
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "sat": "air_temperature__real_value__supply_air_outlet",
+  "secondary": [
+    "water_temperature__real_value__heater_before",
+    "water_temperature__real_value__heater_behind",
+    "air_temperature__real_value__exahust_air_inlet"
+  ],
+  "commands": [
+    "signal__required_value__heater_valve",
+    "logic__required_value__heater_pump",
+    "logic__required_value__heater",
+    "logic__required_value__chiller",
+    "signal__required_value__heat_recovery_bypass"
+  ],
+  "status": "logic__real_value__fan_fresh_air",
+  "required_context": {
+    "logic__required_value__heater": 1,
+    "logic__required_value__chiller": 0,
+    "logic__real_value__fan_fresh_air": 1
+  },
+  "date_buffer_days": 1,
+  "ranking": [
+    "absolute_week_distance",
+    "date_ascending"
+  ],
+  "source_manifest_sha256": "e7f2188e8cdc2fd3f4d2da20ab09c214bf3ac68f957f464f81d2930ceb4299e0",
+  "pre_minutes": 30,
+  "post_minutes": 30,
+  "episodes": [
+    [
+      18,
+      4,
+      "AHU18",
+      "2019-03-08",
+      120
+    ],
+    [
+      19,
+      4,
+      "AHU23",
+      "2019-03-08",
+      120
+    ],
+    [
+      20,
+      4,
+      "AHU24",
+      "2019-03-08",
+      120
+    ],
+    [
+      25,
+      6,
+      "AHU1",
+      "2019-03-15",
+      120
+    ],
+    [
+      28,
+      6,
+      "AHU18",
+      "2019-03-15",
+      120
+    ],
+    [
+      30,
+      6,
+      "AHU24",
+      "2019-03-15",
+      120
+    ],
+    [
+      29,
+      6,
+      "AHU23",
+      "2019-03-15",
+      30
+    ]
+  ],
+  "excluded": [
+    [
+      15,
+      "PREVIOUSLY_EXPLORED"
+    ],
+    [
+      16,
+      "MISSING_CHANNELS"
+    ],
+    [
+      17,
+      "MISSING_CHANNELS"
+    ],
+    [
+      26,
+      "MISSING_CHANNELS"
+    ],
+    [
+      27,
+      "MISSING_CHANNELS"
+    ]
+  ],
+  "matched_per_episode": 1
+}

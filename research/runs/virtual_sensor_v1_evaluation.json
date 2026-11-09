@@ -1,0 +1,63 @@
+{
+  "run_id": "eval_run_1793634655",
+  "timestamp": "2026-11-02T15:50:55.024979+00:00",
+  "primary_model": "vs-sa-temp-v1",
+  "baseline_model": "vs-sa-temp-baseline-ridge",
+  "normal_held_out": {
+    "vs-sa-temp-v1": {
+      "model_type": "lightgbm",
+      "test_points": 2640,
+      "mae_degC": 0.061,
+      "rmse_degC": 0.1733,
+      "r2": 0.6025,
+      "threshold_3sigma_degC": 1.696,
+      "false_alarm_points": 0,
+      "false_alarm_episodes": 0
+    },
+    "vs-sa-temp-baseline-ridge": {
+      "model_type": "ridge",
+      "test_points": 2640,
+      "mae_degC": 0.1926,
+      "rmse_degC": 0.4052,
+      "r2": -1.174,
+      "threshold_3sigma_degC": 1.623,
+      "false_alarm_points": 7,
+      "false_alarm_episodes": 1
+    }
+  },
+  "fault_scenarios": [
+    {
+      "scenario_id": "sc_22370df7e61a",
+      "name": "coi_bias_2_annual (Supply Air Sensor Bias +2 deg C)",
+      "fault_family": "SENSOR_BIAS",
+      "intensity": "+2.0 deg C on SA_TEMP",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 0.544,
+      "alarm_points": 0,
+      "detection_rate_pct": 0.0,
+      "alarm_episodes": 0
+    },
+    {
+      "scenario_id": "sc_276968373895",
+      "name": "coi_stuck_025_annual (Cooling Coil Valve Stuck 25%)",
+      "fault_family": "VALVE_STUCK",
+      "intensity": "25% stuck (CHWC_VLV=0.25)",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 3.106,
+      "alarm_points": 1925,
+      "detection_rate_pct": 72.9,
+      "alarm_episodes": 4
+    },
+    {
+      "scenario_id": "sc_1e3ca900a8d7",
+      "name": "damper_stuck_025_annual (OA Damper Stuck 25%)",
+      "fault_family": "DAMPER_STUCK",
+      "intensity": "25% stuck (OA_DMPR=0.25)",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 1.07,
+      "alarm_points": 685,
+      "detection_rate_pct": 25.9,
+      "alarm_episodes": 1
+    }
+  ]
+}

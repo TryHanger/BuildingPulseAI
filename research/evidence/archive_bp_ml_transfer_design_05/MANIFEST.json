@@ -1,0 +1,26 @@
+{
+  "task": "BP-ML-TRANSFER-DESIGN-05",
+  "decision": "ACCEPT_PRE_SCORE_DESIGN",
+  "current_gate": "STOP_BEFORE_TARGET_SCORE",
+  "target_normal_scoring": "NOT_EXECUTED",
+  "target_fault_scoring": "NOT_EXECUTED",
+  "source_fit": "FITTED_SOURCE_NORMAL_ONLY",
+  "base_archive": "BUILDINGPULSE_BP_ML_VALIDATION_04_REVIEW.zip",
+  "base_archive_sha256": "fef1ef065036620e3416b3462123faf6cf1fe1b158b9f2d32e7954c31bbd855e",
+  "git_head": null,
+  "protocol_sha256": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+  "pre_score_document_sha256": "6df419926e4c96d534bbb58bd585cdcef9fb1a43becd27129df672b3382e927c",
+  "episode_metadata_sha256": "d8c9947cf85dbbbbca8fdb08010669fcb063e3067da7037c8c89a8a38b4e55b7",
+  "patch_sha256": "9e61619c03614661e316cc6ecad41d029e13b54304fa657d21f4be36795e14e0",
+  "overlay_sha256": {
+    "research/ml_transfer_05/EPISODES_05.csv": "d8c9947cf85dbbbbca8fdb08010669fcb063e3067da7037c8c89a8a38b4e55b7",
+    "research/ml_transfer_05/PRE_SCORE_TRANSFER_05.md": "6df419926e4c96d534bbb58bd585cdcef9fb1a43becd27129df672b3382e927c",
+    "research/ml_transfer_05/TRANSFER_05_PROTOCOL.json": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+    "research/ml_transfer_05/audit_support.py": "effa55912b46b0812f74d00ea8ac3a2cab241dacf4c0ae82fe0f7a10f543a717",
+    "research/ml_transfer_05/contract.py": "09d4434f1be32a52ebc5752ad8b5add9a1ab7f5c4a11fc71eb2c959bbb713d59",
+    "research/ml_transfer_05/fit_source.py": "863952c69231659b27c31f430820178f653058f6bf2aa49cbf3a9f840015cc25",
+    "research/ml_transfer_05/preflight.py": "e3d9a62f49a8b1e119a5c5821b892bf614d50d47692b2085eecd1c8a8f7142b4",
+    "research/ml_transfer_05/requirements.txt": "644e6816e580ff4fc24b1cc781d3358aedbbd4f5ce206934e25b535d14a9afb0",
+    "research/ml_transfer_05/test_contract.py": "a5ad44fc7e09e0c3daad16d2a6725ba27534917f15b560a3493e4fe458b6aa7a"
+  }
+}

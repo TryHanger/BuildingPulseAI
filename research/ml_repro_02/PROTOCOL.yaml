@@ -1,0 +1,19 @@
+version: BP-ML-REPRO-02.v1
+base: BP-ML-REPRO-01.v1
+controls:
+  incremental: exported v1 daily score intersection, unchanged z > 3
+  paired_minutes: BASIC and BASIC without commands; exact source-clock complete-case intersection at inference only; all 11 scenarios; train and calibration unchanged
+  paper_to_strict: fixed whole-day strict train/cal/test and FULL columns; compare strict reference against SYS_CTL mask only and SYS_CTL context only
+  subsample_freq: NOT_RUN; one bounded control set and research integration prioritized, author value unspecified
+  pilot_gate: "D0 and completed controls; BASIC SA+2 adds days vs SAT setpoint with no increase in healthy alarms; simulator only"
+integration:
+  arm: PRODUCT_BASIC
+  method: LightGBM
+  fit: v1 code, seed 42, 4 threads, 8 targets, same healthy train/calibration
+  runtime_target: SA_TEMP
+  cases: [AHU_annual.csv, coi_bias_2_annual.csv]
+  window: first seven calendar days of the untouched test, including all source minutes
+  timestamp_parity: first eligible minute of first day, both scenarios, also compare all eligible minutes of the window
+  absolute_tolerance: 0.000000001
+  daily_alert: mean SAT z > 3; target-specific research alert, distinct from v1 system max
+  model_format: LightGBM native text

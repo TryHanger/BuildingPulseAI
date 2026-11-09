@@ -1,0 +1,42 @@
+{
+  "model_id": "fault-family-classifier-v1",
+  "model_type": "lightgbm",
+  "classes": [
+    "FAULT_FREE",
+    "SENSOR_BIAS_SA",
+    "COOLING_VALVE_STUCK",
+    "OUTDOOR_DAMPER_STUCK"
+  ],
+  "features": [
+    "res_sa_signed",
+    "res_sa_abs",
+    "res_sa_roll_mean_15",
+    "res_sa_roll_std_15",
+    "delta_t_chwc",
+    "delta_t_mixing",
+    "error_spt",
+    "chwc_vlv_dm",
+    "oa_dmpr_dm",
+    "oa_temp",
+    "cooling_demand_discrepancy"
+  ],
+  "trained_on_scenarios": [
+    "sc_3556175a5da2",
+    "sc_835609dfd906",
+    "sc_90decfb04993",
+    "sc_276968373895",
+    "sc_4ca7822e8e04",
+    "sc_1e3ca900a8d7",
+    "sc_48ae2acfcea2"
+  ],
+  "held_out_scenarios": [
+    "sc_3556175a5da2",
+    "sc_4c635ed85f83",
+    "sc_22370df7e61a",
+    "sc_2541462c0f4a",
+    "sc_413e7074ae9e",
+    "sc_a04b8cceeebc",
+    "sc_ef6581a6ce7b"
+  ],
+  "created_at": "2026-11-02T18:43:44.706017+00:00"
+}

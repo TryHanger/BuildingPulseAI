@@ -1,0 +1,33 @@
+{
+  "task": "BP-ML-REPRO-03",
+  "decision": "PASS_RESEARCH_ONLY",
+  "base_archive": "BUILDINGPULSE_BP_ML_REPRO_02_REVIEW.zip",
+  "base_archive_sha256": "d9b3187756ab98d001305c92dbf04c2fc82393896d1d64faaa016cb48c85faf7",
+  "git_head": null,
+  "base_modified_file_receipt_sha256": "593f33f3ee2db7242d8685c8d4db73b5f82e59721c7a315e276d375335397331",
+  "reference_archive_sha256": {
+    "BUILDINGPULSE_G6_0_GATE_REVIEW.zip": "6cf3f518734abebc24281cb5cc7b38019052d5a4961e3a005ce79cc5c0a7209f",
+    "BUILDINGPULSE_BP_ML_REPRO_01_REVIEW.zip": "04c4159590ddc401601fdec02de394647d0c71812a92f4cead469cce562b8754",
+    "BUILDINGPULSE_BP_ML_REPRO_02_REVIEW.zip": "d9b3187756ab98d001305c92dbf04c2fc82393896d1d64faaa016cb48c85faf7",
+    "BUILDINGPULSE_BP_ML_REPRO_02_INDEPENDENT_AUDIT_AND_REPRO_03_TASK.zip": "d7f29a05c570ca868f2f9a6c4375a64095f3e162d0debc448b6c7fdefb0f0560"
+  },
+  "source_archive_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471",
+  "source_download": "https://fdddata.lbl.gov/data/Simulated_LBNL_FDD_Data_Sets_SDAHU/LBNL_FDD_Data_Sets_SDAHU.zip",
+  "registry_manifest_sha256": "359afbe1d3022e64c52ec5e1d916bb731a8c4c45aef9a835d0c9ab6ba73c0734",
+  "native_sat_sha256": "993f42a7994599a6bd7fc6ba2707b327458db58fc51fbb7d6a6a631767f76e9c",
+  "cohort_csv_sha256": "5adb2e3656e053aa29112ee86acfb06ce3ab81c49ddd802e6dca34640249786a",
+  "patch_sha256": "4fbc1646d178cdaf3199014900f1329b4fefce1b80ead56cd28dea4cf9446b27",
+  "overlay_sha256": {
+    "backend/app/services/sat_daily_coverage.py": "ce9931ab03ae3328ad6511f05f99417da06b0793f29e5d1341535c03e2d7609f",
+    "backend/app/services/virtual_sensor_research.py": "ee500f1573bc5c8a9d0bafcad8fcc961dc4148484bcaf68769a867d45930cbc6",
+    "contracts/openapi-virtual-sensor-research.json": "75acc7f06f6eb91e1fd9e4a32dcb77e7c731509cfdeda1da24d2dd6a8ac4efed",
+    "frontend/src/pages/VirtualSensorResearchPage.tsx": "6f65cdac93dbc23109f5aa6e60212b1dee7859b538f6f182075b46af3e59d2ab",
+    "frontend/src/types/virtual-sensor-research.generated.ts": "609229b7dd97c41924268c0752952c2e8a2a1b58d564eb4e7faa52aa3b120666",
+    "research/ml_repro_02/check_replay.py": "62808572859614da5f3e23f2e2310305b9a5dd6f67b15e57342baa6eec50b398",
+    "research/ml_repro_02/export_openapi.py": "706c2e577983be40bec6702b4ef7af03ad1c3f880fb8d42d32b7af0e3dbe17c0",
+    "research/ml_repro_03/SAT_DAILY_COVERAGE_V1.md": "a8c62109991f3f5c3ebea3a5c8469d3cfcb8fb652c7c6f03742577abc9535c30",
+    "research/ml_repro_03/compare.py": "d21971184fca65049e7d7dd464183fc6251e888643cfcc7fdbda4194d8edefba",
+    "research/ml_repro_03/replay.py": "50d29f7a437ab62944efc3d5d0e28019332cba01f61bb7dd90bafc9808e0d8d9",
+    "research/ml_repro_03/test_coverage.py": "af2571cc81639c6ac223d17f409c82f96dd56fb25bb2f06f66628ca04a3a0392"
+  }
+}

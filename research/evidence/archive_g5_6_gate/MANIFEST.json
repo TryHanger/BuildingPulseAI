@@ -1,0 +1,187 @@
+{
+  "stage": "G5.6",
+  "base": {
+    "accepted_artifact": "BUILDINGPULSE_G5_5_GATE_REVIEW.zip",
+    "sha256": "8e69c380c34dee26ed41c5d948dbd5c103ea5ed13960668d4affc8cd8d2d6ed6",
+    "revision_kind": "accepted overlay; no supplied Git metadata"
+  },
+  "patch": {
+    "path": "G5_6.patch",
+    "sha256": "3cd66461dc4086bb9998df2f8e9c9cb95e2f1e9fcfc73d964381104ece156db5"
+  },
+  "field_gate": "FIELD_NOT_QUALIFIED",
+  "next_gate": "SIM_ONLY_PROPOSAL",
+  "observability": "AMBIGUOUS_BY_OBSERVABILITY",
+  "experimental_scoring": "NOT_RUN",
+  "contract_version": "1.0.0-rc.11",
+  "policy": "g36-sat-high@1.0.0",
+  "source_release": {
+    "doi": "10.6084/m9.figshare.29297999.v3",
+    "license": "CC BY 4.0",
+    "members": {
+      "BaselineSystem.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+        "member": "g36-1wk/CoolingSeason/BaselineSystem.csv",
+        "sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+        "bytes": 13976350,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/BaselineSystem.csv"
+      },
+      "CooCoiValStuck_0.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/CooCoiValStuck_0.csv",
+        "sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59",
+        "bytes": 13708123,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/CooCoiValStuck_0.csv"
+      },
+      "00_explanations.pdf": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/00_explanations.pdf",
+        "sha256": "989ab517b05bffebf92103430cf26f4662836971ec7eb077b14664f158d32999",
+        "bytes": 650058,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/00_explanations.pdf"
+      }
+    }
+  },
+  "g36_audited_headers": {
+    "g36-5wk/BaselineSystem.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "fe744430e7800d6d33847137346032501e63f0cd30fec6bef9b41b0f8ec1569d"
+    },
+    "g36-5wk/CooCoiValStuck_0.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "b71d2aa060bd126376848c2826e4990f53986b3f665b2c670c75ad01ebef0ff9"
+    },
+    "g36-5wk/OADamStuck_100.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "18dd3dbc16adead32dc9233b408b42462994a353c4badc1c5efe409977f610b0"
+    },
+    "g36-5wk/SupDucLea_20.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "793fc4819831b71bd065c549f9a8903a8ee86391b5f80ec207ba74ccf5ebce46"
+    },
+    "g36-1wk-probe/CooCoiValStuck_0.csv": {
+      "archive": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+      "archive_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+      "member_sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59"
+    },
+    "g36-1wk/CoolingSeason/BaselineSystem.csv": {
+      "archive": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+      "archive_sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+      "member_sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3"
+    }
+  },
+  "nominal_receipt": {
+    "path": "evidence/rbc-nominal-receipt.json",
+    "sha256": "7cfa52ffb0f60f79325f4a26235ca2b3f8846ca83d5872c40741536a1561494e",
+    "days": {
+      "20170714_Baseline.csv": {
+        "sha256": "1bb16e772c3b4d909d75ebda685435c7e48ba96d7b657e27736640bb28460eac",
+        "exposure": "EXPLORATORY_EXPOSED",
+        "columns_1based": {
+          "7": "Sensor: Chilled Water Flowrate' (GPM)",
+          "54": "Sensor: Mixed Air Temperature' (°F)",
+          "55": "Sensor: Supply Air Temperature' (°F)",
+          "56": "Supply Fan Speed' (%)",
+          "58": "Feedback: Cooling Coil Valve Position' (%)",
+          "62": "Sensor: Between-coil Temperature' (°F)",
+          "72": "Control: Steam Valve 1/3' (%)",
+          "73": "Control: Steam Valve 2/3' (%)"
+        },
+        "rows": 288,
+        "between_differs_from_sat": 288,
+        "between_equals_mat": 118,
+        "median_between_minus_sat_deg_f": "10.85",
+        "median_between_minus_mat_deg_f": "0.0"
+      },
+      "20170729_Baseline.csv": {
+        "sha256": "a292cf2f03dadf3a7d67d9b4e2da7e078b576c806b6a39bdef33f19c6eb728ec",
+        "exposure": "EXPLORATORY_EXPOSED",
+        "columns_1based": {
+          "7": "Sensor: Chilled Water Flowrate' (GPM)",
+          "54": "Sensor: Mixed Air Temperature' (°F)",
+          "55": "Sensor: Supply Air Temperature' (°F)",
+          "56": "Supply Fan Speed' (%)",
+          "58": "Feedback: Cooling Coil Valve Position' (%)",
+          "62": "Sensor: Between-coil Temperature' (°F)",
+          "72": "Control: Steam Valve 1/3' (%)",
+          "73": "Control: Steam Valve 2/3' (%)"
+        },
+        "rows": 288,
+        "between_differs_from_sat": 286,
+        "between_equals_mat": 92,
+        "median_between_minus_sat_deg_f": "9.0",
+        "median_between_minus_mat_deg_f": "-0.1"
+      }
+    }
+  },
+  "exposure_ledger": {
+    "path": "RBC_EXPOSURE_LEDGER_G5_6.csv",
+    "sha256": "4b4af69baed00f368ee4d4756061721b85ad0c2d223d2373b06d8081514f9d5c"
+  },
+  "changed_files": {
+    "backend/app/services/g36_week_benchmark.py": {
+      "base_sha256": "9b1c51abf2e449a12eef67331cc28aa09c7d32e6198f0d945c90edd7c4e3fe77",
+      "g56_sha256": "0ce956b222d9fbc49f3b3525f7fa30d0de85d62d088e17a80218243a8cfbec29"
+    },
+    "backend/tests/test_g36_week.py": {
+      "base_sha256": "093676bb4e9adb6d9b89d8196225beddf750a03f474789189c03cb79497edff5",
+      "g56_sha256": "93a23d91905680d429effcdfb0430660ab565cff9afcd15c434e953127a8c35b"
+    },
+    "backend/tests/test_g56_evidence_metadata.py": {
+      "base_sha256": null,
+      "g56_sha256": "4bfdcaf170d3f1dfa891f0c574ca4d6bdb40de006f6c99abd6bee8757abc742f"
+    },
+    "frontend/src/components/G36EvidenceLimits.tsx": {
+      "base_sha256": null,
+      "g56_sha256": "3f12b7338a784f31d6a7aed2af2a2c0caf1d1433d9981a7a6e12b561aaf1520e"
+    },
+    "frontend/src/fixtures/g56_sensor_evidence.json": {
+      "base_sha256": null,
+      "g56_sha256": "9ba6ac3a4757b2a80e7a96fab4c80036423279ad0ff855b11d2856448de243e1"
+    },
+    "frontend/src/pages/G36BenchmarkPage.tsx": {
+      "base_sha256": "669973ffe9f302e645f01ace3906c98d01bcb50ca5043f36acd93e3bcf8b4b5e",
+      "g56_sha256": "8b9b9c6a7a4ff8908fbb85c7656ee81ec6b52c211efce18641be9046a733a9fe"
+    },
+    "research/g56/README.md": {
+      "base_sha256": null,
+      "g56_sha256": "b9e790d4ab432496720d908e211c90865dce300decd05a5220a332b85799c6c6"
+    },
+    "research/g56/SENSOR_SEMANTICS_STATUS.csv": {
+      "base_sha256": null,
+      "g56_sha256": "97eabf4fe4046afe8645c7ccf73a7b035e87624184f9e7d3ba52e847447943ee"
+    },
+    "research/g56/audit_rbc_nominal.py": {
+      "base_sha256": null,
+      "g56_sha256": "ee20556e01f78ece5afae0bced8ddd6c7b481f96f30640c28cf8762ccccf63e7"
+    },
+    "scripts/test_playwright_g54.py": {
+      "base_sha256": "b9e9067bfb73844d8f05187a51b8717251b77aae731f3f6580f91e1942d051d6",
+      "g56_sha256": "42b307e8f87d153b48f75c29678cd4b519e8c65a07320e5fb373734b9c0d8e86"
+    }
+  },
+  "preserved_sha256": {
+    "backend/app/services/g36_policy.py": "07e1bd8a8144c06872de6e97cb357048f34a794ea4b210a8d0e5fce7e5eabd0b",
+    "backend/app/services/g36_week.py": "f9f5b53f506f74ad4becb03f7b33e0a75b86479498a6df779ce1f638b2e20d70",
+    "backend/app/services/g36_benchmark.py": "8d7d1346e76c01452798ce4e84afe4f713659ee2b2558adcc1887e1f5e02d20a",
+    "contracts/openapi-v1.yaml": "75d2b37b0f1859edad2c7866e668d90974845ea386d150044b58959a62b323f2",
+    "frontend/src/types/openapi-v1.generated.ts": "dd48eaed214eb2b95c1e83fbe03e02af5530ea5a78d670c72ebcfcf8d22b1da8"
+  },
+  "checks": {
+    "pytest": 311,
+    "strict_typescript": "PASS",
+    "openapi": "PASS",
+    "http": "PASS",
+    "playwright": "PASS",
+    "docker_backend_smoke": "PASS",
+    "full_compose": "NOT_RUN",
+    "source_integrity": "PASS"
+  }
+}

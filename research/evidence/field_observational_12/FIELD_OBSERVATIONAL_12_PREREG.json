@@ -1,0 +1,21 @@
+{
+  "dataset_doi": "10.17632/jkw85sm4v4.1",
+  "ahu": "AHU1",
+  "schedule_row": 15,
+  "fault": "Fault 4",
+  "event_date": "2019-03-08",
+  "boundaries": ["08:30", "09:00", "11:00", "11:30"],
+  "cadence_seconds": 300,
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "sat": "air_temperature__real_value__supply_air_outlet",
+  "secondary": ["water_temperature__real_value__heater_before", "water_temperature__real_value__heater_behind", "air_temperature__real_value__exahust_air_inlet"],
+  "commands": ["signal__required_value__heater_valve", "logic__required_value__heater_pump", "logic__required_value__heater", "logic__required_value__chiller", "signal__required_value__heat_recovery_bypass"],
+  "status": "logic__real_value__fan_fresh_air",
+  "required_context": {"logic__required_value__heater": 1, "logic__required_value__chiller": 0, "logic__real_value__fan_fresh_air": 1},
+  "date_buffer_days": 1,
+  "negative_controls_max": 3,
+  "ranking": ["absolute_week_distance", "date_ascending"],
+  "statistic": "median_window_minus_median_pre",
+  "expected_sign": null,
+  "source_manifest_sha256": "e7f2188e8cdc2fd3f4d2da20ab09c214bf3ac68f957f464f81d2930ceb4299e0"
+}

@@ -1,0 +1,102 @@
+{
+  "contract_version": "1.0.0-rc.8",
+  "decision": "GO_DESCRIPTIVE_SIMULATION",
+  "paired_causal": "STOP",
+  "independent_external_validation": "NOT_ESTABLISHED",
+  "baseline_zip": "BUILDINGPULSE_G5_1_GATE_REVIEW.zip",
+  "baseline_sha256": "f74cc7f1f20139f44ef8bac919ceecee26624b05431534ce0e76c2f45ce9c0b8",
+  "protocol_sha256": "1d942c63b70f6cd843c84acbfea8ab3d562107b235975ee6da220b7d3f9fd6f9",
+  "source_artifact": {
+    "artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+    "bytes": 4854638,
+    "sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+    "entries_verified": 11
+  },
+  "overlay": [
+    {
+      "path": "API_CHANGELOG.md",
+      "baseline_sha256": "712f57fbd4ae479f873ac07455a0c6b433266d4b125b3b62d00b26725508950f",
+      "sha256": "9b9bb3d9f4f96cbf71f6bca223ecbf0d6631f2a7a34be5f76c42b16198cefa74"
+    },
+    {
+      "path": "backend/app/api/endpoints/investigator_v1.py",
+      "baseline_sha256": "72d5bf09bed32987b98717e23fc4805e3bfa3946819fdd9faefeb33d622dbcab",
+      "sha256": "70eaff86e2c82437490c6bdf54d9cbe688f0f1ae9611c33c7ff105f6e4b02c23"
+    },
+    {
+      "path": "backend/app/services/g36_benchmark.py",
+      "baseline_sha256": null,
+      "sha256": "522054d510feefc46f4b42342e519386c17648b5bd90e6419400a1ec28cd0ef9"
+    },
+    {
+      "path": "backend/tests/test_g36_benchmark.py",
+      "baseline_sha256": null,
+      "sha256": "cf7e33e74f2d09d85f4ad736d542d4fb78b264c2847ca2da0b7d9a4ba6ae0915"
+    },
+    {
+      "path": "contracts/CONTRACT_V1.md",
+      "baseline_sha256": "0643e2c4c8059f3ac6e37db282d42263340af5df6131c98eb5177e47f74f5d4b",
+      "sha256": "a7110fd35cd25ed84fb95100e0b7d312472632eec6c8679e082bf98f4a4c1fb0"
+    },
+    {
+      "path": "contracts/openapi-v1.yaml",
+      "baseline_sha256": "db5f275b4a446c169a065da0a9cc333c74166c53ad19b7ccc23c626a7df01eab",
+      "sha256": "37af0ebb7a969d05e8a6a7817573ac5a6efee993b281f7a509f03f26404459a7"
+    },
+    {
+      "path": "contracts/fixtures/demo_manifest.json",
+      "baseline_sha256": "b98b7af03ac17998d237ed64f92871ea480086bc0d3e2db1b0444700a5f654ab",
+      "sha256": "07fd340e5f1031f21a9a5b37b290d723fa36e19df566f2b871c73b896867d132"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "baseline_sha256": "9a4cbbb2d04038e6fa58f6d1396b494ab7db02384b9b30704346349ff7ee3112",
+      "sha256": "35b98298a23c1a285582288833ca4438b28e2dd7ecfb6d85472a71e167330870"
+    },
+    {
+      "path": "frontend/src/api/investigatorV1.ts",
+      "baseline_sha256": "9138f490b7a84260f25105955bd6ddaa456e144a1ae093ac36f2d153550558e3",
+      "sha256": "7dcfc615e41479278d66bfb5bed9bcede29ca6fc50afed943c0ccc2e5033eae8"
+    },
+    {
+      "path": "frontend/src/components/TopNavigationBar.tsx",
+      "baseline_sha256": "056d73e745bf5efcc728539dc3d56829caa2250fe130f8cb3f10854a1a0c747b",
+      "sha256": "505b5a6639450dfcee1f6a900ac21afa37b0ffbd9b7889ff27d96f62da3469e6"
+    },
+    {
+      "path": "frontend/src/pages/G36BenchmarkPage.tsx",
+      "baseline_sha256": null,
+      "sha256": "16d75089a43c9f0581983d19852eb9c434f0618498ccc6d970839596b2b87622"
+    },
+    {
+      "path": "frontend/src/pages/RuntimeInvestigatorPage.tsx",
+      "baseline_sha256": "204cc2818b13ad5b418156ef0af84b25bf3e64328533e2d2c61434eca3c4591f",
+      "sha256": "c17dffa7417eaf7a7671f2ade497fcfc0d8d86d4ccd312fc22b69e4c00e22e1e"
+    },
+    {
+      "path": "frontend/src/types/openapi-v1.generated.ts",
+      "baseline_sha256": "04e5392014f04836d6b1d108255529deb027122cca71436c7d53ac5b704951cc",
+      "sha256": "8661630a81d620559f1cc1122ea31795081de00ca573a406f8f8d36fce335619"
+    },
+    {
+      "path": "scripts/smoke_g01_container.py",
+      "baseline_sha256": "6e6cd39cc3e73cb061094b06effb55ad9e19b9b7a692c049b2351681921310c6",
+      "sha256": "4350e1a6c77f13f026596d7a6539b3a391043e954447c24c4ffe7b3ecb247661"
+    },
+    {
+      "path": "scripts/test_playwright_g36.py",
+      "baseline_sha256": null,
+      "sha256": "91e8a3bca0c18fbbe813187187119fa7de43315cd6bfeef3a5c9adb704f6a32d"
+    },
+    {
+      "path": "research/g52/fetch_members.py",
+      "baseline_sha256": null,
+      "sha256": "7793a7dfb338a295511ae8e109aeebee9e7e9b6a566f95557471aa614b7d6ef1"
+    },
+    {
+      "path": "research/g52/verify_experiment.py",
+      "baseline_sha256": null,
+      "sha256": "88048640766b0d3e89a487f99d061c48dc4a4f3fe650c79d29d46bb4380ce9a4"
+    }
+  ]
+}

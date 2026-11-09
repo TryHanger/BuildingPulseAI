@@ -1,0 +1,151 @@
+{
+  "summary_id": "stage7_final_scientific_summary_v1",
+  "created_at": "2026-11-03T11:50:00.000000+00:00",
+  "project": "BuildingPulse AI",
+  "thesis_topic": "Разработка интеллектуальной системы анализа данных инженерных систем зданий",
+  "scientific_hypotheses_matrix": [
+    {
+      "id": "H1",
+      "name": "Formal Evidence-Aware Decision Layer",
+      "pre_registered_claim": "Механизм селективной классификации на основе физических свидетельств снижает Selective Risk по сравнению со стандартными эвристиками отказа по уверенности (B1) и марже (B2) при одинаковом контролируемом уровне охвата.",
+      "dataset": "LBNL SD-AHU Simulation (4 сезона, 12 сценариев неисправностей)",
+      "n_independent_scenarios": 12,
+      "train_val_test_split": "Scenario-Level Split (Train: 25%, 75% stuck, ±4°C bias; Test: 10%, 50% stuck, ±2°C bias)",
+      "baseline": "B1 (Confidence Rejection) и B2 (Margin/Entropy Rejection)",
+      "method": "Formal Decision Layer (ML score + Actuator tracking evidence + Thermal balance + Causal filter)",
+      "primary_metric": "Selective Risk = errors / accepted_singletons",
+      "achieved_metric": {
+        "decision_layer_at_cov_0_42": {"coverage": 0.4157, "risk": 0.2939},
+        "baseline_b1_at_cov_0_46": {"coverage": 0.4631, "risk": 0.5562},
+        "baseline_b2_at_cov_0_61": {"coverage": 0.6089, "risk": 0.5537},
+        "decision_layer_max_coverage_basic": {"coverage": 0.6023, "risk": 0.3616}
+      },
+      "interpretation": "Decision Layer снижает риск ошибочного диагноза с 55.6% (B1) до 29.4% при сопоставимом охвате ~42%. Наблюдаемый максимальный охват без дополнительных датчиков ограничен 60.2% из-за физической неоднозначности между смещением датчика и заклиниванием клапана.",
+      "status": "SUPPORTED_WITH_LIMITATIONS",
+      "limitations": "Сравнение производилось по дискретным рабочим точкам кривой селекции (фактический coverage B1=0.463, M=0.416, B2=0.609). Ограничение 60.2% является наблюдаемым пределом данного решающего правила на симуляции LBNL, а не теоретической ненаблюдаемостью здания.",
+      "run_manifest_path": "research/runs/stage4_decision_layer_eval.json"
+    },
+    {
+      "id": "H2",
+      "name": "Observability and Information Value of Feedback Channels",
+      "pre_registered_claim": "Дооснащение установки каналом обратной связи положения штока охлаждающего клапана (CHWC_VLV) обеспечивает статистически значимый прирост точности локализации дефектов по сравнению с базовым профилем Basic.",
+      "dataset": "LBNL SD-AHU Simulation (7 независимых тестовых сценариев)",
+      "n_independent_scenarios": 7,
+      "train_val_test_split": "Scenario-Level Split (независимые интенсивности дефектов)",
+      "baseline": "BASIC Profile (11 признаков, 7 базовых каналов BMS)",
+      "method": "Feature extraction and classification under restricted channel profiles",
+      "primary_metric": "Macro F1 Score",
+      "achieved_metric": {
+        "BASIC": 0.5196,
+        "BASIC_PLUS_VALVE": 0.6722,
+        "BASIC_PLUS_DAMPER": 0.5123,
+        "BASIC_PLUS_BOTH": 0.6755,
+        "FULL": 0.6766,
+        "gain_valve_absolute": 0.1526,
+        "gain_valve_pp": 15.26,
+        "gain_valve_relative_pct": 29.37,
+        "gain_damper_absolute": -0.0073
+      },
+      "interpretation": "Добавление обратной связи клапана охлаждения увеличивает Macro F1 с 0.5196 до 0.6722 (+15.26 процентных пункта, +29.37% относительного прироста). F1 класса заклинивания клапана возрастает с 0.7672 до 0.9996, а смещения датчика — с 0.1886 до 0.5396. Канал заслонки наружного воздуха изолированного прироста не дает (-0.73 pp F1).",
+      "status": "SUPPORTED_WITH_LIMITATIONS",
+      "limitations": "Результат получен на симуляторе LBNL SD-AHU. Ограниченное число сценариев (N=7). В реальных зданиях нелинейность аэродинамики может модифицировать информационную ценность заслонки.",
+      "run_manifest_path": "research/runs/stage4_observability_eval.json"
+    },
+    {
+      "id": "H3",
+      "name": "Validation-Grounded Sensor Recommendation Engine",
+      "pre_registered_claim": "Сервис рекомендаций, ранжирующий кандидаты дооснащения по приросту селективного риска на валидации, превосходит случайный выбор (Random) и фиксированную экспертную эвристику (Fixed) при бюджете в 1 дополнительный канал.",
+      "dataset": "LBNL SD-AHU Simulation (7 независимых тестовых сценариев, 18 480 точек)",
+      "n_independent_scenarios": 7,
+      "train_val_test_split": "Validation-driven selection (выбор канала строго по Val Local)",
+      "baseline": "Random Selection (среднее по 5 seeds) и Fixed Heuristic (CHWC_VLV)",
+      "method": "SensorRecommendationService (максимизация Delta Risk на Val при target coverage=0.60)",
+      "primary_metric": "Macro F1 Score на отложенном независимом тесте",
+      "achieved_metric": {
+        "Basic_baseline": 0.5196,
+        "Random_strategy": 0.5931,
+        "Random_std": 0.0015,
+        "Fixed_heuristic": 0.6722,
+        "Validation_recommended": 0.6722,
+        "Gain_over_Random_pp": 7.91,
+        "Gain_over_Fixed_pp": 0.0,
+        "Infeasible_Oracle": 0.6969
+      },
+      "interpretation": "Валидационный рекомендатель статистически достоверно превзошел случайный выбор (+7.91 pp F1, p < 0.05). Однако он показал точное равенство с фиксированной экспертной эвристикой Fixed CHWC_VLV (Macro F1 = 0.6722), так как на валидации обратная связь клапана показала доминирующую ценность (Delta Risk = 0.203 против 0.021). Превосходство над Fixed не достигнуто.",
+      "status": "SUPPORTED_WITH_LIMITATIONS",
+      "limitations": "Гипотеза подтверждена против Random, но превосходство над Fixed не выявлено. В одноконтурных AHU охлаждающий клапан является глобально доминирующим информативным каналом.",
+      "run_manifest_path": "research/runs/stage5_recommendation_eval.json"
+    },
+    {
+      "id": "H4a",
+      "name": "CSIRO Field Adaptation: Bias & Scale Correction",
+      "pre_registered_claim": "Калибровка систематического сдвига и масштаба модели LBNL на чистой обучающей телеметрии реального здания CSIRO AHU9 снижает MAE на отложенном тесте минимум на 50% относительно исходной модели Zero-Shot (Z0).",
+      "dataset": "CSIRO Energy Centre AHU9 (BMS Schneider Electric TAC Vista)",
+      "n_independent_scenarios": 1,
+      "train_val_test_split": "Strict Chronological Split (Train 5d: 1588 pts, Val 3d: 726 pts, Test 6d: 1074 healthy + 846 fault pts, embargo 60m)",
+      "baseline": "Z0 Zero-Shot Transfer (LBNL vs-sa-temp-v2 без адаптации)",
+      "method": "C2 Affine Calibrator (y = 2.0138 * y_src - 10.1104) и C1 Constant Bias (y = y_src + 4.5933)",
+      "primary_metric": "MAE ошибки регрессии на исправных точках отложенного теста [°C]",
+      "achieved_metric": {
+        "Z0_MAE_degC": 4.4552,
+        "C1_MAE_degC": 1.2037,
+        "C2_MAE_degC": 1.1062,
+        "C1_reduction_pct": 73.0,
+        "C2_reduction_pct": 75.17,
+        "target_reduction_pct": 50.0
+      },
+      "interpretation": "Гипотеза подтверждена с большим запасом: C2 снизила MAE на 75.2%, C1 на 73.0% (порог 50% превышен). Аффинная калибровка эффективно компенсирует климатическое смещение Сидней/Чикаго и динамику контура уставки.",
+      "status": "SUPPORTED_ON_THIS_TEST",
+      "limitations": "Проверено на одной физической установке (CSIRO AHU9). Не гарантирует автоматический перенос на произвольные типы AHU с рекуператорами или переменным расходом VAV без локальной калибровки.",
+      "run_manifest_path": "research/runs/stage6_csiro_adaptation_eval.json"
+    },
+    {
+      "id": "H4b",
+      "name": "CSIRO Local Residual & Scratch Models Superiority",
+      "pre_registered_claim": "Локальный регрессор остатков A1 (Residual Ridge) или автономная локальная модель L1 (Local Ridge) превзойдут простое константное смещение C1 по критерию MAE на валидации и отложенном тесте.",
+      "dataset": "CSIRO Energy Centre AHU9 (Train Local, Val Local, Held-Out Test)",
+      "n_independent_scenarios": 1,
+      "train_val_test_split": "Strict Chronological Split (Train 1588, Val 726, Test 1074)",
+      "baseline": "C1 Constant Bias (y = y_src + 4.5933, MAE = 1.2037 °C)",
+      "method": "A1 Residual Ridge (MAE = 1.8323 °C), L1 Local Ridge (MAE = 2.9792 °C), L2 Local LightGBM (MAE = 1.2703 °C)",
+      "primary_metric": "MAE на валидационной и тестовой выборках [°C]",
+      "achieved_metric": {
+        "C1_MAE_degC": 1.2037,
+        "A1_MAE_degC": 1.8323,
+        "L1_MAE_degC": 2.9792,
+        "L2_MAE_degC": 1.2703,
+        "C1_RMSE_degC": 1.6048,
+        "C1_R2": 0.5054
+      },
+      "interpretation": "Гипотеза официально опровергнута (NOT_SUPPORTED / REFUTED_ON_TEST). Ни одна локальная модель не превзошла константный сдвиг C1. Обучение с нуля на 1 неделе данных уступает сохранению термодинамической структуры симулятора LBNL с простой калибровкой сдвига.",
+      "status": "REFUTED_ON_TEST",
+      "limitations": "Объем локальной чистой выборки Train составлял 1 588 минут (~26 рабочих часов). При наличии месяцев наблюдений локальные нелинейные модели могут показать преимущество, однако на малых данных перенос симулятора надежнее.",
+      "run_manifest_path": "research/runs/stage6_csiro_adaptation_eval.json"
+    },
+    {
+      "id": "H4c",
+      "name": "CSIRO Recalibrated Thresholds & FDD Sensitivity Trade-off",
+      "pre_registered_claim": "Локальная калибровка 3-сигма порогов на валидационной выборке обеспечивает FAR <= 5% при сохранении Event Recall >= 70% на эпизодах заклинивания клапана охлаждения.",
+      "dataset": "CSIRO Energy Centre AHU9 (Held-Out Test: 1074 healthy, 34 fault episodes, 4 CHW episodes)",
+      "n_independent_scenarios": 1,
+      "train_val_test_split": "Strict Chronological Split с калибровкой 3-сигма порога строго на Val Local",
+      "baseline": "Z0 со симуляционным порогом 0.919 °C (FAR 100%, CHW recall 0/4)",
+      "method": "C2 с локально откалиброванным порогом 3.01 °C",
+      "primary_metric": "FAR в норме (<= 5%) и Event Recall клапана охлаждения (>= 70%)",
+      "achieved_metric": {
+        "C2_FAR_pct": 2.79,
+        "C2_FAR_episodes_per_day": 1.79,
+        "FAR_target_met": true,
+        "C2_CHW_recall_pct": 25.0,
+        "C2_CHW_episodes_detected": "1/4",
+        "CHW_recall_target_met": false,
+        "C2_all_faults_recall_pct": 17.6,
+        "C2_all_faults_detected": "6/34"
+      },
+      "interpretation": "Гипотеза частично подтверждена по ложным тревогам, но не подтверждена по чувствительности (PARTIALLY_SUPPORTED_WITH_LOW_SENSITIVITY). Бюджет FAR <= 5% соблюден (2.8%), но recall клапана составил 25% (детектируется только авария 88% stuck, а 25%, 50%, 75% фильтруются порогом). Это классический компромисс Неймана-Пирсона в реальной BMS.",
+      "status": "PARTIALLY_SUPPORTED_WITH_LOW_SENSITIVITY",
+      "limitations": "Высокий порог 3-сигма (3.01 °C), необходимый для подавления технологического шума реальной BMS, делает скалярную невязку виртуального датчика нечувствительной к умеренным дефектам.",
+      "run_manifest_path": "research/runs/stage6_csiro_adaptation_eval.json"
+    }
+  ]
+}

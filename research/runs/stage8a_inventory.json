@@ -1,0 +1,57 @@
+{
+  "audit_date": "2026-11-04",
+  "gate": "GATE_8A_1",
+  "source_provenance": {
+    "repository": "https://github.com/csiro-energy-systems/ahu-fault-detection-dataset",
+    "commit_sha": "3eb50a9ce1d4eeed778877cbfdbd259d2298d8e6",
+    "license": "CC BY-SA 4.0 International"
+  },
+  "files": {
+    "csiro_ahu9.parquet": {
+      "sha256": "d43028c46d6fadbed7f2deb749626f78be277573ead1e8b1abe8babd7515db6d",
+      "size_bytes": 9786479,
+      "rows_30s": 457653,
+      "start": "2013-05-01 09:00:00",
+      "end": "2015-05-22 17:00:00",
+      "operating_rows_30s": 313771,
+      "channels_count": 17
+    },
+    "csiro_ahu10.parquet": {
+      "sha256": "f789b7efc5a0ec9857d5126137f727b94ad0895b63ff9b2170dd5651b26d3610",
+      "size_bytes": 7884660,
+      "rows_30s": 422169,
+      "start": "2013-05-01 09:00:00",
+      "end": "2015-04-20 17:00:00",
+      "operating_rows_30s": 283540,
+      "channels_count": 17
+    },
+    "csiro_fault_experiments.parquet": {
+      "sha256": "b7ebad8a25baa8da7740186eb52a1eb62d0602c82dcc394ed0527ea5c6fd65f2",
+      "size_bytes": 28276,
+      "total_experiments": 391,
+      "ahu9_experiments_total": 198,
+      "ahu10_experiments_total": 103,
+      "ahu15_experiments_total": 90
+    }
+  },
+  "ahu9_breakdown": {
+    "RA Damper Stuck Open": 36,
+    "HW Valve Proxy Stuck Open": 34,
+    "SA Fan Belt Slip": 32,
+    "OA Damper Stuck Open": 30,
+    "Zone Average Temp Drift": 28,
+    "Zone Temp Drift": 13,
+    "HW Valve Stuck Open": 11,
+    "CHW Valve Proxy Stuck Open": 10,
+    "SA Duct Leakage": 1
+  },
+  "ahu10_breakdown": {
+    "OA Damper Stuck Open": 28,
+    "Zone Average Temp Drift": 24,
+    "RA Damper Stuck Open": 23,
+    "SA Fan Belt Slip": 10,
+    "CHW Valve Proxy Stuck Open": 9,
+    "HW Valve Proxy Stuck Open": 5,
+    "Zone Temp Drift": 4
+  }
+}

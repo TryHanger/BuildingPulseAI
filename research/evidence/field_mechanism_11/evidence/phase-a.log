@@ -1,0 +1,15 @@
+PASS publisher bytes AHU1.xlsx ed51c373f25b4892610402fdd553e75a7e43342657b8759b863681dd0909e9c3
+PASS publisher bytes AHU18.xlsx 1aec89da0425959412a2891419280db035046dbd8d541968acb23d9dc65d59f7
+PASS publisher bytes AHU2.xlsx 814f18e2299a7432af143f33d3b5d4711d23246c8cc25225d65d1f2efb73128a
+PASS publisher bytes AHU23.xlsx 0ce2955409d78371872234ff9f0b6cc2a6de16d59d0851a00083b7d3c8de7274
+PASS publisher bytes AHU24.xlsx fb91fcb0e4fea1a44247e8201b1b57d917502d17e01f16a7b445eac978685cd1
+PASS publisher bytes AHU8.xlsx 131b489a74f1edc5a180c36338a09ecaaf61820184ac93ebedfec127b3a171c8
+PASS publisher bytes Faults_schedule_and_description.xlsx 9752e1be8e8d1e8be98a1ab305e8c0cdf5d04af3eddbd5adf32746ff9fa54672
+PASS publisher bytes Place_tag_explanation.jpg f493877d72826b789bbab8db6dad448fd626ccddced520846a1c2e9ef205acce
+PASS availability/time audit AHU1: 52705 native ticks
+PASS availability/time audit AHU2: 52705 native ticks
+PASS availability/time audit AHU8: 52705 native ticks
+PASS availability/time audit AHU18: 52705 native ticks
+PASS availability/time audit AHU23: 52705 native ticks
+PASS availability/time audit AHU24: 52705 native ticks
+STOP 12/12 schedule entries screened. No temperature values or response estimates exported.

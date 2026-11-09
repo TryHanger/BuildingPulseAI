@@ -1,0 +1,195 @@
+{
+  "status": "STOP_BEFORE_TARGET_SCORE",
+  "target_prediction_executed": false,
+  "source_target_rows_joined_for_training": false,
+  "inputs": {
+    "source": {
+      "rows": 525540,
+      "incomplete_boundary_rows": 1380,
+      "raw_header_sha256": "d9515987e639d93235e1e8a4d20d522eca10c61e379e08e46c279213ad71075d",
+      "missing_by_channel": {
+        "SA_TEMP": 0,
+        "MA_TEMP": 0,
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_STATUS": 0
+      },
+      "warm_running_minutes": 116272,
+      "usable_minutes_before_train_support": 116272,
+      "evaluable_blocks_before_train_support": 155
+    },
+    "target_reference": {
+      "rows": 10081,
+      "incomplete_boundary_rows": 1,
+      "raw_header_sha256": "d8f2e24f760e6fb10f1b7b4fe7a17c6982869f08c5ecc0932b07ebe32b1e6113",
+      "missing_by_channel": {
+        "SA_TEMP": 0,
+        "MA_TEMP": 0,
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_STATUS": 0
+      },
+      "warm_running_minutes": 5425,
+      "usable_minutes_before_train_support": 5425,
+      "evaluable_blocks_before_train_support": 7,
+      "warm_running_minutes_by_plant_mode": {
+        "3.0": 5419,
+        "4.0": 6
+      },
+      "model_time_blocks": [
+        {
+          "block": "0",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "1",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "2",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "3",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "4",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "5",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "6",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        }
+      ]
+    },
+    "target_probe": {
+      "rows": 10081,
+      "incomplete_boundary_rows": 1,
+      "raw_header_sha256": "d8f2e24f760e6fb10f1b7b4fe7a17c6982869f08c5ecc0932b07ebe32b1e6113",
+      "missing_by_channel": {
+        "SA_TEMP": 0,
+        "MA_TEMP": 0,
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_STATUS": 0
+      },
+      "warm_running_minutes": 8386,
+      "usable_minutes_before_train_support": 8386,
+      "evaluable_blocks_before_train_support": 7,
+      "warm_running_minutes_by_plant_mode": {
+        "3.0": 8386
+      },
+      "model_time_blocks": [
+        {
+          "block": "0",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "1",
+          "warm_running_minutes": 775,
+          "usable_minutes": 775,
+          "longest_run": 775,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "2",
+          "warm_running_minutes": 1076,
+          "usable_minutes": 1076,
+          "longest_run": 1076,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "3",
+          "warm_running_minutes": 1440,
+          "usable_minutes": 1440,
+          "longest_run": 1440,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "4",
+          "warm_running_minutes": 1440,
+          "usable_minutes": 1440,
+          "longest_run": 1440,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "5",
+          "warm_running_minutes": 1440,
+          "usable_minutes": 1440,
+          "longest_run": 1440,
+          "status": "EVALUABLE"
+        },
+        {
+          "block": "6",
+          "warm_running_minutes": 1440,
+          "usable_minutes": 1440,
+          "longest_run": 1440,
+          "status": "EVALUABLE"
+        }
+      ]
+    }
+  },
+  "target_context_differences": {
+    "OA_TEMP_degF": {
+      "different_ticks": 3720,
+      "max_abs_difference": 0.2693847656250057
+    },
+    "SAT_SETPOINT_degF": {
+      "different_ticks": 3042,
+      "max_abs_difference": 16.559967041015625
+    },
+    "SF_STATUS": {
+      "different_ticks": 2946,
+      "max_abs_difference": 1.0
+    },
+    "Cooling Mode Control Signal (1: free cooling , 2: partial mechanical, 3: full mechanical, 4: off)": {
+      "different_ticks": 2964,
+      "max_abs_difference": 1.0
+    },
+    "AHU Outdoor Air Wet Bulb Temperature (\u00b0K)": {
+      "different_ticks": 3858,
+      "max_abs_difference": 0.0958251953125
+    },
+    "AHU Supply Air Fan Speed Control Signal (fraction, 0: fan speed should be 0% to 1:fan speed should be 100%)": {
+      "different_ticks": 8401,
+      "max_abs_difference": 1.0
+    },
+    "Control Signal for AHU Cooling Coil Valve from BAS (fraction, 0: valve should be fully closed to 1: valve should be fully open)": {
+      "different_ticks": 7929,
+      "max_abs_difference": 1.0
+    }
+  },
+  "paired_causal_design": false
+}

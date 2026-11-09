@@ -1,0 +1,10 @@
+version: BP-ML-REPRO-02.bagging-exploration.v1
+status: POST_HOC_SENSITIVITY
+hypothesis: Activating row bagging at the published subsample fraction of 0.8 may change daily rankings and fixed-threshold recall.
+reference: PAPER_FULL_REPRO v1 unchanged
+treatment: subsample_freq 1 only
+split: v1 PAPER healthy chronological 80/20; calibration also negative reference
+targets: all eight
+threshold: "daily max of mean target z > 3"
+seed: 42
+policy: Compare paired dates, report all scenarios, no promotion or tuning.

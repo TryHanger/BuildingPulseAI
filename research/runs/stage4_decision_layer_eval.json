@@ -1,0 +1,1005 @@
+{
+  "run_id": "stage4_decision_eval_01",
+  "created_at": "2026-11-03T11:55:28.990998+00:00",
+  "target_system": "LBNL Single-Duct AHU (Simulation)",
+  "test_scenarios": [
+    "sc_3556175a5da2",
+    "sc_4c635ed85f83",
+    "sc_22370df7e61a",
+    "sc_2541462c0f4a",
+    "sc_413e7074ae9e",
+    "sc_a04b8cceeebc",
+    "sc_ef6581a6ce7b"
+  ],
+  "window_size_minutes": 15,
+  "total_fault_windows": 1056,
+  "detected_fault_windows": 1056,
+  "normal_windows": 176,
+  "false_alarms": 176,
+  "b1_risk_coverage_curve": [
+    {
+      "coverage": 1.0,
+      "risk": 0.5625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 594,
+      "threshold": 0.3
+    },
+    {
+      "coverage": 1.0,
+      "risk": 0.5625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 594,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 1.0,
+      "risk": 0.5625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 594,
+      "threshold": 0.3684
+    },
+    {
+      "coverage": 0.989583,
+      "risk": 0.557895,
+      "total_detected": 1056,
+      "singletons_accepted": 1045,
+      "errors_in_accepted": 583,
+      "threshold": 0.4026
+    },
+    {
+      "coverage": 0.95928,
+      "risk": 0.543929,
+      "total_detected": 1056,
+      "singletons_accepted": 1013,
+      "errors_in_accepted": 551,
+      "threshold": 0.4368
+    },
+    {
+      "coverage": 0.935606,
+      "risk": 0.532389,
+      "total_detected": 1056,
+      "singletons_accepted": 988,
+      "errors_in_accepted": 526,
+      "threshold": 0.4711
+    },
+    {
+      "coverage": 0.918561,
+      "risk": 0.524742,
+      "total_detected": 1056,
+      "singletons_accepted": 970,
+      "errors_in_accepted": 509,
+      "threshold": 0.5053
+    },
+    {
+      "coverage": 0.874053,
+      "risk": 0.521127,
+      "total_detected": 1056,
+      "singletons_accepted": 923,
+      "errors_in_accepted": 481,
+      "threshold": 0.5395
+    },
+    {
+      "coverage": 0.806818,
+      "risk": 0.539906,
+      "total_detected": 1056,
+      "singletons_accepted": 852,
+      "errors_in_accepted": 460,
+      "threshold": 0.5737
+    },
+    {
+      "coverage": 0.787879,
+      "risk": 0.539663,
+      "total_detected": 1056,
+      "singletons_accepted": 832,
+      "errors_in_accepted": 449,
+      "threshold": 0.6079
+    },
+    {
+      "coverage": 0.758523,
+      "risk": 0.546816,
+      "total_detected": 1056,
+      "singletons_accepted": 801,
+      "errors_in_accepted": 438,
+      "threshold": 0.6421
+    },
+    {
+      "coverage": 0.719697,
+      "risk": 0.556579,
+      "total_detected": 1056,
+      "singletons_accepted": 760,
+      "errors_in_accepted": 423,
+      "threshold": 0.6763
+    },
+    {
+      "coverage": 0.686553,
+      "risk": 0.56,
+      "total_detected": 1056,
+      "singletons_accepted": 725,
+      "errors_in_accepted": 406,
+      "threshold": 0.7105
+    },
+    {
+      "coverage": 0.65625,
+      "risk": 0.55267,
+      "total_detected": 1056,
+      "singletons_accepted": 693,
+      "errors_in_accepted": 383,
+      "threshold": 0.7447
+    },
+    {
+      "coverage": 0.612689,
+      "risk": 0.547141,
+      "total_detected": 1056,
+      "singletons_accepted": 647,
+      "errors_in_accepted": 354,
+      "threshold": 0.7789
+    },
+    {
+      "coverage": 0.586174,
+      "risk": 0.537964,
+      "total_detected": 1056,
+      "singletons_accepted": 619,
+      "errors_in_accepted": 333,
+      "threshold": 0.8132
+    },
+    {
+      "coverage": 0.560606,
+      "risk": 0.548986,
+      "total_detected": 1056,
+      "singletons_accepted": 592,
+      "errors_in_accepted": 325,
+      "threshold": 0.8474
+    },
+    {
+      "coverage": 0.525568,
+      "risk": 0.563964,
+      "total_detected": 1056,
+      "singletons_accepted": 555,
+      "errors_in_accepted": 313,
+      "threshold": 0.8816
+    },
+    {
+      "coverage": 0.498106,
+      "risk": 0.56654,
+      "total_detected": 1056,
+      "singletons_accepted": 526,
+      "errors_in_accepted": 298,
+      "threshold": 0.9158
+    },
+    {
+      "coverage": 0.463068,
+      "risk": 0.556237,
+      "total_detected": 1056,
+      "singletons_accepted": 489,
+      "errors_in_accepted": 272,
+      "threshold": 0.95
+    }
+  ],
+  "b2_risk_coverage_curve": [
+    {
+      "coverage": 0.983902,
+      "risk": 0.557267,
+      "total_detected": 1056,
+      "singletons_accepted": 1039,
+      "errors_in_accepted": 579,
+      "threshold": 0.05
+    },
+    {
+      "coverage": 0.956439,
+      "risk": 0.545545,
+      "total_detected": 1056,
+      "singletons_accepted": 1010,
+      "errors_in_accepted": 551,
+      "threshold": 0.0816
+    },
+    {
+      "coverage": 0.932765,
+      "risk": 0.537056,
+      "total_detected": 1056,
+      "singletons_accepted": 985,
+      "errors_in_accepted": 529,
+      "threshold": 0.1132
+    },
+    {
+      "coverage": 0.918561,
+      "risk": 0.530928,
+      "total_detected": 1056,
+      "singletons_accepted": 970,
+      "errors_in_accepted": 515,
+      "threshold": 0.1447
+    },
+    {
+      "coverage": 0.901515,
+      "risk": 0.52416,
+      "total_detected": 1056,
+      "singletons_accepted": 952,
+      "errors_in_accepted": 499,
+      "threshold": 0.1763
+    },
+    {
+      "coverage": 0.883523,
+      "risk": 0.514469,
+      "total_detected": 1056,
+      "singletons_accepted": 933,
+      "errors_in_accepted": 480,
+      "threshold": 0.2079
+    },
+    {
+      "coverage": 0.872159,
+      "risk": 0.509229,
+      "total_detected": 1056,
+      "singletons_accepted": 921,
+      "errors_in_accepted": 469,
+      "threshold": 0.2395
+    },
+    {
+      "coverage": 0.856061,
+      "risk": 0.501106,
+      "total_detected": 1056,
+      "singletons_accepted": 904,
+      "errors_in_accepted": 453,
+      "threshold": 0.2711
+    },
+    {
+      "coverage": 0.810606,
+      "risk": 0.517523,
+      "total_detected": 1056,
+      "singletons_accepted": 856,
+      "errors_in_accepted": 443,
+      "threshold": 0.3026
+    },
+    {
+      "coverage": 0.804924,
+      "risk": 0.517647,
+      "total_detected": 1056,
+      "singletons_accepted": 850,
+      "errors_in_accepted": 440,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 0.78125,
+      "risk": 0.529697,
+      "total_detected": 1056,
+      "singletons_accepted": 825,
+      "errors_in_accepted": 437,
+      "threshold": 0.3658
+    },
+    {
+      "coverage": 0.772727,
+      "risk": 0.534314,
+      "total_detected": 1056,
+      "singletons_accepted": 816,
+      "errors_in_accepted": 436,
+      "threshold": 0.3974
+    },
+    {
+      "coverage": 0.764205,
+      "risk": 0.532838,
+      "total_detected": 1056,
+      "singletons_accepted": 807,
+      "errors_in_accepted": 430,
+      "threshold": 0.4289
+    },
+    {
+      "coverage": 0.735795,
+      "risk": 0.546976,
+      "total_detected": 1056,
+      "singletons_accepted": 777,
+      "errors_in_accepted": 425,
+      "threshold": 0.4605
+    },
+    {
+      "coverage": 0.727273,
+      "risk": 0.542969,
+      "total_detected": 1056,
+      "singletons_accepted": 768,
+      "errors_in_accepted": 417,
+      "threshold": 0.4921
+    },
+    {
+      "coverage": 0.690341,
+      "risk": 0.554184,
+      "total_detected": 1056,
+      "singletons_accepted": 729,
+      "errors_in_accepted": 404,
+      "threshold": 0.5237
+    },
+    {
+      "coverage": 0.676136,
+      "risk": 0.557423,
+      "total_detected": 1056,
+      "singletons_accepted": 714,
+      "errors_in_accepted": 398,
+      "threshold": 0.5553
+    },
+    {
+      "coverage": 0.657197,
+      "risk": 0.553314,
+      "total_detected": 1056,
+      "singletons_accepted": 694,
+      "errors_in_accepted": 384,
+      "threshold": 0.5868
+    },
+    {
+      "coverage": 0.648674,
+      "risk": 0.553285,
+      "total_detected": 1056,
+      "singletons_accepted": 685,
+      "errors_in_accepted": 379,
+      "threshold": 0.6184
+    },
+    {
+      "coverage": 0.608902,
+      "risk": 0.553655,
+      "total_detected": 1056,
+      "singletons_accepted": 643,
+      "errors_in_accepted": 356,
+      "threshold": 0.65
+    }
+  ],
+  "m_basic_curve": [
+    {
+      "coverage": 0.602273,
+      "risk": 0.361635,
+      "total_detected": 1056,
+      "singletons_accepted": 636,
+      "errors_in_accepted": 230,
+      "threshold": 0.3
+    },
+    {
+      "coverage": 0.602273,
+      "risk": 0.361635,
+      "total_detected": 1056,
+      "singletons_accepted": 636,
+      "errors_in_accepted": 230,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 0.602273,
+      "risk": 0.361635,
+      "total_detected": 1056,
+      "singletons_accepted": 636,
+      "errors_in_accepted": 230,
+      "threshold": 0.3684
+    },
+    {
+      "coverage": 0.602273,
+      "risk": 0.361635,
+      "total_detected": 1056,
+      "singletons_accepted": 636,
+      "errors_in_accepted": 230,
+      "threshold": 0.4026
+    },
+    {
+      "coverage": 0.601326,
+      "risk": 0.36063,
+      "total_detected": 1056,
+      "singletons_accepted": 635,
+      "errors_in_accepted": 229,
+      "threshold": 0.4368
+    },
+    {
+      "coverage": 0.595644,
+      "risk": 0.354531,
+      "total_detected": 1056,
+      "singletons_accepted": 629,
+      "errors_in_accepted": 223,
+      "threshold": 0.4711
+    },
+    {
+      "coverage": 0.589962,
+      "risk": 0.34992,
+      "total_detected": 1056,
+      "singletons_accepted": 623,
+      "errors_in_accepted": 218,
+      "threshold": 0.5053
+    },
+    {
+      "coverage": 0.564394,
+      "risk": 0.327181,
+      "total_detected": 1056,
+      "singletons_accepted": 596,
+      "errors_in_accepted": 195,
+      "threshold": 0.5395
+    },
+    {
+      "coverage": 0.535985,
+      "risk": 0.319788,
+      "total_detected": 1056,
+      "singletons_accepted": 566,
+      "errors_in_accepted": 181,
+      "threshold": 0.5737
+    },
+    {
+      "coverage": 0.524621,
+      "risk": 0.314079,
+      "total_detected": 1056,
+      "singletons_accepted": 554,
+      "errors_in_accepted": 174,
+      "threshold": 0.6079
+    },
+    {
+      "coverage": 0.5,
+      "risk": 0.316288,
+      "total_detected": 1056,
+      "singletons_accepted": 528,
+      "errors_in_accepted": 167,
+      "threshold": 0.6421
+    },
+    {
+      "coverage": 0.469697,
+      "risk": 0.320565,
+      "total_detected": 1056,
+      "singletons_accepted": 496,
+      "errors_in_accepted": 159,
+      "threshold": 0.6763
+    },
+    {
+      "coverage": 0.442235,
+      "risk": 0.316916,
+      "total_detected": 1056,
+      "singletons_accepted": 467,
+      "errors_in_accepted": 148,
+      "threshold": 0.7105
+    },
+    {
+      "coverage": 0.41572,
+      "risk": 0.29385,
+      "total_detected": 1056,
+      "singletons_accepted": 439,
+      "errors_in_accepted": 129,
+      "threshold": 0.7447
+    },
+    {
+      "coverage": 0.372159,
+      "risk": 0.254453,
+      "total_detected": 1056,
+      "singletons_accepted": 393,
+      "errors_in_accepted": 100,
+      "threshold": 0.7789
+    },
+    {
+      "coverage": 0.348485,
+      "risk": 0.222826,
+      "total_detected": 1056,
+      "singletons_accepted": 368,
+      "errors_in_accepted": 82,
+      "threshold": 0.8132
+    },
+    {
+      "coverage": 0.323864,
+      "risk": 0.219298,
+      "total_detected": 1056,
+      "singletons_accepted": 342,
+      "errors_in_accepted": 75,
+      "threshold": 0.8474
+    },
+    {
+      "coverage": 0.297348,
+      "risk": 0.229299,
+      "total_detected": 1056,
+      "singletons_accepted": 314,
+      "errors_in_accepted": 72,
+      "threshold": 0.8816
+    },
+    {
+      "coverage": 0.282197,
+      "risk": 0.234899,
+      "total_detected": 1056,
+      "singletons_accepted": 298,
+      "errors_in_accepted": 70,
+      "threshold": 0.9158
+    },
+    {
+      "coverage": 0.252841,
+      "risk": 0.187266,
+      "total_detected": 1056,
+      "singletons_accepted": 267,
+      "errors_in_accepted": 50,
+      "threshold": 0.95
+    }
+  ],
+  "b1_valve_curve": [
+    {
+      "coverage": 1.0,
+      "risk": 0.40625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 429,
+      "threshold": 0.3
+    },
+    {
+      "coverage": 1.0,
+      "risk": 0.40625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 429,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 1.0,
+      "risk": 0.40625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 429,
+      "threshold": 0.3684
+    },
+    {
+      "coverage": 1.0,
+      "risk": 0.40625,
+      "total_detected": 1056,
+      "singletons_accepted": 1056,
+      "errors_in_accepted": 429,
+      "threshold": 0.4026
+    },
+    {
+      "coverage": 0.998106,
+      "risk": 0.405123,
+      "total_detected": 1056,
+      "singletons_accepted": 1054,
+      "errors_in_accepted": 427,
+      "threshold": 0.4368
+    },
+    {
+      "coverage": 0.976326,
+      "risk": 0.392823,
+      "total_detected": 1056,
+      "singletons_accepted": 1031,
+      "errors_in_accepted": 405,
+      "threshold": 0.4711
+    },
+    {
+      "coverage": 0.961174,
+      "risk": 0.385222,
+      "total_detected": 1056,
+      "singletons_accepted": 1015,
+      "errors_in_accepted": 391,
+      "threshold": 0.5053
+    },
+    {
+      "coverage": 0.932765,
+      "risk": 0.369543,
+      "total_detected": 1056,
+      "singletons_accepted": 985,
+      "errors_in_accepted": 364,
+      "threshold": 0.5395
+    },
+    {
+      "coverage": 0.927083,
+      "risk": 0.370787,
+      "total_detected": 1056,
+      "singletons_accepted": 979,
+      "errors_in_accepted": 363,
+      "threshold": 0.5737
+    },
+    {
+      "coverage": 0.918561,
+      "risk": 0.36701,
+      "total_detected": 1056,
+      "singletons_accepted": 970,
+      "errors_in_accepted": 356,
+      "threshold": 0.6079
+    },
+    {
+      "coverage": 0.907197,
+      "risk": 0.366388,
+      "total_detected": 1056,
+      "singletons_accepted": 958,
+      "errors_in_accepted": 351,
+      "threshold": 0.6421
+    },
+    {
+      "coverage": 0.899621,
+      "risk": 0.361053,
+      "total_detected": 1056,
+      "singletons_accepted": 950,
+      "errors_in_accepted": 343,
+      "threshold": 0.6763
+    },
+    {
+      "coverage": 0.878788,
+      "risk": 0.367457,
+      "total_detected": 1056,
+      "singletons_accepted": 928,
+      "errors_in_accepted": 341,
+      "threshold": 0.7105
+    },
+    {
+      "coverage": 0.866477,
+      "risk": 0.36612,
+      "total_detected": 1056,
+      "singletons_accepted": 915,
+      "errors_in_accepted": 335,
+      "threshold": 0.7447
+    },
+    {
+      "coverage": 0.858902,
+      "risk": 0.363837,
+      "total_detected": 1056,
+      "singletons_accepted": 907,
+      "errors_in_accepted": 330,
+      "threshold": 0.7789
+    },
+    {
+      "coverage": 0.851326,
+      "risk": 0.361513,
+      "total_detected": 1056,
+      "singletons_accepted": 899,
+      "errors_in_accepted": 325,
+      "threshold": 0.8132
+    },
+    {
+      "coverage": 0.817235,
+      "risk": 0.3708,
+      "total_detected": 1056,
+      "singletons_accepted": 863,
+      "errors_in_accepted": 320,
+      "threshold": 0.8474
+    },
+    {
+      "coverage": 0.796402,
+      "risk": 0.36742,
+      "total_detected": 1056,
+      "singletons_accepted": 841,
+      "errors_in_accepted": 309,
+      "threshold": 0.8816
+    },
+    {
+      "coverage": 0.74053,
+      "risk": 0.369565,
+      "total_detected": 1056,
+      "singletons_accepted": 782,
+      "errors_in_accepted": 289,
+      "threshold": 0.9158
+    },
+    {
+      "coverage": 0.598485,
+      "risk": 0.291139,
+      "total_detected": 1056,
+      "singletons_accepted": 632,
+      "errors_in_accepted": 184,
+      "threshold": 0.95
+    }
+  ],
+  "b2_valve_curve": [
+    {
+      "coverage": 0.961174,
+      "risk": 0.383251,
+      "total_detected": 1056,
+      "singletons_accepted": 1015,
+      "errors_in_accepted": 389,
+      "threshold": 0.05
+    },
+    {
+      "coverage": 0.939394,
+      "risk": 0.371976,
+      "total_detected": 1056,
+      "singletons_accepted": 992,
+      "errors_in_accepted": 369,
+      "threshold": 0.0816
+    },
+    {
+      "coverage": 0.931818,
+      "risk": 0.368902,
+      "total_detected": 1056,
+      "singletons_accepted": 984,
+      "errors_in_accepted": 363,
+      "threshold": 0.1132
+    },
+    {
+      "coverage": 0.929924,
+      "risk": 0.369654,
+      "total_detected": 1056,
+      "singletons_accepted": 982,
+      "errors_in_accepted": 363,
+      "threshold": 0.1447
+    },
+    {
+      "coverage": 0.92803,
+      "risk": 0.369388,
+      "total_detected": 1056,
+      "singletons_accepted": 980,
+      "errors_in_accepted": 362,
+      "threshold": 0.1763
+    },
+    {
+      "coverage": 0.926136,
+      "risk": 0.368098,
+      "total_detected": 1056,
+      "singletons_accepted": 978,
+      "errors_in_accepted": 360,
+      "threshold": 0.2079
+    },
+    {
+      "coverage": 0.919508,
+      "risk": 0.365602,
+      "total_detected": 1056,
+      "singletons_accepted": 971,
+      "errors_in_accepted": 355,
+      "threshold": 0.2395
+    },
+    {
+      "coverage": 0.917614,
+      "risk": 0.364293,
+      "total_detected": 1056,
+      "singletons_accepted": 969,
+      "errors_in_accepted": 353,
+      "threshold": 0.2711
+    },
+    {
+      "coverage": 0.914773,
+      "risk": 0.363354,
+      "total_detected": 1056,
+      "singletons_accepted": 966,
+      "errors_in_accepted": 351,
+      "threshold": 0.3026
+    },
+    {
+      "coverage": 0.912879,
+      "risk": 0.362033,
+      "total_detected": 1056,
+      "singletons_accepted": 964,
+      "errors_in_accepted": 349,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 0.909091,
+      "risk": 0.360417,
+      "total_detected": 1056,
+      "singletons_accepted": 960,
+      "errors_in_accepted": 346,
+      "threshold": 0.3658
+    },
+    {
+      "coverage": 0.90625,
+      "risk": 0.360502,
+      "total_detected": 1056,
+      "singletons_accepted": 957,
+      "errors_in_accepted": 345,
+      "threshold": 0.3974
+    },
+    {
+      "coverage": 0.900568,
+      "risk": 0.360673,
+      "total_detected": 1056,
+      "singletons_accepted": 951,
+      "errors_in_accepted": 343,
+      "threshold": 0.4289
+    },
+    {
+      "coverage": 0.89678,
+      "risk": 0.36114,
+      "total_detected": 1056,
+      "singletons_accepted": 947,
+      "errors_in_accepted": 342,
+      "threshold": 0.4605
+    },
+    {
+      "coverage": 0.894886,
+      "risk": 0.360847,
+      "total_detected": 1056,
+      "singletons_accepted": 945,
+      "errors_in_accepted": 341,
+      "threshold": 0.4921
+    },
+    {
+      "coverage": 0.877841,
+      "risk": 0.366775,
+      "total_detected": 1056,
+      "singletons_accepted": 927,
+      "errors_in_accepted": 340,
+      "threshold": 0.5237
+    },
+    {
+      "coverage": 0.870265,
+      "risk": 0.367791,
+      "total_detected": 1056,
+      "singletons_accepted": 919,
+      "errors_in_accepted": 338,
+      "threshold": 0.5553
+    },
+    {
+      "coverage": 0.862689,
+      "risk": 0.36663,
+      "total_detected": 1056,
+      "singletons_accepted": 911,
+      "errors_in_accepted": 334,
+      "threshold": 0.5868
+    },
+    {
+      "coverage": 0.857008,
+      "risk": 0.364641,
+      "total_detected": 1056,
+      "singletons_accepted": 905,
+      "errors_in_accepted": 330,
+      "threshold": 0.6184
+    },
+    {
+      "coverage": 0.85322,
+      "risk": 0.36293,
+      "total_detected": 1056,
+      "singletons_accepted": 901,
+      "errors_in_accepted": 327,
+      "threshold": 0.65
+    }
+  ],
+  "m_valve_curve": [
+    {
+      "coverage": 0.763258,
+      "risk": 0.217122,
+      "total_detected": 1056,
+      "singletons_accepted": 806,
+      "errors_in_accepted": 175,
+      "threshold": 0.3
+    },
+    {
+      "coverage": 0.763258,
+      "risk": 0.217122,
+      "total_detected": 1056,
+      "singletons_accepted": 806,
+      "errors_in_accepted": 175,
+      "threshold": 0.3342
+    },
+    {
+      "coverage": 0.763258,
+      "risk": 0.217122,
+      "total_detected": 1056,
+      "singletons_accepted": 806,
+      "errors_in_accepted": 175,
+      "threshold": 0.3684
+    },
+    {
+      "coverage": 0.763258,
+      "risk": 0.217122,
+      "total_detected": 1056,
+      "singletons_accepted": 806,
+      "errors_in_accepted": 175,
+      "threshold": 0.4026
+    },
+    {
+      "coverage": 0.761364,
+      "risk": 0.215174,
+      "total_detected": 1056,
+      "singletons_accepted": 804,
+      "errors_in_accepted": 173,
+      "threshold": 0.4368
+    },
+    {
+      "coverage": 0.75,
+      "risk": 0.204545,
+      "total_detected": 1056,
+      "singletons_accepted": 792,
+      "errors_in_accepted": 162,
+      "threshold": 0.4711
+    },
+    {
+      "coverage": 0.736742,
+      "risk": 0.191517,
+      "total_detected": 1056,
+      "singletons_accepted": 778,
+      "errors_in_accepted": 149,
+      "threshold": 0.5053
+    },
+    {
+      "coverage": 0.708333,
+      "risk": 0.169786,
+      "total_detected": 1056,
+      "singletons_accepted": 748,
+      "errors_in_accepted": 127,
+      "threshold": 0.5395
+    },
+    {
+      "coverage": 0.703598,
+      "risk": 0.170929,
+      "total_detected": 1056,
+      "singletons_accepted": 743,
+      "errors_in_accepted": 127,
+      "threshold": 0.5737
+    },
+    {
+      "coverage": 0.701705,
+      "risk": 0.17139,
+      "total_detected": 1056,
+      "singletons_accepted": 741,
+      "errors_in_accepted": 127,
+      "threshold": 0.6079
+    },
+    {
+      "coverage": 0.694129,
+      "risk": 0.171896,
+      "total_detected": 1056,
+      "singletons_accepted": 733,
+      "errors_in_accepted": 126,
+      "threshold": 0.6421
+    },
+    {
+      "coverage": 0.691288,
+      "risk": 0.168493,
+      "total_detected": 1056,
+      "singletons_accepted": 730,
+      "errors_in_accepted": 123,
+      "threshold": 0.6763
+    },
+    {
+      "coverage": 0.671402,
+      "risk": 0.172073,
+      "total_detected": 1056,
+      "singletons_accepted": 709,
+      "errors_in_accepted": 122,
+      "threshold": 0.7105
+    },
+    {
+      "coverage": 0.660985,
+      "risk": 0.169054,
+      "total_detected": 1056,
+      "singletons_accepted": 698,
+      "errors_in_accepted": 118,
+      "threshold": 0.7447
+    },
+    {
+      "coverage": 0.655303,
+      "risk": 0.166185,
+      "total_detected": 1056,
+      "singletons_accepted": 692,
+      "errors_in_accepted": 115,
+      "threshold": 0.7789
+    },
+    {
+      "coverage": 0.649621,
+      "risk": 0.163265,
+      "total_detected": 1056,
+      "singletons_accepted": 686,
+      "errors_in_accepted": 112,
+      "threshold": 0.8132
+    },
+    {
+      "coverage": 0.61553,
+      "risk": 0.164615,
+      "total_detected": 1056,
+      "singletons_accepted": 650,
+      "errors_in_accepted": 107,
+      "threshold": 0.8474
+    },
+    {
+      "coverage": 0.598485,
+      "risk": 0.158228,
+      "total_detected": 1056,
+      "singletons_accepted": 632,
+      "errors_in_accepted": 100,
+      "threshold": 0.8816
+    },
+    {
+      "coverage": 0.554924,
+      "risk": 0.158703,
+      "total_detected": 1056,
+      "singletons_accepted": 586,
+      "errors_in_accepted": 93,
+      "threshold": 0.9158
+    },
+    {
+      "coverage": 0.452652,
+      "risk": 0.062762,
+      "total_detected": 1056,
+      "singletons_accepted": 478,
+      "errors_in_accepted": 30,
+      "threshold": 0.95
+    }
+  ],
+  "set_metrics_m_basic": {
+    "set_coverage": 0.4583,
+    "mean_set_size": 0.8258,
+    "singleton_rate": 0.6023,
+    "multi_cause_rate": 0.1117,
+    "unresolved_rate": 0.286
+  },
+  "set_metrics_m_valve": {
+    "set_coverage": 0.6023,
+    "mean_set_size": 0.7727,
+    "singleton_rate": 0.7633,
+    "multi_cause_rate": 0.0047,
+    "unresolved_rate": 0.232
+  }
+}

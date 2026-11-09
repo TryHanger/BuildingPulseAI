@@ -1,0 +1,3 @@
+source_role,member,label,window_start_model_s,window_end_exclusive_model_s,onset,scope
+target_reference,BaselineSystem.csv,reference,17625600,18230400,NOT_APPLICABLE,DESCRIPTIVE_REFERENCE
+target_probe,CooCoiValStuck_0.csv,COOLING_VALVE_STUCK_SCENARIO,17625600,18230400,LEFT_CENSORED_OR_UNVERIFIED,DESCRIPTIVE_PROBE_ONLY

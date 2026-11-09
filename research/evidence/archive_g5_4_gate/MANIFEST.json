@@ -1,0 +1,137 @@
+{
+  "stage": "G5.4",
+  "implementation": "g54-standalone-v1",
+  "policy": "g36-sat-high@1.0.0",
+  "base": {
+    "accepted_artifact": "BUILDINGPULSE_G5_3_GATE_REVIEW.zip",
+    "sha256": "de06bf8b90aeef4092bfb0cc2ae93dfa15f57e65e6d42a9b9274139a45694d0b",
+    "revision_kind": "accepted artifact overlay; no .git metadata in supplied workspace"
+  },
+  "patch": {
+    "path": "G5_4.patch",
+    "sha256": "a99aa3031a4ad25a14d1b9e764f3fd560a941c8a0fdc2bdbc71cba6a2fb3ff1e"
+  },
+  "prereg": {
+    "path": "overlay/research/g54/PROTOCOL_G5_4_PRE_SCORE.md",
+    "sha256": "ffd3d124073b2cfd80107c231298b51247ebb3d5b3290b31a31759448932ccc8",
+    "frozen_utc": "2026-11-07T18:42:56Z",
+    "first_score_utc": "2026-11-07T18:44:49Z"
+  },
+  "source_release": {
+    "doi": "10.6084/m9.figshare.29297999.v3",
+    "license": "CC BY 4.0",
+    "members": {
+      "BaselineSystem.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+        "member": "g36-1wk/CoolingSeason/BaselineSystem.csv",
+        "sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+        "bytes": 13976350,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/BaselineSystem.csv"
+      },
+      "CooCoiValStuck_0.csv": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/CooCoiValStuck_0.csv",
+        "sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59",
+        "bytes": 13708123,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/CoolingSeason/CooCoiValStuck_0.csv"
+      },
+      "00_explanations.pdf": {
+        "accepted_artifact": "BUILDINGPULSE_G5_2_G36_SOURCE_BYTES.zip",
+        "accepted_artifact_sha256": "fb9ad25e4bad4f2299c70bb63d0a2bb4e1806883c175cd8dbae57c5c268d324f",
+        "member": "g36-1wk-probe/00_explanations.pdf",
+        "sha256": "989ab517b05bffebf92103430cf26f4662836971ec7eb077b14664f158d32999",
+        "bytes": 650058,
+        "figshare_member": "Public_ScientificData_AHUFaults/04_G36-1wk/00_explanations.pdf"
+      }
+    }
+  },
+  "decision": {
+    "DATA_GATE": "PASS",
+    "DESCRIPTIVE_TRANSFER": "PASS_UNPAIRED_DESCRIPTIVE",
+    "PAIRED_CAUSAL": "STOP_PAIRED_CAUSAL",
+    "CAUSE_ISOLATION": "NO_CAUSE_ISOLATION",
+    "FIELD_VALIDATION": "NOT_ESTABLISHED"
+  },
+  "changed_files": {
+    "API_CHANGELOG.md": {
+      "base_sha256": "7bdc9a423f15897fe31e0bdc8933058f438f5164e4977107f4265b810460c788",
+      "g54_sha256": "bb4e7a90b880fecec2c1887df6b7ffa2272a7be5341a480c7d07403b86f370e0"
+    },
+    "backend/app/api/endpoints/investigator_v1.py": {
+      "base_sha256": "af10fd2d0bc44d32fe41cec768cbe6598e11b30d095eb5354a254f9700696e1b",
+      "g54_sha256": "b9fb055f8100ed89135bde62433af85d7844b3aec1995cf0e3cf80881b6b24c8"
+    },
+    "backend/app/services/g36_benchmark.py": {
+      "base_sha256": "aac84afeeee5ea66c712495c2c2b28146498050498f5a70069a1f5109323ddca",
+      "g54_sha256": "8d7d1346e76c01452798ce4e84afe4f713659ee2b2558adcc1887e1f5e02d20a"
+    },
+    "backend/app/services/g36_policy.py": {
+      "base_sha256": null,
+      "g54_sha256": "07e1bd8a8144c06872de6e97cb357048f34a794ea4b210a8d0e5fce7e5eabd0b"
+    },
+    "backend/app/services/g36_week.py": {
+      "base_sha256": null,
+      "g54_sha256": "f9f5b53f506f74ad4becb03f7b33e0a75b86479498a6df779ce1f638b2e20d70"
+    },
+    "backend/app/services/g36_week_benchmark.py": {
+      "base_sha256": null,
+      "g54_sha256": "023ed235b9e0e76757da274dd4455e95e381e293d001dbc3555b4f6abd618198"
+    },
+    "backend/tests/test_g36_week.py": {
+      "base_sha256": null,
+      "g54_sha256": "b820b2332f7e4c231adcdb2332f9860659f5643095a7844556f8bd666303a450"
+    },
+    "contracts/CONTRACT_V1.md": {
+      "base_sha256": "3a49981b5671f900142fbe9002f4304637dc338e11edc8eb4238bdb65c713a1c",
+      "g54_sha256": "a33561e405809a553afd0c8d96ddcac9992814c275c3f0226c16c0ef02b1a2ee"
+    },
+    "contracts/fixtures/demo_manifest.json": {
+      "base_sha256": "8b422b2d9da0a71d0766163c2ec14ee927f118e793dcee460adc92c07d943c73",
+      "g54_sha256": "efd75ee87c23d5f4fb82a6ff887f804debdaefd86b3028a3f98592cd18e5ec14"
+    },
+    "contracts/openapi-v1.yaml": {
+      "base_sha256": "b4d7a34b57207267fa7db89e545bd1780afe9b2b00e923608a38c8310af11670",
+      "g54_sha256": "9547387e6a8b8cf3e825768abc8b0a7974f313688e80e76eb3425ea463c9d7b1"
+    },
+    "frontend/src/components/TopNavigationBar.tsx": {
+      "base_sha256": "505b5a6639450dfcee1f6a900ac21afa37b0ffbd9b7889ff27d96f62da3469e6",
+      "g54_sha256": "ea7f62aaf401a20bfb7bbbfec5a9449e004080442f8a32a5f9a8f3ffece26589"
+    },
+    "frontend/src/pages/G36BenchmarkPage.tsx": {
+      "base_sha256": "3925239b088312117bdcfca46dec33e92bec5f7a76078c10891e9391f93cd29f",
+      "g54_sha256": "5dd9c6af76b0935deb5e9b32fecb87fd7e7ea28ce13581c3b074825bf4789557"
+    },
+    "frontend/src/types/openapi-v1.generated.ts": {
+      "base_sha256": "f58a8a8e12679b3c613a7f8ce31f0aa47454713c41b3ebb21023d0ed348804c1",
+      "g54_sha256": "7e9523cfa1c6e86c572ce9f98cc5976a02657468da6bd2520cba413c16ad40b6"
+    },
+    "research/g54/PROTOCOL_G5_4_PRE_SCORE.md": {
+      "base_sha256": null,
+      "g54_sha256": "ffd3d124073b2cfd80107c231298b51247ebb3d5b3290b31a31759448932ccc8"
+    },
+    "research/g54/verify_independent.py": {
+      "base_sha256": null,
+      "g54_sha256": "1d16348dd91c92b51f2d878f145e5d55a1ba948c7a84fa3d46b3ba7850fed62d"
+    },
+    "scripts/smoke_g01_container.py": {
+      "base_sha256": "9e796555c34c62f8d6af21f721182785b86f8a4878d34f43883f941ffab97d26",
+      "g54_sha256": "f363c7068f9d4ca3bbb9f13d4beee7878f56ee3449d9dc412712b84c1cc9dd22"
+    },
+    "scripts/test_playwright_g54.py": {
+      "base_sha256": null,
+      "g54_sha256": "38b0b0d1b0a00131e2fd73f0175d1bccaefe2ef8ad02ce51c96d64b0d374f6d7"
+    }
+  },
+  "reference_dependencies": {
+    "backend/Dockerfile": "f44580fda90eb1b150c915303076e95729552c5787caa60415d6de17fc9c342f",
+    "backend/requirements.txt": "f200c7381a7c41efc267371bb20365ec7bd28246171767cbfd5db9e5676242ea",
+    "contracts/check_fixture_types.py": "95b34b726a587b719f50c5e08ac49815e4af406d073aed2001ac387686dfc395",
+    "contracts/requirements-audit.txt": "ac45191fc111081bf7b80410ca2fe71f3d785896a2260df9261ae55411f07936",
+    "frontend/package.json": "fc5cdf2debd72ed4e4de5bd40e1df1030c01fee5e332cf89635b2185ff149394",
+    "frontend/package-lock.json": "d31e8cd94333a9d3d45819ad3854ffe28543e7d4681a556c0bf68371da48f72c",
+    "frontend/tsconfig.json": "0dc787f257498f439681172c2c16b8f7ca342df6e513a875d4277cfb157b5442",
+    "research/g53/profile_transport.py": "b433e8c28cda3adccfd7bbbb3d9284261f51e8e7643acf830b5b94d7777529c3"
+  }
+}

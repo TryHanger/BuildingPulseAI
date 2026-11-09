@@ -1,0 +1,2761 @@
+{
+  "url": "https://fdddata.lbl.gov/data/Simulated_LBNL_FDD_Data_Sets_SDAHU/LBNL_FDD_Data_Sets_SDAHU.zip",
+  "archive_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471",
+  "structural_pass": true,
+  "members": {
+    "AHU_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/AHU_annual.csv",
+      "sha256": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+      "crc32": "d56a30c7",
+      "bytes": 140571390,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278682,
+        "0.0": 246858
+      },
+      "supply_fan_counts": {
+        "1.0": 278682,
+        "0.0": 246858
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "SYS_CTL": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "SA_TEMP": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "MA_TEMP": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -2.0236421000000002e-17,
+          2.01601705e-24,
+          1.0
+        ]
+      },
+      "paper_role": "healthy",
+      "role_evidence": "publisher baseline",
+      "byte_duplicates": []
+    },
+    "coi_bias_-2_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_bias_-2_annual.csv",
+      "sha256": "30c283998e3ae2193acf7d1b61400a7d34d74af8a3cca301d31da1435e0aee4d",
+      "crc32": "1e27420f",
+      "bytes": 143498174,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 1763,
+          "mean_delta": -2.2160133638619324
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 325099,
+          "mean_delta": -0.059730739697543625
+        },
+        "MA_TEMP": {
+          "equal_rows": 5305,
+          "mean_delta": -0.9992143815675304
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -1.9801347e-14,
+          2.9183856000000003e-24,
+          0.8620707
+        ]
+      },
+      "paper_role": "SA -2 C",
+      "role_evidence": "inventory sa_bias alias; same OA and TMY required",
+      "byte_duplicates": []
+    },
+    "coi_bias_-4_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_bias_-4_annual.csv",
+      "sha256": "b0be39ed39e083bd1db8af62bee2d2559691d6fe35174f370950e0326893bda0",
+      "crc32": "e9225122",
+      "bytes": 143161414,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 863,
+          "mean_delta": -2.7661050074380635
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 320610,
+          "mean_delta": -0.10281899094630136
+        },
+        "MA_TEMP": {
+          "equal_rows": 4811,
+          "mean_delta": 0.2821266844369602
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -4.0025075e-14,
+          8.305507e-24,
+          0.80216944
+        ]
+      },
+      "paper_role": "SA -4 C",
+      "role_evidence": "inventory sa_bias alias; same OA and TMY required",
+      "byte_duplicates": []
+    },
+    "coi_bias_2_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_bias_2_annual.csv",
+      "sha256": "78878e54e682a76622c2305f329481f3b5397a61b347f3a783f947a4b9b9d7a4",
+      "crc32": "febf6b0c",
+      "bytes": 143301086,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 3470,
+          "mean_delta": -1.0066672791110094
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 323195,
+          "mean_delta": 0.05486099632567907
+        },
+        "MA_TEMP": {
+          "equal_rows": 7886,
+          "mean_delta": -1.4993520298435892
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -1.8541659e-17,
+          4.29642365e-24,
+          0.9999989
+        ]
+      },
+      "paper_role": "SA +2 C",
+      "role_evidence": "inventory sa_bias alias; same OA and TMY required",
+      "byte_duplicates": []
+    },
+    "coi_bias_4_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_bias_4_annual.csv",
+      "sha256": "905634f7dda255a1c5a0b78115dcfb54be458420becff58397ea607911c0bbae",
+      "crc32": "a022ba82",
+      "bytes": 142210919,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 1557,
+          "mean_delta": -0.4116057276306274
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 320799,
+          "mean_delta": 0.14310663721943406
+        },
+        "MA_TEMP": {
+          "equal_rows": 5623,
+          "mean_delta": -1.5543419426266318
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -1.1957086e-13,
+          5.202530900000001e-24,
+          1.0000005
+        ]
+      },
+      "paper_role": "SA +4 C",
+      "role_evidence": "inventory sa_bias alias; same OA and TMY required",
+      "byte_duplicates": []
+    },
+    "coi_leakage_010_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_leakage_010_annual.csv",
+      "sha256": "e520275f67027bbed69f84e6966bcef206ab0f7b2090d265934793e8d7af45ff",
+      "crc32": "516aa567",
+      "bytes": 139023633,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 25764,
+          "mean_delta": -1.645128890720021
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324723,
+          "mean_delta": 0.0030718283305409457
+        },
+        "MA_TEMP": {
+          "equal_rows": 10153,
+          "mean_delta": -1.4045022587529015
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.1,
+          0.1,
+          0.8976432
+        ]
+      },
+      "paper_role": "Valve leak (unique payload)",
+      "role_evidence": "duplicate severity collapsed; exact paper member unspecified",
+      "byte_duplicates": [
+        "coi_leakage_025_annual.csv",
+        "coi_leakage_040_annual.csv",
+        "coi_leakage_050_annual.csv"
+      ]
+    },
+    "coi_leakage_025_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_leakage_025_annual.csv",
+      "sha256": "e520275f67027bbed69f84e6966bcef206ab0f7b2090d265934793e8d7af45ff",
+      "crc32": "516aa567",
+      "bytes": 139023633,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 25764,
+          "mean_delta": -1.645128890720021
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324723,
+          "mean_delta": 0.0030718283305409457
+        },
+        "MA_TEMP": {
+          "equal_rows": 10153,
+          "mean_delta": -1.4045022587529015
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.1,
+          0.1,
+          0.8976432
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "coi_leakage_010_annual.csv",
+        "coi_leakage_040_annual.csv",
+        "coi_leakage_050_annual.csv"
+      ]
+    },
+    "coi_leakage_040_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_leakage_040_annual.csv",
+      "sha256": "e520275f67027bbed69f84e6966bcef206ab0f7b2090d265934793e8d7af45ff",
+      "crc32": "516aa567",
+      "bytes": 139023633,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 25764,
+          "mean_delta": -1.645128890720021
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324723,
+          "mean_delta": 0.0030718283305409457
+        },
+        "MA_TEMP": {
+          "equal_rows": 10153,
+          "mean_delta": -1.4045022587529015
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.1,
+          0.1,
+          0.8976432
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "coi_leakage_010_annual.csv",
+        "coi_leakage_025_annual.csv",
+        "coi_leakage_050_annual.csv"
+      ]
+    },
+    "coi_leakage_050_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_leakage_050_annual.csv",
+      "sha256": "e520275f67027bbed69f84e6966bcef206ab0f7b2090d265934793e8d7af45ff",
+      "crc32": "516aa567",
+      "bytes": 139023633,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 25764,
+          "mean_delta": -1.645128890720021
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324723,
+          "mean_delta": 0.0030718283305409457
+        },
+        "MA_TEMP": {
+          "equal_rows": 10153,
+          "mean_delta": -1.4045022587529015
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.1,
+          0.1,
+          0.8976432
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "coi_leakage_010_annual.csv",
+        "coi_leakage_025_annual.csv",
+        "coi_leakage_040_annual.csv"
+      ]
+    },
+    "coi_stuck_010_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_stuck_010_annual.csv",
+      "sha256": "d8ec2faa84a0dfa5dfc4756bc848e877a110c3ccc70ba66e8a31db3fc632454a",
+      "crc32": "3ae2b02a",
+      "bytes": 133669433,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 0,
+          "mean_delta": 6.856405437331126
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 257602,
+          "mean_delta": 0.28959250206405174
+        },
+        "MA_TEMP": {
+          "equal_rows": 6453,
+          "mean_delta": 4.260586031742588
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "paper_role": "Valve stuck 10%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "coi_stuck_025_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_stuck_025_annual.csv",
+      "sha256": "e2e7eb27f1bc22f666e43c3ca31cea4000b9344c74046469dc530d7dcf500b21",
+      "crc32": "635bf309",
+      "bytes": 135891846,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 0,
+          "mean_delta": 3.01318320898885
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 292511,
+          "mean_delta": 0.2135662713100386
+        },
+        "MA_TEMP": {
+          "equal_rows": 7143,
+          "mean_delta": 1.3839833648989612
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.25,
+          0.25,
+          0.25
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": []
+    },
+    "coi_stuck_050_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_stuck_050_annual.csv",
+      "sha256": "dc28965164cdb8aaa2f7e97945c6246fa6ad886d56a705ecdc08ff77dc2baf4e",
+      "crc32": "641fb055",
+      "bytes": 136630684,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 0,
+          "mean_delta": -1.3089378735681392
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324320,
+          "mean_delta": 0.11557284065468594
+        },
+        "MA_TEMP": {
+          "equal_rows": 5695,
+          "mean_delta": -1.1150346000418614
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "paper_role": "Valve stuck 50%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "coi_stuck_075_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/coi_stuck_075_annual.csv",
+      "sha256": "5ac746c006efaf88e41e8a5e0fcff861cd0aee5dfa102fc5e4a560a54f584fe1",
+      "crc32": "4210433d",
+      "bytes": 137070680,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 0,
+          "mean_delta": -3.9660061599021965
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 334019,
+          "mean_delta": -0.20673777465422388
+        },
+        "MA_TEMP": {
+          "equal_rows": 4252,
+          "mean_delta": -1.4145910777847548
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          0.75,
+          0.75,
+          0.75
+        ]
+      },
+      "paper_role": "Valve stuck 75%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "damper_stuck_010_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/damper_stuck_010_annual.csv",
+      "sha256": "1ba1266850ee5f87cbac55e5df82ffb757dd2b155a4df7f934f07da5ef2cbf68",
+      "crc32": "aaec2938",
+      "bytes": 141395174,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 17708,
+          "mean_delta": 0.7619863155744567
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 239138,
+          "mean_delta": 0.10677189430544369
+        },
+        "MA_TEMP": {
+          "equal_rows": 228,
+          "mean_delta": 3.779668626395707
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "CHWC_VLV": [
+          -8.037361e-15,
+          0.51683345,
+          0.9088356
+        ]
+      },
+      "paper_role": "Damper stuck 10%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "damper_stuck_025_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/damper_stuck_025_annual.csv",
+      "sha256": "a1f43d6091d34bc8edcf4dbf2fa686888c563bbdf6418d2afe3512b77e67544e",
+      "crc32": "cf411c91",
+      "bytes": 142346112,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 3195,
+          "mean_delta": 0.5649548660387408
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 239160,
+          "mean_delta": 0.10562221183260243
+        },
+        "MA_TEMP": {
+          "equal_rows": 5,
+          "mean_delta": 3.3696399325531825
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "CHWC_VLV": [
+          -3.706928e-09,
+          0.50804695,
+          0.89750475
+        ]
+      },
+      "paper_role": "Damper stuck 25%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "damper_stuck_075_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/damper_stuck_075_annual.csv",
+      "sha256": "a79fa6f737305b55e39ffd8cf5d14bedb4f2cfbd72e425143e5af6bc4ad4e423",
+      "crc32": "e4be9a62",
+      "bytes": 142481488,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 499,
+          "mean_delta": -6.063835569897629
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 307632,
+          "mean_delta": -0.015301757715462857
+        },
+        "MA_TEMP": {
+          "equal_rows": 1,
+          "mean_delta": -7.875322565364195
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.75,
+          0.75,
+          0.75
+        ],
+        "CHWC_VLV": [
+          -5.891502e-07,
+          9.727548200000001e-26,
+          0.98244923
+        ]
+      },
+      "paper_role": "Damper stuck 75%",
+      "role_evidence": "inventory and actuator position",
+      "byte_duplicates": []
+    },
+    "damper_stuck_100_annual_short.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/damper_stuck_100_annual_short.csv",
+      "sha256": "2b2e3c6817c2a92dc99c41643497577939cb7d6b0d3bc287e297b611c04aa43d",
+      "crc32": "00c7a8b1",
+      "bytes": 82928128,
+      "rows": 308101,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-04-01 01:00:00",
+      "end": "2018-11-01 00:00:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": false,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 164400,
+        "0.0": 143701
+      },
+      "supply_fan_counts": {
+        "1.0": 164400,
+        "0.0": 143701
+      },
+      "comparison_to_healthy": {},
+      "actuator_position": {
+        "OA_DMPR": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -1.9567882e-08,
+          1.3224200000000002e-24,
+          1.0
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": []
+    },
+    "oa_bias_-2_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/oa_bias_-2_annual.csv",
+      "sha256": "07302cf907b48c495609c2db44c5e82cbb62290d1b4d9c05f8012fc00a5388e8",
+      "crc32": "d4980649",
+      "bytes": 143313007,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 8568,
+          "mean_delta": -1.5947135831830117
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324305,
+          "mean_delta": -0.008296098655040168
+        },
+        "MA_TEMP": {
+          "equal_rows": 12805,
+          "mean_delta": -1.4055014639152112
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -2.594483e-14,
+          4.2482278e-24,
+          0.9044541
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "oa_bias_-4_annual.csv",
+        "oa_bias_2_annual.csv",
+        "oa_bias_4_annual.csv"
+      ]
+    },
+    "oa_bias_-4_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/oa_bias_-4_annual.csv",
+      "sha256": "07302cf907b48c495609c2db44c5e82cbb62290d1b4d9c05f8012fc00a5388e8",
+      "crc32": "d4980649",
+      "bytes": 143313007,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 8568,
+          "mean_delta": -1.5947135831830117
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324305,
+          "mean_delta": -0.008296098655040168
+        },
+        "MA_TEMP": {
+          "equal_rows": 12805,
+          "mean_delta": -1.4055014639152112
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -2.594483e-14,
+          4.2482278e-24,
+          0.9044541
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "oa_bias_-2_annual.csv",
+        "oa_bias_2_annual.csv",
+        "oa_bias_4_annual.csv"
+      ]
+    },
+    "oa_bias_2_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/oa_bias_2_annual.csv",
+      "sha256": "07302cf907b48c495609c2db44c5e82cbb62290d1b4d9c05f8012fc00a5388e8",
+      "crc32": "d4980649",
+      "bytes": 143313007,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 8568,
+          "mean_delta": -1.5947135831830117
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324305,
+          "mean_delta": -0.008296098655040168
+        },
+        "MA_TEMP": {
+          "equal_rows": 12805,
+          "mean_delta": -1.4055014639152112
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -2.594483e-14,
+          4.2482278e-24,
+          0.9044541
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "oa_bias_-2_annual.csv",
+        "oa_bias_-4_annual.csv",
+        "oa_bias_4_annual.csv"
+      ]
+    },
+    "oa_bias_4_annual.csv": {
+      "archive_member": "LBNL_FDD_Dataset_SDAHU/oa_bias_4_annual.csv",
+      "sha256": "07302cf907b48c495609c2db44c5e82cbb62290d1b4d9c05f8012fc00a5388e8",
+      "crc32": "d4980649",
+      "bytes": 143313007,
+      "rows": 525540,
+      "columns": [
+        "Datetime",
+        "CHWC_VLV",
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_CFM",
+        "OA_DMPR",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_CFM",
+        "RA_DMPR",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD",
+        "RF_SPD_DM",
+        "RF_WAT",
+        "SA_CFM",
+        "SA_SP",
+        "SA_SPSPT",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD",
+        "SF_SPD_DM",
+        "SF_WAT",
+        "SYS_CTL",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5"
+      ],
+      "start": "2018-01-01 01:00:00",
+      "end": "2018-12-31 23:59:00",
+      "duplicate_timestamps": 0,
+      "one_minute_grid": true,
+      "same_clock_as_healthy": true,
+      "nonfinite_cells": 0,
+      "nonfinite_by_column": {
+        "CHWC_VLV": 0,
+        "CHWC_VLV_DM": 0,
+        "MA_TEMP": 0,
+        "OA_CFM": 0,
+        "OA_DMPR": 0,
+        "OA_DMPR_DM": 0,
+        "OA_TEMP": 0,
+        "RA_CFM": 0,
+        "RA_DMPR": 0,
+        "RA_DMPR_DM": 0,
+        "RA_TEMP": 0,
+        "RF_CS": 0,
+        "RF_SPD": 0,
+        "RF_SPD_DM": 0,
+        "RF_WAT": 0,
+        "SA_CFM": 0,
+        "SA_SP": 0,
+        "SA_SPSPT": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "SF_CS": 0,
+        "SF_SPD": 0,
+        "SF_SPD_DM": 0,
+        "SF_WAT": 0,
+        "SYS_CTL": 0,
+        "ZONE_TEMP_1": 0,
+        "ZONE_TEMP_2": 0,
+        "ZONE_TEMP_3": 0,
+        "ZONE_TEMP_4": 0,
+        "ZONE_TEMP_5": 0
+      },
+      "sys_ctl_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "supply_fan_counts": {
+        "1.0": 278640,
+        "0.0": 246900
+      },
+      "comparison_to_healthy": {
+        "OA_TEMP": {
+          "equal_rows": 200644,
+          "mean_delta": 2.0651018509722102e-05
+        },
+        "SYS_CTL": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SF_SPD_DM": {
+          "equal_rows": 501668,
+          "mean_delta": -7.991779883548351e-05
+        },
+        "SA_TEMP": {
+          "equal_rows": 8568,
+          "mean_delta": -1.5947135831830117
+        },
+        "SA_TEMPSPT": {
+          "equal_rows": 525540,
+          "mean_delta": 0.0
+        },
+        "CHWC_VLV_DM": {
+          "equal_rows": 324305,
+          "mean_delta": -0.008296098655040168
+        },
+        "MA_TEMP": {
+          "equal_rows": 12805,
+          "mean_delta": -1.4055014639152112
+        }
+      },
+      "actuator_position": {
+        "OA_DMPR": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "CHWC_VLV": [
+          -2.594483e-14,
+          4.2482278e-24,
+          0.9044541
+        ]
+      },
+      "paper_role": "excluded",
+      "role_evidence": "outside Table 2 or duplicate/short member",
+      "byte_duplicates": [
+        "oa_bias_-2_annual.csv",
+        "oa_bias_-4_annual.csv",
+        "oa_bias_2_annual.csv"
+      ]
+    }
+  }
+}

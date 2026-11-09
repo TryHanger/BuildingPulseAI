@@ -1,0 +1,41 @@
+{
+  "fixture": true,
+  "provenance": "SYNTHETIC_UI_ONLY",
+  "label_status": "NO_GROUND_TRUTH",
+  "run_id": "ui-demo-matched-pairs-v0",
+  "pairs": [
+    {
+      "pair_id": "pair-lbnl-summer-25",
+      "status": "CONFIRMED_MATCHED",
+      "label": "SIMULATION_PHYSICAL_COUNTERFACTUAL",
+      "baseline_scenario_id": "sc-lbnl-baseline-annual",
+      "baseline_scenario_name": "LBNL Нормальный режим (Июль, дни 10–14)",
+      "fault_scenario_id": "sc-lbnl-valve-stuck-25",
+      "fault_scenario_name": "LBNL Клапан заклинен 25% (Июль, дни 10–14)",
+      "justification": "Идентичный метеорологический файл TMY Chicago, те же уставки и тепловые нагрузки зон. Физически сопоставимая пара симулятора EnergyPlus.",
+      "series_overlay": {
+        "channel": "SA_TEMP",
+        "unit": "°C",
+        "points_baseline": [
+          ["11:00", 14.8], ["11:30", 14.6], ["12:00", 14.7], ["12:30", 14.5],
+          ["13:00", 14.6], ["13:30", 14.7], ["14:00", 14.5], ["14:30", 14.6]
+        ],
+        "points_fault": [
+          ["11:00", 14.9], ["11:30", 16.2], ["12:00", 17.8], ["12:30", 18.6],
+          ["13:00", 18.9], ["13:30", 18.8], ["14:00", 18.7], ["14:30", 18.4]
+        ]
+      }
+    },
+    {
+      "pair_id": "pair-csiro-unmatched-blocked",
+      "status": "BLOCKED_INCOMPARABLE",
+      "label": "INCOMPARABLE_SOURCE",
+      "baseline_scenario_id": "sc-csiro-winter-baseline",
+      "baseline_scenario_name": "CSIRO Зимняя неделя нормы (Июль)",
+      "fault_scenario_id": "sc-csiro-spring-fault",
+      "fault_scenario_name": "CSIRO Весенний эксперимент (Октябрь)",
+      "justification": "Блокировка наложения: температура наружного воздуха различается более чем на 12 °C; разный тепловой сезон и режим вентилятора. Наложение временных рядов без общего погодного профиля приведет к ложным выводам.",
+      "series_overlay": null
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "fixture": true,
+  "provenance": "SYNTHETIC_UI_ONLY",
+  "label_status": "NO_GROUND_TRUTH",
+  "run_id": "ui-demo-incidents-v0",
+  "comment": "Синтетический фикстурный список инцидентов. Без выдуманных процентов вероятности.",
+  "items": [
+    {
+      "id": "inc-2026-001",
+      "equipment_id": "ahu-sd",
+      "equipment_name": "LBNL SD-AHU 01",
+      "timestamp_start": "2026-07-15T11:20:00Z",
+      "timestamp_end": "2026-07-15T14:45:00Z",
+      "seek_timestamp": "2026-07-15T12:30:00Z",
+      "detection_state": "DETECTED",
+      "cause_state": "AMBIGUOUS",
+      "data_state": "VALID",
+      "model_state": "IN_SCOPE",
+      "rule_id": "APAR_RULE_02_SAT_COOLING_DEVIATION",
+      "rule_name": "Устойчивое отклонение температуры приточного воздуха SAT от уставки в режиме охлаждения",
+      "severity_category": "OPERATIONAL_DEVIATION",
+      "symptom_description": "SAT превышает уставку SA_TEMPSPT на +3.8 °C при 100% команде охлаждающего клапана CHWC_VLV_DM в течение 45 минут при работающем вентиляторе.",
+      "prerequisites_met": ["SF_RUNNING", "MECHANICAL_COOLING_MODE", "OA_TEMP_ABOVE_THRESHOLD"],
+      "missing_observability": ["CHWC_VLV (Датчик обратной связи положения штока клапана отсутствует в BASIC панели)"],
+      "candidate_causes": [
+        {"cause_id": "COOLING_VALVE_STUCK", "name": "Механическое заклинивание штока клапана охлаждения", "status": "PLAUSIBLE"},
+        {"cause_id": "INSUFFICIENT_CHILLED_WATER_FLOW", "name": "Недостаточный расход/температура хладоносителя от чиллера", "status": "PLAUSIBLE"},
+        {"cause_id": "SAT_SENSOR_POSITIVE_BIAS", "name": "Положительное смещение показаний датчика SAT", "status": "UNEXCLUDED"}
+      ],
+      "recommended_action": "Проверить фактическое положение штока клапана охлаждения по месту или мультиметром на клеммах привода."
+    },
+    {
+      "id": "inc-2026-002",
+      "equipment_id": "ahu-10",
+      "equipment_name": "CSIRO AHU-10",
+      "timestamp_start": "2026-10-31T08:30:00Z",
+      "timestamp_end": "2026-10-31T09:15:00Z",
+      "seek_timestamp": "2026-10-31T08:45:00Z",
+      "detection_state": "NOT_EVALUABLE",
+      "cause_state": "UNEXPLAINED",
+      "data_state": "DEGRADED",
+      "model_state": "OUT_OF_SCOPE",
+      "rule_id": "APAR_RULE_01_STARTUP_TRANSITION",
+      "rule_name": "Период утреннего пуска установки (Startup Washout)",
+      "severity_category": "INFORMATIONAL_REGIME",
+      "symptom_description": "Оценка физических правил приостановлена: вентилятор включен менее 15 минут назад; температурные переходные процессы не стабилизировались.",
+      "prerequisites_met": ["SF_RUNNING"],
+      "missing_observability": ["СТАБИЛЬНЫЙ_РЕЖИМ (Требуется выдержка 20 минут после пуска)"],
+      "candidate_causes": [],
+      "recommended_action": "Ожидать стабилизации технологического контура после пуска."
+    },
+    {
+      "id": "inc-2026-003",
+      "equipment_id": "ahu-sd",
+      "equipment_name": "LBNL SD-AHU 01",
+      "timestamp_start": "2026-07-16T15:10:00Z",
+      "timestamp_end": "2026-07-16T17:00:00Z",
+      "seek_timestamp": "2026-07-16T16:00:00Z",
+      "detection_state": "CONFLICTED",
+      "cause_state": "AMBIGUOUS",
+      "data_state": "VALID",
+      "model_state": "IN_SCOPE",
+      "rule_id": "APAR_VS_MODEL_CONTRADICTION",
+      "rule_name": "Противоречие между инженерным правилом и ML виртуальным датчиком",
+      "severity_category": "DETECTOR_DISCREPANCY",
+      "symptom_description": "Инженерное правило SAT/SP не фиксирует ошибку (|SAT - SP| = 0.4 °C), однако модель виртуального датчика показывает невязку residual = +2.6 °C с аномально повышенной командой клапана CHWC_VLV_DM.",
+      "prerequisites_met": ["SF_RUNNING", "COOLING_MODE"],
+      "missing_observability": ["CHWC_VLV (обратная связь клапана)"],
+      "candidate_causes": [
+        {"cause_id": "EARLY_VALVE_LEAKAGE", "name": "Скрытая негерметичность седла клапана при компенсации контроллером", "status": "PLAUSIBLE"},
+        {"cause_id": "MODEL_RESIDUAL_DRIFT", "name": "Остаточный шум модели виртуального датчика при пограничной температуре", "status": "PLAUSIBLE"}
+      ],
+      "recommended_action": "Проверить температуру теплоносителя в обратном трубопроводе теплообменника (признак нежелательного расхода при малой нагрузке)."
+    },
+    {
+      "id": "inc-2026-004",
+      "equipment_id": "ahu-09",
+      "equipment_name": "CSIRO AHU-09",
+      "timestamp_start": "2026-11-05T13:00:00Z",
+      "timestamp_end": "2026-11-05T13:40:00Z",
+      "seek_timestamp": "2026-11-05T13:20:00Z",
+      "detection_state": "AMBIGUOUS",
+      "cause_state": "AMBIGUOUS",
+      "data_state": "DEGRADED",
+      "model_state": "UNKNOWN",
+      "rule_id": "PHYSICAL_MA_SENSOR_MISSING",
+      "rule_name": "Невозможность разделения дефектов смешения и охлаждения (Отсутствует физический MA_TEMP)",
+      "severity_category": "OBSERVABILITY_LIMITATION",
+      "symptom_description": "В полевой BMS CSIRO канал MA_TEMP аппаратного дублирован с SA_TEMP. Тепловой баланс камеры смешения не может быть непосредственно измерен.",
+      "prerequisites_met": ["SF_RUNNING"],
+      "missing_observability": ["Физический датчик MA_TEMP до охлаждающего змеевика"],
+      "candidate_causes": [
+        {"cause_id": "MIXING_DAMPER_MISMATCH", "name": "Перекос заслонок наружного/возвратного воздуха", "status": "UNEXCLUDED"},
+        {"cause_id": "COOLING_COIL_FAULT", "name": "Дефект змеевика охлаждения", "status": "UNEXCLUDED"}
+      ],
+      "recommended_action": "Использовать расчетную оценку MA_TEMP_EST по уравнению теплового баланса или дооснастить секцию физическим датчиком."
+    }
+  ]
+}

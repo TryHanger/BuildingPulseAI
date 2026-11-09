@@ -1,0 +1,107 @@
+{
+  "dataset_doi": "10.17632/jkw85sm4v4.1",
+  "version": 1,
+  "license": "CC BY 4.0",
+  "dataset_url": "https://data.mendeley.com/datasets/jkw85sm4v4/1",
+  "publisher_listing_url": "https://data.mendeley.com/public-api/datasets/jkw85sm4v4/files?folder_id=root&version=1",
+  "retrieved_date": "2026-11-08",
+  "article_doi": "10.1016/j.enbuild.2021.110781",
+  "article_repository": "https://dspace.cvut.cz/entities/publication/35d10945-7123-4cdc-8367-50bfdb4c1052",
+  "files": {
+    "AHU1.xlsx": {
+      "file_id": "bcf67016-890d-44ea-9438-30a923711fe9",
+      "bytes": 6614970,
+      "publisher_sha256": "ed51c373f25b4892610402fdd553e75a7e43342657b8759b863681dd0909e9c3",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/bcf67016-890d-44ea-9438-30a923711fe9/file_downloaded",
+      "verified_sha256": "ed51c373f25b4892610402fdd553e75a7e43342657b8759b863681dd0909e9c3"
+    },
+    "AHU18.xlsx": {
+      "file_id": "fa29ec0a-69e6-46d8-b8da-9b22f1ffa78e",
+      "bytes": 6045715,
+      "publisher_sha256": "1aec89da0425959412a2891419280db035046dbd8d541968acb23d9dc65d59f7",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/fa29ec0a-69e6-46d8-b8da-9b22f1ffa78e/file_downloaded",
+      "verified_sha256": "1aec89da0425959412a2891419280db035046dbd8d541968acb23d9dc65d59f7"
+    },
+    "AHU2.xlsx": {
+      "file_id": "80707ccc-c9a3-4fae-888c-dd73b2ebce06",
+      "bytes": 1526394,
+      "publisher_sha256": "814f18e2299a7432af143f33d3b5d4711d23246c8cc25225d65d1f2efb73128a",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/80707ccc-c9a3-4fae-888c-dd73b2ebce06/file_downloaded",
+      "verified_sha256": "814f18e2299a7432af143f33d3b5d4711d23246c8cc25225d65d1f2efb73128a"
+    },
+    "AHU23.xlsx": {
+      "file_id": "55812f40-9b2b-414f-b396-5cd781fba09c",
+      "bytes": 6129279,
+      "publisher_sha256": "0ce2955409d78371872234ff9f0b6cc2a6de16d59d0851a00083b7d3c8de7274",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/55812f40-9b2b-414f-b396-5cd781fba09c/file_downloaded",
+      "verified_sha256": "0ce2955409d78371872234ff9f0b6cc2a6de16d59d0851a00083b7d3c8de7274"
+    },
+    "AHU24.xlsx": {
+      "file_id": "13e6ab01-15e3-44f1-9fcf-7f7f4d051341",
+      "bytes": 6368430,
+      "publisher_sha256": "fb91fcb0e4fea1a44247e8201b1b57d917502d17e01f16a7b445eac978685cd1",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/13e6ab01-15e3-44f1-9fcf-7f7f4d051341/file_downloaded",
+      "verified_sha256": "fb91fcb0e4fea1a44247e8201b1b57d917502d17e01f16a7b445eac978685cd1"
+    },
+    "AHU8.xlsx": {
+      "file_id": "7621086b-6b16-48f6-a695-3de15c27256a",
+      "bytes": 1526318,
+      "publisher_sha256": "131b489a74f1edc5a180c36338a09ecaaf61820184ac93ebedfec127b3a171c8",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/7621086b-6b16-48f6-a695-3de15c27256a/file_downloaded",
+      "verified_sha256": "131b489a74f1edc5a180c36338a09ecaaf61820184ac93ebedfec127b3a171c8"
+    },
+    "Faults_schedule_and_description.xlsx": {
+      "file_id": "91fd9e88-4db1-45a4-b07e-e62be622a6ef",
+      "bytes": 25957,
+      "publisher_sha256": "9752e1be8e8d1e8be98a1ab305e8c0cdf5d04af3eddbd5adf32746ff9fa54672",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/91fd9e88-4db1-45a4-b07e-e62be622a6ef/file_downloaded",
+      "verified_sha256": "9752e1be8e8d1e8be98a1ab305e8c0cdf5d04af3eddbd5adf32746ff9fa54672"
+    },
+    "Place_tag_explanation.jpg": {
+      "file_id": "5fc16896-57dd-4035-ba0f-c4f796251114",
+      "bytes": 907307,
+      "publisher_sha256": "f493877d72826b789bbab8db6dad448fd626ccddced520846a1c2e9ef205acce",
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/5fc16896-57dd-4035-ba0f-c4f796251114/file_downloaded",
+      "verified_sha256": "f493877d72826b789bbab8db6dad448fd626ccddced520846a1c2e9ef205acce"
+    }
+  },
+  "manuscript": {
+    "record": "https://dspace.cvut.cz/entities/publication/35d10945-7123-4cdc-8367-50bfdb4c1052",
+    "download": "https://dspace.cvut.cz/server/api/core/bitstreams/2f9d64ab-bbd6-487c-b120-3d01bcbf4af2/content",
+    "sha256": "4a03914e8064ae3b42ffce9a806a724f7451bae7596d940ff3884b6c50a072ef",
+    "publisher_md5": "a4749a55c2366deb298a3cae6104c504",
+    "bytes": 1814037,
+    "citation": "Nehasil et al., 2021, DOI 10.1016/j.enbuild.2021.110781, accepted manuscript, sections 3.1-3.3 and Tables 2-3"
+  },
+  "protocol_sha256": "868a685798c42c5a271149b64089aba8d72e0e8ed2d50a91900bfbe5587c5358",
+  "stage08_event_ledger_sha256": "1d7acd72ff0ec71e1ae0fbd33c5b0b15e3f0f02942b91a74729e65d4ef4bd8fa",
+  "scheduled_site_days": [
+    "2019-03-01",
+    "2019-03-08",
+    "2019-03-15",
+    "2019-03-22",
+    "2019-03-29",
+    "2019-04-05",
+    "2019-04-12",
+    "2019-04-16",
+    "2019-04-23",
+    "2019-05-10",
+    "2019-05-24",
+    "2019-05-25",
+    "2019-06-07",
+    "2019-06-10",
+    "2019-06-11",
+    "2019-07-17",
+    "2019-07-24",
+    "2019-08-07",
+    "2019-08-21"
+  ],
+  "site_count": 1,
+  "intervention_event_day_count": 1,
+  "labels_in_rule_inputs": false,
+  "rule_version": "bas-fan-observation@1.0.0",
+  "event_windows": 6,
+  "matched_control_windows": 6,
+  "screened_control_windows": 156,
+  "decision": "ACCEPT_FIELD_REPLAY_EXPLORATORY"
+}

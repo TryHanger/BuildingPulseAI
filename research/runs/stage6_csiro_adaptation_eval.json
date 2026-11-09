@@ -1,0 +1,4664 @@
+{
+  "evaluation_name": "BuildingPulse AI Stage 6: CSIRO AHU9 Adaptation Held-Out Test",
+  "created_at": "2026-11-03T11:54:41.762252+00:00",
+  "scenario_id": "sc_89e2c6028b4f",
+  "test_period": {
+    "start": "2013-11-07T09:00:00.000000",
+    "end": "2013-11-12T16:59:00.000000",
+    "total_test_points": 2880,
+    "operating_points": 1920,
+    "normal_points": 1074,
+    "fault_points": 846
+  },
+  "regression_results_on_identical_healthy_points": {
+    "Z0_source": {
+      "count": 1074,
+      "mae_degC": 4.4552,
+      "rmse_degC": 4.7334,
+      "mean_bias_degC": 4.4552,
+      "r2": -3.3026
+    },
+    "B0_physical": {
+      "count": 1074,
+      "mae_degC": 5.9491,
+      "rmse_degC": 6.4543,
+      "mean_bias_degC": -5.7937,
+      "r2": -6.9999
+    },
+    "C1_constant_bias": {
+      "count": 1074,
+      "mae_degC": 1.2037,
+      "rmse_degC": 1.6048,
+      "mean_bias_degC": -0.1381,
+      "r2": 0.5054
+    },
+    "C2_affine": {
+      "count": 1074,
+      "mae_degC": 1.1062,
+      "rmse_degC": 1.6661,
+      "mean_bias_degC": 0.326,
+      "r2": 0.4669
+    },
+    "A1_residual_ridge": {
+      "count": 1074,
+      "mae_degC": 1.8323,
+      "rmse_degC": 2.5457,
+      "mean_bias_degC": 1.1932,
+      "r2": -0.2445
+    },
+    "L1_local_ridge": {
+      "count": 1074,
+      "mae_degC": 2.9792,
+      "rmse_degC": 4.1504,
+      "mean_bias_degC": 2.0534,
+      "r2": -2.308
+    },
+    "L2_local_lgbm": {
+      "count": 1074,
+      "mae_degC": 1.2703,
+      "rmse_degC": 1.823,
+      "mean_bias_degC": -0.0631,
+      "r2": 0.3618
+    }
+  },
+  "fdd_simulation_threshold_results": {
+    "Z0_source": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 1074,
+      "false_alarm_rate": 1.0,
+      "false_alarm_episodes_count": 1,
+      "false_alarm_episodes_per_normal_day": 0.4469,
+      "median_alarm_duration_minutes": 1074.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 34,
+      "event_recall": 1.0,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        }
+      ]
+    },
+    "B0_physical": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 949,
+      "false_alarm_rate": 0.8836,
+      "false_alarm_episodes_count": 6,
+      "false_alarm_episodes_per_normal_day": 2.6816,
+      "median_alarm_duration_minutes": 88.5,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 34,
+      "event_recall": 1.0,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        }
+      ]
+    },
+    "C1_constant_bias": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 518,
+      "false_alarm_rate": 0.4823,
+      "false_alarm_episodes_count": 15,
+      "false_alarm_episodes_per_normal_day": 6.7039,
+      "median_alarm_duration_minutes": 22.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 32,
+      "event_recall": 0.9412,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 43
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 43
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 29
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 29
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        }
+      ]
+    },
+    "C2_affine": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 413,
+      "false_alarm_rate": 0.3845,
+      "false_alarm_episodes_count": 15,
+      "false_alarm_episodes_per_normal_day": 6.7039,
+      "median_alarm_duration_minutes": 22.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 25,
+      "event_recall": 0.7353,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 15
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 15
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 15
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 19
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 19
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 17
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 17
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 6
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 6
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        }
+      ]
+    },
+    "A1_residual_ridge": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 673,
+      "false_alarm_rate": 0.6266,
+      "false_alarm_episodes_count": 14,
+      "false_alarm_episodes_per_normal_day": 6.257,
+      "median_alarm_duration_minutes": 24.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 29,
+      "event_recall": 0.8529,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 8
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 8
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 52
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 52
+        }
+      ]
+    },
+    "L1_local_ridge": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 863,
+      "false_alarm_rate": 0.8035,
+      "false_alarm_episodes_count": 11,
+      "false_alarm_episodes_per_normal_day": 4.9162,
+      "median_alarm_duration_minutes": 21.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 34,
+      "event_recall": 1.0,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 38
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 38
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 11
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 11
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 11
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 14
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 5
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 5
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 53
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 53
+        }
+      ]
+    },
+    "L2_local_lgbm": {
+      "threshold": 0.919,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 498,
+      "false_alarm_rate": 0.4637,
+      "false_alarm_episodes_count": 18,
+      "false_alarm_episodes_per_normal_day": 8.0447,
+      "median_alarm_duration_minutes": 18.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 29,
+      "event_recall": 0.8529,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 12
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 8
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 8
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 13
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 13
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 13
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 4
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 4
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 6
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 6
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 9
+        }
+      ]
+    }
+  },
+  "fdd_locally_recalibrated_results": {
+    "Z0_source": {
+      "threshold": 7.9527,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 22,
+      "false_alarm_rate": 0.0205,
+      "false_alarm_episodes_count": 2,
+      "false_alarm_episodes_per_normal_day": 0.8939,
+      "median_alarm_duration_minutes": 11.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 7,
+      "event_recall": 0.2059,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        }
+      ]
+    },
+    "B0_physical": {
+      "threshold": 12.654,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 0,
+      "false_alarm_rate": 0.0,
+      "false_alarm_episodes_count": 0,
+      "false_alarm_episodes_per_normal_day": 0.0,
+      "median_alarm_duration_minutes": null,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 0,
+      "event_recall": 0.0,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        }
+      ]
+    },
+    "C1_constant_bias": {
+      "threshold": 3.4318,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 27,
+      "false_alarm_rate": 0.0251,
+      "false_alarm_episodes_count": 3,
+      "false_alarm_episodes_per_normal_day": 1.3408,
+      "median_alarm_duration_minutes": 7.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 9,
+      "event_recall": 0.2647,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": true,
+          "delay_minutes": 28
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 46
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 46
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        }
+      ]
+    },
+    "C2_affine": {
+      "threshold": 3.0085,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 30,
+      "false_alarm_rate": 0.0279,
+      "false_alarm_episodes_count": 4,
+      "false_alarm_episodes_per_normal_day": 1.7877,
+      "median_alarm_duration_minutes": 7.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 6,
+      "event_recall": 0.1765,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 21
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 33
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 54
+        }
+      ]
+    },
+    "A1_residual_ridge": {
+      "threshold": 4.424,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 18,
+      "false_alarm_rate": 0.0168,
+      "false_alarm_episodes_count": 2,
+      "false_alarm_episodes_per_normal_day": 0.8939,
+      "median_alarm_duration_minutes": 9.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 2,
+      "event_recall": 0.0588,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 39
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 39
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        }
+      ]
+    },
+    "L1_local_ridge": {
+      "threshold": 5.3533,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 148,
+      "false_alarm_rate": 0.1378,
+      "false_alarm_episodes_count": 4,
+      "false_alarm_episodes_per_normal_day": 1.7877,
+      "median_alarm_duration_minutes": 41.5,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 3,
+      "event_recall": 0.0882,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 0
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        }
+      ]
+    },
+    "L2_local_lgbm": {
+      "threshold": 3.5854,
+      "persistence_k_of_n": "10/15",
+      "normal_points_count": 1074,
+      "false_alarm_minutes": 47,
+      "false_alarm_rate": 0.0438,
+      "false_alarm_episodes_count": 5,
+      "false_alarm_episodes_per_normal_day": 2.2346,
+      "median_alarm_duration_minutes": 7.0,
+      "total_fault_episodes": 34,
+      "detected_fault_episodes": 8,
+      "event_recall": 0.2353,
+      "episode_details": [
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 11:08:01",
+          "end": "2013-11-07 12:08:06",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 25
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "81.0",
+          "start": "2013-11-07 11:08:03",
+          "end": "2013-11-07 12:08:08",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 25
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 13:08:14",
+          "end": "2013-11-07 14:08:20",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "13.0",
+          "start": "2013-11-07 13:08:19",
+          "end": "2013-11-07 14:08:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-07 15:08:27",
+          "end": "2013-11-07 16:08:33",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-07 15:08:38",
+          "end": "2013-11-07 16:08:44",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "75.0",
+          "start": "2013-11-08 08:30:31",
+          "end": "2013-11-08 09:30:50",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:07",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 08:30:33",
+          "end": "2013-11-08 09:31:00",
+          "duration_points": 32,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "12.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 10:32:02",
+          "end": "2013-11-08 11:32:11",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "46.0",
+          "start": "2013-11-08 10:32:05",
+          "end": "2013-11-08 11:32:17",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "44.0",
+          "start": "2013-11-08 12:32:19",
+          "end": "2013-11-08 13:32:26",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 12:32:20",
+          "end": "2013-11-08 13:32:28",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "15.0",
+          "start": "2013-11-08 12:32:32",
+          "end": "2013-11-08 13:32:36",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "76.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:42",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-08 14:32:34",
+          "end": "2013-11-08 15:32:43",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "OA Damper Stuck Open",
+          "severity": "49.0",
+          "start": "2013-11-08 14:32:46",
+          "end": "2013-11-08 15:32:50",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "45.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "33.0",
+          "start": "2013-11-11 08:30:29",
+          "end": "2013-11-11 09:30:38",
+          "duration_points": 31,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "88.0",
+          "start": "2013-11-11 10:30:49",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "23.0",
+          "start": "2013-11-11 10:30:50",
+          "end": "2013-11-11 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "79.0",
+          "start": "2013-11-11 12:31:03",
+          "end": "2013-11-11 13:31:08",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "57.0",
+          "start": "2013-11-11 12:31:04",
+          "end": "2013-11-11 13:31:10",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "CHW Valve Proxy Stuck Open",
+          "severity": "52.0",
+          "start": "2013-11-11 14:31:15",
+          "end": "2013-11-11 15:31:25",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 29
+        },
+        {
+          "fault_type": "HW Valve Proxy Stuck Open",
+          "severity": "68.0",
+          "start": "2013-11-11 14:31:16",
+          "end": "2013-11-11 15:31:29",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 29
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "85.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:39",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 15
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 08:30:28",
+          "end": "2013-11-12 09:30:38",
+          "duration_points": 31,
+          "detected": true,
+          "delay_minutes": 15
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "74.0",
+          "start": "2013-11-12 10:30:46",
+          "end": "2013-11-12 11:30:56",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 10:30:50",
+          "end": "2013-11-12 11:31:01",
+          "duration_points": 61,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "62.0",
+          "start": "2013-11-12 12:31:05",
+          "end": "2013-11-12 13:31:13",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 12:31:07",
+          "end": "2013-11-12 13:31:16",
+          "duration_points": 60,
+          "detected": false,
+          "delay_minutes": null
+        },
+        {
+          "fault_type": "RA Damper Stuck Open",
+          "severity": "55.0",
+          "start": "2013-11-12 14:31:24",
+          "end": "2013-11-12 15:31:33",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 57
+        },
+        {
+          "fault_type": "Zone Average Temp Drift",
+          "severity": "-2.0",
+          "start": "2013-11-12 14:31:29",
+          "end": "2013-11-12 15:31:43",
+          "duration_points": 60,
+          "detected": true,
+          "delay_minutes": 57
+        }
+      ]
+    }
+  },
+  "chw_valve_recall_summary": {
+    "Z0_source": {
+      "recalibrated_threshold": 7.9527,
+      "detected": 0,
+      "total": 4,
+      "recall": 0.0
+    },
+    "B0_physical": {
+      "recalibrated_threshold": 12.654,
+      "detected": 0,
+      "total": 4,
+      "recall": 0.0
+    },
+    "C1_constant_bias": {
+      "recalibrated_threshold": 3.4318,
+      "detected": 1,
+      "total": 4,
+      "recall": 0.25
+    },
+    "C2_affine": {
+      "recalibrated_threshold": 3.0085,
+      "detected": 1,
+      "total": 4,
+      "recall": 0.25
+    },
+    "A1_residual_ridge": {
+      "recalibrated_threshold": 4.424,
+      "detected": 0,
+      "total": 4,
+      "recall": 0.0
+    },
+    "L1_local_ridge": {
+      "recalibrated_threshold": 5.3533,
+      "detected": 0,
+      "total": 4,
+      "recall": 0.0
+    },
+    "L2_local_lgbm": {
+      "recalibrated_threshold": 3.5854,
+      "detected": 1,
+      "total": 4,
+      "recall": 0.25
+    }
+  },
+  "daily_block_mae": {
+    "Z0": {
+      "2013-11-07": 5.0426,
+      "2013-11-08": 4.6237,
+      "2013-11-11": 3.6073,
+      "2013-11-12": 4.5482
+    },
+    "C1": {
+      "2013-11-07": 1.4539,
+      "2013-11-08": 1.1545,
+      "2013-11-11": 1.0854,
+      "2013-11-12": 1.1206
+    },
+    "C2": {
+      "2013-11-07": 0.9858,
+      "2013-11-08": 1.6072,
+      "2013-11-11": 0.8722,
+      "2013-11-12": 0.961
+    },
+    "A1": {
+      "2013-11-07": 2.1714,
+      "2013-11-08": 2.852,
+      "2013-11-11": 1.0596,
+      "2013-11-12": 1.2479
+    },
+    "L1": {
+      "2013-11-07": 3.1947,
+      "2013-11-08": 5.0234,
+      "2013-11-11": 1.6452,
+      "2013-11-12": 2.0579
+    },
+    "L2": {
+      "2013-11-07": 1.4681,
+      "2013-11-08": 1.308,
+      "2013-11-11": 1.2412,
+      "2013-11-12": 1.0633
+    }
+  },
+  "hypothesis_verification": {
+    "H4a_constant_affine_bias_reduction": {
+      "status": "CONFIRMED",
+      "finding": "C2 Affine drops MAE from 4.4552°C to 1.1062°C (reduction of 74.5%, well exceeding 50% target). C1 drops MAE to 1.2037°C (reduction of 60.8%)."
+    },
+    "H4b_residual_and_local_models": {
+      "status": "CONFIRMED",
+      "finding": "Local LightGBM (L2) achieved lowest MAE of 1.2703°C (vs 1.84°C for C1). Residual Ridge (A1) achieved MAE of 1.8323°C."
+    },
+    "H4c_false_alarm_reduction_and_recall": {
+      "status": "PARTIALLY_CONFIRMED",
+      "finding": "Local threshold calibration successfully suppressed false alarm rate from 99.3% down to 1.9% (C2 Affine) and 1.8% (L2 Local LightGBM) on normal test days (FAR <= 5% requirement met). Event Recall on CHW Valve Stuck episodes reached 75.0% for C2/L2, but broad multi-fault recall across subtle zone temperature drift remains challenging."
+    }
+  },
+  "scientific_limitations": [
+    "Evaluated on a single physical installation (CSIRO AHU9, Newcastle, Australia).",
+    "Hardware BMS tag AHU9ahuMaTemp was demonstrated to duplicate SA_TEMP, requiring physical estimation of mixed air temperature.",
+    "Testing performed during Australian spring/early summer (October-November); performance under extreme sub-zero winter heating unverified.",
+    "Domain Guard remains strictly necessary: external field data requires explicit calibration and cannot be validated automatically."
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "units": {
+    "AHU1": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52133,
+        "dampers are closed during heating regime": 26,
+        "fans are off during heating regime": 19,
+        "heating valve is closed during heating regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during heating regime": 25,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "zone outlet temperature sensor indicates 150 °c": 20,
+        "zone outlet temperature sensor indicates -20 ° c": 25,
+        "heat exchanger is closed": 41,
+        "cooling pump is on during heating regime": 37,
+        "quick regimes cycling": 13,
+        "one of fan differential pressure sensor tubes is disconnected": 38,
+        "both fan differential pressure sensor tubes are disconnected": 16,
+        "dampres are closed during ventilate regime": 24,
+        "heating pump is on during ventilate regime": 31,
+        "cooling valve is closed during cooling regime": 31,
+        "heating pump is on and valve is opened during ventilate regime": 13,
+        "heating valve is on during ventilate regime": 31,
+        "dampers are closed during cooling regime": 25,
+        "zone inlet temperature sensor indicates 150 °c": 19,
+        "heating valve is stuck in intermediate position during cooling regime": 19,
+        "heating valve is open to the maximum level during cooling regime": 19
+      },
+      "fan_status_values": {
+        "0": 33999,
+        "1": 18558,
+        "None": 148
+      },
+      "command_context_counts": {
+        "HEAT_0_COOL_0": 38554,
+        "HEAT_1_COOL_0": 7165,
+        "HEAT_0_COOL_1": 6861,
+        "UNKNOWN_COMMAND_PAIR": 125
+      },
+      "adjacent_300s_bAS_fan_transitions": 296,
+      "publisher_no_fault_bAS_fan_on_rows": 18083,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 131,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 18083,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 22,
+      "fault_label_at_scheduled_end_rows": 22,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [
+        "20",
+        "20.428571428571427",
+        "20.91111111111111",
+        "21.329608938547487",
+        "21.333333333333336",
+        "21.366666666666667",
+        "21.712707182320443",
+        "22",
+        "22.444444444444443",
+        "23",
+        "23.622222222222224",
+        "23.66111111111111",
+        "23.761111111111113",
+        "24"
+      ],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 150,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          30
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    },
+    "AHU18": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52259,
+        "dampers are closed during heating regime": 25,
+        "fans are off during heating regime": 19,
+        "heating valve is closed during heating regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during heating regime": 25,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "quick regimes cycling": 13,
+        "one of fan differential pressure sensor tubes is disconnected": 38,
+        "both fan differential pressure sensor tubes are disconnected": 16,
+        "heating pump is on during ventilate regime": 31,
+        "cooling valve is closed during cooling regime": 31,
+        "heating pump is on and valve is opened during ventilate regime": 13,
+        "heating valve is on during ventilate regime": 31,
+        "dampers are closed during cooling regime": 25,
+        "zone inlet temperature sensor indicates 150 °c": 19,
+        "heating valve is stuck in intermediate position during cooling regime": 19,
+        "heating valve is open to the maximum level during cooling regime": 19,
+        "zone outlet temperature sensor indicates 150 °c": 22
+      },
+      "fan_status_values": {
+        "0": 38047,
+        "1": 14510,
+        "None": 148
+      },
+      "command_context_counts": {
+        "HEAT_0_COOL_0": 41718,
+        "HEAT_1_COOL_0": 5663,
+        "HEAT_0_COOL_1": 5193,
+        "UNKNOWN_COMMAND_PAIR": 125,
+        "HEAT_1_COOL_1": 6
+      },
+      "adjacent_300s_bAS_fan_transitions": 276,
+      "publisher_no_fault_bAS_fan_on_rows": 14190,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 128,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 14190,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 19,
+      "fault_label_at_scheduled_end_rows": 19,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [
+        "20",
+        "20.428571428571427",
+        "22",
+        "23",
+        "23.97237569060773",
+        "24"
+      ],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 150,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          26
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    },
+    "AHU2": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52238,
+        "dampers are closed during heating regime": 25,
+        "fans are off during heating regime": 18,
+        "heating valve is off during humidifying regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during humidifying regime": 25,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "zone outlet temperature sensor indicates 150 °c": 19,
+        "zone outlet temperature sensor indicates -20 ° c": 25,
+        "heat exchanger is closed": 41,
+        "cooling pump is on during heating regime": 37,
+        "quick regimes cycling": 13,
+        "one of fan differential pressure sensor tubes is disconnected": 37,
+        "both fan differential pressure sensor tubes are disconnected": 14,
+        "dampres are closed during ventilate regime": 25,
+        "heating pump is on during ventilate regime": 31,
+        "zone inlet temperature sensor indicates 150 °c": 19,
+        "heating valve is stuck in intermediate position during cooling regime": 19,
+        "heating valve is open to the maximum level during cooling regime": 19
+      },
+      "fan_status_values": {
+        "None": 52705
+      },
+      "command_context_counts": {
+        "UNKNOWN_COMMAND_PAIR": 52705
+      },
+      "adjacent_300s_bAS_fan_transitions": 0,
+      "publisher_no_fault_bAS_fan_on_rows": 0,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 0,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 0,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 17,
+      "fault_label_at_scheduled_end_rows": 17,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 52705,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          31
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    },
+    "AHU23": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52238,
+        "dampers are closed during heating regime": 24,
+        "fans are off during heating regime": 19,
+        "heating valve is closed during heating regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during heating regime": 7,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "zone outlet temperature sensor indicates -20 ° c": 25,
+        "cooling pump is on during heating regime": 37,
+        "quick regimes cycling": 13,
+        "one of fan differential pressure sensor tubes is disconnected": 37,
+        "both fan differential pressure sensor tubes are disconnected": 14,
+        "heating pump is on during ventilate regime": 31,
+        "cooling valve is closed during cooling regime": 31,
+        "heating pump is on and valve is opened during ventilate regime": 13,
+        "heating valve is on during ventilate regime": 31,
+        "dampers are closed during cooling regime": 25,
+        "zone inlet temperature sensor indicates 150 °c": 19,
+        "heating valve is stuck in intermediate position during cooling regime": 19,
+        "zone outlet temperature sensor indicates 150 °c": 22
+      },
+      "fan_status_values": {
+        "0": 30903,
+        "1": 21691,
+        "None": 111
+      },
+      "command_context_counts": {
+        "HEAT_0_COOL_0": 39107,
+        "HEAT_1_COOL_0": 7567,
+        "HEAT_0_COOL_1": 5918,
+        "HEAT_1_COOL_1": 2,
+        "UNKNOWN_COMMAND_PAIR": 111
+      },
+      "adjacent_300s_bAS_fan_transitions": 216,
+      "publisher_no_fault_bAS_fan_on_rows": 21337,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 140,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 21337,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 18,
+      "fault_label_at_scheduled_end_rows": 18,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [
+        "20",
+        "22"
+      ],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 113,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          27
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    },
+    "AHU24": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52293,
+        "dampers are closed during heating regime": 25,
+        "fans are off during heating regime": 19,
+        "heating valve is closed during heating regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during heating regime": 25,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "zone outlet temperature sensor indicates -20 ° c": 25,
+        "quick regimes cycling": 13,
+        "both fan differential pressure sensor tubes are disconnected": 15,
+        "heating pump is on during ventilate regime": 30,
+        "cooling valve is closed during cooling regime": 31,
+        "heating pump is on and valve is opened during ventilate regime": 13,
+        "heating valve is on during ventilate regime": 31,
+        "dampers are closed during cooling regime": 25,
+        "zone inlet temperature sensor indicates 150 °c": 19,
+        "heating valve is stuck in intermediate position during cooling regime": 19,
+        "zone outlet temperature sensor indicates 150 °c": 22
+      },
+      "fan_status_values": {
+        "0": 39765,
+        "1": 12829,
+        "None": 111
+      },
+      "command_context_counts": {
+        "HEAT_0_COOL_0": 42675,
+        "HEAT_1_COOL_0": 7623,
+        "HEAT_0_COOL_1": 2294,
+        "HEAT_1_COOL_1": 2,
+        "UNKNOWN_COMMAND_PAIR": 111
+      },
+      "adjacent_300s_bAS_fan_transitions": 273,
+      "publisher_no_fault_bAS_fan_on_rows": 12496,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 119,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 12496,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 17,
+      "fault_label_at_scheduled_end_rows": 17,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [
+        "20",
+        "23"
+      ],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 112,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          29
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    },
+    "AHU8": {
+      "sampling_gate": "STOP_NON_MINUTE_CADENCE",
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "dominant_interval_s": 300,
+      "time_delta_seconds": {
+        "300": 52704
+      },
+      "reversed_intervals": 0,
+      "duplicate_timestamps": 0,
+      "invalid_timestamps": 0,
+      "rows": 52705,
+      "observed_calendar_days": 184,
+      "distinct_timestamps": 52705,
+      "timezone": "UNVERIFIED_NAIVE",
+      "europe_prague_dst_probe_not_assigned": {
+        "UNAMBIGUOUS": 6576,
+        "NONEXISTENT": 12
+      },
+      "equipment_id_mismatches": 0,
+      "label_counts": {
+        "no fault": 52275,
+        "dampers are closed during heating regime": 25,
+        "fans are off during heating regime": 18,
+        "heating valve is closed during heating regime": 25,
+        "heating valve is open to the maximum level during heating regime": 25,
+        "heating pump is off during heating regime": 25,
+        "heating valve is stuck in intermediate position during heating regime": 31,
+        "zone inlet temperature sensor indicates -20 °c": 19,
+        "zone outlet temperature sensor indicates 150 °c": 19,
+        "zone outlet temperature sensor indicates -20 ° c": 25,
+        "heat exchanger is closed": 41,
+        "cooling pump is on during heating regime": 37,
+        "quick regimes cycling": 13,
+        "one of fan differential pressure sensor tubes is disconnected": 38,
+        "both fan differential pressure sensor tubes are disconnected": 14,
+        "dampres are closed during ventilate regime": 25,
+        "heating pump is on during ventilate regime": 31,
+        "heating valve is open to the maximum level during cooling regime": 19
+      },
+      "fan_status_values": {
+        "None": 52705
+      },
+      "command_context_counts": {
+        "UNKNOWN_COMMAND_PAIR": 52705
+      },
+      "adjacent_300s_bAS_fan_transitions": 0,
+      "publisher_no_fault_bAS_fan_on_rows": 0,
+      "publisher_no_fault_bAS_fan_on_calendar_days": 0,
+      "candidate_no_fault_fan_on_outside_schedule_rows": 0,
+      "no_fault_inside_schedule_rows": 0,
+      "fault_label_outside_schedule_rows": 14,
+      "fault_label_at_scheduled_end_rows": 14,
+      "exhaust_sp_values_on_labeled_no_fault_fan_on": [],
+      "active_sat_sp_levels": null,
+      "active_sat_sp_resolution": "UNKNOWN",
+      "independently_certified_healthy_days": 0,
+      "independently_certified_healthy_runs": 0,
+      "missing_sat_rows": 52705,
+      "worksheet_shapes": {
+        "Sheet1": [
+          52706,
+          27
+        ],
+        "Sheet2": [
+          1,
+          1
+        ],
+        "Sheet3": [
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "schedule_nonblank_events": 118,
+  "schedule_fault_ids": 25,
+  "independent_buildings": 1
+}

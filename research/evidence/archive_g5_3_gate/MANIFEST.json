@@ -1,0 +1,97 @@
+{
+  "contract_version": "1.0.0-rc.9",
+  "5wk": "PASS_DESCRIPTIVE_CROSS_FAULT",
+  "5wk_scope": "EXPLORATORY_POST_HOC",
+  "1wk": "BLOCKED_BY_DATA",
+  "fault_cause_isolation": "NOT_ESTABLISHED",
+  "paired_causal": "STOP",
+  "baseline_zip": "BUILDINGPULSE_G5_2_GATE_REVIEW.zip",
+  "baseline_sha256": "f918723b84acc9e30471163f3116bdb31f2e1700228e200099bab168f7629fda",
+  "protocol_sha256": {
+    "PRE_G5_3_CROSS_SCENARIO.md": "27d46af32d433fea0748af9065f58c958e9df8bc00aa56cfafd84f7b8512ac05",
+    "PRE_G36_1WK_SCORE_FREEZE.md": "6b8c9bd7a476819b5b1da13988ac3dc65cc41a9bb7e0b82f461421b771076801"
+  },
+  "source_artifact": {
+    "artifact": "BUILDINGPULSE_G5_3_G36_1WK_SOURCE_BYTES.zip",
+    "bytes": 3236076,
+    "sha256": "8a4973ee0b624221b2bb993f7f3ce8c088a84345f2b45393868d127cf96930cf",
+    "csv_sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3"
+  },
+  "overlay": [
+    {
+      "path": "API_CHANGELOG.md",
+      "baseline_sha256": "9b9bb3d9f4f96cbf71f6bca223ecbf0d6631f2a7a34be5f76c42b16198cefa74",
+      "sha256": "7bdc9a423f15897fe31e0bdc8933058f438f5164e4977107f4265b810460c788"
+    },
+    {
+      "path": "backend/app/api/endpoints/investigator_v1.py",
+      "baseline_sha256": "70eaff86e2c82437490c6bdf54d9cbe688f0f1ae9611c33c7ff105f6e4b02c23",
+      "sha256": "af10fd2d0bc44d32fe41cec768cbe6598e11b30d095eb5354a254f9700696e1b"
+    },
+    {
+      "path": "backend/app/services/g36_benchmark.py",
+      "baseline_sha256": "522054d510feefc46f4b42342e519386c17648b5bd90e6419400a1ec28cd0ef9",
+      "sha256": "aac84afeeee5ea66c712495c2c2b28146498050498f5a70069a1f5109323ddca"
+    },
+    {
+      "path": "backend/tests/test_g36_benchmark.py",
+      "baseline_sha256": "cf7e33e74f2d09d85f4ad736d542d4fb78b264c2847ca2da0b7d9a4ba6ae0915",
+      "sha256": "1b48025cc391f64d35c67197e3065a3f7bd620e1f887c95fa160993e24aa22dd"
+    },
+    {
+      "path": "contracts/CONTRACT_V1.md",
+      "baseline_sha256": "a7110fd35cd25ed84fb95100e0b7d312472632eec6c8679e082bf98f4a4c1fb0",
+      "sha256": "3a49981b5671f900142fbe9002f4304637dc338e11edc8eb4238bdb65c713a1c"
+    },
+    {
+      "path": "contracts/openapi-v1.yaml",
+      "baseline_sha256": "37af0ebb7a969d05e8a6a7817573ac5a6efee993b281f7a509f03f26404459a7",
+      "sha256": "b4d7a34b57207267fa7db89e545bd1780afe9b2b00e923608a38c8310af11670"
+    },
+    {
+      "path": "contracts/fixtures/demo_manifest.json",
+      "baseline_sha256": "07fd340e5f1031f21a9a5b37b290d723fa36e19df566f2b871c73b896867d132",
+      "sha256": "8b422b2d9da0a71d0766163c2ec14ee927f118e793dcee460adc92c07d943c73"
+    },
+    {
+      "path": "frontend/src/api/investigatorV1.ts",
+      "baseline_sha256": "7dcfc615e41479278d66bfb5bed9bcede29ca6fc50afed943c0ccc2e5033eae8",
+      "sha256": "a34fc30cd330f0ed28d8ca6945fc558b109278a15bbc38a28bd96c51bcca5db1"
+    },
+    {
+      "path": "frontend/src/pages/G36BenchmarkPage.tsx",
+      "baseline_sha256": "16d75089a43c9f0581983d19852eb9c434f0618498ccc6d970839596b2b87622",
+      "sha256": "3925239b088312117bdcfca46dec33e92bec5f7a76078c10891e9391f93cd29f"
+    },
+    {
+      "path": "frontend/src/types/openapi-v1.generated.ts",
+      "baseline_sha256": "8661630a81d620559f1cc1122ea31795081de00ca573a406f8f8d36fce335619",
+      "sha256": "f58a8a8e12679b3c613a7f8ce31f0aa47454713c41b3ebb21023d0ed348804c1"
+    },
+    {
+      "path": "scripts/smoke_g01_container.py",
+      "baseline_sha256": "4350e1a6c77f13f026596d7a6539b3a391043e954447c24c4ffe7b3ecb247661",
+      "sha256": "9e796555c34c62f8d6af21f721182785b86f8a4878d34f43883f941ffab97d26"
+    },
+    {
+      "path": "scripts/test_playwright_g36.py",
+      "baseline_sha256": "91e8a3bca0c18fbbe813187187119fa7de43315cd6bfeef3a5c9adb704f6a32d",
+      "sha256": "0473db17e539f8754dd21d89cb14a3762abc20e35519fadef5a310327a192905"
+    },
+    {
+      "path": "research/g52/fetch_members.py",
+      "baseline_sha256": "7793a7dfb338a295511ae8e109aeebee9e7e9b6a566f95557471aa614b7d6ef1",
+      "sha256": "f6b518d588e95783d0d16014fd6d51aa6e28c84114503857c03e5abeb2a862dc"
+    },
+    {
+      "path": "research/g53/cross_controls.py",
+      "baseline_sha256": null,
+      "sha256": "33296dd537e0233709ef8d417bda8899436ec1f645cacff7eaf1ae7f9b320c2f"
+    },
+    {
+      "path": "research/g53/profile_transport.py",
+      "baseline_sha256": null,
+      "sha256": "b433e8c28cda3adccfd7bbbb3d9284261f51e8e7643acf830b5b94d7777529c3"
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "components": {
+    "schemas": {
+      "ApplicabilityRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "active_setpoint": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Setpoint"
+          },
+          "control_mode": {
+            "default": "UNKNOWN",
+            "enum": [
+              "RUNNING_WARM",
+              "OTHER",
+              "OFF",
+              "UNKNOWN"
+            ],
+            "title": "Control Mode",
+            "type": "string"
+          },
+          "features": {
+            "$ref": "#/components/schemas/ObservedFeatures"
+          },
+          "origin": {
+            "default": "UNKNOWN",
+            "enum": [
+              "VERIFIED_BAS",
+              "UNKNOWN"
+            ],
+            "title": "Origin",
+            "type": "string"
+          },
+          "physical_roles_verified": {
+            "default": false,
+            "title": "Physical Roles Verified",
+            "type": "boolean"
+          },
+          "setpoint_exact": {
+            "default": false,
+            "title": "Setpoint Exact",
+            "type": "boolean"
+          },
+          "temperature_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temperature Unit"
+          }
+        },
+        "title": "ApplicabilityRequest",
+        "type": "object"
+      },
+      "ApplicabilityResult": {
+        "properties": {
+          "deployment_eligible": {
+            "const": false,
+            "default": false,
+            "title": "Deployment Eligible",
+            "type": "boolean"
+          },
+          "fan_duration_verified": {
+            "const": false,
+            "default": false,
+            "title": "Fan Duration Verified",
+            "type": "boolean"
+          },
+          "incident_eligible": {
+            "const": false,
+            "default": false,
+            "title": "Incident Eligible",
+            "type": "boolean"
+          },
+          "inference_authorized": {
+            "const": false,
+            "default": false,
+            "title": "Inference Authorized",
+            "type": "boolean"
+          },
+          "one_dimensional_feature_ranges_only": {
+            "const": true,
+            "default": true,
+            "title": "One Dimensional Feature Ranges Only",
+            "type": "boolean"
+          },
+          "reason": {
+            "enum": [
+              "UNKNOWN_SETPOINT",
+              "UNVERIFIED_PHYSICAL_ROLES",
+              "UNKNOWN_OR_WRONG_TEMPERATURE_UNIT",
+              "UNKNOWN_CONTROL_MODE",
+              "OUTSIDE_CONTROL_MODE",
+              "MISSING_REQUIRED_FEATURE",
+              "OUTSIDE_SOURCE_FEATURE_SUPPORT",
+              "SETPOINT_OUTSIDE_SOURCE_SUPPORT",
+              "EXACT_SOURCE_SUPPORT_MATCH"
+            ],
+            "title": "Reason",
+            "type": "string"
+          },
+          "self_attested_metadata_only": {
+            "const": true,
+            "default": true,
+            "title": "Self Attested Metadata Only",
+            "type": "boolean"
+          },
+          "source_setpoint_support": {
+            "enum": [
+              "UNKNOWN",
+              "OUTSIDE",
+              "MATCH"
+            ],
+            "title": "Source Setpoint Support",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "ABSTAIN_DOMAIN_SHIFT",
+              "NOT_APPLICABLE_CONTROL_REGIME",
+              "SOURCE_REGIME_MATCH_ONLY"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "reason",
+          "source_setpoint_support"
+        ],
+        "title": "ApplicabilityResult",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "ObservedFeatures": {
+        "additionalProperties": false,
+        "properties": {
+          "MA_TEMP": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ma Temp"
+          },
+          "OA_TEMP": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oa Temp"
+          },
+          "RA_TEMP": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ra Temp"
+          }
+        },
+        "title": "ObservedFeatures",
+        "type": "object"
+      },
+      "RecordedNormalEvidence": {
+        "properties": {
+          "calendar_minutes": {
+            "const": 10080,
+            "default": 10080,
+            "title": "Calendar Minutes",
+            "type": "integer"
+          },
+          "eligible_minutes": {
+            "const": 5425,
+            "default": 5425,
+            "title": "Eligible Minutes",
+            "type": "integer"
+          },
+          "evaluated_blocks": {
+            "const": 7,
+            "default": 7,
+            "title": "Evaluated Blocks",
+            "type": "integer"
+          },
+          "independent_runs": {
+            "const": 1,
+            "default": 1,
+            "title": "Independent Runs",
+            "type": "integer"
+          },
+          "lightgbm_alarm_blocks": {
+            "const": 7,
+            "default": 7,
+            "title": "Lightgbm Alarm Blocks",
+            "type": "integer"
+          },
+          "scope": {
+            "const": "ONE_G36_SIMULATED_NORMAL_RUN",
+            "default": "ONE_G36_SIMULATED_NORMAL_RUN",
+            "title": "Scope",
+            "type": "string"
+          },
+          "stage06_archive_sha256": {
+            "const": "64ce1a8c46e163ae346df4d3bfec82d486d3a0052fc5da47a4cd2112a45e6bcf",
+            "default": "64ce1a8c46e163ae346df4d3bfec82d486d3a0052fc5da47a4cd2112a45e6bcf",
+            "title": "Stage06 Archive Sha256",
+            "type": "string"
+          },
+          "trace_artifact": {
+            "const": "TARGET_NORMAL_06_MINUTE_TRACE.csv.gz",
+            "default": "TARGET_NORMAL_06_MINUTE_TRACE.csv.gz",
+            "title": "Trace Artifact",
+            "type": "string"
+          }
+        },
+        "title": "RecordedNormalEvidence",
+        "type": "object"
+      },
+      "ReducedSATResearchContract": {
+        "properties": {
+          "candidate": {
+            "const": "reduced-thermal-sat-v1",
+            "default": "reduced-thermal-sat-v1",
+            "title": "Candidate",
+            "type": "string"
+          },
+          "deployment_eligible": {
+            "const": false,
+            "default": false,
+            "title": "Deployment Eligible",
+            "type": "boolean"
+          },
+          "external_field_validation": {
+            "const": false,
+            "default": false,
+            "title": "External Field Validation",
+            "type": "boolean"
+          },
+          "fan_duration_verified": {
+            "const": false,
+            "default": false,
+            "title": "Fan Duration Verified",
+            "type": "boolean"
+          },
+          "historical_normal_evidence": {
+            "$ref": "#/components/schemas/RecordedNormalEvidence"
+          },
+          "one_dimensional_feature_ranges_only": {
+            "const": true,
+            "default": true,
+            "title": "One Dimensional Feature Ranges Only",
+            "type": "boolean"
+          },
+          "self_attested_metadata_only": {
+            "const": true,
+            "default": true,
+            "title": "Self Attested Metadata Only",
+            "type": "boolean"
+          },
+          "setpoint_used_as_feature": {
+            "const": false,
+            "default": false,
+            "title": "Setpoint Used As Feature",
+            "type": "boolean"
+          },
+          "source_calibration_domain": {
+            "const": "LBNL_SIMULATED_SDAHU_2018",
+            "default": "LBNL_SIMULATED_SDAHU_2018",
+            "title": "Source Calibration Domain",
+            "type": "string"
+          },
+          "target_fault_eval_allowed": {
+            "const": false,
+            "default": false,
+            "title": "Target Fault Eval Allowed",
+            "type": "boolean"
+          },
+          "training_setpoint_support": {
+            "$ref": "#/components/schemas/TrainingSetpointSupport"
+          },
+          "transfer_normal_gate": {
+            "const": "STOP_OOD_HEALTHY",
+            "default": "STOP_OOD_HEALTHY",
+            "title": "Transfer Normal Gate",
+            "type": "string"
+          },
+          "use": {
+            "const": "RESEARCH_ONLY",
+            "default": "RESEARCH_ONLY",
+            "title": "Use",
+            "type": "string"
+          }
+        },
+        "title": "ReducedSATResearchContract",
+        "type": "object"
+      },
+      "TrainingSetpointSupport": {
+        "properties": {
+          "span": {
+            "default": [
+              "55.184006",
+              "55.184006"
+            ],
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "const": "55.184006",
+                "type": "string"
+              },
+              {
+                "const": "55.184006",
+                "type": "string"
+              }
+            ],
+            "title": "Span",
+            "type": "array"
+          },
+          "unique_count": {
+            "const": 1,
+            "default": 1,
+            "title": "Unique Count",
+            "type": "integer"
+          },
+          "unit": {
+            "const": "degF",
+            "default": "degF",
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "title": "TrainingSetpointSupport",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "BuildingPulse Research Applicability",
+    "version": "1.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/research/domain-shift-07": {
+      "get": {
+        "description": "Return frozen candidate metadata and its negative external transfer gate.",
+        "operationId": "reduced_sat_contract_api_research_domain_shift_07_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReducedSATResearchContract"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Reduced Sat Contract",
+        "tags": [
+          "Research applicability"
+        ]
+      }
+    },
+    "/api/research/domain-shift-07/applicability": {
+      "post": {
+        "description": "Check prospective applicability metadata without scoring or emitting incidents.",
+        "operationId": "reduced_sat_applicability_api_research_domain_shift_07_applicability_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicabilityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicabilityResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reduced Sat Applicability",
+        "tags": [
+          "Research applicability"
+        ]
+      }
+    }
+  }
+}

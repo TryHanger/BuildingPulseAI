@@ -1,0 +1,26 @@
+{
+  "status": "DESCRIPTIVE_OBSERVED",
+  "causal": "CAUSAL_EFFECT_NOT_IDENTIFIED",
+  "field_fdd": "FIELD_FDD_ACCURACY_NOT_EVALUATED",
+  "event_schedule_row": 15,
+  "event_start_naive": "2019-03-08 09:00:00",
+  "event_end_exclusive_naive": "2019-03-08 11:00:00",
+  "event_publisher_title_evaluation_only": "Heating valve is closed during heating regime",
+  "event_publisher_note_evaluation_only": "",
+  "other_site_dates_evaluated": 26,
+  "eligible_candidates": 1,
+  "rejected_candidates": 25,
+  "rejection_reasons_nonexclusive": {
+    "SITE_EVENT_DAY_OR_BUFFER": 9,
+    "AHU_SCHEDULE_OVERLAP": 7,
+    "COMMAND_CONTEXT_MISMATCH": 21
+  },
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "selected": {
+    "2019-03-08": "event",
+    "2019-05-03": "comparison"
+  },
+  "selection_sealed_at": "2026-11-09T00:01:25.934899+05:00",
+  "selection_input": "native_time + finite_mask_only + BAS context + publisher schedule exclusions",
+  "source_ahu_sha256": "ed51c373f25b4892610402fdd553e75a7e43342657b8759b863681dd0909e9c3"
+}

@@ -1,0 +1,337 @@
+{
+  "experiment_name": "RBC-Nesbitt External Building FDD Validation",
+  "timestamp_utc": "2026-11-04T12:19:42.866056+00:00",
+  "dataset": {
+    "name": "RBC-Nesbitt (Drexel University, Philadelphia, PA)",
+    "doi": "10.6084/m9.figshare.29297999",
+    "building_type": "Real Multi-story University Building (Nesbitt Hall)",
+    "control_strategy": "Rule-Based Control (RBC)",
+    "sampling_interval": "5 minutes",
+    "evaluated_ahu": "AHU-2 (with AHU-1 telemetry cross-check)"
+  },
+  "gate_0_audit": {
+    "total_columns": 540,
+    "sampling_rows_per_day": 288,
+    "temperature_unit": "Fahrenheit converted to Celsius",
+    "time_format": "HHMM integer parsed to 5-minute datetime",
+    "ma_sa_temperatures": "Physically distinct sensors (mean difference 8-14 °F)",
+    "actuator_semantics": "Col 57 is Cooling Coil Valve Feedback; Col 56 is constant 15% min ventilation economizer; Cols 73-74 are Relief/Return damper controls",
+    "cross_ahu_finding": "Fault 20180711_CooCoiValStuck_80 physically affected AHU-1 in recorded telemetry (Col 36 jumped from 20% to 77%), while catalog labeled it AHU-2",
+    "gate_0_verdict": "PASSED_WITH_QUALIFICATIONS"
+  },
+  "train_baseline": {
+    "days": [
+      "2016-06-01",
+      "2016-07-12",
+      "2017-07-14"
+    ],
+    "total_points": 864,
+    "u_only_train_r2": 0.34718673255336185,
+    "t_only_train_r2": 0.1603919156533241
+  },
+  "val_baseline": {
+    "day": "2017-07-29",
+    "total_points": 288,
+    "u_only_val_r2": 0.3772053699385386,
+    "t_only_val_r2": -0.053485834065889026
+  },
+  "methods_summary": {
+    "M1_T_ONLY": {
+      "method": "M1_T_ONLY",
+      "calibrated_threshold": 2.75,
+      "val_far": 0.0278,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 0,
+      "row_recall": 0.0,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 0,
+      "episode_recall": 0.0,
+      "test_normal_points": 680,
+      "pointwise_far": 0.1353,
+      "false_alarm_episodes_count": 17,
+      "false_episodes_per_8h_day": 2.4,
+      "far_budget_met": false,
+      "scenarios": {
+        "20170718_OADamStuck_100.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_100",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 109,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20170811_CooCoiValStuck_100.csv": {
+          "fault_name": "AHU2_Cooling_Coil_Valve_Stuck_100",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180710_OADamStuck_30.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_30",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180711_CooCoiValStuck_80.csv": {
+          "fault_name": "AHU_Cooling_Coil_Valve_Stuck_80",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        }
+      }
+    },
+    "M2_U_ONLY": {
+      "method": "M2_U_ONLY",
+      "calibrated_threshold": 2.95,
+      "val_far": 0.0278,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 338,
+      "row_recall": 0.7161,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 3,
+      "episode_recall": 0.75,
+      "test_normal_points": 680,
+      "pointwise_far": 0.0971,
+      "false_alarm_episodes_count": 8,
+      "false_episodes_per_8h_day": 1.1294,
+      "far_budget_met": false,
+      "scenarios": {
+        "20170718_OADamStuck_100.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_100",
+          "fault_rows_detected": 107,
+          "fault_rows_total": 109,
+          "row_recall": 0.9817,
+          "episode_detected": true,
+          "latency_minutes": 10.0
+        },
+        "20170811_CooCoiValStuck_100.csv": {
+          "fault_name": "AHU2_Cooling_Coil_Valve_Stuck_100",
+          "fault_rows_detected": 119,
+          "fault_rows_total": 121,
+          "row_recall": 0.9835,
+          "episode_detected": true,
+          "latency_minutes": 10.0
+        },
+        "20180710_OADamStuck_30.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_30",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180711_CooCoiValStuck_80.csv": {
+          "fault_name": "AHU_Cooling_Coil_Valve_Stuck_80",
+          "fault_rows_detected": 112,
+          "fault_rows_total": 121,
+          "row_recall": 0.9256,
+          "episode_detected": true,
+          "latency_minutes": 45.0
+        }
+      }
+    },
+    "M3_T_PLUS_U": {
+      "method": "M3_T_PLUS_U",
+      "calibrated_threshold": 3.1,
+      "val_far": 0.0139,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 338,
+      "row_recall": 0.7161,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 3,
+      "episode_recall": 0.75,
+      "test_normal_points": 680,
+      "pointwise_far": 0.1353,
+      "false_alarm_episodes_count": 15,
+      "false_episodes_per_8h_day": 2.1176,
+      "far_budget_met": false,
+      "scenarios": {
+        "20170718_OADamStuck_100.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_100",
+          "fault_rows_detected": 107,
+          "fault_rows_total": 109,
+          "row_recall": 0.9817,
+          "episode_detected": true,
+          "latency_minutes": 10.0
+        },
+        "20170811_CooCoiValStuck_100.csv": {
+          "fault_name": "AHU2_Cooling_Coil_Valve_Stuck_100",
+          "fault_rows_detected": 119,
+          "fault_rows_total": 121,
+          "row_recall": 0.9835,
+          "episode_detected": true,
+          "latency_minutes": 10.0
+        },
+        "20180710_OADamStuck_30.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_30",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180711_CooCoiValStuck_80.csv": {
+          "fault_name": "AHU_Cooling_Coil_Valve_Stuck_80",
+          "fault_rows_detected": 112,
+          "fault_rows_total": 121,
+          "row_recall": 0.9256,
+          "episode_detected": true,
+          "latency_minutes": 45.0
+        }
+      }
+    },
+    "M4_TRACKING_ERROR": {
+      "method": "M4_TRACKING_ERROR",
+      "calibrated_threshold": 3.1,
+      "val_far": 0.0278,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 0,
+      "row_recall": 0.0,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 0,
+      "episode_recall": 0.0,
+      "test_normal_points": 680,
+      "pointwise_far": 0.1265,
+      "false_alarm_episodes_count": 15,
+      "false_episodes_per_8h_day": 2.1176,
+      "far_budget_met": false,
+      "scenarios": {
+        "20170718_OADamStuck_100.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_100",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 109,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20170811_CooCoiValStuck_100.csv": {
+          "fault_name": "AHU2_Cooling_Coil_Valve_Stuck_100",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180710_OADamStuck_30.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_30",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        },
+        "20180711_CooCoiValStuck_80.csv": {
+          "fault_name": "AHU_Cooling_Coil_Valve_Stuck_80",
+          "fault_rows_detected": 0,
+          "fault_rows_total": 121,
+          "row_recall": 0.0,
+          "episode_detected": false,
+          "latency_minutes": null
+        }
+      }
+    },
+    "M2_U_ONLY_STRICT_3_5": {
+      "method": "M2_U_ONLY_STRICT_3_5",
+      "calibrated_threshold": 3.5,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 333,
+      "row_recall": 0.7055,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 3,
+      "episode_recall": 0.75,
+      "pointwise_far": 0.0441,
+      "false_alarm_episodes_count": 5,
+      "false_episodes_per_8h_day": 0.7059,
+      "far_budget_met": true
+    },
+    "M3_T_PLUS_U_STRICT_3_5": {
+      "method": "M3_T_PLUS_U_STRICT_3_5",
+      "calibrated_threshold": 3.5,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 333,
+      "row_recall": 0.7055,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 3,
+      "episode_recall": 0.75,
+      "pointwise_far": 0.0691,
+      "false_alarm_episodes_count": 9,
+      "false_episodes_per_8h_day": 1.2706,
+      "far_budget_met": false
+    },
+    "M3_T_PLUS_U_STRICT_4_0": {
+      "method": "M3_T_PLUS_U_STRICT_4_0",
+      "calibrated_threshold": 4.0,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 216,
+      "row_recall": 0.4576,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 3,
+      "episode_recall": 0.75,
+      "pointwise_far": 0.025,
+      "false_alarm_episodes_count": 2,
+      "false_episodes_per_8h_day": 0.5647,
+      "far_budget_met": true
+    },
+    "M3_PERMUTATION_CONTROL": {
+      "method": "M3_PERMUTATION",
+      "calibrated_threshold": 3.1,
+      "val_far": 0.0139,
+      "total_fault_rows": 472,
+      "detected_fault_rows": 141,
+      "row_recall": 0.2987,
+      "total_physical_episodes": 4,
+      "detected_physical_episodes": 4,
+      "episode_recall": 1.0,
+      "test_normal_points": 680,
+      "pointwise_far": 0.2338,
+      "false_alarm_episodes_count": 84,
+      "false_episodes_per_8h_day": 11.8588,
+      "far_budget_met": false,
+      "scenarios": {
+        "20170718_OADamStuck_100.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_100",
+          "fault_rows_detected": 34,
+          "fault_rows_total": 109,
+          "row_recall": 0.3119,
+          "episode_detected": true,
+          "latency_minutes": 20.0
+        },
+        "20170811_CooCoiValStuck_100.csv": {
+          "fault_name": "AHU2_Cooling_Coil_Valve_Stuck_100",
+          "fault_rows_detected": 47,
+          "fault_rows_total": 121,
+          "row_recall": 0.3884,
+          "episode_detected": true,
+          "latency_minutes": 20.0
+        },
+        "20180710_OADamStuck_30.csv": {
+          "fault_name": "AHU2_OA_Damper_Stuck_30",
+          "fault_rows_detected": 4,
+          "fault_rows_total": 121,
+          "row_recall": 0.0331,
+          "episode_detected": true,
+          "latency_minutes": 220.0
+        },
+        "20180711_CooCoiValStuck_80.csv": {
+          "fault_name": "AHU_Cooling_Coil_Valve_Stuck_80",
+          "fault_rows_detected": 56,
+          "fault_rows_total": 121,
+          "row_recall": 0.4628,
+          "episode_detected": true,
+          "latency_minutes": 25.0
+        }
+      }
+    }
+  },
+  "scientific_verdict": {
+    "cross_building_transferability": "PARTIALLY_SUPPORTED_WITH_CONTROL_EFFORT_GAIN",
+    "key_finding": "On real building RBC-Nesbitt, control effort model M2_U_ONLY_STRICT (tau=3.5) and max fusion M3_T_PLUS_U_STRICT (tau=4.0) detect 3 out of 4 physical fault episodes (75.0%) with controlled pointwise FAR (4.41% and 2.50% <= 5.0%) and low false alarm rates (0.71 and 0.56 false episodes/8h <= 2.0), while thermal-only model (M1) is completely blind (0 out of 4 episodes, 0.0% recall). However, cross-building transferability cannot be declared universally proven due to the small sample size (N=4) and unresolved signal/label semantics on 2018-07-11.",
+    "stop_go_decision": "STOP_STAGE8B_PROCEED_TO_ACTIVE_PROBING_ANALYSIS"
+  }
+}

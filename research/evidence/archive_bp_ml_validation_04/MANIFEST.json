@@ -1,0 +1,30 @@
+{
+  "task": "BP-ML-VALIDATION-04",
+  "decision": "ACCEPT_PREVALIDATION",
+  "external_validation": "BLOCKED_EXTERNAL_VALIDATION",
+  "external_prediction_executed": false,
+  "base_archive": "BUILDINGPULSE_BP_ML_REPRO_03_REVIEW.zip",
+  "base_archive_sha256": "69322d88eff8701ead17111dd04c89678461d006230ea16ac227ba9c9fc280b2",
+  "git_head": null,
+  "base_files_receipt_sha256": "7da2ac900b1d795f157992932f8f64c9b1c5c7e7965fa7f392a8be45be4fb9c1",
+  "base_and_reference_archives": {
+    "BUILDINGPULSE_BP_ML_REPRO_01_REVIEW.zip": "04c4159590ddc401601fdec02de394647d0c71812a92f4cead469cce562b8754",
+    "BUILDINGPULSE_BP_ML_REPRO_02_REVIEW.zip": "d9b3187756ab98d001305c92dbf04c2fc82393896d1d64faaa016cb48c85faf7",
+    "BUILDINGPULSE_BP_ML_REPRO_03_REVIEW.zip": "69322d88eff8701ead17111dd04c89678461d006230ea16ac227ba9c9fc280b2",
+    "BUILDINGPULSE_BP_ML_REPRO_03_INDEPENDENT_AUDIT_AND_VALIDATION_04_TASK (1).zip": "5c4ddf0854f5e47096afd0d3e96f61d16cb23cf2d1a36caad5dea7f279ec8604"
+  },
+  "freeze_sha256": "32a90e24c1cbb2b90b789ff76f9fa78a9c15dcbdf464aa3dd652fe22ae68f725",
+  "patch_sha256": "c18db20a8a7f4fd3c72883866ecaa5840df02bae9ac4d0a7829faf9ef3b899c1",
+  "overlay_sha256": {
+    "backend/app/api/endpoints/virtual_sensor_research.py": "0419cb2173242e715b3015f20e3d8cf05a2965e53e5e9d68ebe354fbd9463f9a",
+    "backend/app/services/virtual_sensor_research.py": "e5e7b03d04aa400f46d56f52131015388146d6f294b22cb4dcac6b28b962224c",
+    "contracts/openapi-virtual-sensor-research.json": "c121c12f601370247d56dca3aae13c0c322c31693a7ef179072495049c07f342",
+    "frontend/src/pages/VirtualSensorResearchPage.tsx": "1abd9a020c37e9af0c543d9e4df0b8418838e8416b79bfffb51c140135f26307",
+    "frontend/src/types/virtual-sensor-research.generated.ts": "8b76ac55cf20b526c38dd558b79d9e9e2c00779c69220ce0610b6fca93f3d0ad",
+    "research/ml_repro_02/export_openapi.py": "adc04d480d898df0f9953aeae69c8d7ff5112c59c24d41829313064ffa091921",
+    "research/ml_validation_04/evidence.py": "6aefb29fcadfe4e416d43f7047459e0278c272b38e014eaf02e6dea5750ba745",
+    "research/ml_validation_04/source_inventory.py": "7aefeafd5ff3387374b4728e1449583d711667e20cc4524f82054cda2eb6c932",
+    "research/ml_validation_04/test_boundary.py": "75e6645f495a67cc054e798376b40643a2a9e15be10298a346fa8b96792ddeb2",
+    "research/ml_validation_04/verify_live.py": "7e12167bf61ee44e6e2b0f9f7b543cd19f329bc36619a919739b19fb878b842d"
+  }
+}

@@ -1,0 +1,14 @@
+PASS event-AHU1 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS event-AHU2 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS event-AHU8 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS event-AHU18 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS event-AHU23 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS event-AHU24 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU1-063 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU1-077 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU18-063 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU18-077 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU23-063 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS control-AHU23-077 · 20 CSV ticks, every saved field, independent A/B, original XLSX ticks and four inputs
+PASS 49 archive entries, 12 traces, 240 ticks, 384 independently recomputed fields
+PASS raw XLSX for 12/12 windows

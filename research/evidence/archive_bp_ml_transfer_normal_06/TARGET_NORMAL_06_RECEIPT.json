@@ -1,0 +1,166 @@
+{
+  "role": "target_reference",
+  "source": "BaselineSystem.csv",
+  "sha256": {
+    "TRANSFER_05_PROTOCOL.json": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+    "AHU_annual.csv": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+    "BaselineSystem.csv": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+    "SOURCE_FIT_RECEIPT.json": "1187a8aa96ff7c64ef4e4c0613bee91e8acf5d3bbc794c7d314889ee451fff84",
+    "REDUCED_SAT.lightgbm.txt": "643f08b6f50edef8487783f41ea7067e9863c83c9860181df4eda152d5751625",
+    "REDUCED_SAT_RIDGE.json": "a0e122b112ad2ae6b914635bf161d8977b5a11283b75260b620504dfd317f7de"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "lightgbm": "4.6.0",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4"
+  },
+  "ridge_runtime": "FROZEN_JSON_COEFFICIENTS_NUMPY",
+  "features": [
+    "MA_TEMP",
+    "OA_TEMP",
+    "RA_TEMP"
+  ],
+  "alarm_operator": ">",
+  "alarm_z": 3,
+  "calibration": {
+    "lightgbm_reduced": {
+      "center": 0.062747763227272,
+      "scale": 0.1199159960315784,
+      "days": 53
+    },
+    "ridge_reduced": {
+      "center": 0.038583070773153705,
+      "scale": 0.03567196291402695,
+      "days": 53
+    },
+    "sat_minus_sp": {
+      "center": 0.021867197011131892,
+      "scale": 0.02529838361134594,
+      "days": 53
+    }
+  },
+  "source_support_degF": {
+    "MA_TEMP": [
+      59.861824,
+      109.07821
+    ],
+    "OA_TEMP": [
+      60.007996,
+      95.0
+    ],
+    "RA_TEMP": [
+      67.0176,
+      109.50728
+    ]
+  },
+  "clock_basis": "MODEL_SECONDS",
+  "excluded_right_boundary_model_s": 18230400,
+  "independent_normal_runs": 1,
+  "target_fault_prediction_executed": false,
+  "target_normal_native_predict_calls": 1,
+  "fault_phase_authorized": false,
+  "artifacts": {
+    "TARGET_NORMAL_06_MINUTE_TRACE.csv.gz": "3ea7c708f56c43e3738c2ebe2afc7e3b3360d32ac1617a457d5a0bd1c4a80161",
+    "TARGET_NORMAL_06_BLOCKS.csv": "50f63ab75abf8253709bde64ff96bcdf96783df0d254c6f638753b34118c0171"
+  },
+  "receipt_origin": "SEALED_EXISTING_SINGLE_RUN_TRACE_AFTER_POSTWRITE_AUDIT_DENIAL",
+  "prediction_calls_during_receipt_recovery": 0,
+  "gate": "STOP_OOD_HEALTHY",
+  "gate_failed_conditions": [
+    "LIGHTGBM_NORMAL_ALARM"
+  ],
+  "calendar_blocks": 7,
+  "evaluated_blocks": 7,
+  "calendar_minutes": 10080,
+  "warm_running_minutes": 5425,
+  "eligible_minutes": 5425,
+  "coverage": 1.0,
+  "calendar_coverage": 0.5381944444444444,
+  "max_contiguous_scored_minutes": 775,
+  "fan_missing": 0,
+  "oat_missing": 0,
+  "plant_mode_missing": 0,
+  "invalid_unit_or_range": 0,
+  "warm_running_outside_support": 0,
+  "mode_1_minutes": 0,
+  "mode_1_eligible": 0,
+  "mode_2_minutes": 0,
+  "mode_2_eligible": 0,
+  "mode_3_minutes": 5433,
+  "mode_3_eligible": 5419,
+  "mode_4_minutes": 4647,
+  "mode_4_eligible": 6,
+  "abstain_reasons": {
+    "NOT_RUNNING_OR_HOLD": 4655
+  },
+  "methods": {
+    "lightgbm_reduced": {
+      "alarm_blocks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "false_alarm_rate_conditional": 1.0,
+      "pooled_mae_degF": 1.886578433218974,
+      "daily_z": [
+        15.826262575593441,
+        15.240876348485333,
+        14.999064091308638,
+        15.019523233250268,
+        14.62051264566723,
+        14.86871834735817,
+        15.889693951159682
+      ]
+    },
+    "ridge_reduced": {
+      "alarm_blocks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "false_alarm_rate_conditional": 1.0,
+      "pooled_mae_degF": 1.8670114161803837,
+      "daily_z": [
+        49.13342981084941,
+        52.19263871572613,
+        52.50784703403206,
+        48.74120219163598,
+        49.89019568248916,
+        52.12587073879383,
+        54.205959922454106
+      ]
+    },
+    "sat_minus_sp": {
+      "alarm_blocks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "false_alarm_rate_conditional": 1.0,
+      "pooled_mae_degF": 0.1806425331221198,
+      "daily_z": [
+        3.1705009623886777,
+        6.224032386528862,
+        6.647151417966234,
+        7.615926455804278,
+        6.884061092580816,
+        7.277372394078712,
+        6.113696996666281
+      ]
+    }
+  },
+  "technical_input_stop": false
+}

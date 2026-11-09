@@ -1,0 +1,6 @@
+PASS full OpenAPI, Stage07 research guard and existing FDD incident response byte identical on live HTTP
+PASS offline replay has no serving route (404)
+e2c99dda07a084db0c372b38474714ce211c4913f76248ffe3cc9f3c1f5a97b0  /tmp/bp-native09.ruXZ0h/replay-openapi.json
+836c7df738ffbcdd9a506823d55d5e2678ef8759f40485cf5545c0acea5637da  /tmp/bp-native09.ruXZ0h/replay-guard.json
+6d11160e1342f44290cb90d4a203c7900ca66e6915a17659c6d567878f0fba59  /tmp/bp-native09.ruXZ0h/replay-incidents.json
+/tmp/bp-native09.ruXZ0h/inputs/test.db: OK

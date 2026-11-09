@@ -1,0 +1,12 @@
+SELECTION SEALED {18: {'2019-03-08': 'event', '2019-04-19': 'comparison'}, 19: {'2019-03-08': 'event', '2019-04-19': 'comparison'}, 20: {'2019-03-08': 'event', '2019-05-03': 'comparison'}, 25: {'2019-03-15': 'event', '2019-05-03': 'comparison'}, 28: {'2019-03-15': 'event', '2019-04-19': 'comparison'}, 30: {'2019-03-15': 'event', '2019-05-03': 'comparison'}, 29: {'2019-03-15': 'event', '2019-04-19': 'comparison'}} no medians computed
+PREPARED 468 rows; masks, ranges and roles recorded before calculation
+DESCRIPTIVE_MULTI_AHU_OBSERVED {'Fault 4': ['AHU18', 'AHU23', 'AHU24'], 'Fault 6': ['AHU1', 'AHU18', 'AHU24']} ['negative']
+PASS byte-identical EPISODE_LEDGER_13.csv
+PASS byte-identical COMPARATOR_ELIGIBILITY_13.csv
+PASS byte-identical RAW_SLICE_13.csv
+PASS byte-identical PUBLISHER_ANNOTATIONS_13.csv
+PASS byte-identical ANNOTATION_AUDIT_13.csv
+PASS byte-identical FEASIBILITY_13.csv
+PASS byte-identical DESCRIPTIVE_EPISODES_13.csv
+PASS SELECTION_13.json apart from run timestamp
+PASS RESULT_13.json apart from run timestamp

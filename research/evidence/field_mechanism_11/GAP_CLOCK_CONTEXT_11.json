@@ -1,0 +1,936 @@
+{
+  "assessment": {
+    "phase_a": "STOP",
+    "phase_b": "NOT_RUN",
+    "quantitative_response_evaluations": 0,
+    "selected_comparison_window": null,
+    "selected_schedule_row": null
+  },
+  "audit_started_utc": "2026-11-08T18:11:48.625255+00:00",
+  "candidate_schedule_days": 2,
+  "candidate_schedule_rows": 12,
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "eligible_windows": 0,
+  "prereg_created_local": "2026-11-08T23:08:49+05:00",
+  "publisher_protocol": {
+    "4": {
+      "description_sheet_row": 5,
+      "protocol": "The heating valve was closed using RcWare software while the AHU was in the heating regime.",
+      "title": "Heating valve is closed during heating regime"
+    },
+    "6": {
+      "description_sheet_row": 7,
+      "protocol": "The heating pump was turn off using RcWare while the AHU was in the heating regime.",
+      "title": "Heating pump is OFF during heating regime"
+    }
+  },
+  "site_count": 1,
+  "verified_prereg_hashes": {
+    "PREREGISTERED_11.json": "697d78ca2f6e01234a18fd6024a0d95c6342dfb624762ed52609a51167738193",
+    "PREREGISTERED_11.md": "68789e86b735def4ee4c2a0034522f61a78a52b038f8873a3b78ac55780ae2b4"
+  },
+  "windows": {
+    "15": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 11:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:00:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 09:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 08:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 08:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 08:30:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-08 11:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-08 09:00:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-08 10:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:00:00",
+        "ticks": 24
+      }
+    },
+    "16": {
+      "post": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 11:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-08 11:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 11:40:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is off during humidifying regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:15:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 09:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-08 08:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 09:10:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 08:45:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 11:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 24
+        },
+        "first_native_tick": "2019-03-08 09:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 11:10:00",
+        "missing_or_invalid_context": 24,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is off during humidifying regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:15:00",
+        "ticks": 24
+      }
+    },
+    "17": {
+      "post": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 11:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-08 11:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 11:40:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:15:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 09:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-08 08:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 09:10:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 08:45:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-08 11:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 24
+        },
+        "first_native_tick": "2019-03-08 09:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-08 11:10:00",
+        "missing_or_invalid_context": 24,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:15:00",
+        "ticks": 24
+      }
+    },
+    "18": {
+      "post": {
+        "all_context_bits_match": 5,
+        "end_exclusive": "2019-03-08 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 11:00:00",
+        "heat_request_on": 5,
+        "last_native_tick": "2019-03-08 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:00:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 09:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 08:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 08:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 08:30:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-08 11:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-08 09:00:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-08 10:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:00:00",
+        "ticks": 24
+      }
+    },
+    "19": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 11:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:30:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 09:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 09:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 09:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 09:00:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-08 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-08 09:30:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-08 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:30:00",
+        "ticks": 24
+      }
+    },
+    "20": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 11:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-08 11:30:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-08 09:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-08 09:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-08 09:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-08 09:00:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-08 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-08 09:30:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-08 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating valve is closed during heating regime": 24
+        },
+        "start_inclusive": "2019-03-08 09:30:00",
+        "ticks": 24
+      }
+    },
+    "25": {
+      "post": {
+        "all_context_bits_match": 5,
+        "end_exclusive": "2019-03-15 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 11:30:00",
+        "heat_request_on": 5,
+        "last_native_tick": "2019-03-15 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 11:30:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 09:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 09:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 09:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 09:00:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-15 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-15 09:30:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-15 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 24
+        },
+        "start_inclusive": "2019-03-15 09:30:00",
+        "ticks": 24
+      }
+    },
+    "26": {
+      "post": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 12:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-15 11:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 12:10:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during humidifying regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 11:45:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 09:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-15 09:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 09:40:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 09:15:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 11:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 24
+        },
+        "first_native_tick": "2019-03-15 09:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 11:40:00",
+        "missing_or_invalid_context": 24,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during humidifying regime": 24
+        },
+        "start_inclusive": "2019-03-15 09:45:00",
+        "ticks": 24
+      }
+    },
+    "27": {
+      "post": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 12:15:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-15 11:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 12:10:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 11:45:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 09:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 6
+        },
+        "first_native_tick": "2019-03-15 09:15:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 09:40:00",
+        "missing_or_invalid_context": 6,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 09:15:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 0,
+        "end_exclusive": "2019-03-15 11:45:00",
+        "finite_by_native_header": {
+          "water_temperature__real_value__heater_before": 24
+        },
+        "first_native_tick": "2019-03-15 09:45:00",
+        "heat_request_on": 0,
+        "last_native_tick": "2019-03-15 11:40:00",
+        "missing_or_invalid_context": 24,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 24
+        },
+        "start_inclusive": "2019-03-15 09:45:00",
+        "ticks": 24
+      }
+    },
+    "28": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 11:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 11:30:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 09:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 09:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 09:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 09:00:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-15 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-15 09:30:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-15 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 24
+        },
+        "start_inclusive": "2019-03-15 09:30:00",
+        "ticks": 24
+      }
+    },
+    "29": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 12:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 12:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 12:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 12:00:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 11:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 11:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 11:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 11:00:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 11:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 6
+        },
+        "start_inclusive": "2019-03-15 11:30:00",
+        "ticks": 6
+      }
+    },
+    "30": {
+      "post": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 12:30:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 12:00:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 12:25:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 1,
+          "no fault": 5
+        },
+        "start_inclusive": "2019-03-15 12:00:00",
+        "ticks": 6
+      },
+      "pre": {
+        "all_context_bits_match": 6,
+        "end_exclusive": "2019-03-15 10:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 6,
+          "air_temperature__real_value__supply_air_outlet": 6,
+          "logic__real_value__fan_fresh_air": 6,
+          "logic__required_value__chiller": 6,
+          "logic__required_value__heater": 6,
+          "logic__required_value__heater_pump": 6,
+          "signal__required_value__heat_recovery_bypass": 6,
+          "signal__required_value__heater_valve": 6,
+          "water_temperature__real_value__heater_before": 6,
+          "water_temperature__real_value__heater_behind": 6,
+          "water_temperature__required_value__heater": 6
+        },
+        "first_native_tick": "2019-03-15 09:30:00",
+        "heat_request_on": 6,
+        "last_native_tick": "2019-03-15 09:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "no fault": 6
+        },
+        "start_inclusive": "2019-03-15 09:30:00",
+        "ticks": 6
+      },
+      "window": {
+        "all_context_bits_match": 24,
+        "end_exclusive": "2019-03-15 12:00:00",
+        "finite_by_native_header": {
+          "air_temperature__real_value__exahust_air_inlet": 24,
+          "air_temperature__real_value__supply_air_outlet": 24,
+          "logic__real_value__fan_fresh_air": 24,
+          "logic__required_value__chiller": 24,
+          "logic__required_value__heater": 24,
+          "logic__required_value__heater_pump": 24,
+          "signal__required_value__heat_recovery_bypass": 24,
+          "signal__required_value__heater_valve": 24,
+          "water_temperature__real_value__heater_before": 24,
+          "water_temperature__real_value__heater_behind": 24,
+          "water_temperature__required_value__heater": 24
+        },
+        "first_native_tick": "2019-03-15 10:00:00",
+        "heat_request_on": 24,
+        "last_native_tick": "2019-03-15 11:55:00",
+        "missing_or_invalid_context": 0,
+        "publisher_label_histogram_evaluation_only": {
+          "heating pump is off during heating regime": 24
+        },
+        "start_inclusive": "2019-03-15 10:00:00",
+        "ticks": 24
+      }
+    }
+  },
+  "workbooks": {
+    "AHU1": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    },
+    "AHU18": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    },
+    "AHU2": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    },
+    "AHU23": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    },
+    "AHU24": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    },
+    "AHU8": {
+      "cadence_seconds": 300,
+      "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+      "duplicate_or_irregular_steps": {},
+      "first": "2019-03-01 00:00:00",
+      "last": "2019-08-31 00:00:00",
+      "rows": 52705
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "datasets": {
+    "ds_11665e4f2019": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "60e07db454cc99ae4d6b4af38c2a748ecc62190256eb147f06db99995df63f7d"
+    },
+    "ds_13d643c0e47c": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "898cf278e067e733450d75e196a9bbce8d37d03600e7730e277c408bbcfeef63"
+    },
+    "ds_44c91982401f": {
+      "coverage": {
+        "NOT_EVALUABLE": 11393,
+        "NOT_VIOLATED": 8767
+      },
+      "episodes": [],
+      "source_sha256": "594f62d28b59364a77ef5664639edd73e16bf93856190c311685e4cbd62b3b2b"
+    },
+    "ds_684daf0ea393": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "41d5ee001fc44c0618d16ca46ab25d5e0bbf3ef4324d859035e25a823cd2dfc6"
+    },
+    "ds_69a163ff26f9": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "cc91822d4fc54050c940d85c44cfc7f46bb21935be6a99a9b62118682b87c5a2"
+    },
+    "ds_75881adcd800": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "357ccc0d7aefad30181b5ed9bae36b13e8385396c238c89a3cbecc6183217ac4"
+    },
+    "ds_7e7a6daa20e5": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "5aa77e7bdcbe222e9b9ffcc00c2a3dc921edb6b6a4dd74ed99de8a97cbea0414"
+    },
+    "ds_8705968f6bc1": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "cea8779b7f809385e49a6f98e1135c48620c6f8c5798f16aa5f7e543bdafa303"
+    },
+    "ds_8e5b1ddfdd14": {
+      "coverage": {
+        "NOT_EVALUABLE": 338348,
+        "NOT_VIOLATED": 187192
+      },
+      "episodes": [],
+      "source_sha256": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b"
+    },
+    "ds_a11ff56a7136": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "a2e4a3ae6f328ce5ab5120ffa94286dbde97e0395dc2dadd81da956157a9b636"
+    },
+    "ds_aff7d2e0526b": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "27ee1b3955e53562190c62636ff12d30219526714830f757ab78b09b3674e688"
+    },
+    "ds_bc2953ba4e63": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "3791f050eb080cd855b29d2b937735050cde5bbcdb4b46fca727ba231501f9bb"
+    },
+    "ds_dccd9ce0f8ea": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "1010d0b68ccc6591bd1461a40dc4c9b19d0ac1a5f925fbb7da0014700bbe95a8"
+    },
+    "ds_f95205326c23": {
+      "coverage": {
+        "NOT_EVALUABLE": 9180,
+        "NOT_VIOLATED": 10980
+      },
+      "episodes": [],
+      "source_sha256": "1be78a0a4007e1a34db559db6795d86569ab8cb37064be8094047165df096077"
+    },
+    "ds_fa24dd6dbcdb": {
+      "coverage": {
+        "NOT_EVALUABLE": 4590,
+        "NOT_VIOLATED": 5490
+      },
+      "episodes": [],
+      "source_sha256": "67c862526c4004bc62d1dab1dfe0fc734244a14d5122420bb1eab93498e72760"
+    }
+  },
+  "index_version": 1,
+  "rule_fingerprint": "c4f6c5f63faaa8cc74d5de9bb1c3e2b3f435ea26cd5058d6b91c1f03b19aacfc"
+}

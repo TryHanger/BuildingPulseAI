@@ -1,0 +1,54 @@
+{
+  "model_id": "csiro-ahu9-residual-ridge-v1",
+  "name": "CSIRO AHU9 Adaptation: Residual Ridge Corrector",
+  "description": "Residual Ridge Corrector",
+  "strategy_code": "A1",
+  "model_type": "adaptation_calibrator",
+  "target_domain": "CSIRO_AHU9",
+  "source_kind": "REAL_FIELD_BMS",
+  "target": "SA_TEMP",
+  "target_unit": "degC",
+  "features": [
+    "OA_TEMP",
+    "RA_TEMP",
+    "SA_TEMPSPT",
+    "CHWC_VLV_DM",
+    "OA_DMPR_DM",
+    "RA_DMPR_DM",
+    "MA_TEMP_EST"
+  ],
+  "status": "LOCALLY_EVALUATED",
+  "prediction_validity": "REGRESSION_ONLY_HELDOUT",
+  "fault_localization_validity": "NOT_VALIDATED",
+  "train_sample_count": 1588,
+  "val_sample_count": 726,
+  "validation_metrics": {
+    "count": 726,
+    "mae_degC": 1.2077,
+    "rmse_degC": 1.6149,
+    "mean_bias_degC": -0.279,
+    "r2": 0.2728
+  },
+  "calibrated_thresholds": {
+    "three_sigma": 4.424,
+    "q95": 2.7406,
+    "mad": 0.3428
+  },
+  "persistence_filter": {
+    "k": 10,
+    "n": 15
+  },
+  "parameters": {
+    "alpha": 10.0,
+    "features": [
+      "OA_TEMP",
+      "RA_TEMP",
+      "SA_TEMPSPT",
+      "CHWC_VLV_DM",
+      "OA_DMPR_DM",
+      "RA_DMPR_DM",
+      "MA_TEMP_EST"
+    ]
+  },
+  "created_at": "2026-11-03T11:00:53.011891+00:00"
+}

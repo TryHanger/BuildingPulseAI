@@ -1,0 +1,82 @@
+{
+  "dataset_id": "demo-ahu",
+  "source_type": "DEMO_FIXTURE",
+  "equipment_id": "demo-ahu-01",
+  "signals": {
+    "SA_TEMP": {
+      "physical_sensor_id": "demo-sat",
+      "columns": [
+        "SA_TEMP",
+        "SAT"
+      ],
+      "basic": true
+    },
+    "SA_TEMPSPT": {
+      "physical_sensor_id": null,
+      "columns": [
+        "SA_TEMPSPT"
+      ],
+      "basic": true
+    },
+    "OA_TEMP": {
+      "physical_sensor_id": "demo-oat",
+      "columns": [
+        "OA_TEMP"
+      ],
+      "basic": true
+    },
+    "CHWC_VLV": {
+      "physical_sensor_id": "demo-stem",
+      "columns": [
+        "CHWC_VLV"
+      ],
+      "basic": false
+    },
+    "SYS_CTL": {
+      "physical_sensor_id": null,
+      "columns": [
+        "SYS_CTL"
+      ],
+      "basic": false,
+      "analytic": false
+    }
+  },
+  "methods": {
+    "demo-sat-deviation": {
+      "version": "fixture-1",
+      "comparison_id": "demo-sat-tracking",
+      "roles": {
+        "SA_TEMP": "TARGET",
+        "SA_TEMPSPT": "CONTEXT",
+        "OA_TEMP": "CONTEXT"
+      },
+      "regime": "COOLING"
+    },
+    "demo-sat-control": {
+      "version": "fixture-1",
+      "comparison_id": "demo-sat-tracking",
+      "roles": {
+        "SA_TEMP": "TARGET",
+        "SA_TEMPSPT": "CONTEXT",
+        "OA_TEMP": "CONTEXT"
+      },
+      "regime": "COOLING"
+    },
+    "demo-valve-feedback": {
+      "version": "fixture-1",
+      "comparison_id": "demo-valve-tracking",
+      "roles": {
+        "CHWC_VLV": "TARGET"
+      },
+      "regime": "COOLING"
+    },
+    "demo-oat-quality": {
+      "version": "fixture-1",
+      "comparison_id": "demo-oat-quality",
+      "roles": {
+        "OA_TEMP": "TARGET"
+      },
+      "regime": "COOLING"
+    }
+  }
+}

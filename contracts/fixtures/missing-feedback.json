@@ -1,0 +1,53 @@
+{
+  "dataset_id": "demo-ahu",
+  "equipment_id": "demo-ahu-01",
+  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+  "schema_version": "1.0.0",
+  "source_type": "DEMO_FIXTURE",
+  "panel": "BASIC",
+  "window": {
+    "from_utc": "2026-01-01T08:00:00Z",
+    "to_utc": "2026-01-01T08:05:00Z",
+    "cutoff_utc": "2026-01-01T08:05:00Z",
+    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+    "sample_seconds": 60,
+    "missing_fraction": 0
+  },
+  "data_status": "UNKNOWN",
+  "anomaly_status": "UNASSESSED",
+  "cause_status": "NOT_ASSESSED",
+  "model_scope": "UNKNOWN",
+  "display_state": "NOT_EVALUABLE",
+  "observations": [
+    {
+      "observation_id": "valve-1",
+      "method_id": "demo-valve-feedback",
+      "method_version": "fixture-1",
+      "comparison_id": "demo-valve-tracking",
+      "window": {
+        "from_utc": "2026-01-01T08:00:00Z",
+        "to_utc": "2026-01-01T08:05:00Z",
+        "cutoff_utc": "2026-01-01T08:05:00Z",
+        "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+        "sample_seconds": 60,
+        "missing_fraction": 0
+      },
+      "predicate": "INDETERMINATE",
+      "data_status": "UNKNOWN",
+      "applicability": {
+        "method_status": "INAPPLICABLE",
+        "reason_code": "MISSING_ACTUAL_POSITION",
+        "missing_roles": [
+          "TARGET"
+        ],
+        "regime": "COOLING"
+      },
+      "provenance_type": "SYNTHETIC_FIXTURE",
+      "roots": [],
+      "values": [],
+      "threshold": null
+    }
+  ],
+  "hypotheses": [],
+  "event": null
+}

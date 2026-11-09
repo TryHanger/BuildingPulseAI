@@ -1,0 +1,15 @@
+emadeldeen24/CA-TCC
+5298ee8241d4bd0f4eeff3e31b4e7250f31f0357	HEAD
+scikit-learn-contrib/MAPIE
+c073876f271d28a05e4c2b53639293ff3a805203	HEAD
+emadeldeen24/TS-TCC
+15bdfd6eced6aeb6c638839828effe1b4b2ea391	HEAD
+4c9eead4a91529446ff812d204410a56ae868bd3	HEAD
+e211a696decbee11f0a9398e54c5ea5193a85608	refs/tags/open-fdd-v4.4.9
+32a6d4479abed81f9d6d0ff426260cc8ad8e30e2	refs/tags/open-fdd-v4.4.9^{}
+pgmpy/pgmpy
+7810e5566b699d2b7f4948f6a0a54e78aae4340e	HEAD
+ibpsa/project1-boptest
+a29024f8c453517ccbd1186006a3fa6af8de1ae2	HEAD
+deepcharles/ruptures
+ee1c8ff8a548d54c641b2bb471562165931f31c7	HEAD

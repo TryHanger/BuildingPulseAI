@@ -1,0 +1,16 @@
+{
+  "source_label": null,
+  "license_note": "Source terms apply; redistribution not evaluated",
+  "import_status": "METADATA_ONLY",
+  "timezone": null,
+  "source_temperature_unit": null,
+  "series_status": "UNAVAILABLE",
+  "pair_id": null,
+  "dataset_id": "csiro-ahu10-metadata",
+  "equipment_id": "csiro-ahu10",
+  "scenario_id": "AHU-10",
+  "source_type": "REAL_FIELD",
+  "release_id": "git:3eb50a9ce1d4eeed778877cbfdbd259d2298d8e6",
+  "source_url": "https://github.com/csiro-energy-systems/ahu-fault-detection-dataset/tree/3eb50a9ce1d4eeed778877cbfdbd259d2298d8e6",
+  "source_sha256": null
+}

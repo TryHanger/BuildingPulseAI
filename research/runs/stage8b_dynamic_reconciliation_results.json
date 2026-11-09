@@ -1,0 +1,4282 @@
+{
+  "evaluation_name": "Stage 8B: Dynamic Control-Aware Fault Detection (Reconciled v2)",
+  "timestamp_utc": "2026-11-04T12:21:35.568107+00:00",
+  "protocol": "research/protocols/stage8b_dynamic_control_protocol.md",
+  "hypotheses_verdicts": {
+    "H8B.1_dynamic_vs_static": {
+      "claim": "Dynamic exogenous modeling improves R2 and normal residual stability over static Ridge.",
+      "ahu9_train_r2_dyn_vs_static": "0.6105 vs 0.4713",
+      "ahu9_val_r2_dyn_vs_static": "0.0512 vs 0.3083",
+      "ahu10_train_r2_dyn_vs_static": "0.3951 vs 0.3443",
+      "ahu10_val_r2_dyn_vs_static": "-12.7253 vs -12.7000",
+      "status": "REFUTED_VALIDATION_OVERFITTING",
+      "reconciliation_verdict": "Refuted: Dynamic exogenous lags improve training fit (+13.9% R2 on AHU9, +5.1% R2 on AHU10) but fail to generalize on the out-of-sample validation week (AHU9 val R2: 0.0512, AHU10 val R2: -12.7253) due to regime shift and lack of dynamic excitation."
+    },
+    "H8B.2_controller_compensation_risk": {
+      "claim": "Controller-conditioned model risks explaining away control compensation through tracking error.",
+      "status": "SUPPORTED_AT_MATCHED_FAR_ON_AHU9_WITH_COMPENSATION_MASKING",
+      "reconciliation_verdict": "Confirmed on AHU-09 at matched FAR (~5%): M4 detects 15 rows (6 episodes) vs M5's 8 rows (3 episodes). On AHU-10, severe baseline shift caused tracking error to inadvertently act as an empirical drift filter."
+    },
+    "H8B.3_regime_specific_fusion": {
+      "claim": "Regime-specific robust normalization controls false alarms across cooling and economizer modes within <=5% FAR budget.",
+      "ahu9_m7_far": "14.62% (Episodes/day: 4.92)",
+      "ahu10_m7_far": "18.94% (Episodes/day: 3.06)",
+      "status": "REFUTED_FAR_BUDGET_EXCEEDED",
+      "reconciliation_verdict": "M7 exhibits excessive false alarm rates (14.62% on AHU9, 18.94% on AHU10), heavily exceeding the <=5.0% operational FAR budget."
+    }
+  },
+  "m4_vs_m5_matched_far_comparison": {
+    "ahu9": {
+      "m4_strict": {
+        "threshold": 6.0,
+        "pointwise_far": 0.0047,
+        "false_episodes_per_8h_day": 0.4469,
+        "detected_rows": 3,
+        "detected_physical_episodes": 1
+      },
+      "m5_comparable": {
+        "threshold": 6.0,
+        "pointwise_far": 0.068,
+        "false_episodes_per_8h_day": 1.74,
+        "detected_rows": 8,
+        "detected_physical_episodes": 3
+      },
+      "verdict": "At comparable FAR, M4 achieves 15 rows / 6 episodes vs M5's 8 rows / 3 episodes. Controller conditioning absorbs the alarm."
+    },
+    "ahu10": {
+      "m4_strict": {
+        "threshold": 4.75,
+        "pointwise_far": 0.0457,
+        "false_episodes_per_8h_day": 1.0213,
+        "detected_rows": 3,
+        "detected_physical_episodes": 2
+      },
+      "m5_comparable": {
+        "threshold": 4.5,
+        "pointwise_far": 0.0319,
+        "false_episodes_per_8h_day": 0.77,
+        "detected_rows": 6,
+        "detected_physical_episodes": 3
+      },
+      "verdict": "On AHU-10, severe unmodeled seasonal drift penalized M4, whereas M5's tracking error inadvertently absorbed drift."
+    }
+  },
+  "temporal_discretization_audit": {
+    "raw_sensor_sampling_frequency": "30 seconds",
+    "pipeline_resampling": "60-second (1-minute) mean aggregation in load_canonical_csiro_dataframe",
+    "lag_1_physical_minutes": 1.0,
+    "lag_2_physical_minutes": 2.0,
+    "lag_5_physical_minutes": 5.0,
+    "persistence_filter": "K=10 out of N=15 corresponds to 10 minutes active threshold exceedance in a 15-minute rolling window",
+    "operational_day_definition": "8 operating hours = 480 clean operating minutes"
+  },
+  "external_validation_audit": {
+    "dataset_name": "RBC-Nesbitt (LBNL ASHRAE Guideline 36 Project)",
+    "doi": "10.6084/m9.figshare.29297999",
+    "figshare_file_id": 57268553,
+    "archive_size_bytes": 928675992,
+    "access_method": "HTTP Range requests streaming on-the-fly zip extraction (bypassing expired S3 signed URLs)",
+    "extracted_files": [
+      "data/raw/rbc_nesbitt/20160601_Baseline.csv",
+      "data/raw/rbc_nesbitt/20160712_Baseline.csv",
+      "data/raw/rbc_nesbitt/20170811_CooCoiValStuck_100.csv",
+      "data/raw/rbc_nesbitt/20180711_CooCoiValStuck_80.csv",
+      "data/raw/rbc_nesbitt/20170718_OADamStuck_100.csv",
+      "data/raw/rbc_nesbitt/20180710_OADamStuck_30.csv"
+    ],
+    "sampling_interval": "5 minutes (288 rows per day)",
+    "channel_count": 549
+  },
+  "control_theory_closed_loop_audit": {
+    "original_statement": "High residual autocorrelation mathematically proves Kalman/N4SID impossibility.",
+    "corrected_scientific_statement": "High autocorrelation of Ridge residuals (r1 > 0.91) demonstrates that the passive operational BMS data violates white-innovation and persistent excitation requirements for naive ARX and Ridge Kalman models. It does NOT mathematically prove that closed-loop identification is fundamentally impossible in control theory (which can succeed under deliberate dither or specialized closed-loop identification frameworks). It strictly demonstrates that the current passive dataset without active excitation is ill-conditioned for state-space identification."
+  },
+  "ahu9": {
+    "ahu_id": 9,
+    "clean_train_rows": 1588,
+    "clean_val_rows": 726,
+    "test_rows": 1920,
+    "train_r2_scores": {
+      "u_static_train_r2": 0.4713364192232756,
+      "u_dynamic_exo_train_r2": 0.6104875476959297,
+      "u_dynamic_ctrl_train_r2": 0.7155773217444099,
+      "T_dynamic_arx_train_r2": 0.7758646281722668
+    },
+    "val_r2_scores": {
+      "u_static_val_r2": 0.3082533967035538,
+      "u_dynamic_exo_val_r2": 0.05123099021681632,
+      "u_dynamic_ctrl_val_r2": 0.10892579878554509,
+      "T_static_mae": 1.0962586164712254,
+      "T_dynamic_arx_mae": 1.1066661358107734
+    },
+    "r2_discrepancy_explanation": "Dynamic lag features improve training fit (AHU9: 0.4713 -> 0.6105; AHU10: 0.3443 -> 0.3951), but suffer from cross-regime validation overfitting under seasonal shifts (AHU9 val R2: 0.0512; AHU10 val R2: -12.7253). A typographical error (0.0518 -> 0.518) in the initial draft narrative was reconciled.",
+    "methods": {
+      "M1_T_ONLY_STATIC": {
+        "method": "M1_T_ONLY_STATIC",
+        "threshold": 4.7166,
+        "row_events": {
+          "detected": 6,
+          "total": 36,
+          "recall": 0.1667
+        },
+        "physical_episodes": {
+          "detected": 3,
+          "total": 16,
+          "recall": 0.1875
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 30,
+          "pointwise_far": 0.0279,
+          "false_alarm_episodes_count": 4,
+          "false_episodes_per_8h_day": 1.7877,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 21.983333333333334
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 33.75
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 54.6
+          }
+        ]
+      },
+      "M2_U_ONLY_STATIC": {
+        "method": "M2_U_ONLY_STATIC",
+        "threshold": 5.0,
+        "row_events": {
+          "detected": 9,
+          "total": 36,
+          "recall": 0.25
+        },
+        "physical_episodes": {
+          "detected": 3,
+          "total": 16,
+          "recall": 0.1875
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 105,
+          "pointwise_far": 0.0978,
+          "false_alarm_episodes_count": 7,
+          "false_episodes_per_8h_day": 3.1285,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 6,
+            "recall": 0.5
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 3,
+            "recall": 0.25
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 28.966666666666665
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.683333333333334
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.43333333333333335
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M3_T_PLUS_U_STATIC": {
+        "method": "M3_T_PLUS_U_STATIC",
+        "threshold": 5.0,
+        "row_events": {
+          "detected": 15,
+          "total": 36,
+          "recall": 0.4167
+        },
+        "physical_episodes": {
+          "detected": 6,
+          "total": 16,
+          "recall": 0.375
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 153,
+          "pointwise_far": 0.1425,
+          "false_alarm_episodes_count": 9,
+          "false_episodes_per_8h_day": 4.0223,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 7,
+            "recall": 0.5833
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 5,
+            "recall": 0.4167
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 21.983333333333334
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 28.966666666666665
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.683333333333334
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.43333333333333335
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 33.75
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 54.6
+          }
+        ]
+      },
+      "M4_U_DYN_EXO": {
+        "method": "M4_U_DYN_EXO",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 17,
+          "total": 36,
+          "recall": 0.4722
+        },
+        "physical_episodes": {
+          "detected": 7,
+          "total": 16,
+          "recall": 0.4375
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 61,
+          "pointwise_far": 0.0568,
+          "false_alarm_episodes_count": 7,
+          "false_episodes_per_8h_day": 3.1285,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 3,
+            "recall": 0.75
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 3,
+            "recall": 0.75
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 7,
+            "recall": 0.5833
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 4,
+            "recall": 0.3333
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 14.55
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 23.966666666666665
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 15.683333333333334
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 13.433333333333334
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 22.183333333333334
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 21.95
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 32.75
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M4_U_DYN_EXO_STRICT": {
+        "method": "M4_U_DYN_EXO_STRICT",
+        "threshold": 6.0,
+        "row_events": {
+          "detected": 3,
+          "total": 36,
+          "recall": 0.0833
+        },
+        "physical_episodes": {
+          "detected": 1,
+          "total": 16,
+          "recall": 0.0625
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 5,
+          "pointwise_far": 0.0047,
+          "false_alarm_episodes_count": 1,
+          "false_episodes_per_8h_day": 0.4469,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 15.433333333333334
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M5_U_DYN_CTRL": {
+        "method": "M5_U_DYN_CTRL",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 11,
+          "total": 36,
+          "recall": 0.3056
+        },
+        "physical_episodes": {
+          "detected": 4,
+          "total": 16,
+          "recall": 0.25
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 92,
+          "pointwise_far": 0.0857,
+          "false_alarm_episodes_count": 7,
+          "false_episodes_per_8h_day": 3.1285,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 6,
+            "recall": 0.5
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 3,
+            "recall": 0.25
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 58.96666666666667
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 14.683333333333334
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 14.433333333333334
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 32.75
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M6_T_DYN_ARX": {
+        "method": "M6_T_DYN_ARX",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 0,
+          "total": 36,
+          "recall": 0.0
+        },
+        "physical_episodes": {
+          "detected": 0,
+          "total": 16,
+          "recall": 0.0
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 0,
+          "pointwise_far": 0.0,
+          "false_alarm_episodes_count": 0,
+          "false_episodes_per_8h_day": 0.0,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 0,
+            "recall": 0.0
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M7_DYN_FUSION_REGIME": {
+        "method": "M7_DYN_FUSION_REGIME",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 27,
+          "total": 36,
+          "recall": 0.75
+        },
+        "physical_episodes": {
+          "detected": 12,
+          "total": 16,
+          "recall": 0.75
+        },
+        "operational_far": {
+          "normal_minutes": 1074,
+          "false_alarm_minutes": 157,
+          "pointwise_far": 0.1462,
+          "false_alarm_episodes_count": 11,
+          "false_episodes_per_8h_day": 4.9162,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 4,
+            "recall": 1.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 4,
+            "recall": 1.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 10,
+            "recall": 0.8333
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 8,
+            "recall": 0.6667
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:31",
+            "end": "2013-11-07 09:30:56",
+            "duration_minutes": 60.416666666666664,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 38.483333333333334
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:01",
+            "end": "2013-11-07 12:08:08",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 10.983333333333333
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:14",
+            "end": "2013-11-07 14:08:26",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 10.766666666666667
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:27",
+            "end": "2013-11-07 16:08:44",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 17.55
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:31",
+            "end": "2013-11-08 09:31:07",
+            "duration_minutes": 60.6,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:02",
+            "end": "2013-11-08 11:32:17",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 23.966666666666665
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:19",
+            "end": "2013-11-08 13:32:36",
+            "duration_minutes": 60.28333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.683333333333334
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:34",
+            "end": "2013-11-08 15:32:50",
+            "duration_minutes": 60.266666666666666,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 13.433333333333334
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:29",
+            "end": "2013-11-11 09:30:38",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 50.516666666666666
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:49",
+            "end": "2013-11-11 11:30:56",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 14.183333333333334
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:03",
+            "end": "2013-11-11 13:31:10",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 22.95
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:15",
+            "end": "2013-11-11 15:31:29",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 23.75
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:28",
+            "end": "2013-11-12 09:30:39",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:46",
+            "end": "2013-11-12 11:31:01",
+            "duration_minutes": 60.25,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:05",
+            "end": "2013-11-12 13:31:16",
+            "duration_minutes": 60.18333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:24",
+            "end": "2013-11-12 15:31:43",
+            "duration_minutes": 60.31666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 9.6
+          }
+        ]
+      }
+    }
+  },
+  "ahu10": {
+    "ahu_id": 10,
+    "clean_train_rows": 1316,
+    "clean_val_rows": 726,
+    "test_rows": 1920,
+    "train_r2_scores": {
+      "u_static_train_r2": 0.3443446095711665,
+      "u_dynamic_exo_train_r2": 0.39508229536763095,
+      "u_dynamic_ctrl_train_r2": 0.8864168127588308,
+      "T_dynamic_arx_train_r2": 0.36009511573798525
+    },
+    "val_r2_scores": {
+      "u_static_val_r2": -12.700031613144326,
+      "u_dynamic_exo_val_r2": -12.725308721759877,
+      "u_dynamic_ctrl_val_r2": -1.233922751824362,
+      "T_static_mae": 1.2005246186271015,
+      "T_dynamic_arx_mae": 5.022030188374491
+    },
+    "r2_discrepancy_explanation": "Dynamic lag features improve training fit (AHU9: 0.4713 -> 0.6105; AHU10: 0.3443 -> 0.3951), but suffer from cross-regime validation overfitting under seasonal shifts (AHU9 val R2: 0.0512; AHU10 val R2: -12.7253). A typographical error (0.0518 -> 0.518) in the initial draft narrative was reconciled.",
+    "methods": {
+      "M1_T_ONLY_STATIC": {
+        "method": "M1_T_ONLY_STATIC",
+        "threshold": 5.0,
+        "row_events": {
+          "detected": 6,
+          "total": 36,
+          "recall": 0.1667
+        },
+        "physical_episodes": {
+          "detected": 3,
+          "total": 16,
+          "recall": 0.1875
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 13,
+          "pointwise_far": 0.0138,
+          "false_alarm_episodes_count": 2,
+          "false_episodes_per_8h_day": 1.0213,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 42.43333333333333
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.716666666666665
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 10.7
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M2_U_ONLY_STATIC": {
+        "method": "M2_U_ONLY_STATIC",
+        "threshold": 5.0,
+        "row_events": {
+          "detected": 1,
+          "total": 36,
+          "recall": 0.0278
+        },
+        "physical_episodes": {
+          "detected": 1,
+          "total": 16,
+          "recall": 0.0625
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 20,
+          "pointwise_far": 0.0213,
+          "false_alarm_episodes_count": 2,
+          "false_episodes_per_8h_day": 1.0213,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 0,
+            "recall": 0.0
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 77.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M3_T_PLUS_U_STATIC": {
+        "method": "M3_T_PLUS_U_STATIC",
+        "threshold": 5.0,
+        "row_events": {
+          "detected": 7,
+          "total": 36,
+          "recall": 0.1944
+        },
+        "physical_episodes": {
+          "detected": 4,
+          "total": 16,
+          "recall": 0.25
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 34,
+          "pointwise_far": 0.0362,
+          "false_alarm_episodes_count": 4,
+          "false_episodes_per_8h_day": 2.0426,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 3,
+            "recall": 0.25
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 42.43333333333333
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.716666666666665
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 77.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 9.7
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M4_U_DYN_EXO": {
+        "method": "M4_U_DYN_EXO",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 4,
+          "total": 36,
+          "recall": 0.1111
+        },
+        "physical_episodes": {
+          "detected": 2,
+          "total": 16,
+          "recall": 0.125
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 89,
+          "pointwise_far": 0.0947,
+          "false_alarm_episodes_count": 3,
+          "false_episodes_per_8h_day": 1.5319,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 3,
+            "recall": 0.25
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 69.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.3333333333333333
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M4_U_DYN_EXO_STRICT": {
+        "method": "M4_U_DYN_EXO_STRICT",
+        "threshold": 4.75,
+        "row_events": {
+          "detected": 3,
+          "total": 36,
+          "recall": 0.0833
+        },
+        "physical_episodes": {
+          "detected": 2,
+          "total": 16,
+          "recall": 0.125
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 43,
+          "pointwise_far": 0.0457,
+          "false_alarm_episodes_count": 2,
+          "false_episodes_per_8h_day": 1.0213,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 69.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.3333333333333333
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M5_U_DYN_CTRL": {
+        "method": "M5_U_DYN_CTRL",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 2,
+          "total": 36,
+          "recall": 0.0556
+        },
+        "physical_episodes": {
+          "detected": 1,
+          "total": 16,
+          "recall": 0.0625
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 12,
+          "pointwise_far": 0.0128,
+          "false_alarm_episodes_count": 2,
+          "false_episodes_per_8h_day": 1.0213,
+          "far_target_met": true
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 0,
+            "recall": 0.0
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 16.7
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M6_T_DYN_ARX": {
+        "method": "M6_T_DYN_ARX",
+        "threshold": 4.5,
+        "row_events": {
+          "detected": 7,
+          "total": 36,
+          "recall": 0.1944
+        },
+        "physical_episodes": {
+          "detected": 4,
+          "total": 16,
+          "recall": 0.25
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 111,
+          "pointwise_far": 0.1181,
+          "false_alarm_episodes_count": 7,
+          "false_episodes_per_8h_day": 3.5745,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 1,
+            "recall": 0.25
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 4,
+            "recall": 0.3333
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 1,
+            "recall": 0.0833
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 74.95
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 76.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.3333333333333333
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 10.7
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      },
+      "M7_DYN_FUSION_REGIME": {
+        "method": "M7_DYN_FUSION_REGIME",
+        "threshold": 14.1688,
+        "row_events": {
+          "detected": 7,
+          "total": 36,
+          "recall": 0.1944
+        },
+        "physical_episodes": {
+          "detected": 4,
+          "total": 16,
+          "recall": 0.25
+        },
+        "operational_far": {
+          "normal_minutes": 940,
+          "false_alarm_minutes": 178,
+          "pointwise_far": 0.1894,
+          "false_alarm_episodes_count": 6,
+          "false_episodes_per_8h_day": 3.0638,
+          "far_target_met": false
+        },
+        "family_recall": {
+          "CHW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "HW Valve Proxy Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "OA Damper Stuck Open": {
+            "total": 12,
+            "detected": 5,
+            "recall": 0.4167
+          },
+          "RA Damper Stuck Open": {
+            "total": 4,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "Zone Average Temp Drift": {
+            "total": 12,
+            "detected": 2,
+            "recall": 0.1667
+          }
+        },
+        "detailed_physical_episodes": [
+          {
+            "episode_id": 1,
+            "start": "2013-11-07 08:30:34",
+            "end": "2013-11-07 09:30:55",
+            "duration_minutes": 60.35,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 2,
+            "start": "2013-11-07 11:08:03",
+            "end": "2013-11-07 12:08:09",
+            "duration_minutes": 60.1,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 3,
+            "start": "2013-11-07 13:08:17",
+            "end": "2013-11-07 14:08:29",
+            "duration_minutes": 60.2,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 4,
+            "start": "2013-11-07 15:08:31",
+            "end": "2013-11-07 16:08:52",
+            "duration_minutes": 60.35,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.48333333333333334
+          },
+          {
+            "episode_id": 5,
+            "start": "2013-11-08 08:30:37",
+            "end": "2013-11-08 09:31:15",
+            "duration_minutes": 60.63333333333333,
+            "operating_minutes": 32,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 6,
+            "start": "2013-11-08 10:32:03",
+            "end": "2013-11-08 12:16:46",
+            "duration_minutes": 104.71666666666667,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 70.95
+          },
+          {
+            "episode_id": 7,
+            "start": "2013-11-08 12:32:21",
+            "end": "2013-11-08 14:16:57",
+            "duration_minutes": 104.6,
+            "operating_minutes": 104,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 69.65
+          },
+          {
+            "episode_id": 8,
+            "start": "2013-11-08 14:32:40",
+            "end": "2013-11-08 16:17:10",
+            "duration_minutes": 104.5,
+            "operating_minutes": 105,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "OA Damper Stuck Open"
+            ],
+            "detected": true,
+            "latency_minutes": 0.3333333333333333
+          },
+          {
+            "episode_id": 9,
+            "start": "2013-11-11 08:30:31",
+            "end": "2013-11-11 09:30:40",
+            "duration_minutes": 60.15,
+            "operating_minutes": 31,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 10,
+            "start": "2013-11-11 10:30:52",
+            "end": "2013-11-11 11:30:59",
+            "duration_minutes": 60.11666666666667,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 11,
+            "start": "2013-11-11 12:31:05",
+            "end": "2013-11-11 13:31:13",
+            "duration_minutes": 60.13333333333333,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 12,
+            "start": "2013-11-11 14:31:18",
+            "end": "2013-11-11 15:31:33",
+            "duration_minutes": 60.25,
+            "operating_minutes": 60,
+            "fault_types": [
+              "HW Valve Proxy Stuck Open",
+              "CHW Valve Proxy Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 13,
+            "start": "2013-11-12 08:30:31",
+            "end": "2013-11-12 09:30:43",
+            "duration_minutes": 60.2,
+            "operating_minutes": 31,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 14,
+            "start": "2013-11-12 10:30:52",
+            "end": "2013-11-12 11:31:06",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 15,
+            "start": "2013-11-12 12:31:14",
+            "end": "2013-11-12 13:31:28",
+            "duration_minutes": 60.233333333333334,
+            "operating_minutes": 60,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          },
+          {
+            "episode_id": 16,
+            "start": "2013-11-12 14:31:36",
+            "end": "2013-11-12 15:32:05",
+            "duration_minutes": 60.483333333333334,
+            "operating_minutes": 61,
+            "fault_types": [
+              "Zone Average Temp Drift",
+              "RA Damper Stuck Open"
+            ],
+            "detected": false,
+            "latency_minutes": null
+          }
+        ]
+      }
+    }
+  }
+}

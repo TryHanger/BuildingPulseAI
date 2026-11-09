@@ -1,0 +1,141 @@
+{
+  "fixture": true,
+  "provenance": "SYNTHETIC_UI_ONLY",
+  "label_status": "NO_GROUND_TRUTH",
+  "run_id": "ui-demo-sensor-lab-v0",
+  "profiles": [
+    {
+      "id": "BASIC",
+      "name": "Базовый профиль (Basic Automation)",
+      "description": "Минимальная панель каналов типовой АСУЗ: температуры OA/RA/MA/SA, уставка SAT и команды исполнительных механизмов.",
+      "channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM"],
+      "cost_estimate": "Стандартное оснащение",
+      "isolation_capability": "Ограниченная (дефекты клапанов и датчиков смешиваются)"
+    },
+    {
+      "id": "BASIC_PLUS_VALVE",
+      "name": "Профиль с обратной связью клапана (+CHWC_VLV)",
+      "description": "Дооснащение потенциометрическим или оптическим датчиком фактического хода штока охлаждающего клапана.",
+      "channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM", "CHWC_VLV"],
+      "cost_estimate": "+1 аналоговый вход BMS, датчик положения ~15-20 тыс. руб.",
+      "isolation_capability": "Высокая (мгновенное физическое опровержение заклинивания штока при совпадении с командой)"
+    },
+    {
+      "id": "BASIC_PLUS_DAMPER",
+      "name": "Профиль с обратной связью заслонки (+OA_DMPR)",
+      "description": "Дооснащение датчиком угла поворота лопаток наружной заслонки.",
+      "channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM", "OA_DMPR"],
+      "cost_estimate": "+1 аналоговый вход BMS",
+      "isolation_capability": "Умеренная (позволяет верифицировать режим свободного охлаждения)"
+    },
+    {
+      "id": "FULL",
+      "name": "Полный исследовательский профиль (Research Full)",
+      "description": "Все физически доступные каналы, включая обратные связи клапанов, заслонок и давление в воздуховоде.",
+      "channels": ["OA_TEMP", "RA_TEMP", "MA_TEMP", "SA_TEMP", "SA_TEMPSPT", "CHWC_VLV_DM", "OA_DMPR_DM", "SF_SPD_DM", "CHWC_VLV", "OA_DMPR", "SA_SP"],
+      "cost_estimate": "Исследовательский стенд",
+      "isolation_capability": "Максимальная в рамках воздушного контура"
+    }
+  ],
+  "channel_matrix": [
+    {
+      "canonical_id": "OA_TEMP",
+      "name_ru": "Температура наружного воздуха",
+      "unit": "°C",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "RA_TEMP",
+      "name_ru": "Температура возвратного воздуха",
+      "unit": "°C",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "MA_TEMP",
+      "name_ru": "Температура смешанного воздуха",
+      "unit": "°C",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "SA_TEMP",
+      "name_ru": "Температура приточного воздуха",
+      "unit": "°C",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "SA_TEMPSPT",
+      "name_ru": "Уставка приточной температуры",
+      "unit": "°C",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "CHWC_VLV_DM",
+      "name_ru": "Команда охлаждающего клапана",
+      "unit": "%",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "OA_DMPR_DM",
+      "name_ru": "Команда наружной заслонки",
+      "unit": "%",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "SF_SPD_DM",
+      "name_ru": "Команда скорости приточного вентилятора",
+      "unit": "%",
+      "tier": "BASIC",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "canonical_id": "CHWC_VLV",
+      "name_ru": "Датчик хода штока клапана охлаждения",
+      "unit": "%",
+      "tier": "EXTRA",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "EXTRA_REQUIRES_SWITCH"
+    },
+    {
+      "canonical_id": "OA_DMPR",
+      "name_ru": "Датчик положения заслонки OA",
+      "unit": "%",
+      "tier": "EXTRA",
+      "recorded_in_source": true,
+      "verified_semantics": true,
+      "status": "EXTRA_REQUIRES_SWITCH"
+    },
+    {
+      "canonical_id": "SA_CFM",
+      "name_ru": "Объемный расход приточного воздуха",
+      "unit": "m³/h",
+      "tier": "EXTRA",
+      "recorded_in_source": false,
+      "verified_semantics": false,
+      "status": "NOT_RECORDED_IN_DATASET"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "protocol_version": "1.0",
+  "created_at": "2026-11-03T10:44:51.617041+00:00",
+  "scenario_id": "sc_89e2c6028b4f",
+  "source_kind": "REAL_FIELD_BMS",
+  "timezone_status": "unspecified_local_australia_sydney",
+  "dataset_sha256": "d43028c46d6fadbed7f2deb749626f78be277573ead1e8b1abe8babd7515db6d",
+  "ground_truth_sha256": "b7ebad8a25baa8da7740186eb52a1eb62d0602c82dcc394ed0527ea5c6fd65f2",
+  "processed_parquet_sha256": "bb5a838a23566b8c3b046215953a8c1dd309a875cedf5683b5117a012badabca",
+  "temporal_gap_between_train_and_val": "2013-11-02 00:00:00 to 2013-11-03 23:59:00 (48h weekend AHU off)",
+  "splits": [
+    {
+      "split_role": "train_local",
+      "start_datetime": "2013-10-28 09:00:00",
+      "end_datetime": "2013-11-01 16:59:00",
+      "total_rows": 2404,
+      "operating_rows": 2394,
+      "clean_healthy_operating_rows": 1588,
+      "fault_operating_rows": 540,
+      "embargo_minutes": 60,
+      "fault_exclusion_policy": "STRICT_EMBARGO_60M",
+      "purpose": "Fit parameters b, (a,b), Ridge regressors on healthy operational data only",
+      "missingness_summary": {
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "CHWC_VLV_DM": 0,
+        "OA_DMPR_DM": 0,
+        "SF_SPD_DM": 0
+      },
+      "clean_indices_count": 1588,
+      "fault_indices_count": 540
+    },
+    {
+      "split_role": "validation_local",
+      "start_datetime": "2013-11-04 09:00:00",
+      "end_datetime": "2013-11-06 16:59:00",
+      "total_rows": 1422,
+      "operating_rows": 1421,
+      "clean_healthy_operating_rows": 726,
+      "fault_operating_rows": 393,
+      "embargo_minutes": 60,
+      "fault_exclusion_policy": "STRICT_EMBARGO_60M",
+      "purpose": "Model selection, information gain evaluation, threshold calibration (3sigma, Q95)",
+      "missingness_summary": {
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "CHWC_VLV_DM": 0,
+        "OA_DMPR_DM": 0,
+        "SF_SPD_DM": 0
+      },
+      "clean_indices_count": 726,
+      "fault_indices_count": 393
+    },
+    {
+      "split_role": "heldout_test",
+      "start_datetime": "2013-11-07 09:00:00",
+      "end_datetime": "2013-11-12 16:59:00",
+      "total_rows": 2880,
+      "operating_rows": 1920,
+      "clean_healthy_operating_rows": 1074,
+      "fault_operating_rows": 846,
+      "embargo_minutes": 0,
+      "fault_exclusion_policy": "NONE_PRESERVE_GROUND_TRUTH",
+      "purpose": "Final uncompromised held-out test of normal predictions and fault detection",
+      "missingness_summary": {
+        "OA_TEMP": 0,
+        "RA_TEMP": 0,
+        "SA_TEMP": 0,
+        "SA_TEMPSPT": 0,
+        "CHWC_VLV_DM": 0,
+        "OA_DMPR_DM": 0,
+        "SF_SPD_DM": 0
+      },
+      "clean_indices_count": 1074,
+      "fault_indices_count": 846
+    }
+  ]
+}

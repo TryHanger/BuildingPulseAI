@@ -1,0 +1,17 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.pytest_cache/
+.coverage
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+postgres_data/
+*.db
+*.sqlite3
+docs/screenshots/*
+!docs/screenshots/.gitkeep

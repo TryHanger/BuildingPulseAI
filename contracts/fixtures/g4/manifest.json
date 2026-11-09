@@ -1,0 +1,9 @@
+{
+  "dataset_id": "demo-g4-mat",
+  "name": "Синтетический эпизод MAT",
+  "sha256": "03f35a45643fa9b361fb7e96fabcb5aed3b29b98d120062acf734c0088347e84",
+  "index_sha256": "90da5fcc7b4aebf788409f9000b2db97b1c5c10b120febbad6612e366baea874",
+  "rows": 32,
+  "first": "2018-01-02T11:00:00",
+  "last": "2018-01-02T11:41:00"
+}

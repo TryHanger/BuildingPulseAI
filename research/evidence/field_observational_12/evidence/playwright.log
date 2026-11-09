@@ -1,0 +1,14 @@
+PASS browser render and all 20 visible ticks: event-AHU1
+PASS browser render and all 20 visible ticks: event-AHU2
+PASS browser render and all 20 visible ticks: event-AHU8
+PASS browser render and all 20 visible ticks: event-AHU18
+PASS browser render and all 20 visible ticks: event-AHU23
+PASS browser render and all 20 visible ticks: event-AHU24
+PASS browser render and all 20 visible ticks: control-AHU1-063
+PASS browser render and all 20 visible ticks: control-AHU1-077
+PASS browser render and all 20 visible ticks: control-AHU18-063
+PASS browser render and all 20 visible ticks: control-AHU18-077
+PASS browser render and all 20 visible ticks: control-AHU23-063
+PASS browser render and all 20 visible ticks: control-AHU23-077
+PASS discoverability, keyboard, matched controls, provenance, fail-closed UI and 1440/390 px layouts
+Chromium 156.0.8078.4

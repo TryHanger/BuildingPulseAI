@@ -1,0 +1,79 @@
+{
+  "dataset_id": "demo-ahu",
+  "equipment_id": "demo-ahu-01",
+  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+  "schema_version": "1.0.0",
+  "source_type": "DEMO_FIXTURE",
+  "panel": "BASIC",
+  "window": {
+    "from_utc": "2026-01-01T08:00:00Z",
+    "to_utc": "2026-01-01T08:05:00Z",
+    "cutoff_utc": "2026-01-01T08:05:00Z",
+    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+    "sample_seconds": 60,
+    "missing_fraction": 0
+  },
+  "data_status": "INVALID",
+  "anomaly_status": "UNASSESSED",
+  "cause_status": "NOT_ASSESSED",
+  "model_scope": "UNKNOWN",
+  "display_state": "NOT_EVALUABLE",
+  "observations": [
+    {
+      "observation_id": "sat-3",
+      "method_id": "demo-sat-deviation",
+      "method_version": "fixture-1",
+      "comparison_id": "demo-sat-tracking",
+      "window": {
+        "from_utc": "2026-01-01T08:00:00Z",
+        "to_utc": "2026-01-01T08:05:00Z",
+        "cutoff_utc": "2026-01-01T08:05:00Z",
+        "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+        "sample_seconds": 60,
+        "missing_fraction": 0
+      },
+      "predicate": "INDETERMINATE",
+      "data_status": "INVALID",
+      "applicability": {
+        "method_status": "INCONCLUSIVE",
+        "reason_code": "INVALID_SAT",
+        "missing_roles": [],
+        "regime": "COOLING"
+      },
+      "provenance_type": "SYNTHETIC_FIXTURE",
+      "roots": [
+        {
+          "dataset_id": "demo-ahu",
+          "equipment_id": "demo-ahu-01",
+          "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+          "canonical_id": "SA_TEMP",
+          "physical_sensor_id": "demo-sat",
+          "source_column": "SA_TEMP",
+          "role": "TARGET"
+        },
+        {
+          "dataset_id": "demo-ahu",
+          "equipment_id": "demo-ahu-01",
+          "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+          "canonical_id": "SA_TEMPSPT",
+          "physical_sensor_id": null,
+          "source_column": "SA_TEMPSPT",
+          "role": "CONTEXT"
+        },
+        {
+          "dataset_id": "demo-ahu",
+          "equipment_id": "demo-ahu-01",
+          "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+          "canonical_id": "OA_TEMP",
+          "physical_sensor_id": "demo-oat",
+          "source_column": "OA_TEMP",
+          "role": "CONTEXT"
+        }
+      ],
+      "values": [],
+      "threshold": null
+    }
+  ],
+  "hypotheses": [],
+  "event": null
+}

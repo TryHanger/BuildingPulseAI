@@ -1,0 +1,82 @@
+{
+  "task": "BP-ML-REPRO-01",
+  "task_archive": {
+    "name": "BUILDINGPULSE_LIGHTGBM_PAPER_REPRODUCTION_TASK_2026-11-08.zip",
+    "sha256": "ea6ab93d0d56d54241745e71ebfe0459c4399063e77076ad5a4f7c2d192ff44e"
+  },
+  "base": {
+    "accepted_artifact": "BUILDINGPULSE_G6_0_GATE_REVIEW.zip",
+    "sha256": "6cf3f518734abebc24281cb5cc7b38019052d5a4961e3a005ce79cc5c0a7209f",
+    "version": "G6.0",
+    "parent": {
+      "accepted_artifact": "BUILDINGPULSE_G5_7_GATE_REVIEW.zip",
+      "sha256": "2781f810c6c9fc6a38e31531ae1691d219a3987d9f71f480f56c84e390252cbf",
+      "path": "/mnt/c/Users/Nikita/Desktop/BuildingPulseAi/BUILDINGPULSE_G5_7_GATE_REVIEW.zip",
+      "version": "G5.7",
+      "revision_kind": "accepted overlay; no supplied Git metadata"
+    }
+  },
+  "decision": "PARTIAL_REPLICATION",
+  "method": "INDEPENDENT_REIMPLEMENTATION",
+  "data_gate": "PASS",
+  "paper_exact_method": "PARTIAL",
+  "basic": "RESEARCH_ONLY",
+  "product_integration": "NOT_INTEGRATED",
+  "domain": "SIMULATED_BENCHMARK",
+  "paper_doi": "10.3390/s26113465",
+  "dataset_doi": "10.25984/1881324",
+  "dataset_archive_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471",
+  "source_identity": "SOURCE_IDENTITY_AND_LABELS.csv",
+  "primary_seed": 42,
+  "secondary_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "patch": {
+    "name": "BP_ML_REPRO_01.patch",
+    "sha256": "9e7292cffeed206e812ea617b5f3a958f17b332219cbf63d5af20ce467ca3055"
+  },
+  "overlay_sha256": {
+    "research/ml_reproduction/ARTICLE_SPEC_LEDGER.md": "80535e0ce1d53ef119830ecb8586e1fac553331a245c94d68ee7591fb85297d1",
+    "research/ml_reproduction/FROZEN_PROTOCOL.yaml": "50e4fbf3e84cdbed3edd2eccd9fecdb49ce2eaeb219206d02fd624d1b18a966c",
+    "research/ml_reproduction/brick.py": "318288e0d172690171bbdb456ce0e30c188c6d0faf88fd464113349210f1e499",
+    "research/ml_reproduction/panels.py": "ebc9d9aae7fff042a7003e33f869ff5e4a6f0388a0cde97396a0579c4f127ab8",
+    "research/ml_reproduction/report.py": "9a30830843bfcb7618290650438f355accb1170eb0853601e2a915e5659a892f",
+    "research/ml_reproduction/requirements-run.txt": "76f56262e2f17614067bc6e509bdcf8da74de150b908dd021d97c6d61055cefa",
+    "research/ml_reproduction/requirements.txt": "eb3e1fd6935a7c958152416723be33e2ca1c616b343b66668b5d3e89314ea792",
+    "research/ml_reproduction/run.py": "2614c91991b261ae7bb5ddf4ba8729c407dafa3f0e9b6168f9e65a7cd933aa25",
+    "research/ml_reproduction/sources.py": "c50ef6f33109c267dfecefa2a05c9718c81cc0a37cb6e140c9f3059d3a73f7a6",
+    "research/ml_reproduction/test_repro.py": "4b62de1dda7a4ad75c8c88736df35ac881822c76d0f8e441615241656a1d0d6f"
+  },
+  "preserved_sha256": {
+    "backend/app/services/g36_policy.py": "07e1bd8a8144c06872de6e97cb357048f34a794ea4b210a8d0e5fce7e5eabd0b",
+    "backend/app/services/g36_week.py": "f9f5b53f506f74ad4becb03f7b33e0a75b86479498a6df779ce1f638b2e20d70",
+    "backend/app/services/g36_benchmark.py": "8d7d1346e76c01452798ce4e84afe4f713659ee2b2558adcc1887e1f5e02d20a",
+    "backend/app/services/g36_week_benchmark.py": "0ce956b222d9fbc49f3b3525f7fa30d0de85d62d088e17a80218243a8cfbec29",
+    "backend/app/api/endpoints/investigator_v1.py": "b9fb055f8100ed89135bde62433af85d7844b3aec1995cf0e3cf80881b6b24c8",
+    "contracts/openapi-v1.yaml": "75d2b37b0f1859edad2c7866e668d90974845ea386d150044b58959a62b323f2",
+    "frontend/src/types/openapi-v1.generated.ts": "dd48eaed214eb2b95c1e83fbe03e02af5530ea5a78d670c72ebcfcf8d22b1da8",
+    "frontend/src/components/G36EvidenceLimits.tsx": "8b76386880de6627c6b22a8bafc716945d730423818e3f8847e9a0e61f81af86",
+    "research/g0-g1/SIGNAL_MAP_V1.yaml": "214c4059a93dc5af0bc7795c609bcdada224d99dca4cca0f99c1fb0687f7cb0b",
+    "backend/app/services/g2_mode.py": "f0366202237d0bb567a1d70e0e6d91e1293d83e875425b383d7db6de0aad22a7"
+  },
+  "checks": {
+    "pytest_passed": 326,
+    "independently_recomputed_metric_rows": 1320,
+    "typescript_build": "PASS",
+    "openapi": "PASS",
+    "http": "PASS",
+    "playwright": "PASS",
+    "missing_channel_abstention": "PASS_OFFLINE_CLI",
+    "raw_processed_sqlite": "PASS_SHA256",
+    "docker_compose": "NOT_RUN"
+  }
+}

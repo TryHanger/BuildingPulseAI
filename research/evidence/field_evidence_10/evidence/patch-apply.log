@@ -1,0 +1,4 @@
+patching file backend/app/api/router.py
+patching file frontend/src/App.tsx
+patching file frontend/src/components/TopNavigationBar.tsx
+PASS patched files byte-identical to tested application

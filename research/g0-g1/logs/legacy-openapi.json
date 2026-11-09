@@ -1,0 +1,3495 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BuildingPulse AI",
+    "description": "BuildingPulse AI \u2014 \u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c \u0437\u0434\u0430\u043d\u0438\u0439 (AHU)",
+    "version": "0.7.1"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health Check",
+        "operationId": "health_check_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datasets": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "List Datasets",
+        "operationId": "list_datasets_api_datasets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datasets/import": {
+      "post": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Import Dataset Csv",
+        "operationId": "import_dataset_csv_api_datasets_import_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_import_dataset_csv_api_datasets_import_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/scenarios": {
+      "get": {
+        "tags": [
+          "Scenarios"
+        ],
+        "summary": "List Scenarios",
+        "operationId": "list_scenarios_api_scenarios_get",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e ID \u0434\u0430\u0442\u0430\u0441\u0435\u0442\u0430",
+              "title": "Dataset Id"
+            },
+            "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e ID \u0434\u0430\u0442\u0430\u0441\u0435\u0442\u0430"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScenarioListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sensors": {
+      "get": {
+        "tags": [
+          "Sensors"
+        ],
+        "summary": "List Sensors",
+        "operationId": "list_sensors_api_sensors_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f",
+              "title": "Scenario Id"
+            },
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/telemetry": {
+      "get": {
+        "tags": [
+          "Telemetry"
+        ],
+        "summary": "Get Telemetry",
+        "operationId": "get_telemetry_api_telemetry_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f",
+              "title": "Scenario Id"
+            },
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f"
+          },
+          {
+            "name": "channels",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "\u0421\u043f\u0438\u0441\u043e\u043a \u043a\u0430\u043d\u0430\u043b\u043e\u0432 \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 SA_TEMP,MA_TEMP)",
+              "title": "Channels"
+            },
+            "description": "\u0421\u043f\u0438\u0441\u043e\u043a \u043a\u0430\u043d\u0430\u043b\u043e\u0432 \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 SA_TEMP,MA_TEMP)"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "\u041d\u0430\u0447\u0430\u043b\u043e \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430 (ISO-8601)",
+              "title": "Start"
+            },
+            "description": "\u041d\u0430\u0447\u0430\u043b\u043e \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430 (ISO-8601)"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "\u041a\u043e\u043d\u0435\u0446 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430 (ISO-8601)",
+              "title": "End"
+            },
+            "description": "\u041a\u043e\u043d\u0435\u0446 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430 (ISO-8601)"
+          },
+          {
+            "name": "max_points",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 10000,
+              "minimum": 10,
+              "default": 1500,
+              "title": "Max Points"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/data-quality": {
+      "get": {
+        "tags": [
+          "Data Quality"
+        ],
+        "summary": "Get Data Quality",
+        "operationId": "get_data_quality_api_data_quality_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f",
+              "title": "Scenario Id"
+            },
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataQualityReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/profiles": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Get Sensor Profiles",
+        "description": "Returns the list of 5 executable sensor observability profiles:\nBASIC, BASIC_PLUS_VALVE, BASIC_PLUS_DAMPER, BASIC_PLUS_BOTH, FULL.",
+        "operationId": "get_sensor_profiles_api_diagnostics_profiles_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SensorProfileItem"
+                  },
+                  "type": "array",
+                  "title": "Response Get Sensor Profiles Api Diagnostics Profiles Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/summary": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Get Diagnostic Summary",
+        "description": "Returns high-level scenario diagnostic summary from Formal Decision Layer:\ndetection status, single cause, multiple plausible candidates, physical evidence,\nmissing channels for the profile, and domain status.",
+        "operationId": "get_diagnostic_summary_api_diagnostics_summary_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f",
+              "title": "Scenario Id"
+            },
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f"
+          },
+          {
+            "name": "model_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0432\u0438\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0434\u0430\u0442\u0447\u0438\u043a\u0430",
+              "default": "vs-sa-temp-v2",
+              "title": "Model Id"
+            },
+            "description": "ID \u0432\u0438\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0434\u0430\u0442\u0447\u0438\u043a\u0430"
+          },
+          {
+            "name": "threshold_policy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043f\u043e\u0440\u043e\u0433\u0430: three_sigma, q95, mad, q99",
+              "default": "three_sigma",
+              "title": "Threshold Policy"
+            },
+            "description": "\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043f\u043e\u0440\u043e\u0433\u0430: three_sigma, q95, mad, q99"
+          },
+          {
+            "name": "profile_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "\u041f\u0440\u043e\u0444\u0438\u043b\u044c \u043d\u0430\u0431\u043b\u044e\u0434\u0430\u0435\u043c\u043e\u0441\u0442\u0438: BASIC, BASIC_PLUS_VALVE, etc.",
+              "default": "BASIC",
+              "title": "Profile Id"
+            },
+            "description": "\u041f\u0440\u043e\u0444\u0438\u043b\u044c \u043d\u0430\u0431\u043b\u044e\u0434\u0430\u0435\u043c\u043e\u0441\u0442\u0438: BASIC, BASIC_PLUS_VALVE, etc."
+          },
+          {
+            "name": "allow_unvalidated",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "\u0420\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0440\u0435\u0436\u0438\u043c \u0434\u043b\u044f \u043d\u0435\u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0445 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432",
+              "default": false,
+              "title": "Allow Unvalidated"
+            },
+            "description": "\u0420\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0440\u0435\u0436\u0438\u043c \u0434\u043b\u044f \u043d\u0435\u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0445 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScenarioDiagnosticSummary"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/run-rules": {
+      "post": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Run Rules",
+        "operationId": "run_rules_api_diagnostics_run_rules_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RuleRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleRunResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/events": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Get Events",
+        "operationId": "get_events_api_diagnostics_events_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f",
+              "title": "Scenario Id"
+            },
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f"
+          },
+          {
+            "name": "conclusion_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "\u0422\u0438\u043f \u0437\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f (PHYSICAL_BASELINE, VIRTUAL_SENSOR_RESIDUAL)",
+              "title": "Conclusion Type"
+            },
+            "description": "\u0422\u0438\u043f \u0437\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f (PHYSICAL_BASELINE, VIRTUAL_SENSOR_RESIDUAL)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DiagnosticEventRead"
+                  },
+                  "title": "Response Get Events Api Diagnostics Events Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/experiments/stage4/summary": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Get Stage4 Experiments Summary",
+        "description": "Returns persisted Stage 4 scientific experiment summaries (E4.1 Risk-Coverage and E4.2 Profiles).",
+        "operationId": "get_stage4_experiments_summary_api_experiments_stage4_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/models": {
+      "get": {
+        "tags": [
+          "Virtual Sensor & ML"
+        ],
+        "summary": "List Models",
+        "description": "Returns list of available trained ML models.",
+        "operationId": "list_models_api_ml_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ModelListItem"
+                  },
+                  "type": "array",
+                  "title": "Response List Models Api Ml Models Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/models/{model_id}": {
+      "get": {
+        "tags": [
+          "Virtual Sensor & ML"
+        ],
+        "summary": "Get Model Metadata",
+        "description": "Returns full metadata and training config for a given model.",
+        "operationId": "get_model_metadata_api_ml_models__model_id__get",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/predictions": {
+      "get": {
+        "tags": [
+          "Virtual Sensor & ML"
+        ],
+        "summary": "Get Predictions",
+        "description": "Returns synchronized time-series of actual, predicted, and residual values.",
+        "operationId": "get_predictions_api_ml_predictions_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID of the scenario to predict",
+              "title": "Scenario Id"
+            },
+            "description": "ID of the scenario to predict"
+          },
+          {
+            "name": "model_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ID of the virtual sensor model",
+              "default": "vs-sa-temp-v1",
+              "title": "Model Id"
+            },
+            "description": "ID of the virtual sensor model"
+          },
+          {
+            "name": "threshold_policy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Policy: three_sigma, q95, q99, mad",
+              "default": "three_sigma",
+              "title": "Threshold Policy"
+            },
+            "description": "Policy: three_sigma, q95, q99, mad"
+          },
+          {
+            "name": "max_points",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Max points for frontend chart rendering",
+              "default": 1500,
+              "title": "Max Points"
+            },
+            "description": "Max points for frontend chart rendering"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MLPredictionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/detect": {
+      "post": {
+        "tags": [
+          "Virtual Sensor & ML"
+        ],
+        "summary": "Run Ml Detection",
+        "description": "Runs virtual sensor anomaly detection and records diagnostic events in database.",
+        "operationId": "run_ml_detection_api_ml_detect_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DetectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DiagnosticEventRead"
+                  },
+                  "type": "array",
+                  "title": "Response Run Ml Detection Api Ml Detect Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/events": {
+      "get": {
+        "tags": [
+          "Virtual Sensor & ML"
+        ],
+        "summary": "Get Ml Events",
+        "description": "Returns detected ML virtual sensor events for a scenario.",
+        "operationId": "get_ml_events_api_ml_events_get",
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Scenario Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DiagnosticEventRead"
+                  },
+                  "title": "Response Get Ml Events Api Ml Events Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/recommendable-channels": {
+      "get": {
+        "tags": [
+          "Sensor Recommendations & Research"
+        ],
+        "summary": "Get Recommendable Channels",
+        "description": "Returns candidate actuator feedback channels for recommendation and their status.",
+        "operationId": "get_recommendable_channels_api_diagnostics_recommendable_channels_get",
+        "parameters": [
+          {
+            "name": "profile_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0442\u0435\u043a\u0443\u0449\u0435\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
+              "default": "BASIC",
+              "title": "Profile Id"
+            },
+            "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0442\u0435\u043a\u0443\u0449\u0435\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecommendableChannelItem"
+                  },
+                  "title": "Response Get Recommendable Channels Api Diagnostics Recommendable Channels Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sensors/recommend": {
+      "post": {
+        "tags": [
+          "Sensor Recommendations & Research"
+        ],
+        "summary": "Get Sensor Recommendation",
+        "description": "Computes validation-grounded sensor recommendation for the given scenario and profile.\nEnforces Domain Guard and strict anti-leakage invariants.",
+        "operationId": "get_sensor_recommendation_api_sensors_recommend_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SensorRecommendationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorRecommendationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/experiments/stage5/recommendation-summary": {
+      "get": {
+        "tags": [
+          "Sensor Recommendations & Research"
+        ],
+        "summary": "Get Stage5 Recommendation Summary",
+        "description": "Returns persisted H3 experiment summary comparing Random, Fixed, and Validation-Based strategies.",
+        "operationId": "get_stage5_recommendation_summary_api_experiments_stage5_recommendation_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/experiments/stage5/external-summary": {
+      "get": {
+        "tags": [
+          "Sensor Recommendations & Research"
+        ],
+        "summary": "Get Stage5 External Summary",
+        "description": "Returns persisted external building validation summary (CSIRO / RBC compatibility and telemetry).",
+        "operationId": "get_stage5_external_summary_api_experiments_stage5_external_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/adaptation/datasets": {
+      "get": {
+        "tags": [
+          "Domain Adaptation (CSIRO)"
+        ],
+        "summary": "List Adaptation Datasets",
+        "description": "Returns registered field buildings supported for domain adaptation.",
+        "operationId": "list_adaptation_datasets_api_adaptation_datasets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TargetDatasetInfo"
+                  },
+                  "type": "array",
+                  "title": "Response List Adaptation Datasets Api Adaptation Datasets Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/adaptation/models": {
+      "get": {
+        "tags": [
+          "Domain Adaptation (CSIRO)"
+        ],
+        "summary": "List Adaptation Models",
+        "description": "Returns adaptation model candidates for target building.",
+        "operationId": "list_adaptation_models_api_adaptation_models_get",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target building code",
+              "default": "CSIRO_AHU9",
+              "title": "Target"
+            },
+            "description": "Target building code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AdaptationModelCard"
+                  },
+                  "title": "Response List Adaptation Models Api Adaptation Models Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/adaptation/summary": {
+      "get": {
+        "tags": [
+          "Domain Adaptation (CSIRO)"
+        ],
+        "summary": "Get Adaptation Summary",
+        "description": "Returns full Pre vs Post adaptation comparison on held-out test.",
+        "operationId": "get_adaptation_summary_api_adaptation_summary_get",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target building code",
+              "default": "CSIRO_AHU9",
+              "title": "Target"
+            },
+            "description": "Target building code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdaptationSummaryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/adaptation/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "Domain Adaptation (CSIRO)"
+        ],
+        "summary": "Get Adaptation Run",
+        "description": "Returns provenance and metrics for an adaptation execution run with path traversal protection.",
+        "operationId": "get_adaptation_run_api_adaptation_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/adaptation/predictions": {
+      "get": {
+        "tags": [
+          "Domain Adaptation (CSIRO)"
+        ],
+        "summary": "Get Adaptation Predictions",
+        "description": "Returns downsampled time series telemetry comparing actual, zero-shot and adapted predictions.",
+        "operationId": "get_adaptation_predictions_api_adaptation_predictions_get",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target building code",
+              "default": "CSIRO_AHU9",
+              "title": "Target"
+            },
+            "description": "Target building code"
+          },
+          {
+            "name": "model_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Adaptation model identifier",
+              "default": "csiro-ahu9-affine-v1",
+              "title": "Model Id"
+            },
+            "description": "Adaptation model identifier"
+          },
+          {
+            "name": "max_points",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 2000,
+              "minimum": 50,
+              "description": "Max downsampled points for UI chart",
+              "default": 600,
+              "title": "Max Points"
+            },
+            "description": "Max downsampled points for UI chart"
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Start ISO datetime",
+              "title": "Start Date"
+            },
+            "description": "Start ISO datetime"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "End ISO datetime",
+              "title": "End Date"
+            },
+            "description": "End ISO datetime"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdaptationPredictionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdaptationModelCard": {
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "strategy_code": {
+            "type": "string",
+            "title": "Strategy Code"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "target_domain": {
+            "type": "string",
+            "title": "Target Domain"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AdaptationStatus"
+          },
+          "prediction_validity": {
+            "$ref": "#/components/schemas/PredictionValidity"
+          },
+          "fault_localization_validity": {
+            "type": "string",
+            "title": "Fault Localization Validity",
+            "default": "NOT_VALIDATED"
+          },
+          "features": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Features"
+          },
+          "training_sample_count": {
+            "type": "integer",
+            "title": "Training Sample Count"
+          },
+          "validation_metrics": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Validation Metrics"
+          },
+          "calibrated_thresholds": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibrated Thresholds"
+          },
+          "formula": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Formula"
+          },
+          "parameters": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parameters"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model_id",
+          "name",
+          "strategy_code",
+          "description",
+          "target_domain",
+          "status",
+          "prediction_validity",
+          "features",
+          "training_sample_count"
+        ],
+        "title": "AdaptationModelCard"
+      },
+      "AdaptationPredictionsResponse": {
+        "properties": {
+          "target_domain": {
+            "type": "string",
+            "title": "Target Domain"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AdaptationStatus"
+          },
+          "total_points": {
+            "type": "integer",
+            "title": "Total Points"
+          },
+          "downsampled_points": {
+            "type": "integer",
+            "title": "Downsampled Points"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/PredictionPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_domain",
+          "model_id",
+          "status",
+          "total_points",
+          "downsampled_points",
+          "points"
+        ],
+        "title": "AdaptationPredictionsResponse"
+      },
+      "AdaptationStatus": {
+        "type": "string",
+        "enum": [
+          "OUT_OF_DOMAIN_UNVALIDATED",
+          "ADAPTATION_EXPERIMENTAL",
+          "LOCALLY_EVALUATED",
+          "INSUFFICIENT_LOCAL_DATA",
+          "INCOMPATIBLE_SENSOR_SEMANTICS"
+        ],
+        "title": "AdaptationStatus"
+      },
+      "AdaptationSummaryResponse": {
+        "properties": {
+          "target_domain": {
+            "type": "string",
+            "title": "Target Domain"
+          },
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "dataset_sha256": {
+            "type": "string",
+            "title": "Dataset Sha256"
+          },
+          "split_info": {
+            "type": "object",
+            "title": "Split Info"
+          },
+          "models_comparison": {
+            "items": {
+              "$ref": "#/components/schemas/ModelComparisonRow"
+            },
+            "type": "array",
+            "title": "Models Comparison"
+          },
+          "best_adapted_model_id": {
+            "type": "string",
+            "title": "Best Adapted Model Id"
+          },
+          "mae_reduction_pct": {
+            "type": "number",
+            "title": "Mae Reduction Pct"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "provenance_note": {
+            "type": "string",
+            "title": "Provenance Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_domain",
+          "scenario_id",
+          "dataset_sha256",
+          "split_info",
+          "models_comparison",
+          "best_adapted_model_id",
+          "mae_reduction_pct",
+          "limitations",
+          "provenance_note"
+        ],
+        "title": "AdaptationSummaryResponse"
+      },
+      "Body_import_dataset_csv_api_datasets_import_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind",
+            "default": "USER_UPLOADED"
+          },
+          "source_fault_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label"
+          },
+          "source_fault_label_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label Type"
+          },
+          "provenance_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provenance Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_import_dataset_csv_api_datasets_import_post"
+      },
+      "CandidateScoreRead": {
+        "properties": {
+          "channel": {
+            "type": "string",
+            "title": "Channel"
+          },
+          "channel_name_ru": {
+            "type": "string",
+            "title": "Channel Name Ru"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "delta_selective_risk_validation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delta Selective Risk Validation"
+          },
+          "coverage_target": {
+            "type": "number",
+            "title": "Coverage Target",
+            "default": 0.6
+          },
+          "coverage_actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverage Actual"
+          },
+          "eligible_groups": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eligible Groups"
+          },
+          "decision": {
+            "type": "string",
+            "title": "Decision"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "channel",
+          "channel_name_ru",
+          "component",
+          "decision",
+          "reason"
+        ],
+        "title": "CandidateScoreRead"
+      },
+      "DataQualityReport": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "total_records": {
+            "type": "integer",
+            "title": "Total Records"
+          },
+          "time_monotonic": {
+            "type": "boolean",
+            "title": "Time Monotonic"
+          },
+          "duplicate_timestamps_count": {
+            "type": "integer",
+            "title": "Duplicate Timestamps Count"
+          },
+          "missing_intervals": {
+            "items": {
+              "$ref": "#/components/schemas/MissingInterval"
+            },
+            "type": "array",
+            "title": "Missing Intervals"
+          },
+          "missing_ratio": {
+            "type": "number",
+            "title": "Missing Ratio"
+          },
+          "stuck_channels": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Stuck Channels"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/QualityMetric"
+            },
+            "type": "array",
+            "title": "Metrics"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "total_records",
+          "time_monotonic",
+          "duplicate_timestamps_count",
+          "missing_intervals",
+          "missing_ratio",
+          "stuck_channels",
+          "metrics"
+        ],
+        "title": "DataQualityReport"
+      },
+      "DatasetListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "DatasetListResponse"
+      },
+      "DatasetRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          },
+          "source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Url"
+          },
+          "license_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "License Note"
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sha256"
+          },
+          "size_bytes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size Bytes"
+          },
+          "processing_version": {
+            "type": "string",
+            "title": "Processing Version",
+            "default": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "READY"
+          },
+          "provenance_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provenance Note"
+          },
+          "imported_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Imported At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "source_kind"
+        ],
+        "title": "DatasetRead"
+      },
+      "DetectRequest": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id",
+            "default": "vs-sa-temp-v1"
+          },
+          "threshold_policy": {
+            "type": "string",
+            "title": "Threshold Policy",
+            "description": "Policy: three_sigma, q95, q99, mad",
+            "default": "three_sigma"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id"
+        ],
+        "title": "DetectRequest"
+      },
+      "DetectionSummary": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "observed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed At"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit",
+            "default": "degC"
+          },
+          "alarm_minutes": {
+            "type": "integer",
+            "title": "Alarm Minutes",
+            "default": 0
+          },
+          "alarm_episodes_count": {
+            "type": "integer",
+            "title": "Alarm Episodes Count",
+            "default": 0
+          },
+          "operating_minutes": {
+            "type": "integer",
+            "title": "Operating Minutes",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "method"
+        ],
+        "title": "DetectionSummary"
+      },
+      "DiagnosticEventRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "started_at": {
+            "type": "string",
+            "title": "Started At"
+          },
+          "ended_at": {
+            "type": "string",
+            "title": "Ended At"
+          },
+          "rule_id": {
+            "type": "string",
+            "title": "Rule Id"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity"
+          },
+          "evidence_json": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Json"
+          },
+          "conclusion_type": {
+            "type": "string",
+            "title": "Conclusion Type"
+          },
+          "generated_by_version": {
+            "type": "string",
+            "title": "Generated By Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "scenario_id",
+          "started_at",
+          "ended_at",
+          "rule_id",
+          "severity",
+          "conclusion_type",
+          "generated_by_version"
+        ],
+        "title": "DiagnosticEventRead"
+      },
+      "DiagnosticProvenance": {
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "title": "Dataset Version"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "threshold_policy": {
+            "type": "string",
+            "title": "Threshold Policy"
+          },
+          "feature_profile": {
+            "type": "string",
+            "title": "Feature Profile",
+            "default": "BASIC"
+          },
+          "scientific_disclaimer": {
+            "type": "string",
+            "title": "Scientific Disclaimer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dataset_version",
+          "model_id",
+          "model_version",
+          "threshold_policy",
+          "scientific_disclaimer"
+        ],
+        "title": "DiagnosticProvenance"
+      },
+      "GroundTruthEvaluationInfo": {
+        "properties": {
+          "source_fault_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label"
+          },
+          "source_fault_label_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label Type"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "is_benchmark_evaluation": {
+            "type": "boolean",
+            "title": "Is Benchmark Evaluation",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "GroundTruthEvaluationInfo"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LocalizationSummary": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "candidate_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Class"
+          },
+          "candidate_class_ru": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Class Ru"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "score_type": {
+            "type": "string",
+            "title": "Score Type",
+            "default": "uncalibrated_model_score"
+          },
+          "supporting_evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Supporting Evidence",
+            "default": []
+          },
+          "missing_evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Evidence",
+            "default": []
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations",
+            "default": []
+          },
+          "decision_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Status"
+          },
+          "single_cause": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Single Cause"
+          },
+          "single_cause_ru": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Single Cause Ru"
+          },
+          "candidate_causes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Candidate Causes",
+            "default": []
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes",
+            "default": []
+          },
+          "structured_evidence": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Structured Evidence",
+            "default": []
+          },
+          "missing_measurements": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Measurements",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "LocalizationSummary"
+      },
+      "MLPredictionPoint": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual"
+          },
+          "predicted": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Predicted"
+          },
+          "residual_signed": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Residual Signed"
+          },
+          "residual_abs": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Residual Abs"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold"
+          },
+          "is_operating": {
+            "type": "boolean",
+            "title": "Is Operating",
+            "default": true
+          },
+          "is_alarm": {
+            "type": "boolean",
+            "title": "Is Alarm",
+            "default": false
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "OK"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp"
+        ],
+        "title": "MLPredictionPoint"
+      },
+      "MLPredictionResponse": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target",
+            "default": "SA_TEMP"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit",
+            "default": "degC"
+          },
+          "total_points": {
+            "type": "integer",
+            "title": "Total Points"
+          },
+          "operating_points": {
+            "type": "integer",
+            "title": "Operating Points"
+          },
+          "alarm_points": {
+            "type": "integer",
+            "title": "Alarm Points"
+          },
+          "alarm_episodes_count": {
+            "type": "integer",
+            "title": "Alarm Episodes Count"
+          },
+          "threshold_policy": {
+            "type": "string",
+            "title": "Threshold Policy"
+          },
+          "threshold_value": {
+            "type": "number",
+            "title": "Threshold Value"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metrics"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/MLPredictionPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "model_id",
+          "total_points",
+          "operating_points",
+          "alarm_points",
+          "alarm_episodes_count",
+          "threshold_policy",
+          "threshold_value",
+          "points"
+        ],
+        "title": "MLPredictionResponse"
+      },
+      "MissingInterval": {
+        "properties": {
+          "start": {
+            "type": "string",
+            "title": "Start"
+          },
+          "end": {
+            "type": "string",
+            "title": "End"
+          },
+          "duration_minutes": {
+            "type": "number",
+            "title": "Duration Minutes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "start",
+          "end",
+          "duration_minutes"
+        ],
+        "title": "MissingInterval"
+      },
+      "ModelComparisonRow": {
+        "properties": {
+          "strategy_code": {
+            "type": "string",
+            "title": "Strategy Code"
+          },
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AdaptationStatus"
+          },
+          "formula": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Formula"
+          },
+          "mae_degC": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mae Degc"
+          },
+          "rmse_degC": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rmse Degc"
+          },
+          "mean_bias_degC": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Bias Degc"
+          },
+          "r2_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "R2 Score"
+          },
+          "false_alarm_rate_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "False Alarm Rate Pct"
+          },
+          "event_recall_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Event Recall Pct"
+          },
+          "chw_valve_recall_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chw Valve Recall Pct"
+          }
+        },
+        "type": "object",
+        "required": [
+          "strategy_code",
+          "model_name",
+          "status",
+          "mae_degC",
+          "rmse_degC",
+          "mean_bias_degC",
+          "r2_score",
+          "false_alarm_rate_pct",
+          "event_recall_pct",
+          "chw_valve_recall_pct"
+        ],
+        "title": "ModelComparisonRow"
+      },
+      "ModelListItem": {
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "model_type": {
+            "type": "string",
+            "title": "Model Type"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target",
+            "default": "SA_TEMP"
+          },
+          "target_unit": {
+            "type": "string",
+            "title": "Target Unit",
+            "default": "degC"
+          },
+          "features": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Features"
+          },
+          "train_scenario_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Train Scenario Id",
+            "default": ""
+          },
+          "validation_metrics": {
+            "type": "object",
+            "title": "Validation Metrics"
+          },
+          "thresholds": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Thresholds"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "target_domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Domain"
+          },
+          "source_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Kind"
+          },
+          "is_adaptation": {
+            "type": "boolean",
+            "title": "Is Adaptation",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "model_id",
+          "name",
+          "description",
+          "model_type",
+          "features",
+          "validation_metrics",
+          "thresholds",
+          "created_at"
+        ],
+        "title": "ModelListItem"
+      },
+      "PredictionPoint": {
+        "properties": {
+          "datetime": {
+            "type": "string",
+            "title": "Datetime"
+          },
+          "actual_sa_temp": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Sa Temp"
+          },
+          "source_pred_sa_temp": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Pred Sa Temp"
+          },
+          "adapted_pred_sa_temp": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adapted Pred Sa Temp"
+          },
+          "source_residual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Residual"
+          },
+          "adapted_residual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adapted Residual"
+          },
+          "is_fault": {
+            "type": "boolean",
+            "title": "Is Fault"
+          },
+          "fault_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fault Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "datetime",
+          "actual_sa_temp",
+          "source_pred_sa_temp",
+          "adapted_pred_sa_temp",
+          "source_residual",
+          "adapted_residual",
+          "is_fault"
+        ],
+        "title": "PredictionPoint"
+      },
+      "PredictionValidity": {
+        "type": "string",
+        "enum": [
+          "REGRESSION_ONLY_HELDOUT",
+          "NOT_VALIDATED",
+          "EXPERIMENTAL"
+        ],
+        "title": "PredictionValidity"
+      },
+      "QualityMetric": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "value": {
+            "title": "Value"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "status",
+          "value"
+        ],
+        "title": "QualityMetric"
+      },
+      "RangeMeta": {
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start"
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End"
+          },
+          "timezone_status": {
+            "type": "string",
+            "title": "Timezone Status",
+            "default": "unknown"
+          }
+        },
+        "type": "object",
+        "title": "RangeMeta"
+      },
+      "RecommendableChannelItem": {
+        "properties": {
+          "channel": {
+            "type": "string",
+            "title": "Channel"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "already_present": {
+            "type": "boolean",
+            "title": "Already Present"
+          },
+          "is_recommendable": {
+            "type": "boolean",
+            "title": "Is Recommendable"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "channel",
+          "display_name",
+          "component",
+          "already_present",
+          "is_recommendable",
+          "reason"
+        ],
+        "title": "RecommendableChannelItem"
+      },
+      "RuleRunRequest": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id"
+        ],
+        "title": "RuleRunRequest"
+      },
+      "RuleRunResponse": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "algorithm_type": {
+            "type": "string",
+            "title": "Algorithm Type",
+            "default": "RULE_BASELINE"
+          },
+          "events_found": {
+            "type": "integer",
+            "title": "Events Found"
+          },
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/DiagnosticEventRead"
+            },
+            "type": "array",
+            "title": "Events"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "events_found",
+          "events"
+        ],
+        "title": "RuleRunResponse"
+      },
+      "SamplingMeta": {
+        "properties": {
+          "aggregated": {
+            "type": "boolean",
+            "title": "Aggregated"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "returned_points": {
+            "type": "integer",
+            "title": "Returned Points"
+          },
+          "total_source_points": {
+            "type": "integer",
+            "title": "Total Source Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "aggregated",
+          "method",
+          "returned_points",
+          "total_source_points"
+        ],
+        "title": "SamplingMeta"
+      },
+      "ScenarioDiagnosticSummary": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "scenario_name": {
+            "type": "string",
+            "title": "Scenario Name"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          },
+          "model_domain_status": {
+            "type": "string",
+            "title": "Model Domain Status"
+          },
+          "domain_warning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Domain Warning"
+          },
+          "profile_id": {
+            "type": "string",
+            "title": "Profile Id",
+            "default": "BASIC"
+          },
+          "profile_info": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SensorProfileItem"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "detection": {
+            "$ref": "#/components/schemas/DetectionSummary"
+          },
+          "localization": {
+            "$ref": "#/components/schemas/LocalizationSummary"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/DiagnosticProvenance"
+          },
+          "ground_truth": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GroundTruthEvaluationInfo"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "scenario_name",
+          "source_kind",
+          "model_domain_status",
+          "detection",
+          "localization",
+          "provenance"
+        ],
+        "title": "ScenarioDiagnosticSummary"
+      },
+      "ScenarioListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "ScenarioListResponse"
+      },
+      "ScenarioRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "dataset_id": {
+            "type": "string",
+            "title": "Dataset Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "start_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start At"
+          },
+          "end_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End At"
+          },
+          "sample_interval_seconds": {
+            "type": "integer",
+            "title": "Sample Interval Seconds",
+            "default": 60
+          },
+          "timezone_status": {
+            "type": "string",
+            "title": "Timezone Status",
+            "default": "unknown"
+          },
+          "source_fault_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label"
+          },
+          "source_fault_label_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Fault Label Type"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "total_rows": {
+            "type": "integer",
+            "title": "Total Rows",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "dataset_id",
+          "name"
+        ],
+        "title": "ScenarioRead"
+      },
+      "SensorListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SensorRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "SensorListResponse"
+      },
+      "SensorProfileItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "allowed_channels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allowed Channels"
+          },
+          "has_valve_feedback": {
+            "type": "boolean",
+            "title": "Has Valve Feedback"
+          },
+          "has_damper_feedback": {
+            "type": "boolean",
+            "title": "Has Damper Feedback"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "default": "v1"
+          },
+          "channel_count": {
+            "type": "integer",
+            "title": "Channel Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "description",
+          "allowed_channels",
+          "has_valve_feedback",
+          "has_damper_feedback",
+          "channel_count"
+        ],
+        "title": "SensorProfileItem"
+      },
+      "SensorRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "canonical_key": {
+            "type": "string",
+            "title": "Canonical Key"
+          },
+          "original_column": {
+            "type": "string",
+            "title": "Original Column"
+          },
+          "display_name_ru": {
+            "type": "string",
+            "title": "Display Name Ru"
+          },
+          "unit_raw": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Raw"
+          },
+          "unit_normalized": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Normalized"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "signal_kind": {
+            "type": "string",
+            "title": "Signal Kind"
+          },
+          "is_basic": {
+            "type": "boolean",
+            "title": "Is Basic"
+          },
+          "is_available": {
+            "type": "boolean",
+            "title": "Is Available"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "scenario_id",
+          "canonical_key",
+          "original_column",
+          "display_name_ru",
+          "component",
+          "signal_kind",
+          "is_basic",
+          "is_available"
+        ],
+        "title": "SensorRead"
+      },
+      "SensorRecommendationRequest": {
+        "properties": {
+          "scenario_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scenario Id",
+            "description": "ID \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f \u0442\u0435\u043b\u0435\u043c\u0435\u0442\u0440\u0438\u0438"
+          },
+          "profile_id": {
+            "type": "string",
+            "title": "Profile Id",
+            "description": "\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0440\u043e\u0444\u0438\u043b\u044c \u043d\u0430\u0431\u043b\u044e\u0434\u0430\u0435\u043c\u043e\u0441\u0442\u0438",
+            "default": "BASIC"
+          },
+          "coverage_target": {
+            "type": "number",
+            "title": "Coverage Target",
+            "description": "\u0426\u0435\u043b\u0435\u0432\u043e\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0441\u0435\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u043e\u0445\u0432\u0430\u0442\u0430 (Coverage c)",
+            "default": 0.6
+          },
+          "policy_id": {
+            "type": "string",
+            "title": "Policy Id",
+            "description": "\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u0432\u044b\u0431\u043e\u0440\u0430",
+            "default": "validation_risk_optimal"
+          },
+          "allow_unvalidated": {
+            "type": "boolean",
+            "title": "Allow Unvalidated",
+            "description": "\u0420\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0430\u0446\u0438\u044e \u0434\u043b\u044f \u043d\u0435\u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0445 \u0434\u043e\u043c\u0435\u043d\u043e\u0432",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "SensorRecommendationRequest"
+      },
+      "SensorRecommendationResponse": {
+        "properties": {
+          "scenario_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scenario Id"
+          },
+          "profile_id": {
+            "type": "string",
+            "title": "Profile Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "recommended_channel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommended Channel"
+          },
+          "recommended_channel_name_ru": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommended Channel Name Ru"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "candidate_scores": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateScoreRead"
+            },
+            "type": "array",
+            "title": "Candidate Scores"
+          },
+          "evidence_source": {
+            "type": "string",
+            "title": "Evidence Source"
+          },
+          "training_domain": {
+            "type": "string",
+            "title": "Training Domain"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "policy_version": {
+            "type": "string",
+            "title": "Policy Version"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          }
+        },
+        "type": "object",
+        "required": [
+          "profile_id",
+          "status",
+          "reason",
+          "candidate_scores",
+          "evidence_source",
+          "training_domain",
+          "model_version",
+          "policy_version",
+          "limitations"
+        ],
+        "title": "SensorRecommendationResponse"
+      },
+      "TargetDatasetInfo": {
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "title": "Target Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "building_location": {
+            "type": "string",
+            "title": "Building Location"
+          },
+          "facility_type": {
+            "type": "string",
+            "title": "Facility Type"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          },
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "available_channels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Available Channels"
+          },
+          "normal_operating_minutes": {
+            "type": "integer",
+            "title": "Normal Operating Minutes"
+          },
+          "fault_episodes_count": {
+            "type": "integer",
+            "title": "Fault Episodes Count"
+          },
+          "domain_guard_default": {
+            "type": "boolean",
+            "title": "Domain Guard Default"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AdaptationStatus"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_id",
+          "name",
+          "building_location",
+          "facility_type",
+          "source_kind",
+          "scenario_id",
+          "available_channels",
+          "normal_operating_minutes",
+          "fault_episodes_count",
+          "domain_guard_default",
+          "status"
+        ],
+        "title": "TargetDatasetInfo"
+      },
+      "TelemetryResponse": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "range": {
+            "$ref": "#/components/schemas/RangeMeta"
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/TelemetrySeries"
+            },
+            "type": "array",
+            "title": "Series"
+          },
+          "sampling": {
+            "$ref": "#/components/schemas/SamplingMeta"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "range",
+          "series",
+          "sampling",
+          "source_kind"
+        ],
+        "title": "TelemetryResponse"
+      },
+      "TelemetrySeries": {
+        "properties": {
+          "channel": {
+            "type": "string",
+            "title": "Channel"
+          },
+          "display_name_ru": {
+            "type": "string",
+            "title": "Display Name Ru"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "signal_kind": {
+            "type": "string",
+            "title": "Signal Kind"
+          },
+          "points": {
+            "items": {
+              "items": {},
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "channel",
+          "display_name_ru",
+          "unit",
+          "component",
+          "signal_kind",
+          "points"
+        ],
+        "title": "TelemetrySeries"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+Python 3.12.3
+v24.11.0
+5.9.3
+6.4.5
+fastapi 0.162.0
+pydantic 2.14.3
+uvicorn 0.54.0
+pytest 9.2.0
+sqlalchemy 2.1.8
+playwright 1.64.1
+pandas 2.3.3
+pyarrow 19.0.1
+lightgbm 4.6.0

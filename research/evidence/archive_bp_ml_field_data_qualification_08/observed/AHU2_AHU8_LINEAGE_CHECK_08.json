@@ -1,0 +1,21 @@
+{
+  "units": [
+    "AHU2",
+    "AHU8"
+  ],
+  "channel_comparison": {
+    "water_temperature__real_value__heater_before": {
+      "ticks": 52705,
+      "missing_both": 113,
+      "equal_nonmissing": 52592,
+      "different": 0
+    },
+    "logic__required_value__chiller_pump": {
+      "ticks": 52705,
+      "missing_both": 111,
+      "equal_nonmissing": 52594,
+      "different": 0
+    }
+  },
+  "physical_provenance": "UNVERIFIED_SHARED_OR_DUPLICATED; NO INDEPENDENT CHANNEL CLAIM"
+}

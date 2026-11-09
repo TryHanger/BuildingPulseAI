@@ -1,0 +1,28 @@
+{
+  "status": "GO_RESEARCH_ONLY_PRODUCT_PILOT",
+  "criterion": "extra days versus SAT setpoint in frozen SA+2 BASIC without more healthy alarms; within simulation",
+  "primary": {
+    "arm": "PRODUCT_BASIC",
+    "scenario": "SA +2 C",
+    "member": "coi_bias_2_annual.csv",
+    "comparator": "SAT setpoint",
+    "candidate_days": 59,
+    "paired_days": 59,
+    "excluded_days": 0,
+    "lgbm_tp": 37,
+    "comparator_tp": 33,
+    "lgbm_fn": 22,
+    "comparator_fn": 26,
+    "lgbm_fp": 0,
+    "comparator_fp": 0,
+    "both_tp": 33,
+    "lgbm_only_days": "2018-10-20|2018-11-04|2018-11-29|2018-12-14",
+    "comparator_only_days": "",
+    "both_fp": 0,
+    "lgbm_only_fp_days": "",
+    "comparator_only_fp_days": "",
+    "incremental_tp": 4
+  },
+  "protocol_sha256": "b71d0f2c0cbef0bddc5d2be9a52fd26da8f453641b4e9afcdcff82862dba5e46",
+  "source_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471"
+}

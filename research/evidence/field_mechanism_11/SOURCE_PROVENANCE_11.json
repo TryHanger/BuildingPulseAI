@@ -1,0 +1,62 @@
+{
+  "article_doi": "10.1016/j.enbuild.2021.110781",
+  "article_repository": "https://dspace.cvut.cz/entities/publication/35d10945-7123-4cdc-8367-50bfdb4c1052",
+  "dataset_doi": "10.17632/jkw85sm4v4.1",
+  "dataset_url": "https://data.mendeley.com/datasets/jkw85sm4v4/1",
+  "files": {
+    "AHU1.xlsx": {
+      "bytes": 6614970,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/bcf67016-890d-44ea-9438-30a923711fe9/file_downloaded",
+      "file_id": "bcf67016-890d-44ea-9438-30a923711fe9",
+      "publisher_sha256": "ed51c373f25b4892610402fdd553e75a7e43342657b8759b863681dd0909e9c3"
+    },
+    "AHU18.xlsx": {
+      "bytes": 6045715,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/fa29ec0a-69e6-46d8-b8da-9b22f1ffa78e/file_downloaded",
+      "file_id": "fa29ec0a-69e6-46d8-b8da-9b22f1ffa78e",
+      "publisher_sha256": "1aec89da0425959412a2891419280db035046dbd8d541968acb23d9dc65d59f7"
+    },
+    "AHU2.xlsx": {
+      "bytes": 1526394,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/80707ccc-c9a3-4fae-888c-dd73b2ebce06/file_downloaded",
+      "file_id": "80707ccc-c9a3-4fae-888c-dd73b2ebce06",
+      "publisher_sha256": "814f18e2299a7432af143f33d3b5d4711d23246c8cc25225d65d1f2efb73128a"
+    },
+    "AHU23.xlsx": {
+      "bytes": 6129279,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/55812f40-9b2b-414f-b396-5cd781fba09c/file_downloaded",
+      "file_id": "55812f40-9b2b-414f-b396-5cd781fba09c",
+      "publisher_sha256": "0ce2955409d78371872234ff9f0b6cc2a6de16d59d0851a00083b7d3c8de7274"
+    },
+    "AHU24.xlsx": {
+      "bytes": 6368430,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/13e6ab01-15e3-44f1-9fcf-7f7f4d051341/file_downloaded",
+      "file_id": "13e6ab01-15e3-44f1-9fcf-7f7f4d051341",
+      "publisher_sha256": "fb91fcb0e4fea1a44247e8201b1b57d917502d17e01f16a7b445eac978685cd1"
+    },
+    "AHU8.xlsx": {
+      "bytes": 1526318,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/7621086b-6b16-48f6-a695-3de15c27256a/file_downloaded",
+      "file_id": "7621086b-6b16-48f6-a695-3de15c27256a",
+      "publisher_sha256": "131b489a74f1edc5a180c36338a09ecaaf61820184ac93ebedfec127b3a171c8"
+    },
+    "Faults_schedule_and_description.xlsx": {
+      "bytes": 25957,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/91fd9e88-4db1-45a4-b07e-e62be622a6ef/file_downloaded",
+      "file_id": "91fd9e88-4db1-45a4-b07e-e62be622a6ef",
+      "publisher_sha256": "9752e1be8e8d1e8be98a1ab305e8c0cdf5d04af3eddbd5adf32746ff9fa54672"
+    },
+    "Place_tag_explanation.jpg": {
+      "bytes": 907307,
+      "download_url": "https://data.mendeley.com/public-files/datasets/jkw85sm4v4/files/5fc16896-57dd-4035-ba0f-c4f796251114/file_downloaded",
+      "file_id": "5fc16896-57dd-4035-ba0f-c4f796251114",
+      "publisher_sha256": "f493877d72826b789bbab8db6dad448fd626ccddced520846a1c2e9ef205acce"
+    }
+  },
+  "license": "CC BY 4.0",
+  "manuscript_sha256": "4a03914e8064ae3b42ffce9a806a724f7451bae7596d940ff3884b6c50a072ef",
+  "original_inventory": "6 AHU XLSX + 1 schedule XLSX + 1 place diagram JPG",
+  "publisher_listing_url": "https://data.mendeley.com/public-api/datasets/jkw85sm4v4/files?folder_id=root&version=1",
+  "retrieved_date": "2026-11-08",
+  "version": 1
+}

@@ -1,0 +1,27 @@
+physical_channel,col_index,raw_csv_header,unit,subsystem,semantics,role_in_fdd,quality_audit_notes
+OA_TEMP,2,"Outdoor Air Temperature' (°F)",degF,Weather,Ambient dry-bulb temperature,Exogenous feature (converted to °C),Continuous valid telemetry
+OA_RH,3,"Outdoor Air Relative Humidity' (%)",pct,Weather,Ambient humidity,Exogenous auxiliary,Continuous valid telemetry
+OA_ENTHALPY,4,"Outdoor Air Enthalpy' (BTU/lb)",BTU_lb,Weather,Enthalpy,Auxiliary,Continuous valid telemetry
+AHU1_RA_TEMP,31,"Sensor: Return Air Temperature' (°F)",degF,AHU1,Return air dry-bulb,AHU1 thermal input,Continuous valid telemetry
+AHU1_MA_TEMP,32,"Sensor: Mixed Air Temperature' (°F)",degF,AHU1,Mixed air dry-bulb,AHU1 thermal input,Distinct from SA_TEMP
+AHU1_SA_TEMP,33,"Sensor: Supply Air Temperature' (°F)",degF,AHU1,Supply air dry-bulb,AHU1 target / monitored,Distinct from MA_TEMP
+AHU1_SF_SPD,34,"Control: Supply Fan Speed' (%)",pct,AHU1,Supply fan speed command,AHU1 fan gating,Continuous operation
+AHU1_ECON_POS,35,"Economizer Position' (%)",pct,AHU1,Economizer damper position,AHU1 damper,Constant 15% min ventilation
+AHU1_CCV_FBK,36,"Feedback: Cooling Coil Valve Position' (%)",pct,AHU1,Cooling coil valve feedback,AHU1 control effort,Jumped to 77.1% during 20180711 fault
+AHU1_SA_TEMP_SPT,42,"Supply Air Temperature Setpoint' (°F)",degF,AHU1,Supply temp setpoint,AHU1 control target,Resets during peak cooling
+AHU2_RA_TEMP,52,"Sensor: Return Air Temperature' (°F).1",degF,AHU2,Return air dry-bulb,Thermal feature (converted to °C),Continuous valid telemetry
+AHU2_MA_TEMP,53,"Sensor: Mixed Air Temperature' (°F).1",degF,AHU2,Mixed air dry-bulb,Thermal feature (converted to °C),Distinct from SA_TEMP (mean diff 8-14 °F)
+AHU2_SA_TEMP,54,"Sensor: Supply Air Temperature' (°F).1",degF,AHU2,Supply air dry-bulb,Target for M1 / monitored,Continuous valid telemetry
+AHU2_SF_SPD,55,"Supply Fan Speed' (%)",pct,AHU2,Supply fan speed,Operational gating,Continuously operating (>50%)
+AHU2_ECON_POS,56,"Economizer Position' (%).1",pct,AHU2,Economizer damper position,Actuator state,Strictly constant 15.0% in all summer days
+AHU2_CCV_FBK,57,"Feedback: Cooling Coil Valve Position' (%).1",pct,AHU2,Cooling coil valve actuator feedback,Target for M2 / actuator state,Actual feedback (100% in 20170811; 5.1% in 20180711)
+AHU2_ECON_SPT,58,"Economizer Setpoint' (%).1",pct,AHU2,Economizer setpoint,BMS supervisory setpoint,Varies around 58-61%
+AHU2_RF_SPD,59,"Control Return Fan Speed' (%)",pct,AHU2,Return fan speed command,Auxiliary fan command,Operates in tandem with SF
+AHU2_SA_TEMP_SPT,63,"Supply Air Temperature Setpoint' (°F)",degF,AHU2,Supply temperature setpoint,Control target for M1 and M2,Supervisory reset (55-62 °F)
+AHU2_RELIEF_DAMPER,73,"Control: Relief Air Damper' (%)",pct,AHU2,Relief air damper command,Damper control effort,Jumped to 100% in 20170718; 30% in 20180710
+AHU2_RETURN_DAMPER,74,"Control: Return Air Damper' (%)",pct,AHU2,Return air damper command,Damper control effort,Jumped to 100% in 20170718; 30% in 20180710
+AHU3_SA_TEMP,76,"Sensor: Supply Air Temperature' (°F).2",degF,AHU3,Supply air dry-bulb,AHU3 monitored,Continuous valid telemetry
+AHU3_SF_SPD,77,"Sf_vfd_output' (%)",pct,AHU3,Supply fan VFD output,AHU3 fan gating,Continuous operation
+AHU3_ECON_POS,78,"Economizer Position' (%).2",pct,AHU3,Economizer damper position,AHU3 damper,Constant 15% min ventilation
+AHU3_CCV_FBK,79,"Feedback: Cooling Coil Valve Position' (%).2",pct,AHU3,Cooling coil valve feedback,AHU3 control effort,Continuous operation
+AHU3_SA_TEMP_SPT,83,"Supply Air Temperature Setpoint' (°F)",degF,AHU3,Supply temp setpoint,AHU3 control target,Continuous operation

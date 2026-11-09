@@ -1,0 +1,4955 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BuildingPulse AI draft API",
+    "version": "1.0.0-rc.11",
+    "description": "Read-only LBNL Investigator and explicitly selected synthetic G4 source. Source-local simulation time has no UTC offset. Unreferenced historical components are retained for fixture checks only."
+  },
+  "paths": {
+    "/api/v1/datasets": {
+      "get": {
+        "operationId": "listRuntimeDatasets",
+        "description": "Registry of checked LBNL simulation slices. Availability describes raw file presence. No verified pair.",
+        "parameters": [
+          {
+            "name": "demo",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Explicitly select the isolated G4 synthetic source. Default lists LBNL slices only."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeDatasetList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datasets/{dataset_id}/signals": {
+      "get": {
+        "operationId": "listRuntimeSignals",
+        "description": "Catalog for the selected observation panel. EXTRA includes BASIC and simulated extra signals.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "panel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Panel"
+                }
+              ],
+              "default": "BASIC"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeSignalList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/series": {
+      "get": {
+        "operationId": "getRuntimeSeries",
+        "description": "Raw aligned samples. start is inclusive on the source clock. Null values preserve missing samples, and gap_before flags elapsed steps above the expected interval. next_start is the first unreturned sample.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "panel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Panel"
+                }
+              ],
+              "default": "BASIC"
+            }
+          },
+          {
+            "name": "signal_ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 30
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1440,
+              "default": 480
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeSeries"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnostics": {
+      "get": {
+        "operationId": "getRuntimeDiagnostics",
+        "description": "Point-in-time checks on verified source rows. Alarm refers only to an evaluated predicate. Unavailable methods remain separate. No incident, model inference or root-cause validation.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "panel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Panel"
+                }
+              ],
+              "default": "BASIC"
+            }
+          },
+          {
+            "name": "at",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeDiagnostics"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/modes": {
+      "get": {
+        "operationId": "listRuntimeModeSegments",
+        "description": "BASIC-only fan state and weather segments with source-local history and time quality. Bounds are inclusive observations. Gaps and off-grid steps split segments.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1440,
+              "default": 480
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeModes"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents": {
+      "get": {
+        "operationId": "listRuntimeSymptomIncidents",
+        "description": "Read-only BASIC symptom episodes from a source- and policy-bound index. At most 1440 source samples. Event snapshots are clipped at the last observed time of the requested window.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1440,
+              "default": 480
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeG3Incidents"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/investigation": {
+      "get": {
+        "operationId": "investigateSourceWindow",
+        "description": "Read-only investigation and deterministic JSON/HTML engineering report. A targeted event ID must overlap the evaluated window at or after confirmation.",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1440,
+              "default": 480
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "html"
+              ],
+              "default": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeG4Investigation"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/g36-benchmark": {
+      "get": {
+        "operationId": "getG36Benchmark",
+        "description": "Bounded simulation window. G36-5wk stays the default. G36-1wk applies the frozen policy independently to either full published minute run and reports unpaired descriptive summaries. Model seconds, labels and reference oracle are distinct.",
+        "parameters": [
+          {
+            "name": "scenario",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NOMINAL",
+                "VALVE_CLOSED",
+                "DAMPER_OPEN",
+                "DUCT_LEAK"
+              ],
+              "default": "VALVE_CLOSED"
+            }
+          },
+          {
+            "name": "panel",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "BASIC",
+                "EXTRA_SIMULATED"
+              ],
+              "default": "BASIC"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Model seconds. Defaults to 16354800 for G36-5wk and 17625600 for G36-1wk."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 288,
+              "default": 145
+            }
+          },
+          {
+            "name": "dataset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "g36-5wk",
+                "g36-1wk"
+              ],
+              "default": "g36-5wk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/G36BenchmarkWindow"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/g36-benchmark/comparison": {
+      "get": {
+        "operationId": "getG36BenchmarkComparison",
+        "description": "Exploratory post-hoc comparison of all four frozen G36-5wk runs. Counts concern dependent samples. No 1wk scoring.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/G36BenchmarkComparison"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuntimeError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Panel": {
+        "type": "string",
+        "enum": [
+          "BASIC",
+          "EXTRA"
+        ]
+      },
+      "SourceType": {
+        "type": "string",
+        "enum": [
+          "DEMO_FIXTURE",
+          "SIMULATION",
+          "REAL_FIELD"
+        ]
+      },
+      "DataStatus": {
+        "type": "string",
+        "enum": [
+          "VALID",
+          "DEGRADED",
+          "INVALID",
+          "UNKNOWN"
+        ]
+      },
+      "MethodStatus": {
+        "type": "string",
+        "enum": [
+          "APPLICABLE",
+          "INAPPLICABLE",
+          "INCONCLUSIVE"
+        ]
+      },
+      "AnomalyStatus": {
+        "type": "string",
+        "enum": [
+          "DETECTED",
+          "NOT_DETECTED_IN_EVALUATED_TESTS",
+          "UNASSESSED",
+          "CONFLICTED"
+        ]
+      },
+      "CauseStatus": {
+        "type": "string",
+        "enum": [
+          "NOT_ASSESSED",
+          "UNEXPLAINED",
+          "AMBIGUOUS",
+          "ISOLATED_CONDITIONAL",
+          "CONFIRMED_EXTERNALLY"
+        ]
+      },
+      "ModelScope": {
+        "type": "string",
+        "enum": [
+          "IN_SCOPE",
+          "OUT_OF_SCOPE",
+          "UNKNOWN"
+        ]
+      },
+      "Predicate": {
+        "type": "string",
+        "enum": [
+          "VIOLATED",
+          "NOT_VIOLATED",
+          "INDETERMINATE"
+        ]
+      },
+      "DisplayState": {
+        "type": "string",
+        "enum": [
+          "ALARM",
+          "NO_ALARM",
+          "NOT_EVALUABLE",
+          "CONFLICT"
+        ]
+      },
+      "LineageRole": {
+        "type": "string",
+        "enum": [
+          "TARGET",
+          "CONTEXT",
+          "DERIVED_FROM",
+          "GROUND_TRUTH"
+        ]
+      },
+      "Mode": {
+        "type": "string",
+        "enum": [
+          "OFF",
+          "COOLING",
+          "ECONOMIZER",
+          "TRANSITION",
+          "UNKNOWN"
+        ]
+      },
+      "ValueClass": {
+        "type": "string",
+        "enum": [
+          "SOURCE_OBSERVATION",
+          "DERIVED_SCORE",
+          "VERIFIED_TRUTH"
+        ]
+      },
+      "TimeWindow": {
+        "type": "object",
+        "properties": {
+          "from_utc": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "to_utc": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "cutoff_utc": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "source_sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "sample_seconds": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "missing_fraction": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "from_utc",
+          "to_utc",
+          "cutoff_utc",
+          "source_sha256",
+          "sample_seconds",
+          "missing_fraction"
+        ],
+        "additionalProperties": false
+      },
+      "Dataset": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "source_type": {
+            "$ref": "#/components/schemas/SourceType"
+          },
+          "source_label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "license_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "import_status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_BYTES",
+              "METADATA_ONLY",
+              "REJECTED"
+            ]
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_temperature_unit": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "degF",
+                  "degC"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "series_status": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "UNAVAILABLE"
+            ]
+          },
+          "pair_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "dataset_id",
+          "equipment_id",
+          "scenario_id",
+          "source_type",
+          "source_label",
+          "source_url",
+          "license_note",
+          "release_id",
+          "source_sha256",
+          "import_status",
+          "timezone",
+          "source_temperature_unit",
+          "series_status",
+          "pair_id"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "series_status": {
+                  "const": "AVAILABLE"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "source_sha256": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "timezone": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "import_status": {
+                  "const": "VERIFIED_BYTES"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "source_type": {
+                  "const": "DEMO_FIXTURE"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "source_label": {
+                  "type": "null"
+                },
+                "pair_id": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ],
+        "examples": [
+          {
+            "source_label": null,
+            "license_note": "CC BY 4.0 per OpenEI dataset record",
+            "import_status": "METADATA_ONLY",
+            "timezone": null,
+            "source_temperature_unit": "degF",
+            "series_status": "UNAVAILABLE",
+            "pair_id": null,
+            "dataset_id": "lbnl-sdahu-healthy",
+            "equipment_id": "lbnl-sdahu",
+            "scenario_id": "AHU_annual.csv",
+            "source_type": "SIMULATION",
+            "source_url": "https://faultdetection.lbl.gov/dataset/simulated-sd-ahu/",
+            "source_sha256": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+            "release_id": "sha256:8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471"
+          },
+          {
+            "source_label": null,
+            "license_note": "Source terms apply; redistribution not evaluated",
+            "import_status": "METADATA_ONLY",
+            "timezone": null,
+            "source_temperature_unit": null,
+            "series_status": "UNAVAILABLE",
+            "pair_id": null,
+            "dataset_id": "csiro-ahu10-metadata",
+            "equipment_id": "csiro-ahu10",
+            "scenario_id": "AHU-10",
+            "source_type": "REAL_FIELD",
+            "release_id": "git:3eb50a9ce1d4eeed778877cbfdbd259d2298d8e6",
+            "source_url": "https://github.com/csiro-energy-systems/ahu-fault-detection-dataset/tree/3eb50a9ce1d4eeed778877cbfdbd259d2298d8e6",
+            "source_sha256": null
+          }
+        ]
+      },
+      "Root": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "source_sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "physical_sensor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "canonical_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "source_column": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "TARGET",
+              "CONTEXT",
+              "DERIVED_FROM"
+            ]
+          }
+        },
+        "required": [
+          "dataset_id",
+          "source_sha256",
+          "equipment_id",
+          "physical_sensor_id",
+          "canonical_id",
+          "source_column",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "Applicability": {
+        "type": "object",
+        "properties": {
+          "method_status": {
+            "$ref": "#/components/schemas/MethodStatus"
+          },
+          "reason_code": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "missing_roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LineageRole"
+            },
+            "minItems": 0
+          },
+          "regime": {
+            "$ref": "#/components/schemas/Mode"
+          }
+        },
+        "required": [
+          "method_status",
+          "reason_code",
+          "missing_roles",
+          "regime"
+        ],
+        "additionalProperties": false
+      },
+      "ObservedValue": {
+        "type": "object",
+        "properties": {
+          "value_class": {
+            "$ref": "#/components/schemas/ValueClass"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quantity_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          }
+        },
+        "required": [
+          "value_class",
+          "value",
+          "unit",
+          "quantity_id"
+        ],
+        "additionalProperties": false
+      },
+      "Observation": {
+        "type": "object",
+        "properties": {
+          "observation_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "method_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "method_version": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "comparison_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "window": {
+            "$ref": "#/components/schemas/TimeWindow"
+          },
+          "predicate": {
+            "$ref": "#/components/schemas/Predicate"
+          },
+          "data_status": {
+            "$ref": "#/components/schemas/DataStatus"
+          },
+          "applicability": {
+            "$ref": "#/components/schemas/Applicability"
+          },
+          "provenance_type": {
+            "type": "string",
+            "enum": [
+              "RECORDED",
+              "SYNTHETIC_FIXTURE",
+              "POLICY"
+            ]
+          },
+          "roots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Root"
+            },
+            "minItems": 0
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObservedValue"
+            },
+            "minItems": 0
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ObservedValue"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "observation_id",
+          "method_id",
+          "method_version",
+          "comparison_id",
+          "window",
+          "predicate",
+          "data_status",
+          "applicability",
+          "provenance_type",
+          "roots",
+          "values",
+          "threshold"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "provenance_type": {
+                  "const": "RECORDED"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "roots": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "provenance_type": {
+                  "const": "POLICY"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "roots": {
+                  "maxItems": 0
+                },
+                "values": {
+                  "maxItems": 0
+                },
+                "predicate": {
+                  "const": "INDETERMINATE"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "predicate": {
+                  "enum": [
+                    "VIOLATED",
+                    "NOT_VIOLATED"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "applicability": {
+                  "properties": {
+                    "method_status": {
+                      "const": "APPLICABLE"
+                    },
+                    "missing_roles": {
+                      "maxItems": 0
+                    }
+                  }
+                },
+                "data_status": {
+                  "const": "VALID"
+                },
+                "roots": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "EventProvenance": {
+        "type": "object",
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "run_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "dataset_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "source_sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "trigger_observation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+            },
+            "minItems": 1
+          },
+          "aggregation_version": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "started_at": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "confirmed_at": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "ended_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "date-time",
+                "pattern": "Z$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "event_id",
+          "run_id",
+          "dataset_id",
+          "source_sha256",
+          "trigger_observation_ids",
+          "aggregation_version",
+          "started_at",
+          "confirmed_at",
+          "ended_at"
+        ],
+        "additionalProperties": false
+      },
+      "Hypothesis": {
+        "type": "object",
+        "properties": {
+          "hypothesis_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "SUPPORTED",
+              "CONTRADICTED"
+            ]
+          },
+          "observation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+            },
+            "minItems": 0
+          },
+          "discriminating_test_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "hypothesis_id",
+          "status",
+          "observation_ids",
+          "discriminating_test_id"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceV1": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "1.0.0"
+          },
+          "dataset_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "source_type": {
+            "$ref": "#/components/schemas/SourceType"
+          },
+          "source_sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "panel": {
+            "$ref": "#/components/schemas/Panel"
+          },
+          "window": {
+            "$ref": "#/components/schemas/TimeWindow"
+          },
+          "data_status": {
+            "$ref": "#/components/schemas/DataStatus"
+          },
+          "anomaly_status": {
+            "$ref": "#/components/schemas/AnomalyStatus"
+          },
+          "cause_status": {
+            "$ref": "#/components/schemas/CauseStatus"
+          },
+          "model_scope": {
+            "$ref": "#/components/schemas/ModelScope"
+          },
+          "display_state": {
+            "$ref": "#/components/schemas/DisplayState"
+          },
+          "observations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Observation"
+            },
+            "minItems": 0
+          },
+          "hypotheses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Hypothesis"
+            },
+            "minItems": 0
+          },
+          "event": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EventProvenance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "dataset_id",
+          "equipment_id",
+          "source_type",
+          "source_sha256",
+          "panel",
+          "window",
+          "data_status",
+          "anomaly_status",
+          "cause_status",
+          "model_scope",
+          "display_state",
+          "observations",
+          "hypotheses",
+          "event"
+        ],
+        "additionalProperties": false,
+        "examples": [
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "VALID",
+            "anomaly_status": "DETECTED",
+            "cause_status": "UNEXPLAINED",
+            "model_scope": "UNKNOWN",
+            "display_state": "ALARM",
+            "observations": [
+              {
+                "observation_id": "sat-1",
+                "method_id": "demo-sat-deviation",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "VIOLATED",
+                "data_status": "VALID",
+                "applicability": {
+                  "method_status": "APPLICABLE",
+                  "reason_code": "DEMO_EVALUATED",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [
+                  {
+                    "value_class": "DERIVED_SCORE",
+                    "value": 4,
+                    "unit": "delta_degC",
+                    "quantity_id": "sat-deviation"
+                  }
+                ],
+                "threshold": {
+                  "value_class": "DERIVED_SCORE",
+                  "value": 2,
+                  "unit": "delta_degC",
+                  "quantity_id": "sat-deviation"
+                }
+              }
+            ],
+            "hypotheses": [],
+            "event": {
+              "event_id": "demo-event",
+              "run_id": "demo-run",
+              "dataset_id": "demo-ahu",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "trigger_observation_ids": [
+                "sat-1"
+              ],
+              "aggregation_version": "fixture-1",
+              "started_at": "2026-01-01T08:00:00Z",
+              "confirmed_at": "2026-01-01T08:02:00Z",
+              "ended_at": "2026-01-01T08:05:00Z"
+            }
+          },
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "VALID",
+            "anomaly_status": "NOT_DETECTED_IN_EVALUATED_TESTS",
+            "cause_status": "NOT_ASSESSED",
+            "model_scope": "UNKNOWN",
+            "display_state": "NO_ALARM",
+            "observations": [
+              {
+                "observation_id": "sat-2",
+                "method_id": "demo-sat-control",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "NOT_VIOLATED",
+                "data_status": "VALID",
+                "applicability": {
+                  "method_status": "APPLICABLE",
+                  "reason_code": "DEMO_EVALUATED",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [],
+                "threshold": null
+              }
+            ],
+            "hypotheses": [],
+            "event": null
+          },
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "VALID",
+            "anomaly_status": "CONFLICTED",
+            "cause_status": "UNEXPLAINED",
+            "model_scope": "UNKNOWN",
+            "display_state": "CONFLICT",
+            "observations": [
+              {
+                "observation_id": "sat-1",
+                "method_id": "demo-sat-deviation",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "VIOLATED",
+                "data_status": "VALID",
+                "applicability": {
+                  "method_status": "APPLICABLE",
+                  "reason_code": "DEMO_EVALUATED",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [
+                  {
+                    "value_class": "DERIVED_SCORE",
+                    "value": 4,
+                    "unit": "delta_degC",
+                    "quantity_id": "sat-deviation"
+                  }
+                ],
+                "threshold": {
+                  "value_class": "DERIVED_SCORE",
+                  "value": 2,
+                  "unit": "delta_degC",
+                  "quantity_id": "sat-deviation"
+                }
+              },
+              {
+                "observation_id": "sat-2",
+                "method_id": "demo-sat-control",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "NOT_VIOLATED",
+                "data_status": "VALID",
+                "applicability": {
+                  "method_status": "APPLICABLE",
+                  "reason_code": "DEMO_EVALUATED",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [],
+                "threshold": null
+              }
+            ],
+            "hypotheses": [],
+            "event": {
+              "event_id": "demo-event",
+              "run_id": "demo-run",
+              "dataset_id": "demo-ahu",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "trigger_observation_ids": [
+                "sat-1"
+              ],
+              "aggregation_version": "fixture-1",
+              "started_at": "2026-01-01T08:00:00Z",
+              "confirmed_at": "2026-01-01T08:02:00Z",
+              "ended_at": "2026-01-01T08:05:00Z"
+            }
+          },
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "UNKNOWN",
+            "anomaly_status": "UNASSESSED",
+            "cause_status": "NOT_ASSESSED",
+            "model_scope": "UNKNOWN",
+            "display_state": "NOT_EVALUABLE",
+            "observations": [
+              {
+                "observation_id": "valve-1",
+                "method_id": "demo-valve-feedback",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-valve-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "INDETERMINATE",
+                "data_status": "UNKNOWN",
+                "applicability": {
+                  "method_status": "INAPPLICABLE",
+                  "reason_code": "MISSING_ACTUAL_POSITION",
+                  "missing_roles": [
+                    "TARGET"
+                  ],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [],
+                "values": [],
+                "threshold": null
+              }
+            ],
+            "hypotheses": [],
+            "event": null
+          },
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "INVALID",
+            "anomaly_status": "UNASSESSED",
+            "cause_status": "NOT_ASSESSED",
+            "model_scope": "UNKNOWN",
+            "display_state": "NOT_EVALUABLE",
+            "observations": [
+              {
+                "observation_id": "sat-3",
+                "method_id": "demo-sat-deviation",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "INDETERMINATE",
+                "data_status": "INVALID",
+                "applicability": {
+                  "method_status": "INCONCLUSIVE",
+                  "reason_code": "INVALID_SAT",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [],
+                "threshold": null
+              }
+            ],
+            "hypotheses": [],
+            "event": null
+          },
+          {
+            "dataset_id": "demo-ahu",
+            "equipment_id": "demo-ahu-01",
+            "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+            "schema_version": "1.0.0",
+            "source_type": "DEMO_FIXTURE",
+            "panel": "BASIC",
+            "window": {
+              "from_utc": "2026-01-01T08:00:00Z",
+              "to_utc": "2026-01-01T08:05:00Z",
+              "cutoff_utc": "2026-01-01T08:05:00Z",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "sample_seconds": 60,
+              "missing_fraction": 0
+            },
+            "data_status": "DEGRADED",
+            "anomaly_status": "DETECTED",
+            "cause_status": "UNEXPLAINED",
+            "model_scope": "UNKNOWN",
+            "display_state": "ALARM",
+            "observations": [
+              {
+                "observation_id": "sat-3",
+                "method_id": "demo-sat-deviation",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-sat-tracking",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "INDETERMINATE",
+                "data_status": "INVALID",
+                "applicability": {
+                  "method_status": "INCONCLUSIVE",
+                  "reason_code": "INVALID_SAT",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMP",
+                    "physical_sensor_id": "demo-sat",
+                    "source_column": "SA_TEMP",
+                    "role": "TARGET"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "SA_TEMPSPT",
+                    "physical_sensor_id": null,
+                    "source_column": "SA_TEMPSPT",
+                    "role": "CONTEXT"
+                  },
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "CONTEXT"
+                  }
+                ],
+                "values": [],
+                "threshold": null
+              },
+              {
+                "observation_id": "oat-1",
+                "method_id": "demo-oat-quality",
+                "method_version": "fixture-1",
+                "comparison_id": "demo-oat-quality",
+                "window": {
+                  "from_utc": "2026-01-01T08:00:00Z",
+                  "to_utc": "2026-01-01T08:05:00Z",
+                  "cutoff_utc": "2026-01-01T08:05:00Z",
+                  "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                  "sample_seconds": 60,
+                  "missing_fraction": 0
+                },
+                "predicate": "VIOLATED",
+                "data_status": "VALID",
+                "applicability": {
+                  "method_status": "APPLICABLE",
+                  "reason_code": "DEMO_EVALUATED",
+                  "missing_roles": [],
+                  "regime": "COOLING"
+                },
+                "provenance_type": "SYNTHETIC_FIXTURE",
+                "roots": [
+                  {
+                    "dataset_id": "demo-ahu",
+                    "equipment_id": "demo-ahu-01",
+                    "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+                    "canonical_id": "OA_TEMP",
+                    "physical_sensor_id": "demo-oat",
+                    "source_column": "OA_TEMP",
+                    "role": "TARGET"
+                  }
+                ],
+                "values": [],
+                "threshold": null
+              }
+            ],
+            "hypotheses": [],
+            "event": {
+              "event_id": "demo-event",
+              "run_id": "demo-run",
+              "dataset_id": "demo-ahu",
+              "source_sha256": "8766b324f9917609a987678d20d0b9a6157ef4c17d016cc2792620a22ad331af",
+              "trigger_observation_ids": [
+                "oat-1"
+              ],
+              "aggregation_version": "fixture-1",
+              "started_at": "2026-01-01T08:00:00Z",
+              "confirmed_at": "2026-01-01T08:02:00Z",
+              "ended_at": "2026-01-01T08:05:00Z"
+            }
+          }
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "anomaly_status": {
+                  "enum": [
+                    "UNASSESSED",
+                    "NOT_DETECTED_IN_EVALUATED_TESTS"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "cause_status": {
+                  "const": "NOT_ASSESSED"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "AnalysisRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+          },
+          "panel": {
+            "$ref": "#/components/schemas/Panel"
+          },
+          "start": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "end": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "cutoff_utc": {
+            "type": "string",
+            "minLength": 1,
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "method_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "dataset_id",
+          "equipment_id",
+          "panel",
+          "start",
+          "end",
+          "cutoff_utc",
+          "method_ids"
+        ],
+        "additionalProperties": false
+      },
+      "RuntimeDataset": {
+        "type": "object",
+        "required": [
+          "dataset_id",
+          "name",
+          "source_type",
+          "source_sha256",
+          "release_id",
+          "clock_kind",
+          "sample_seconds",
+          "pair_status",
+          "availability",
+          "equipment_id",
+          "source_member",
+          "source_url",
+          "license_note",
+          "first",
+          "last",
+          "rows",
+          "is_full_year"
+        ],
+        "properties": {
+          "dataset_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "SIMULATION",
+              "DEMO_FIXTURE"
+            ]
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "release_id": {
+            "type": "string"
+          },
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "sample_seconds": {
+            "type": "integer",
+            "const": 60
+          },
+          "pair_status": {
+            "type": "string",
+            "enum": [
+              "PAIR_NOT_VERIFIED"
+            ]
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "MISSING_SOURCE"
+            ]
+          },
+          "equipment_id": {
+            "type": "string"
+          },
+          "source_member": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "license_note": {
+            "type": "string"
+          },
+          "first": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rows": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "is_full_year": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeSignal": {
+        "type": "object",
+        "required": [
+          "canonical_id",
+          "source_column",
+          "kind",
+          "unit",
+          "source_unit",
+          "origin",
+          "availability",
+          "value_status",
+          "warning_code"
+        ],
+        "properties": {
+          "canonical_id": {
+            "type": "string"
+          },
+          "source_column": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "MEASUREMENT",
+              "SETPOINT",
+              "STATUS",
+              "COMMAND"
+            ]
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "BASIC",
+              "EXTRA_SIMULATED"
+            ]
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "UNAVAILABLE"
+            ]
+          },
+          "value_status": {
+            "$ref": "#/components/schemas/ValueStatus"
+          },
+          "warning_code": {
+            "anyOf": [
+              {
+                "const": "SEMANTICS_UNVERIFIED"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "value_status": {
+                  "const": "UNVERIFIED_UNIT"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "warning_code": {
+                  "const": "SEMANTICS_UNVERIFIED"
+                },
+                "unit": {
+                  "type": "null"
+                },
+                "source_unit": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "value_status": {
+                  "const": "AS_DOCUMENTED"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "warning_code": {
+                  "type": "null"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "source_unit": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeSeriesSignal": {
+        "type": "object",
+        "required": [
+          "canonical_id",
+          "availability",
+          "values",
+          "value_status",
+          "warning_code"
+        ],
+        "properties": {
+          "canonical_id": {
+            "type": "string"
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "UNAVAILABLE"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "value_status": {
+            "$ref": "#/components/schemas/ValueStatus"
+          },
+          "warning_code": {
+            "anyOf": [
+              {
+                "const": "SEMANTICS_UNVERIFIED"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "value_status": {
+                  "const": "UNVERIFIED_UNIT"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "warning_code": {
+                  "const": "SEMANTICS_UNVERIFIED"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "value_status": {
+                  "const": "AS_DOCUMENTED"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "warning_code": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeSeries": {
+        "type": "object",
+        "required": [
+          "clock_kind",
+          "sample_seconds",
+          "timestamps",
+          "gap_before",
+          "next_start",
+          "signals"
+        ],
+        "properties": {
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "sample_seconds": {
+            "type": "integer",
+            "const": 60
+          },
+          "timestamps": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+            }
+          },
+          "gap_before": {
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            }
+          },
+          "next_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeSeriesSignal"
+            }
+          },
+          "dataset_id": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "result_origin": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_RUNTIME",
+              "DEMO_FIXTURE"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeRoot": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "source_sha256",
+          "source_column",
+          "canonical_id",
+          "timestamp",
+          "value",
+          "unit",
+          "origin"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "source_column": {
+            "type": "string"
+          },
+          "canonical_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "BASIC",
+              "EXTRA_SIMULATED"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeMethod": {
+        "type": "object",
+        "required": [
+          "method_id",
+          "method_version",
+          "method_status",
+          "reason_code",
+          "predicate",
+          "missing_signal_ids",
+          "roots",
+          "invalid_signal_ids",
+          "unverified_prerequisites"
+        ],
+        "properties": {
+          "method_id": {
+            "type": "string"
+          },
+          "method_version": {
+            "type": "string"
+          },
+          "method_status": {
+            "$ref": "#/components/schemas/MethodStatus"
+          },
+          "reason_code": {
+            "type": "string",
+            "enum": [
+              "PANEL_EXCLUDES_SIGNAL",
+              "MISSING_SIGNAL",
+              "FAN_OFF",
+              "FAN_STATUS_INVALID",
+              "COMMAND_VALUE_INVALID",
+              "COMMAND_FRACTION_RANGE",
+              "FAN_TRANSITION_HOLD",
+              "METHOD_INPUT_QUALITY",
+              "COOLING_ENABLE_UNOBSERVED",
+              "VALVE_TRACKING_UNVALIDATED"
+            ]
+          },
+          "predicate": {
+            "$ref": "#/components/schemas/Predicate"
+          },
+          "missing_signal_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "roots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeRoot"
+            }
+          },
+          "invalid_signal_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unverified_prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MECHANICAL_COOLING_ENABLE",
+                "VALIDATED_SIMULATION_VALVE_TRACKING_CONTEXT"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "method_status": {
+                  "const": "APPLICABLE"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "method_id": {
+                  "const": "running-command-range"
+                },
+                "predicate": {
+                  "enum": [
+                    "VIOLATED",
+                    "NOT_VIOLATED"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "predicate": {
+                  "const": "INDETERMINATE"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeDiagnostics": {
+        "type": "object",
+        "required": [
+          "result_origin",
+          "clock_kind",
+          "timestamp",
+          "source_sha256",
+          "mode",
+          "fan_on",
+          "data_status",
+          "anomaly_status",
+          "display_state",
+          "cause_status",
+          "model_scope",
+          "model_status",
+          "methods",
+          "issue_class",
+          "weather_context",
+          "mode_policy",
+          "physical_context",
+          "time_quality",
+          "signal_quality",
+          "symptom_evaluation"
+        ],
+        "properties": {
+          "result_origin": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_RUNTIME",
+              "DEMO_FIXTURE"
+            ]
+          },
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "timestamp": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/RuntimeFanMode"
+          },
+          "fan_on": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "data_status": {
+            "$ref": "#/components/schemas/DataStatus"
+          },
+          "anomaly_status": {
+            "$ref": "#/components/schemas/AnomalyStatus"
+          },
+          "display_state": {
+            "$ref": "#/components/schemas/DisplayState"
+          },
+          "cause_status": {
+            "const": "NOT_ASSESSED"
+          },
+          "model_scope": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN"
+            ]
+          },
+          "model_status": {
+            "type": "string",
+            "enum": [
+              "UNAVAILABLE"
+            ]
+          },
+          "methods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeMethod"
+            }
+          },
+          "issue_class": {
+            "anyOf": [
+              {
+                "const": "SIGNAL_RANGE_VIOLATION"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "weather_context": {
+            "$ref": "#/components/schemas/RuntimeWeatherContext"
+          },
+          "mode_policy": {
+            "$ref": "#/components/schemas/RuntimeModePolicy"
+          },
+          "physical_context": {
+            "$ref": "#/components/schemas/RuntimePhysicalContext"
+          },
+          "time_quality": {
+            "$ref": "#/components/schemas/RuntimeTimeQuality"
+          },
+          "signal_quality": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeSignalQuality"
+            }
+          },
+          "symptom_evaluation": {
+            "$ref": "#/components/schemas/RuntimeG3Evaluation"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "anomaly_status": {
+                  "const": "DETECTED"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "issue_class": {
+                  "const": "SIGNAL_RANGE_VIOLATION"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "anomaly_status": {
+                  "not": {
+                    "const": "DETECTED"
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "issue_class": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "OFF"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "fan_on": {
+                  "const": false
+                },
+                "weather_context": {
+                  "const": "UNASSESSED"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "UNKNOWN"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "fan_on": {
+                  "const": null
+                },
+                "weather_context": {
+                  "const": "UNASSESSED"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "RUNNING",
+                    "TRANSITION_HOLD"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "fan_on": {
+                  "const": true
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "not": {
+                    "const": "RUNNING"
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "weather_context": {
+                  "const": "UNASSESSED"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeDatasetList": {
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeDataset"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeSignalList": {
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeSignal"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeError": {
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "properties": {
+          "detail": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "code",
+                  "message"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValueStatus": {
+        "type": "string",
+        "enum": [
+          "AS_DOCUMENTED",
+          "UNVERIFIED_UNIT"
+        ]
+      },
+      "RuntimeFanMode": {
+        "type": "string",
+        "enum": [
+          "OFF",
+          "UNKNOWN",
+          "TRANSITION_HOLD",
+          "RUNNING"
+        ]
+      },
+      "RuntimeWeatherContext": {
+        "type": "string",
+        "enum": [
+          "UNASSESSED",
+          "WITHIN_DOCUMENTED_OAT_BAND",
+          "OUTSIDE_DOCUMENTED_OAT_BAND",
+          "BOUNDARY_UNVERIFIED"
+        ]
+      },
+      "RuntimeModePolicy": {
+        "type": "object",
+        "required": [
+          "policy_id",
+          "version",
+          "hold_seconds",
+          "fan_status_signal",
+          "fan_status_semantics",
+          "weather_signal",
+          "weather_boundaries_deg_f"
+        ],
+        "properties": {
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "lbnl-fan-hold"
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "hold_seconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "fan_status_signal": {
+            "type": "string",
+            "enum": [
+              "SF_SPD_DM"
+            ]
+          },
+          "fan_status_semantics": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_FAN_STATUS"
+            ]
+          },
+          "weather_signal": {
+            "type": "string",
+            "enum": [
+              "OA_TEMP"
+            ]
+          },
+          "weather_boundaries_deg_f": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimePhysicalContext": {
+        "type": "object",
+        "required": [
+          "economizer_state",
+          "mechanical_cooling_enable",
+          "missing_observations"
+        ],
+        "properties": {
+          "economizer_state": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN"
+            ]
+          },
+          "mechanical_cooling_enable": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN"
+            ]
+          },
+          "missing_observations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "INDEPENDENT_ECONOMIZER_STATUS",
+                "MECHANICAL_COOLING_ENABLE"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeTimeQuality": {
+        "type": "object",
+        "required": [
+          "elapsed_seconds",
+          "gap_before",
+          "off_grid_before",
+          "missing_samples_before"
+        ],
+        "properties": {
+          "elapsed_seconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "exclusiveMinimum": 0
+          },
+          "gap_before": {
+            "type": "boolean"
+          },
+          "off_grid_before": {
+            "type": "boolean"
+          },
+          "missing_samples_before": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeWindowTimeQuality": {
+        "type": "object",
+        "required": [
+          "samples",
+          "gaps",
+          "off_grid_steps",
+          "missing_samples"
+        ],
+        "properties": {
+          "samples": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "gaps": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "off_grid_steps": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "missing_samples": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeQualityFlag": {
+        "type": "string",
+        "enum": [
+          "MISSING_COLUMN",
+          "MISSING_VALUE",
+          "NON_NUMERIC_OR_NON_FINITE",
+          "NON_BINARY_STATUS",
+          "COMMAND_OUT_OF_RANGE",
+          "SUSPECT_TEMPERATURE",
+          "SEMANTICS_UNVERIFIED",
+          "MEASUREMENT_FRACTION_OUT_OF_RANGE"
+        ]
+      },
+      "RuntimeSignalQuality": {
+        "type": "object",
+        "required": [
+          "canonical_id",
+          "source_column",
+          "origin",
+          "value_status",
+          "flags"
+        ],
+        "properties": {
+          "canonical_id": {
+            "type": "string"
+          },
+          "source_column": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "BASIC",
+              "EXTRA_SIMULATED"
+            ]
+          },
+          "value_status": {
+            "$ref": "#/components/schemas/ValueStatus"
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeQualityFlag"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeModeSegment": {
+        "type": "object",
+        "required": [
+          "first",
+          "last",
+          "samples",
+          "mode",
+          "weather_context",
+          "gap_before",
+          "off_grid_before"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "last": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "samples": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "mode": {
+            "$ref": "#/components/schemas/RuntimeFanMode"
+          },
+          "weather_context": {
+            "$ref": "#/components/schemas/RuntimeWeatherContext"
+          },
+          "gap_before": {
+            "type": "boolean"
+          },
+          "off_grid_before": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "not": {
+                    "const": "RUNNING"
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "weather_context": {
+                  "const": "UNASSESSED"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeModes": {
+        "type": "object",
+        "required": [
+          "result_origin",
+          "clock_kind",
+          "sample_seconds",
+          "source_sha256",
+          "mode_policy",
+          "physical_context",
+          "time_quality",
+          "next_start",
+          "segments"
+        ],
+        "properties": {
+          "result_origin": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_RUNTIME",
+              "DEMO_FIXTURE"
+            ]
+          },
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "sample_seconds": {
+            "const": 60
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "mode_policy": {
+            "$ref": "#/components/schemas/RuntimeModePolicy"
+          },
+          "physical_context": {
+            "$ref": "#/components/schemas/RuntimePhysicalContext"
+          },
+          "time_quality": {
+            "$ref": "#/components/schemas/RuntimeWindowTimeQuality"
+          },
+          "next_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "segments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeModeSegment"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG3Role": {
+        "type": "string",
+        "enum": [
+          "MIXED_AIR_TEMPERATURE",
+          "OUTDOOR_AIR_TEMPERATURE",
+          "RETURN_AIR_TEMPERATURE",
+          "SIMULATED_FAN_STATUS",
+          "FAN_SPEED_COMMAND"
+        ]
+      },
+      "RuntimeG3Signal": {
+        "type": "string",
+        "enum": [
+          "MA_TEMP",
+          "OA_TEMP",
+          "RA_TEMP",
+          "SF_SPD_DM",
+          "SF_CS"
+        ]
+      },
+      "RuntimeG3Unit": {
+        "type": "string",
+        "enum": [
+          "degF",
+          "binary",
+          "fraction"
+        ]
+      },
+      "RuntimeG3Rule": {
+        "type": "object",
+        "required": [
+          "method_id",
+          "model_or_rule_version",
+          "panel",
+          "source_id",
+          "reference_url",
+          "implementation",
+          "required_channel_roles",
+          "mode_prerequisites",
+          "sensor_quality_scope",
+          "threshold_basis",
+          "lower_margin_deg_f",
+          "min_inlet_separation_deg_f",
+          "min_fan_command_exclusive",
+          "confirmation_duration_seconds",
+          "flow_proof"
+        ],
+        "properties": {
+          "method_id": {
+            "type": "string",
+            "enum": [
+              "mat-below-mixing-envelope"
+            ]
+          },
+          "model_or_rule_version": {
+            "type": "string"
+          },
+          "panel": {
+            "type": "string",
+            "enum": [
+              "BASIC"
+            ]
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "reference_url": {
+            "type": "string"
+          },
+          "implementation": {
+            "type": "string",
+            "enum": [
+              "LOCAL_FORMULA"
+            ]
+          },
+          "required_channel_roles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "canonical_id",
+                "role",
+                "unit"
+              ],
+              "properties": {
+                "canonical_id": {
+                  "$ref": "#/components/schemas/RuntimeG3Signal"
+                },
+                "role": {
+                  "$ref": "#/components/schemas/RuntimeG3Role"
+                },
+                "unit": {
+                  "$ref": "#/components/schemas/RuntimeG3Unit"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "mode_prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sensor_quality_scope": {
+            "type": "string",
+            "enum": [
+              "REQUIRED_INPUTS_ONLY"
+            ]
+          },
+          "threshold_basis": {
+            "type": "string",
+            "enum": [
+              "PREDECLARED_ENGINEERING_TOLERANCE"
+            ]
+          },
+          "lower_margin_deg_f": {
+            "type": "number"
+          },
+          "min_inlet_separation_deg_f": {
+            "type": "number"
+          },
+          "min_fan_command_exclusive": {
+            "type": "number"
+          },
+          "confirmation_duration_seconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "flow_proof": {
+            "type": "string",
+            "enum": [
+              "UNAVAILABLE_IN_BASIC"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG3Lineage": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "source_sha256",
+          "source_column",
+          "canonical_id",
+          "timestamp",
+          "value",
+          "unit"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "source_column": {
+            "$ref": "#/components/schemas/RuntimeG3Signal"
+          },
+          "canonical_id": {
+            "$ref": "#/components/schemas/RuntimeG3Signal"
+          },
+          "timestamp": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unit": {
+            "$ref": "#/components/schemas/RuntimeG3Unit"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG3TimeWindow": {
+        "type": "object",
+        "required": [
+          "first",
+          "last"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "last": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG3Evaluation": {
+        "type": "object",
+        "required": [
+          "rule",
+          "applicability",
+          "predicate",
+          "reason_code",
+          "invalid_input_ids",
+          "raw_lineage",
+          "time_window"
+        ],
+        "properties": {
+          "rule": {
+            "$ref": "#/components/schemas/RuntimeG3Rule"
+          },
+          "applicability": {
+            "$ref": "#/components/schemas/MethodStatus"
+          },
+          "predicate": {
+            "type": "string",
+            "enum": [
+              "NOT_EVALUABLE",
+              "NOT_VIOLATED",
+              "VIOLATED"
+            ]
+          },
+          "reason_code": {
+            "type": "string",
+            "enum": [
+              "UNVERIFIED_OR_DUPLICATE_BINDING",
+              "REQUIRED_INPUT_MISSING",
+              "FAN_OFF",
+              "FAN_STATUS_UNKNOWN",
+              "FAN_TRANSITION_HOLD",
+              "REQUIRED_INPUT_QUALITY",
+              "FAN_COMMAND_TOO_LOW",
+              "LOW_INLET_TEMPERATURE_SEPARATION",
+              "EVALUATED"
+            ]
+          },
+          "invalid_input_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeG3Signal"
+            }
+          },
+          "raw_lineage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeG3Lineage"
+            }
+          },
+          "time_window": {
+            "$ref": "#/components/schemas/RuntimeG3TimeWindow"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "applicability": {
+                  "const": "APPLICABLE"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "predicate": {
+                  "enum": [
+                    "NOT_VIOLATED",
+                    "VIOLATED"
+                  ]
+                },
+                "reason_code": {
+                  "const": "EVALUATED"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "predicate": {
+                  "const": "NOT_EVALUABLE"
+                },
+                "reason_code": {
+                  "enum": [
+                    "UNVERIFIED_OR_DUPLICATE_BINDING",
+                    "REQUIRED_INPUT_MISSING",
+                    "FAN_OFF",
+                    "FAN_STATUS_UNKNOWN",
+                    "FAN_TRANSITION_HOLD",
+                    "REQUIRED_INPUT_QUALITY",
+                    "FAN_COMMAND_TOO_LOW",
+                    "LOW_INLET_TEMPERATURE_SEPARATION"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RuntimeG3Incident": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "equipment_id",
+          "method_id",
+          "kind",
+          "evidence_status",
+          "first_observed",
+          "confirmed_at",
+          "last_seen",
+          "samples",
+          "gap_reason",
+          "cause_status",
+          "possible_causes",
+          "raw_lineage",
+          "time_window"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "enum": [
+              "lbnl-sd-ahu"
+            ]
+          },
+          "method_id": {
+            "type": "string",
+            "enum": [
+              "mat-below-mixing-envelope"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "RULE_SYMPTOM"
+            ]
+          },
+          "evidence_status": {
+            "type": "string",
+            "enum": [
+              "CONFIRMED_SYMPTOM"
+            ]
+          },
+          "first_observed": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "confirmed_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "last_seen": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "samples": {
+            "type": "integer",
+            "minimum": 11
+          },
+          "gap_reason": {
+            "type": "string",
+            "enum": [
+              "WINDOW_CUTOFF",
+              "SOURCE_END",
+              "TIME_GAP",
+              "OFF_GRID_STEP",
+              "PREDICATE_CLEARED",
+              "UNVERIFIED_OR_DUPLICATE_BINDING",
+              "REQUIRED_INPUT_MISSING",
+              "FAN_OFF",
+              "FAN_STATUS_UNKNOWN",
+              "FAN_TRANSITION_HOLD",
+              "REQUIRED_INPUT_QUALITY",
+              "FAN_COMMAND_TOO_LOW",
+              "LOW_INLET_TEMPERATURE_SEPARATION"
+            ]
+          },
+          "cause_status": {
+            "type": "string",
+            "enum": [
+              "NO_ROOT_CAUSE_CONFIRMED"
+            ]
+          },
+          "possible_causes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TEMPERATURE_SENSOR_ERROR_OR_PLACEMENT",
+                "INCOMPLETE_MIXING_OR_TIME_MISMATCH",
+                "UNOBSERVED_UPSTREAM_HEAT_EXCHANGE_OR_AIRFLOW"
+              ]
+            }
+          },
+          "raw_lineage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeG3Lineage"
+            },
+            "minItems": 55,
+            "maxItems": 55
+          },
+          "time_window": {
+            "$ref": "#/components/schemas/RuntimeG3TimeWindow"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG3Incidents": {
+        "type": "object",
+        "required": [
+          "dataset_id",
+          "clock_kind",
+          "result_origin",
+          "source_sha256",
+          "rule",
+          "rule_fingerprint",
+          "first",
+          "last",
+          "coverage",
+          "not_evaluable_reasons",
+          "inapplicable_checks",
+          "next_start",
+          "events"
+        ],
+        "properties": {
+          "dataset_id": {
+            "type": "string"
+          },
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "result_origin": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_RUNTIME"
+            ]
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/RuntimeG3Rule"
+          },
+          "rule_fingerprint": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "first": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coverage": {
+            "type": "object",
+            "required": [
+              "samples",
+              "evaluated",
+              "violated",
+              "not_evaluable"
+            ],
+            "properties": {
+              "samples": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "evaluated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "violated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "not_evaluable": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "not_evaluable_reasons": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "inapplicable_checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeG3Incident"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG4Event": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "equipment_id",
+          "method_id",
+          "kind",
+          "evidence_status",
+          "first_observed",
+          "confirmed_at",
+          "last_seen",
+          "samples",
+          "gap_reason",
+          "possible_causes",
+          "time_window",
+          "cause_state",
+          "sensor_root_count",
+          "observation_count",
+          "raw_lineage",
+          "derived_fact"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "equipment_id": {
+            "type": "string",
+            "enum": [
+              "lbnl-sd-ahu",
+              "demo-g4-ahu"
+            ]
+          },
+          "method_id": {
+            "type": "string",
+            "enum": [
+              "mat-below-mixing-envelope"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "RULE_SYMPTOM"
+            ]
+          },
+          "evidence_status": {
+            "type": "string",
+            "enum": [
+              "CONFIRMED_SYMPTOM"
+            ]
+          },
+          "first_observed": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "confirmed_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "last_seen": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+          },
+          "samples": {
+            "type": "integer",
+            "minimum": 11
+          },
+          "gap_reason": {
+            "type": "string",
+            "enum": [
+              "WINDOW_CUTOFF",
+              "SOURCE_END",
+              "TIME_GAP",
+              "OFF_GRID_STEP",
+              "PREDICATE_CLEARED",
+              "UNVERIFIED_OR_DUPLICATE_BINDING",
+              "REQUIRED_INPUT_MISSING",
+              "FAN_OFF",
+              "FAN_STATUS_UNKNOWN",
+              "FAN_TRANSITION_HOLD",
+              "REQUIRED_INPUT_QUALITY",
+              "FAN_COMMAND_TOO_LOW",
+              "LOW_INLET_TEMPERATURE_SEPARATION"
+            ]
+          },
+          "possible_causes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TEMPERATURE_SENSOR_ERROR_OR_PLACEMENT",
+                "INCOMPLETE_MIXING_OR_TIME_MISMATCH",
+                "UNOBSERVED_UPSTREAM_HEAT_EXCHANGE_OR_AIRFLOW"
+              ]
+            }
+          },
+          "time_window": {
+            "$ref": "#/components/schemas/RuntimeG3TimeWindow"
+          },
+          "cause_state": {
+            "type": "string",
+            "enum": [
+              "NOT_ASSESSED",
+              "AMBIGUOUS",
+              "CONDITIONAL"
+            ]
+          },
+          "sensor_root_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "observation_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "raw_lineage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "canonical_id",
+                "kind",
+                "role",
+                "observations"
+              ],
+              "properties": {
+                "canonical_id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "MEASUREMENT",
+                    "STATUS",
+                    "COMMAND"
+                  ]
+                },
+                "role": {
+                  "type": "string"
+                },
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RuntimeG3Lineage"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "derived_fact": {
+            "type": "object",
+            "required": [
+              "code",
+              "depends_on"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "LOWER_ENVELOPE_TEMPORALLY_CONFIRMED"
+                ]
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeG4Investigation": {
+        "type": "object",
+        "required": [
+          "dataset_id",
+          "clock_kind",
+          "result_origin",
+          "source_sha256",
+          "rule",
+          "rule_fingerprint",
+          "first",
+          "last",
+          "coverage",
+          "not_evaluable_reasons",
+          "inapplicable_checks",
+          "next_start",
+          "events",
+          "report_version",
+          "dataset_name",
+          "equipment_id",
+          "source_member",
+          "release_id",
+          "provenance",
+          "signal_profile",
+          "analysis_scope",
+          "status",
+          "evidence_status",
+          "cause_state",
+          "formula",
+          "inputs",
+          "mode_policy",
+          "mode_segments",
+          "time_quality",
+          "limitations",
+          "recommendations",
+          "analysis_journal",
+          "run_sha256",
+          "source_coverage",
+          "source_confirmed_episodes",
+          "index_sha256",
+          "unconfirmed_violated_samples",
+          "confirmation_state"
+        ],
+        "properties": {
+          "dataset_id": {
+            "type": "string"
+          },
+          "clock_kind": {
+            "type": "string",
+            "enum": [
+              "SOURCE_SIMULATION_TIME"
+            ]
+          },
+          "result_origin": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_RUNTIME",
+              "DEMO_FIXTURE"
+            ]
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/RuntimeG3Rule"
+          },
+          "rule_fingerprint": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "first": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coverage": {
+            "type": "object",
+            "required": [
+              "samples",
+              "evaluated",
+              "violated",
+              "not_evaluable"
+            ],
+            "properties": {
+              "samples": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "evaluated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "violated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "not_evaluable": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "not_evaluable_reasons": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "inapplicable_checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeG4Event"
+            }
+          },
+          "report_version": {
+            "type": "string"
+          },
+          "dataset_name": {
+            "type": "string"
+          },
+          "equipment_id": {
+            "type": "string"
+          },
+          "source_member": {
+            "type": "string"
+          },
+          "release_id": {
+            "type": "string"
+          },
+          "provenance": {
+            "type": "string",
+            "enum": [
+              "DEMO_FIXTURE",
+              "SIMULATED_BENCHMARK",
+              "FIELD"
+            ]
+          },
+          "signal_profile": {
+            "type": "string",
+            "enum": [
+              "BASIC"
+            ]
+          },
+          "analysis_scope": {
+            "type": "object",
+            "required": [
+              "kind",
+              "requested_start",
+              "limit",
+              "event_id"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "SOURCE_WINDOW"
+                ]
+              },
+              "requested_start": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "limit": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "event_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DETECTED_SYMPTOM",
+              "NO_SYMPTOMS_ON_EVALUATED_WINDOWS",
+              "NOT_EVALUABLE"
+            ]
+          },
+          "evidence_status": {
+            "type": "string",
+            "enum": [
+              "CONFIRMED_SYMPTOM",
+              "NOT_DETECTED",
+              "NOT_EVALUABLE"
+            ]
+          },
+          "cause_state": {
+            "type": "string",
+            "enum": [
+              "NOT_ASSESSED",
+              "AMBIGUOUS",
+              "CONDITIONAL"
+            ]
+          },
+          "formula": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "canonical_id",
+                "role",
+                "unit",
+                "kind",
+                "available"
+              ],
+              "properties": {
+                "canonical_id": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "MEASUREMENT",
+                    "STATUS",
+                    "COMMAND"
+                  ]
+                },
+                "available": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "mode_policy": {
+            "$ref": "#/components/schemas/RuntimeModePolicy"
+          },
+          "mode_segments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RuntimeModeSegment"
+            }
+          },
+          "time_quality": {
+            "$ref": "#/components/schemas/RuntimeWindowTimeQuality"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "code",
+                "text"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "analysis_journal": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "step",
+                "result"
+              ],
+              "properties": {
+                "step": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "run_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "source_coverage": {
+            "type": "object",
+            "required": [
+              "samples",
+              "evaluated",
+              "violated",
+              "not_evaluable"
+            ],
+            "properties": {
+              "samples": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "evaluated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "violated": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "not_evaluable": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "source_confirmed_episodes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "index_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "unconfirmed_violated_samples": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Violating observations outside any episode confirmed by the window cutoff. Count covers the whole evaluated window even when event_id filters the returned episodes."
+          },
+          "confirmation_state": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "UNCONFIRMED",
+              "CONFIRMED",
+              "NO_VIOLATIONS",
+              "NOT_EVALUABLE"
+            ],
+            "description": "Window-wide confirmation summary. PENDING means a violation is still observed at the cutoff outside any confirmed episode. UNCONFIRMED means other violating samples remain outside confirmed episodes. Both may coexist with earlier confirmed episodes. State describes the observed window, without future samples."
+          }
+        },
+        "additionalProperties": false
+      },
+      "G36BenchmarkPoint": {
+        "type": "object",
+        "properties": {
+          "time_s": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sat_k": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "setpoint_k": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "mat_k": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "fan_status": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "cooling_command": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "heating_command": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "source_oracle_status": {
+            "type": "string",
+            "enum": ["SOURCE_ORACLE_EXCEPTION"],
+            "description": "Publisher metadata for the two final valve-scenario points, returned only for G36-1wk EXTRA_SIMULATED."
+          },
+          "reference_oracle": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "residual_k": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "APPLICABLE",
+              "INVALID_INPUT",
+              "FAN_OFF",
+              "LOW_COOLING_COMMAND",
+              "HEATING_COMMAND",
+              "LOW_TEMPERATURE_LIFT",
+              "UNKNOWN_WEATHER_CONTEXT"
+            ]
+          },
+          "point_exceeds": {
+            "type": "boolean"
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "gap_before": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string",
+            "enum": [
+              "PUBLISHER_NOMINAL",
+              "PRE_INJECTION_NOMINAL",
+              "SIMULATED_VALVE_CLOSURE_INTERVAL",
+              "UNKNOWN_POST_WINDOW",
+              "SIMULATED_DAMPER_OPEN_INTERVAL",
+              "SIMULATED_DUCT_LEAK_INTERVAL",
+              "PUBLISHER_VALVE_CLOSED_SCENARIO"
+            ]
+          },
+          "weather_status": {
+            "type": "string",
+            "enum": [
+              "OBSERVED",
+              "UNKNOWN"
+            ]
+          },
+          "fan_mode": {
+            "type": "string",
+            "enum": [
+              "FAN_ON",
+              "FAN_OFF",
+              "UNKNOWN"
+            ]
+          },
+          "method_status": {
+            "type": "string",
+            "enum": [
+              "APPLICABLE",
+              "INAPPLICABLE",
+              "INCONCLUSIVE"
+            ]
+          },
+          "predicate": {
+            "type": "string",
+            "enum": [
+              "VIOLATED",
+              "NOT_VIOLATED",
+              "INDETERMINATE"
+            ]
+          },
+          "confirmed_start": {
+            "type": "boolean",
+            "description": "Transition to a confirmed symptom, computed on the full G36-1wk run before window selection."
+          }
+        },
+        "required": [
+          "time_s",
+          "sat_k",
+          "setpoint_k",
+          "mat_k",
+          "fan_status",
+          "cooling_command",
+          "heating_command",
+          "reference_oracle",
+          "residual_k",
+          "reason",
+          "point_exceeds",
+          "confirmed",
+          "gap_before",
+          "label",
+          "weather_status",
+          "fan_mode",
+          "method_status",
+          "predicate"
+        ],
+        "additionalProperties": false
+      },
+      "G36BenchmarkPeriod": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "string"
+          },
+          "samples": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "applicable": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "point_exceedances": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "confirmed_samples": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "symptom_starts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "abstentions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "period",
+          "samples",
+          "applicable",
+          "point_exceedances",
+          "confirmed_samples",
+          "symptom_starts",
+          "abstentions"
+        ],
+        "additionalProperties": false
+      },
+      "G36BenchmarkWindow": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "enum": [
+              "g36-5wk",
+              "g36-1wk"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_BENCHMARK"
+            ]
+          },
+          "source_clock": {
+            "type": "string",
+            "enum": [
+              "MODEL_SECONDS"
+            ]
+          },
+          "policy_id": {
+            "type": "string"
+          },
+          "sample_seconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "threshold_k": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "confirmation_seconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "scenario": {
+            "type": "string",
+            "enum": [
+              "NOMINAL",
+              "VALVE_CLOSED",
+              "DAMPER_OPEN",
+              "DUCT_LEAK"
+            ]
+          },
+          "panel": {
+            "type": "string",
+            "enum": [
+              "BASIC",
+              "EXTRA_SIMULATED"
+            ]
+          },
+          "source_file": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "first_time_s": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_time_s": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "next_start": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "summaries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/G36BenchmarkPeriod"
+            }
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/G36BenchmarkPoint"
+            }
+          },
+          "paired_causal_gate": {
+            "type": "string",
+            "enum": ["STOP"],
+            "description": "G36-1wk only. Historical paired analysis remains blocked."
+          },
+          "unpaired_descriptive_gate": {
+            "type": "string",
+            "enum": ["PASS"],
+            "description": "G36-1wk only. Accepted G5.4 single-run descriptive transfer."
+          },
+          "runs_per_scenario": {
+            "type": "integer",
+            "enum": [1],
+            "description": "G36-1wk only. The number of simulated runs per scenario, separate from tick and episode counts."
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "EXPLORATORY_POST_HOC",
+              "UNPAIRED_DESCRIPTIVE"
+            ]
+          },
+          "cause_status": {
+            "type": "string",
+            "enum": [
+              "NOT_ASSESSED"
+            ]
+          },
+          "cooling_enable": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN"
+            ]
+          },
+          "evidence_roots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "point": {
+                  "type": "string"
+                },
+                "source_column": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "MEASUREMENT",
+                    "SETPOINT",
+                    "SIMULATED_STATUS",
+                    "COMMAND"
+                  ]
+                },
+                "unit": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "point",
+                "source_column",
+                "role",
+                "unit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "source_review": {
+            "type": "string",
+            "enum": [
+              "NOT_BLIND_PREVIEWED_SOURCE"
+            ]
+          },
+          "residual_distribution": {
+            "$ref": "#/components/schemas/G36ResidualDistribution"
+          }
+        },
+        "required": [
+          "dataset_id",
+          "provenance",
+          "source_clock",
+          "policy_id",
+          "sample_seconds",
+          "threshold_k",
+          "confirmation_seconds",
+          "scenario",
+          "panel",
+          "source_file",
+          "source_sha256",
+          "first_time_s",
+          "last_time_s",
+          "next_start",
+          "summaries",
+          "points",
+          "scope",
+          "cause_status",
+          "cooling_enable",
+          "evidence_roots"
+        ],
+        "additionalProperties": false
+      },
+      "G36BenchmarkComparison": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "enum": [
+              "g36-5wk"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_BENCHMARK"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "EXPLORATORY_POST_HOC"
+            ]
+          },
+          "policy_id": {
+            "type": "string"
+          },
+          "start_s": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_exclusive_s": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sample_seconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "runs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scenario": {
+                  "type": "string",
+                  "enum": [
+                    "NOMINAL",
+                    "VALVE_CLOSED",
+                    "DAMPER_OPEN",
+                    "DUCT_LEAK"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "enum": [
+                    "PUBLISHER_NOMINAL",
+                    "PRE_INJECTION_NOMINAL",
+                    "SIMULATED_VALVE_CLOSURE_INTERVAL",
+                    "UNKNOWN_POST_WINDOW",
+                    "SIMULATED_DAMPER_OPEN_INTERVAL",
+                    "SIMULATED_DUCT_LEAK_INTERVAL"
+                  ]
+                },
+                "source_file": {
+                  "type": "string"
+                },
+                "source_sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "summary": {
+                  "$ref": "#/components/schemas/G36BenchmarkPeriod"
+                },
+                "episode_starts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "cooling_command_bins": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "required": [
+                "scenario",
+                "label",
+                "source_file",
+                "source_sha256",
+                "summary",
+                "episode_starts",
+                "cooling_command_bins"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "dataset_id",
+          "provenance",
+          "scope",
+          "policy_id",
+          "start_s",
+          "end_exclusive_s",
+          "sample_seconds",
+          "runs"
+        ],
+        "additionalProperties": false
+      },
+      "G36ResidualDistribution": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "enum": [
+              "K"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "min": {
+            "type": "number"
+          },
+          "p05": {
+            "type": "number"
+          },
+          "p25": {
+            "type": "number"
+          },
+          "median": {
+            "type": "number"
+          },
+          "p75": {
+            "type": "number"
+          },
+          "p95": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "mean": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "unit",
+          "count",
+          "min",
+          "p05",
+          "p25",
+          "median",
+          "p75",
+          "p95",
+          "max",
+          "mean"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "x-historical-fixture-schemas": [
+    "AnalysisRequest",
+    "Applicability",
+    "CauseStatus",
+    "Dataset",
+    "EventProvenance",
+    "EvidenceV1",
+    "Hypothesis",
+    "LineageRole",
+    "Mode",
+    "ModelScope",
+    "Observation",
+    "ObservedValue",
+    "Root",
+    "SourceType",
+    "TimeWindow",
+    "ValueClass"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "run_id": "stage7_stage6_reproduction_01",
+  "created_at": "2026-11-03T11:45:00.000000+00:00",
+  "audit_version": "Stage 7 Scientific Audit v1.0",
+  "audited_artifacts": {
+    "raw_csiro_ahu9": {
+      "path": "data/raw/csiro_ahu9.parquet",
+      "sha256": "d43028c46d6fadbed7f2deb749626f78be277573ead1e8b1abe8babd7515db6d",
+      "total_rows": 457653,
+      "ma_sa_duplicate_check": {
+        "identical_rows": 457653,
+        "max_diff": 0.0,
+        "mean_diff": 0.0,
+        "interpretation": "Values are 100% identical in the BMS database extract. Classified as sensor_semantics_ambiguous / software-mapped duplicate rather than proof of missing physical duct sensor."
+      }
+    },
+    "fault_log": {
+      "path": "data/raw/csiro_fault_experiments.parquet",
+      "sha256": "b7ebad8a25baa8da7740186eb52a1eb62d0602c82dcc394ed0527ea5c6fd65f2",
+      "total_episodes_recorded": 54,
+      "test_window_episodes_active": 34,
+      "chw_valve_episodes_in_test": 4
+    },
+    "source_lbnl_model": {
+      "model_id": "vs-sa-temp-v2",
+      "path": "models/vs-sa-temp-v2.joblib",
+      "sha256": "9fd340dd28b137e90d37dc4195dc8309e9766130091b82c31082928819c6e48d"
+    },
+    "c1_model": {
+      "model_id": "csiro-ahu9-bias-v1",
+      "path": "models/csiro-ahu9-bias-v1.joblib",
+      "sha256": "e84fe9561e12740ac71d10d071280e5e1ed664c59c053f498ddbdd1ddcd8104f",
+      "fitted_bias_degC": 4.59326801179734,
+      "formula": "y_pred = y_source + 4.5933 °C"
+    },
+    "c2_model": {
+      "model_id": "csiro-ahu9-affine-v1",
+      "path": "models/csiro-ahu9-affine-v1.joblib",
+      "sha256": "71a8b5d6c9e9f287557a93e0d9d0692a3d4f1335ed3bba28c31c98b85b99e59e",
+      "parameters": {
+        "slope": 2.013821390416395,
+        "intercept_degC": -10.110449452489096
+      },
+      "formula": "y_pred = 2.013821 * y_source - 10.110449 °C",
+      "text_conflict_resolution": "The narrative mention of 'a=0.582, b=2.459' in STATE.md and DECISIONS.md was an unverified manual text typo. The real executable joblib artifact, metadata JSON, training runner, evaluation runner, report table, and frontend label all consistently have slope=2.0138 and intercept=-10.1104."
+    }
+  },
+  "c2_hand_verification_samples": [
+    {"source_temp": 10.0, "computed": 10.027764, "expected": 10.027764, "abs_diff": 0.0},
+    {"source_temp": 12.0, "computed": 14.055407, "expected": 14.055407, "abs_diff": 0.0},
+    {"source_temp": 14.0, "computed": 18.083050, "expected": 18.083050, "abs_diff": 0.0},
+    {"source_temp": 16.0, "computed": 22.110693, "expected": 22.110693, "abs_diff": 0.0},
+    {"source_temp": 18.0, "computed": 26.138336, "expected": 26.138336, "abs_diff": 0.0}
+  ],
+  "held_out_regression_reproduced": {
+    "test_healthy_points_count": 1074,
+    "Z0_source": {"mae_degC": 4.4552, "rmse_degC": 4.7334, "mean_bias_degC": 4.4552, "r2": -3.3026},
+    "B0_physical": {"mae_degC": 5.9491, "rmse_degC": 6.4543, "mean_bias_degC": -5.7937, "r2": -6.9999},
+    "C1_constant_bias": {"mae_degC": 1.2037, "rmse_degC": 1.6048, "mean_bias_degC": -0.1381, "r2": 0.5054},
+    "C2_affine": {"mae_degC": 1.1062, "rmse_degC": 1.6661, "mean_bias_degC": 0.3260, "r2": 0.4669},
+    "A1_residual_ridge": {"mae_degC": 1.8323, "rmse_degC": 2.5457, "mean_bias_degC": 1.1932, "r2": -0.2445},
+    "L1_local_ridge": {"mae_degC": 2.9792, "rmse_degC": 4.1504, "mean_bias_degC": 2.0534, "r2": -2.3080},
+    "L2_local_lgbm": {"mae_degC": 1.2703, "rmse_degC": 1.8230, "mean_bias_degC": -0.0631, "r2": 0.3618}
+  },
+  "two_by_two_factor_analysis": {
+    "Z0_source_sim_threshold": {
+      "threshold_degC": 0.919,
+      "false_alarm_rate_pct": 100.0,
+      "false_alarm_episodes_per_day": 0.45,
+      "event_recall_all_pct": 100.0,
+      "detected_all": "34/34",
+      "chw_valve_recall_pct": 0.0,
+      "detected_chw": "0/4"
+    },
+    "Z0_source_local_recalibrated_threshold": {
+      "threshold_degC": 7.95,
+      "false_alarm_rate_pct": 2.05,
+      "false_alarm_episodes_per_day": 0.89,
+      "event_recall_all_pct": 20.6,
+      "detected_all": "7/34",
+      "chw_valve_recall_pct": 0.0,
+      "detected_chw": "0/4"
+    },
+    "C2_affine_sim_threshold": {
+      "threshold_degC": 0.919,
+      "false_alarm_rate_pct": 38.5,
+      "false_alarm_episodes_per_day": 6.70,
+      "event_recall_all_pct": 73.5,
+      "detected_all": "25/34",
+      "chw_valve_recall_pct": 75.0,
+      "detected_chw": "3/4"
+    },
+    "C2_affine_local_recalibrated_threshold": {
+      "threshold_degC": 3.01,
+      "false_alarm_rate_pct": 2.79,
+      "false_alarm_episodes_per_day": 1.79,
+      "event_recall_all_pct": 17.6,
+      "detected_all": "6/34",
+      "chw_valve_recall_pct": 25.0,
+      "detected_chw": "1/4"
+    }
+  },
+  "hypotheses_revised_evaluation": {
+    "H4a": {
+      "claim": "MAE reduction of adapted model on held-out clean telemetry >= 50% vs Z0.",
+      "achieved_reduction_pct_C2": 75.17,
+      "achieved_reduction_pct_C1": 73.0,
+      "status": "SUPPORTED_ON_THIS_TEST",
+      "limitations": "Evaluated on a single recipient AHU (CSIRO AHU9) over a 6-day held-out test period. Demonstrates local transfer feasibility, not universal generalization across arbitrary HVAC configurations."
+    },
+    "H4b": {
+      "claim": "Residual Ridge (A1) or Local Ridge (L1) outperform simple Constant Bias (C1) by MAE on validation and test.",
+      "c1_mae_degC": 1.2037,
+      "a1_mae_degC": 1.8323,
+      "l1_mae_degC": 2.9792,
+      "l2_mae_degC": 1.2703,
+      "status": "REFUTED_ON_TEST",
+      "limitations": "Neither A1 nor L1 outperformed C1 on validation (A1=2.15, L1=3.24 vs C1=1.61) or held-out test (A1=1.83, L1=2.98 vs C1=1.20). Even local LightGBM (L2=1.27) fell short of C1. Pre-registered hypothesis is refuted. Simple bias/affine adaptation preserves rich nonlinear simulation structure without overfitting."
+    },
+    "H4c": {
+      "claim": "Local 3sigma calibration limits FAR to <= 5% while maintaining >= 70% recall of CHW Valve Stuck faults.",
+      "achieved_far_pct": 2.79,
+      "far_budget_met": true,
+      "achieved_chw_recall_pct": 25.0,
+      "chw_recall_target_met": false,
+      "overall_event_recall_pct": 17.6,
+      "status": "PARTIALLY_SUPPORTED_WITH_LOW_SENSITIVITY",
+      "limitations": "FAR budget <= 5% was successfully met (2.8% point rate, 1.79 ep/day), but recall was only 25% (1/4 CHW events detected: only the extreme 88% stuck event). Demonstrates inevitable Neyman-Pearson tradeoff: high local threshold needed to suppress real-world BMS sensor noise also suppresses sensitivity to subtle and moderate faults."
+    }
+  }
+}

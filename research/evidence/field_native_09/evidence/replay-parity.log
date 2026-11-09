@@ -1,0 +1,10 @@
+raw/AHU1.xlsx: OK
+raw/AHU18.xlsx: OK
+raw/AHU2.xlsx: OK
+raw/AHU23.xlsx: OK
+raw/AHU24.xlsx: OK
+raw/AHU8.xlsx: OK
+raw/CTU_AAM_350037.verified.pdf: OK
+raw/Faults_schedule_and_description.xlsx: OK
+raw/Place_tag_explanation.jpg: OK
+PASS 17 byte-identical outputs in clean directory with read-only originals

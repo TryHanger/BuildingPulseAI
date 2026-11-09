@@ -1,0 +1,12 @@
+/tmp/bp-field13.PIZOCD/env/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+PASS BUILDINGPULSE_BP_ML_FIELD_NATIVE_09_REVIEW.zip: 49 payload hashes
+PASS BUILDINGPULSE_BP_ML_FIELD_EVIDENCE_10_REVIEW.zip: 38 payload hashes
+PASS BUILDINGPULSE_BP_ML_FIELD_MECHANISM_11_REVIEW.zip: 32 payload hashes
+PASS BUILDINGPULSE_BP_ML_FIELD_OBSERVATIONAL_12_REVIEW.zip: 42 payload hashes
+PASS archived OpenAPI difference is isolated to the Stage10 research route and schemas
+PASS live standalone Stage10 endpoint: 12 cases, frozen payload, GET only, fail closed
+Accepted Stage09 base in local export: 227 paths, 98 missing and 27 mismatched.
+Full integrated Stage10/FDD HTTP and model-runtime regression unavailable on this base.
+Examples missing: backend/app/api/endpoints/domain_shift_07.py backend/app/api/endpoints/investigator_v1.py backend/app/api/endpoints/virtual_sensor_research.py backend/app/core/audit_guard.py backend/app/services/domain_shift_07.py
+Examples mismatched: backend/app/api/router.py backend/app/core/config.py backend/app/services/diagnostics_service.py backend/app/services/import_service.py backend/app/services/quality_service.py

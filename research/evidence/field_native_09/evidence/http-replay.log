@@ -1,0 +1,12 @@
+INFO:     Started server process [158381]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18059 (Press CTRL+C to quit)
+INFO:     127.0.0.1:45988 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45990 - "GET /api/research/domain-shift-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45996 - "GET /api/v1/incidents?dataset_id=ds_8e5b1ddfdd14&start=2018-01-02T11%3A08%3A00&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46010 - "GET /research/field-data HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [158381]

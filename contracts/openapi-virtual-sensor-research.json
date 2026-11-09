@@ -1,0 +1,623 @@
+{
+  "components": {
+    "schemas": {
+      "BaselineComparison": {
+        "properties": {
+          "arm": {
+            "enum": [
+              "PRODUCT_BASIC",
+              "PRODUCT_BASIC_WITHOUT_COMMANDS"
+            ],
+            "title": "Arm",
+            "type": "string"
+          },
+          "both_tp": {
+            "title": "Both Tp",
+            "type": "integer"
+          },
+          "comparator": {
+            "title": "Comparator",
+            "type": "string"
+          },
+          "comparator_fp": {
+            "title": "Comparator Fp",
+            "type": "integer"
+          },
+          "comparator_tp": {
+            "title": "Comparator Tp",
+            "type": "integer"
+          },
+          "detector": {
+            "const": "SYSTEM_MAX_8",
+            "default": "SYSTEM_MAX_8",
+            "title": "Detector",
+            "type": "string"
+          },
+          "evidence": {
+            "const": "REPRO_01_SAVED_DAILY_CSV",
+            "default": "REPRO_01_SAVED_DAILY_CSV",
+            "title": "Evidence",
+            "type": "string"
+          },
+          "lgbm_fp": {
+            "title": "Lgbm Fp",
+            "type": "integer"
+          },
+          "lgbm_tp": {
+            "title": "Lgbm Tp",
+            "type": "integer"
+          },
+          "paired_days": {
+            "title": "Paired Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "arm",
+          "comparator",
+          "paired_days",
+          "lgbm_tp",
+          "comparator_tp",
+          "lgbm_fp",
+          "comparator_fp",
+          "both_tp"
+        ],
+        "title": "BaselineComparison",
+        "type": "object"
+      },
+      "Case": {
+        "properties": {
+          "alias_status": {
+            "enum": [
+              "PUBLISHER_BASELINE",
+              "UNVERIFIED_PUBLISHER_ALIAS"
+            ],
+            "title": "Alias Status",
+            "type": "string"
+          },
+          "days": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "member": {
+            "title": "Member",
+            "type": "string"
+          },
+          "member_sha256": {
+            "title": "Member Sha256",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "member",
+          "member_sha256",
+          "alias_status",
+          "days"
+        ],
+        "title": "Case",
+        "type": "object"
+      },
+      "Day": {
+        "properties": {
+          "alert": {
+            "anyOf": [
+              {
+                "const": "MODEL_ANOMALY",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alert"
+          },
+          "calendar_minutes": {
+            "const": 1440,
+            "default": 1440,
+            "title": "Calendar Minutes",
+            "type": "integer"
+          },
+          "case": {
+            "$ref": "#/components/schemas/Case"
+          },
+          "continuous_minutes": {
+            "default": 0,
+            "title": "Continuous Minutes",
+            "type": "integer"
+          },
+          "coverage": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Coverage",
+            "type": "number"
+          },
+          "daily_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Daily Score"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "evaluated_minutes": {
+            "title": "Evaluated Minutes",
+            "type": "integer"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "method": {
+            "const": "SAT_ONLY",
+            "default": "SAT_ONLY",
+            "title": "Method",
+            "type": "string"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/Point"
+            },
+            "title": "Points",
+            "type": "array"
+          },
+          "present_channels": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Present Channels",
+            "type": "array"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "running_minutes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Running Minutes"
+          },
+          "status": {
+            "enum": [
+              "EVALUATED",
+              "NOT_EVALUABLE",
+              "INSUFFICIENT_COVERAGE"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "threshold": {
+            "const": 3,
+            "default": 3,
+            "title": "Threshold",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "status",
+          "case",
+          "day",
+          "metadata",
+          "evaluated_minutes",
+          "coverage",
+          "points",
+          "present_channels"
+        ],
+        "title": "Day",
+        "type": "object"
+      },
+      "EvidenceBoundary": {
+        "properties": {
+          "alarm_meaning": {
+            "const": "MODEL_RESIDUAL_ONLY",
+            "default": "MODEL_RESIDUAL_ONLY",
+            "title": "Alarm Meaning",
+            "type": "string"
+          },
+          "cohort": {
+            "const": "PREVIOUSLY_INSPECTED_SIMULATION",
+            "default": "PREVIOUSLY_INSPECTED_SIMULATION",
+            "title": "Cohort",
+            "type": "string"
+          },
+          "external_validation": {
+            "const": "BLOCKED_EXTERNAL_VALIDATION",
+            "default": "BLOCKED_EXTERNAL_VALIDATION",
+            "title": "External Validation",
+            "type": "string"
+          }
+        },
+        "title": "EvidenceBoundary",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "Metadata": {
+        "properties": {
+          "arm": {
+            "const": "PRODUCT_BASIC",
+            "default": "PRODUCT_BASIC",
+            "title": "Arm",
+            "type": "string"
+          },
+          "available_channels": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Available Channels",
+            "type": "array"
+          },
+          "cases": {
+            "items": {
+              "$ref": "#/components/schemas/Case"
+            },
+            "title": "Cases",
+            "type": "array"
+          },
+          "comparisons": {
+            "items": {
+              "$ref": "#/components/schemas/BaselineComparison"
+            },
+            "title": "Comparisons",
+            "type": "array"
+          },
+          "evidence_boundary": {
+            "$ref": "#/components/schemas/EvidenceBoundary"
+          },
+          "feature_order": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Feature Order",
+            "type": "array"
+          },
+          "feature_roles": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Feature Roles",
+            "type": "object"
+          },
+          "integration_protocol_sha256": {
+            "title": "Integration Protocol Sha256",
+            "type": "string"
+          },
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/ResearchMethod"
+            },
+            "title": "Methods",
+            "type": "array"
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "model_id": {
+            "title": "Model Id",
+            "type": "string"
+          },
+          "policy_version": {
+            "const": "sat-daily-coverage@1.0.0",
+            "default": "sat-daily-coverage@1.0.0",
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "protocol_sha256": {
+            "title": "Protocol Sha256",
+            "type": "string"
+          },
+          "schema_sha256": {
+            "title": "Schema Sha256",
+            "type": "string"
+          },
+          "scope": {
+            "const": "SIMULATED_BENCHMARK",
+            "default": "SIMULATED_BENCHMARK",
+            "title": "Scope",
+            "type": "string"
+          },
+          "source_sha256": {
+            "title": "Source Sha256",
+            "type": "string"
+          },
+          "source_timezone": {
+            "title": "Source Timezone",
+            "type": "string"
+          },
+          "split": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Split",
+            "type": "object"
+          },
+          "timestamp_format": {
+            "title": "Timestamp Format",
+            "type": "string"
+          },
+          "ttl_sha256": {
+            "title": "Ttl Sha256",
+            "type": "string"
+          },
+          "use": {
+            "const": "RESEARCH_ONLY",
+            "default": "RESEARCH_ONLY",
+            "title": "Use",
+            "type": "string"
+          },
+          "versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Versions",
+            "type": "object"
+          }
+        },
+        "required": [
+          "source_sha256",
+          "ttl_sha256",
+          "schema_sha256",
+          "protocol_sha256",
+          "integration_protocol_sha256",
+          "source_timezone",
+          "timestamp_format",
+          "model_id",
+          "mode",
+          "split",
+          "versions",
+          "feature_order",
+          "available_channels",
+          "feature_roles",
+          "cases",
+          "evidence_boundary",
+          "methods",
+          "comparisons"
+        ],
+        "title": "Metadata",
+        "type": "object"
+      },
+      "Point": {
+        "properties": {
+          "absolute_residual": {
+            "title": "Absolute Residual",
+            "type": "number"
+          },
+          "actual": {
+            "title": "Actual",
+            "type": "number"
+          },
+          "predicted": {
+            "title": "Predicted",
+            "type": "number"
+          },
+          "timestamp": {
+            "title": "Timestamp",
+            "type": "string"
+          },
+          "z": {
+            "title": "Z",
+            "type": "number"
+          }
+        },
+        "required": [
+          "timestamp",
+          "actual",
+          "predicted",
+          "absolute_residual",
+          "z"
+        ],
+        "title": "Point",
+        "type": "object"
+      },
+      "ResearchMethod": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "ARCHIVE_DAY_API",
+              "FULL_COHORT_RESEARCH_REPORT"
+            ],
+            "title": "Availability",
+            "type": "string"
+          },
+          "id": {
+            "enum": [
+              "SAT_ONLY",
+              "SYSTEM_MAX_8",
+              "SAT_MINUS_SETPOINT"
+            ],
+            "title": "Id",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "availability"
+        ],
+        "title": "ResearchMethod",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "BuildingPulse Virtual Sensor Research",
+    "version": "1.2.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/research/virtual-sensors": {
+      "get": {
+        "operationId": "metadata_api_research_virtual_sensors_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metadata"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "503": {
+            "description": "Trusted research registry disabled or unavailable"
+          }
+        },
+        "summary": "Metadata",
+        "tags": [
+          "Research virtual sensors"
+        ]
+      }
+    },
+    "/api/research/virtual-sensors/day": {
+      "get": {
+        "description": "Select one case and one source-local day from the pinned SAT archive.",
+        "operationId": "research_day_api_research_virtual_sensors_day_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "case",
+            "required": true,
+            "schema": {
+              "enum": [
+                "healthy",
+                "sa-plus-2"
+              ],
+              "title": "Case",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "day",
+            "required": true,
+            "schema": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "title": "Day",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Day"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "Day outside archived research window"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "Trusted research registry disabled or unavailable"
+          }
+        },
+        "summary": "Research Day",
+        "tags": [
+          "Research virtual sensors"
+        ]
+      }
+    }
+  }
+}

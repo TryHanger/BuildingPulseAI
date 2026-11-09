@@ -1,0 +1,15 @@
+{
+  "candidate_order": [4, 6],
+  "max_selected_types": 1,
+  "cadence_seconds": 300,
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "pre_minutes": 30,
+  "post_minutes": 30,
+  "same_ahu_comparison": true,
+  "required_context": {"logic__required_value__heater": 1, "logic__required_value__chiller": 0, "logic__real_value__fan_fresh_air": 1},
+  "response_metric": "event_minus_comparison_change_in_median_air_temperature_rise_across_verified_heater_C",
+  "expected_direction": "decrease_if_qualified",
+  "selected_schedule_row": null,
+  "selected_comparison_window": null,
+  "phase_a_temperature_access": "presence_and_finite_only_no_values_retained"
+}

@@ -1,0 +1,14 @@
+{
+  "csv_sha256": "5adb2e3656e053aa29112ee86acfb06ce3ab81c49ddd802e6dca34640249786a",
+  "absolute_tolerance": 1e-09,
+  "maximum_absolute_deltas": {
+    "sat_only": 0.00013432234953825173,
+    "system_max_8": 0.00013432234953825173,
+    "sat_minus_setpoint": 1.4210854715202004e-14,
+    "ridge": 0.0,
+    "pca_paper": 0.0,
+    "pca_input_matched": 0.0
+  },
+  "divergent_day_method_rows": 20,
+  "alarm_changes": 0
+}

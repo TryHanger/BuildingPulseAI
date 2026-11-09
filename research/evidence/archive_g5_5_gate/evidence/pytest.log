@@ -1,0 +1,127 @@
+/tmp/bp-g01/venv/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+........................................................................ [ 23%]
+........................................................................ [ 46%]
+........................................................................ [ 69%]
+........................................................................ [ 92%]
+......................                                                   [100%]
+=============================== warnings summary ===============================
+../../bp-g01/venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /tmp/bp-g01/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+research/g51/qualify_interventions.py:19
+  /tmp/bp-g55.eVYkpK/app/research/g51/qualify_interventions.py:19: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    CONTEXT = pd.Timedelta(minutes=30)
+
+tests/test_adaptation_api.py::test_get_adaptation_predictions
+tests/test_stage6_negative_controls.py::test_fault_contamination_injection_detected
+tests/test_stage6_splits.py::test_temporal_split_no_overlap
+tests/test_stage6_splits.py::test_temporal_split_strictly_chronological
+tests/test_stage6_splits.py::test_no_fault_contamination_in_train_and_val
+tests/test_stage8b_dynamic.py::test_ahu10_clean_split_embargo_isolation
+  /tmp/bp-g55.eVYkpK/app/ml/adaptation/splits.py:55: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    delta = pd.Timedelta(minutes=self.embargo_minutes)
+
+tests/test_adaptation_api.py::test_get_adaptation_predictions
+tests/test_adaptation_api.py::test_get_adaptation_predictions
+tests/test_adaptation_api.py::test_get_adaptation_predictions
+  /tmp/bp-g55.eVYkpK/app/backend/app/services/adaptation_service.py:266: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    gap_time_str = str(prev_time + pd.Timedelta(minutes=15))
+
+tests/test_diagnostics.py::test_diagnostics_summary_lbnl
+tests/test_diagnostics.py::test_domain_guard_on_synthetic_demo
+tests/test_diagnostics.py::test_diagnostics_summary_profile_switch
+tests/test_diagnostics.py::test_diagnostics_summary_profile_switch
+  /tmp/bp-g01/venv/lib/python3.12/site-packages/sklearn/base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.8.0 when using version 1.9.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/test_import.py::test_import_valid_fixture_and_idempotence
+tests/test_import.py::test_import_valid_fixture_and_idempotence
+tests/test_investigator_v1.py::test_concurrent_import_publishes_one_dataset
+tests/test_investigator_v1.py::test_concurrent_import_publishes_one_dataset
+tests/test_investigator_v1.py::test_import_rolls_back_if_file_publish_fails
+tests/test_investigator_v1.py::test_import_rolls_back_if_file_publish_fails
+tests/test_investigator_v1.py::test_import_rolls_back_if_file_publish_fails
+tests/test_investigator_v1.py::test_import_rolls_back_if_file_publish_fails
+  /tmp/bp-g01/venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py:4362: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore[call-arg, no-any-return, no-untyped-call]  # noqa: E501
+
+tests/test_quality_and_rules.py::test_quality_and_rules
+  /tmp/bp-g55.eVYkpK/app/backend/app/services/quality_service.py:46: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    gap_mask = diffs > pd.Timedelta(seconds=expected_interval_sec * 1.5)
+
+tests/test_stage7_science_regressions.py::test_csiro_model_loading_without_transformer_error
+  /tmp/bp-g01/venv/lib/python3.12/site-packages/sklearn/base.py:525: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.8.0 when using version 1.9.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/test_stage7_science_regressions.py::test_csiro_model_loading_without_transformer_error
+  /tmp/bp-g01/venv/lib/python3.12/site-packages/sklearn/base.py:525: InconsistentVersionWarning: Trying to unpickle estimator Ridge from version 1.8.0 when using version 1.9.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/test_stage8b_dynamic.py::test_physical_episode_grouping
+tests/test_stage8b_dynamic.py::test_physical_episode_grouping
+  /tmp/bp-g55.eVYkpK/app/ml/control_aware/evaluate_stage8b.py:90: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    if s <= (cur_end + pd.Timedelta(minutes=5)):
+
+tests/test_stage8b_r1_scientific_integrity.py: 8 warnings
+test_domain_guard.py: 5 warnings
+test_independent_temporal_integrity.py: 3 warnings
+test_m2_causal_ablation.py: 8 warnings
+test_stage8b_r2_scientific_integrity.py: 8 warnings
+  /tmp/bp-g55.eVYkpK/app/scripts/evaluate_rbc_nesbitt_reconciled.py:134: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    assert (clean["timestamp"].diff().dropna() == pd.Timedelta(minutes=5)).all(), f"Step must be 5m in {csv_path}"
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_k_of_n
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:65: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_5m = [t0, t0 + pd.Timedelta(minutes=5)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_k_of_n
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:73: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_10m = [t0, t0 + pd.Timedelta(minutes=10)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_k_of_n
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:79: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_15m = [t0, t0 + pd.Timedelta(minutes=15)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_k_of_n
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:85: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_20m = [t0, t0 + pd.Timedelta(minutes=20)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_episodes
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:99: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_10m = [t0, t0 + pd.Timedelta(minutes=10)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_episodes
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:106: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_15m = [t0, t0 + pd.Timedelta(minutes=15)]
+
+test_domain_guard_nan_and_gap_policy.py::test_gap_policy_5_10_15_20_minutes_episodes
+  /tmp/bp-g55.eVYkpK/app/tests/test_domain_guard_nan_and_gap_policy.py:111: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    ts_20m = [t0, t0 + pd.Timedelta(minutes=20)]
+
+test_g51_intervention_qualification.py::test_publisher_half_open_bounds_and_unannotated_clock
+  /tmp/bp-g55.eVYkpK/app/tests/test_g51_intervention_qualification.py:14: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    assert bounds(index, index[0] - pd.Timedelta(hours=2), index[0]) == (0, 0)
+
+test_g51_intervention_qualification.py::test_overlap_and_whole_day_clusters_across_ahu_and_midnight
+test_g51_intervention_qualification.py::test_overlap_and_whole_day_clusters_across_ahu_and_midnight
+  /tmp/bp-g55.eVYkpK/app/research/g51/qualify_interventions.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    (item["end"]+CONTEXT-pd.Timedelta(microseconds=1)).normalize(), freq="D")
+
+test_g51_intervention_qualification.py::test_missing_and_gap_exclude_window
+test_g51_intervention_qualification.py::test_missing_and_gap_exclude_window
+  /tmp/bp-g55.eVYkpK/app/tests/test_g51_intervention_qualification.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    profile = interval_profile(frame, index[0], index[-1]+pd.Timedelta(seconds=30), pd.Timedelta(seconds=30))
+
+test_independent_temporal_integrity.py::test_real_csv_loader_timestamp_integrity
+  /tmp/bp-g55.eVYkpK/app/tests/test_independent_temporal_integrity.py:27: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    assert (frame['timestamp'].diff().dropna() == pd.Timedelta(minutes=5)).all()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+310 passed, 73 warnings in 26.81s

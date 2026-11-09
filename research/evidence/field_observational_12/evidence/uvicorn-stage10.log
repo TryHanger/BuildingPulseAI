@@ -1,0 +1,35 @@
+INFO:     Started server process [164420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18062 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52020 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52030 - "GET /api/v1/openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52032 - "GET /api/v1/incidents?dataset_id=ds_8e5b1ddfdd14&start=2018-01-02T11%3A08%3A00&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52046 - "GET /api/research/domain-shift-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52060 - "POST /api/research/domain-shift-07/applicability HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52074 - "POST /api/research/domain-shift-07/applicability HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52086 - "POST /api/research/domain-shift-07/applicability HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52090 - "GET /api/research/virtual-sensors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52096 - "GET /api/research/virtual-sensors/day?case=healthy&day=2018-10-20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52108 - "GET /api/ml/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52118 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52122 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52130 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34486 - "GET /api/experiments/stage4/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34494 - "GET /api/experiments/stage5/recommendation-summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34508 - "GET /api/experiments/stage5/external-summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34528 - "GET /api/adaptation/models?target=CSIRO_AHU9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34524 - "GET /api/adaptation/summary?target=CSIRO_AHU9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34542 - "GET /api/experiments/stage4/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34552 - "GET /api/experiments/stage5/recommendation-summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34560 - "GET /api/experiments/stage5/external-summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34588 - "GET /api/adaptation/summary?target=CSIRO_AHU9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34572 - "GET /api/adaptation/models?target=CSIRO_AHU9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34604 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34610 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46500 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46508 - "GET /api/research/field-evidence HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [164420]

@@ -1,0 +1,74 @@
+{
+  "derivation": "BRICK_GRAPH",
+  "missing": [],
+  "targets": {
+    "MA_TEMP": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "RA_TEMP": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "SA_TEMP": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "ZONE_TEMP_1": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "ZONE_TEMP_2": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "ZONE_TEMP_3": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "ZONE_TEMP_4": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    },
+    "ZONE_TEMP_5": {
+      "status": "BASIC_ALLOWED",
+      "reason": null,
+      "target_present": true,
+      "neighbors": 16
+    }
+  },
+  "permitted_basic_fields": [
+    "CHWC_VLV_DM",
+    "MA_TEMP",
+    "OA_DMPR_DM",
+    "OA_TEMP",
+    "RA_DMPR_DM",
+    "RA_TEMP",
+    "RF_CS",
+    "RF_SPD_DM",
+    "SA_TEMP",
+    "SA_TEMPSPT",
+    "SF_CS",
+    "SF_SPD_DM",
+    "ZONE_TEMP_1",
+    "ZONE_TEMP_2",
+    "ZONE_TEMP_3",
+    "ZONE_TEMP_4",
+    "ZONE_TEMP_5"
+  ],
+  "virtual_sensor_service": "NOT_INTEGRATED"
+}

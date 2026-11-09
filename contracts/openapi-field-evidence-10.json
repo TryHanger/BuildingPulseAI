@@ -1,0 +1,380 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BuildingPulse Stage10 research field evidence",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/research/field-evidence": {
+      "get": {
+        "tags": [
+          "Research field evidence"
+        ],
+        "summary": "Field Evidence",
+        "description": "Return the fixed set of 12 windows, with publisher annotations kept separate.",
+        "operationId": "field_evidence_api_research_field_evidence_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FieldEvidence"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The frozen collection accepts no query parameters"
+          },
+          "503": {
+            "description": "SOURCE_PROVENANCE_UNVERIFIED. Observations withheld."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EvidenceWindow": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "intervention",
+              "matched_control"
+            ],
+            "title": "Kind"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "ahu": {
+            "type": "string",
+            "enum": [
+              "AHU1",
+              "AHU2",
+              "AHU8",
+              "AHU18",
+              "AHU23",
+              "AHU24"
+            ],
+            "title": "Ahu"
+          },
+          "start": {
+            "type": "string",
+            "title": "Start"
+          },
+          "end_exclusive": {
+            "type": "string",
+            "title": "End Exclusive"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/Observation"
+            },
+            "type": "array",
+            "title": "Observations"
+          },
+          "archived_outcome": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Archived Outcome"
+          },
+          "evaluation_metadata": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Evaluation Metadata"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "id",
+          "ahu",
+          "start",
+          "end_exclusive",
+          "observations",
+          "archived_outcome",
+          "evaluation_metadata"
+        ],
+        "title": "EvidenceWindow"
+      },
+      "FieldEvidence": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "cases": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceWindow"
+            },
+            "type": "array",
+            "title": "Cases"
+          }
+        },
+        "type": "object",
+        "required": [
+          "provenance",
+          "cases"
+        ],
+        "title": "FieldEvidence"
+      },
+      "Observation": {
+        "properties": {
+          "partition": {
+            "type": "string",
+            "enum": [
+              "PRE",
+              "WINDOW"
+            ],
+            "title": "Partition"
+          },
+          "native_time": {
+            "type": "string",
+            "title": "Native Time"
+          },
+          "relative_seconds": {
+            "type": "integer",
+            "title": "Relative Seconds"
+          },
+          "supply": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Supply"
+          },
+          "exhaust": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exhaust"
+          },
+          "heat_request": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heat Request"
+          },
+          "cool_request": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cool Request"
+          },
+          "supply_evidence": {
+            "type": "string",
+            "title": "Supply Evidence"
+          },
+          "paired_evidence": {
+            "type": "string",
+            "title": "Paired Evidence"
+          },
+          "rule_version": {
+            "type": "string",
+            "title": "Rule Version"
+          },
+          "clock": {
+            "type": "string",
+            "title": "Clock"
+          },
+          "raw_file": {
+            "type": "string",
+            "title": "Raw File"
+          },
+          "raw_sha256": {
+            "type": "string",
+            "title": "Raw Sha256"
+          }
+        },
+        "type": "object",
+        "required": [
+          "partition",
+          "native_time",
+          "relative_seconds",
+          "supply",
+          "exhaust",
+          "heat_request",
+          "cool_request",
+          "supply_evidence",
+          "paired_evidence",
+          "rule_version",
+          "clock",
+          "raw_file",
+          "raw_sha256"
+        ],
+        "title": "Observation"
+      },
+      "Provenance": {
+        "properties": {
+          "dataset_doi": {
+            "type": "string",
+            "title": "Dataset Doi"
+          },
+          "version": {
+            "type": "integer",
+            "const": 1,
+            "title": "Version"
+          },
+          "license": {
+            "type": "string",
+            "title": "License"
+          },
+          "dataset_url": {
+            "type": "string",
+            "title": "Dataset Url"
+          },
+          "article_doi": {
+            "type": "string",
+            "title": "Article Doi"
+          },
+          "site_count": {
+            "type": "integer",
+            "const": 1,
+            "title": "Site Count"
+          },
+          "intervention_event_day_count": {
+            "type": "integer",
+            "const": 1,
+            "title": "Intervention Event Day Count"
+          },
+          "rule_version": {
+            "type": "string",
+            "const": "bas-fan-observation@1.0.0",
+            "title": "Rule Version"
+          },
+          "protocol_sha256": {
+            "type": "string",
+            "title": "Protocol Sha256"
+          },
+          "stage09_zip_sha256": {
+            "type": "string",
+            "title": "Stage09 Zip Sha256"
+          },
+          "source_manifest_sha256": {
+            "type": "string",
+            "title": "Source Manifest Sha256"
+          },
+          "cadence_seconds": {
+            "type": "integer",
+            "const": 300,
+            "title": "Cadence Seconds"
+          },
+          "clock": {
+            "type": "string",
+            "const": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+            "title": "Clock"
+          },
+          "timestamp_column": {
+            "type": "string",
+            "const": "Time",
+            "title": "Timestamp Column"
+          },
+          "input_columns": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Input Columns"
+          },
+          "files": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SourceFile"
+            },
+            "type": "object",
+            "title": "Files"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dataset_doi",
+          "version",
+          "license",
+          "dataset_url",
+          "article_doi",
+          "site_count",
+          "intervention_event_day_count",
+          "rule_version",
+          "protocol_sha256",
+          "stage09_zip_sha256",
+          "source_manifest_sha256",
+          "cadence_seconds",
+          "clock",
+          "timestamp_column",
+          "input_columns",
+          "files"
+        ],
+        "title": "Provenance"
+      },
+      "SourceFile": {
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "bytes": {
+            "type": "integer",
+            "title": "Bytes"
+          },
+          "publisher_sha256": {
+            "type": "string",
+            "title": "Publisher Sha256"
+          },
+          "verified_sha256": {
+            "type": "string",
+            "title": "Verified Sha256"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file_id",
+          "bytes",
+          "publisher_sha256",
+          "verified_sha256"
+        ],
+        "title": "SourceFile"
+      }
+    }
+  }
+}

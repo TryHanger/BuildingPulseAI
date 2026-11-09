@@ -1,0 +1,5 @@
+PASS publisher V1 listing vs manifest: eight IDs, sizes and digests
+PASS Stage09 review ZIP identity and 49 payload hashes
+PASS Stage10 review ZIP identity and 38 payload hashes
+PASS frozen Stage09-derived JSON SHA-256 cfd6df405d4e99324457a9cfa744e6c5bd4d994b21b9a87f10dd5f43f45726b9
+PASS 580 Stage10 application/source/model files byte-identical before/after research-only task

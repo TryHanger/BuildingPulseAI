@@ -1,0 +1,864 @@
+{
+  "scope": "SIMULATED_BENCHMARK",
+  "use": "RESEARCH_ONLY",
+  "arm": "PRODUCT_BASIC",
+  "model_manifest_sha256": "359afbe1d3022e64c52ec5e1d916bb731a8c4c45aef9a835d0c9ab6ba73c0734",
+  "native_models": {
+    "MA_TEMP": {
+      "model_id": "bp-ml-repro-02-basic-ma_temp-dc2559c56b92",
+      "target": "MA_TEMP",
+      "file": "MA_TEMP.lightgbm.txt",
+      "sha256": "dc2559c56b9208e3223b682dbb0032c391defbc12b4eb3b6132fe4cf8567aaef",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.058778028833392754,
+      "abs_scale": 0.18400750431948257
+    },
+    "RA_TEMP": {
+      "model_id": "bp-ml-repro-02-basic-ra_temp-99cbd12704f8",
+      "target": "RA_TEMP",
+      "file": "RA_TEMP.lightgbm.txt",
+      "sha256": "99cbd12704f899693ee894fd80c3e982e4693baf4647834888583db9708f17a6",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.08479216472047012,
+      "abs_scale": 0.3785629208748908
+    },
+    "SA_TEMP": {
+      "model_id": "bp-ml-repro-02-basic-sa_temp-993f42a79945",
+      "target": "SA_TEMP",
+      "file": "SA_TEMP.lightgbm.txt",
+      "sha256": "993f42a7994599a6bd7fc6ba2707b327458db58fc51fbb7d6a6a631767f76e9c",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.02708095078146946,
+      "abs_scale": 0.10968999396549371
+    },
+    "ZONE_TEMP_1": {
+      "model_id": "bp-ml-repro-02-basic-zone_temp_1-5e397c84bc12",
+      "target": "ZONE_TEMP_1",
+      "file": "ZONE_TEMP_1.lightgbm.txt",
+      "sha256": "5e397c84bc12ddbe12b2d0a11bfa36aa4d58571d40c781f133684a9e4c9d9931",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.13658694782292577,
+      "abs_scale": 0.354166088504299
+    },
+    "ZONE_TEMP_2": {
+      "model_id": "bp-ml-repro-02-basic-zone_temp_2-74d3466f970a",
+      "target": "ZONE_TEMP_2",
+      "file": "ZONE_TEMP_2.lightgbm.txt",
+      "sha256": "74d3466f970a6e8dfee94b2efc8c9f9aba98bca748b1d64a8e83533eabd0da49",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.47845377847071713,
+      "abs_scale": 0.6275256035856708
+    },
+    "ZONE_TEMP_3": {
+      "model_id": "bp-ml-repro-02-basic-zone_temp_3-f9d13c709494",
+      "target": "ZONE_TEMP_3",
+      "file": "ZONE_TEMP_3.lightgbm.txt",
+      "sha256": "f9d13c70949427b79e4814b30f7a1d13b5523339b9ec6791fe766150f3063e58",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.4385210257519396,
+      "abs_scale": 0.6851558507030963
+    },
+    "ZONE_TEMP_4": {
+      "model_id": "bp-ml-repro-02-basic-zone_temp_4-242a416fc0f1",
+      "target": "ZONE_TEMP_4",
+      "file": "ZONE_TEMP_4.lightgbm.txt",
+      "sha256": "242a416fc0f15d635ac96a6439dc7a5150323c2d3efd03a4bcd95dad28660f7b",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.455387647022998,
+      "abs_scale": 0.6302443174009054
+    },
+    "ZONE_TEMP_5": {
+      "model_id": "bp-ml-repro-02-basic-zone_temp_5-f08bfb042b47",
+      "target": "ZONE_TEMP_5",
+      "file": "ZONE_TEMP_5.lightgbm.txt",
+      "sha256": "f08bfb042b47d9faa637bd130b873f10cc01c1075aa04898d93ce329ed23b7e4",
+      "format": "LIGHTGBM_NATIVE_TEXT",
+      "feature_order": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "scaler": "NONE_NATIVE_LIGHTGBM",
+      "abs_center": 0.7528081128419951,
+      "abs_scale": 0.9415440254980306
+    }
+  },
+  "source_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471",
+  "source_audit_sha256": "cc6bded0aa37b96b94c806c79092bc5cdecc796ced72cb4f2a73f4ada227450b",
+  "d0_receipt_sha256": "46f846f8159aa62619828c20e3b7a9146d3d97e51994e1ef736bed561ab69d88",
+  "source_members": {
+    "AHU_annual.csv": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+    "coi_bias_2_annual.csv": "78878e54e682a76622c2305f329481f3b5397a61b347f3a783f947a4b9b9d7a4",
+    "coi_bias_4_annual.csv": "905634f7dda255a1c5a0b78115dcfb54be458420becff58397ea607911c0bbae",
+    "coi_bias_-2_annual.csv": "30c283998e3ae2193acf7d1b61400a7d34d74af8a3cca301d31da1435e0aee4d",
+    "coi_bias_-4_annual.csv": "b0be39ed39e083bd1db8af62bee2d2559691d6fe35174f370950e0326893bda0",
+    "damper_stuck_010_annual.csv": "1ba1266850ee5f87cbac55e5df82ffb757dd2b155a4df7f934f07da5ef2cbf68",
+    "damper_stuck_025_annual.csv": "a1f43d6091d34bc8edcf4dbf2fa686888c563bbdf6418d2afe3512b77e67544e",
+    "damper_stuck_075_annual.csv": "a79fa6f737305b55e39ffd8cf5d14bedb4f2cfbd72e425143e5af6bc4ad4e423",
+    "coi_stuck_010_annual.csv": "d8ec2faa84a0dfa5dfc4756bc848e877a110c3ccc70ba66e8a31db3fc632454a",
+    "coi_stuck_050_annual.csv": "dc28965164cdb8aaa2f7e97945c6246fa6ad886d56a705ecdc08ff77dc2baf4e",
+    "coi_stuck_075_annual.csv": "5ac746c006efaf88e41e8a5e0fcff861cd0aee5dfa102fc5e4a560a54f584fe1",
+    "coi_leakage_010_annual.csv": "e520275f67027bbed69f84e6966bcef206ab0f7b2090d265934793e8d7af45ff"
+  },
+  "legacy_daily_sha256": "daf7069f16da8e1fcbf28e9825c198b4e47ede103ddce92d42cec905b1cf2648",
+  "frozen_protocol_sha256": "50e4fbf3e84cdbed3edd2eccd9fecdb49ce2eaeb219206d02fd624d1b18a966c",
+  "integration_protocol_sha256": "b71d0f2c0cbef0bddc5d2be9a52fd26da8f453641b4e9afcdcff82862dba5e46",
+  "policy_sha256": "a8c62109991f3f5c3ebea3a5c8469d3cfcb8fb652c7c6f03742577abc9535c30",
+  "policy_version": "sat-daily-coverage@1.0.0",
+  "split": {
+    "train_first": "2018-01-02 06:06:00",
+    "train_last": "2018-08-07 21:01:00",
+    "train_minutes": "167342",
+    "calibration_first": "2018-08-08 05:07:00",
+    "calibration_last": "2018-10-19 21:01:00",
+    "calibration_minutes": "55871",
+    "test_start": "2018-10-20 00:00:00",
+    "test_end_exclusive": "2019-01-01 00:00:00"
+  },
+  "split_masks": {
+    "train": {
+      "first_source_tick": "2018-01-01 01:00:00",
+      "last_source_tick": "2018-08-07 23:59:00",
+      "calendar_minutes": 315300,
+      "eligible_minutes": 167342,
+      "mask_sha256": "19fa6c377bb6f14ba3ff7c780715a8f6e5f8be3ada2d8237e378d5c61432e622",
+      "eligible_timestamp_sha256": "54b598a82bc9ef5c94c4cdcddc9bc08e08fd8a114dd70f0df97903b448891c49"
+    },
+    "calibration": {
+      "first_source_tick": "2018-08-08 00:00:00",
+      "last_source_tick": "2018-10-19 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 55871,
+      "mask_sha256": "7d898ad92bdbd6024fb9718e8bc792d66d26a579e6b6bc3025bda47dff55c759",
+      "eligible_timestamp_sha256": "f5a20249d5c7de275dae1827c697cbc14916d538561503339e3343c502a8cd1f"
+    }
+  },
+  "test_masks": {
+    "AHU_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53954,
+        "mask_sha256": "562229cf93677423b43e540aaf34f17763870fb8d7166c4f5eddd245b9025cb5",
+        "eligible_timestamp_sha256": "a640abc282cd4f3a43924bf882fcfb682d14f5a22d515dd1e287f7971aa9455f"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53954,
+        "mask_sha256": "562229cf93677423b43e540aaf34f17763870fb8d7166c4f5eddd245b9025cb5",
+        "eligible_timestamp_sha256": "a640abc282cd4f3a43924bf882fcfb682d14f5a22d515dd1e287f7971aa9455f"
+      }
+    },
+    "coi_bias_2_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_bias_4_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_bias_-2_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_bias_-4_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "damper_stuck_010_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "damper_stuck_025_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "damper_stuck_075_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_stuck_010_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_stuck_050_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_stuck_075_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    },
+    "coi_leakage_010_annual.csv": {
+      "eligible": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      },
+      "running": {
+        "first_source_tick": "2018-10-20 00:00:00",
+        "last_source_tick": "2018-12-31 23:59:00",
+        "calendar_minutes": 105120,
+        "eligible_minutes": 53945,
+        "mask_sha256": "fcaa3ddac2b98cafbe2aadf85e0c2e59c33581271bf97d5523ef175450aa8bd4",
+        "eligible_timestamp_sha256": "aa95e7656f1d21dcb1d03a38bea48dae246818b3619cc0221ec31bcb1654da90"
+      }
+    }
+  },
+  "paired_masks": {
+    "coi_bias_2_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_bias_4_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_bias_-2_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_bias_-4_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "damper_stuck_010_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "damper_stuck_025_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "damper_stuck_075_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_stuck_010_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_stuck_050_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_stuck_075_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    },
+    "coi_leakage_010_annual.csv": {
+      "first_source_tick": "2018-10-20 00:00:00",
+      "last_source_tick": "2018-12-31 23:59:00",
+      "calendar_minutes": 105120,
+      "eligible_minutes": 53088,
+      "mask_sha256": "dcfcb672194c9b1f7d2834d944e615217e247be2f2822e9d12a5ff3848672c69",
+      "eligible_timestamp_sha256": "433c0cefb7bcef672b35a95532454170119dec6dfa08f0df5452ac36c9fb3ae3"
+    }
+  },
+  "schema": {
+    "feature_orders": {
+      "MA_TEMP": [
+        "CHWC_VLV_DM",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "RA_TEMP": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "SA_TEMP": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "ZONE_TEMP_1": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "ZONE_TEMP_2": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "ZONE_TEMP_3": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_4",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "ZONE_TEMP_4": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_5",
+        "hour",
+        "month",
+        "day_of_week"
+      ],
+      "ZONE_TEMP_5": [
+        "CHWC_VLV_DM",
+        "MA_TEMP",
+        "OA_DMPR_DM",
+        "OA_TEMP",
+        "RA_DMPR_DM",
+        "RA_TEMP",
+        "RF_CS",
+        "RF_SPD_DM",
+        "SA_TEMP",
+        "SA_TEMPSPT",
+        "SF_CS",
+        "SF_SPD_DM",
+        "ZONE_TEMP_1",
+        "ZONE_TEMP_2",
+        "ZONE_TEMP_3",
+        "ZONE_TEMP_4",
+        "hour",
+        "month",
+        "day_of_week"
+      ]
+    },
+    "available_channels": [
+      "CHWC_VLV_DM",
+      "MA_TEMP",
+      "OA_DMPR_DM",
+      "OA_TEMP",
+      "RA_DMPR_DM",
+      "RA_TEMP",
+      "RF_CS",
+      "RF_SPD_DM",
+      "SA_TEMP",
+      "SA_TEMPSPT",
+      "SF_CS",
+      "SF_SPD_DM",
+      "ZONE_TEMP_1",
+      "ZONE_TEMP_2",
+      "ZONE_TEMP_3",
+      "ZONE_TEMP_4",
+      "ZONE_TEMP_5"
+    ],
+    "feature_roles": {
+      "CHWC_VLV_DM": "COMMAND",
+      "MA_TEMP": "MEASUREMENT",
+      "OA_DMPR_DM": "COMMAND",
+      "OA_TEMP": "MEASUREMENT",
+      "RA_DMPR_DM": "COMMAND",
+      "RA_TEMP": "MEASUREMENT",
+      "RF_CS": "COMMAND",
+      "RF_SPD_DM": "STATUS",
+      "SA_TEMP": "MEASUREMENT",
+      "SA_TEMPSPT": "SETPOINT",
+      "SF_CS": "COMMAND",
+      "SF_SPD_DM": "STATUS",
+      "ZONE_TEMP_1": "MEASUREMENT",
+      "ZONE_TEMP_2": "MEASUREMENT",
+      "ZONE_TEMP_3": "MEASUREMENT",
+      "ZONE_TEMP_4": "MEASUREMENT",
+      "ZONE_TEMP_5": "MEASUREMENT",
+      "hour": "CALENDAR_CONTEXT",
+      "month": "CALENDAR_CONTEXT",
+      "day_of_week": "CALENDAR_CONTEXT"
+    }
+  },
+  "schema_sha256": "19c808b25bcccd4db64b478485fa448b3e5d4e236f84f2d92f7ac5fc86bc2d29",
+  "temperature_unit": "degF (source-native, no conversion)",
+  "source_timezone": "SOURCE_LOCAL_UNVERIFIED_UTC_OFFSET",
+  "seed": 42,
+  "parameters": {
+    "n_estimators": 300,
+    "max_depth": 6,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "random_state": 42,
+    "min_child_samples": 50,
+    "subsample_freq": 0
+  },
+  "versions": {
+    "python": "3.12.3",
+    "lightgbm": "4.6.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "rdflib": "7.4.0",
+    "pyarrow": "19.0.1",
+    "PyYAML": "6.0.3"
+  },
+  "method_versions": {
+    "SAT_ONLY": "bp-ml-repro-02-basic-sa_temp-993f42a79945",
+    "SYSTEM_MAX_8": "repro02-registry-359afbe1d302",
+    "SAT_MINUS_SETPOINT": "repro01-sat-setpoint-v1"
+  },
+  "saved_ridge_pca_version": "REPRO-01.v1 saved daily CSV",
+  "sat_setpoint_daily_calibration": [
+    0.28397396902540467,
+    0.3780396137859005
+  ],
+  "csv_sha256": "5adb2e3656e053aa29112ee86acfb06ce3ab81c49ddd802e6dca34640249786a",
+  "calendar_days": 73,
+  "rows": 2482
+}

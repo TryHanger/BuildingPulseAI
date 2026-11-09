@@ -1,0 +1,114 @@
+{
+  "fixture": true,
+  "provenance": "SYNTHETIC_UI_ONLY",
+  "label_status": "NO_GROUND_TRUTH",
+  "run_id": "ui-demo-evidence-v0",
+  "incident_id": "inc-2026-001",
+  "rule_evaluation": {
+    "rule_id": "APAR_RULE_02_SAT_COOLING_DEVIATION",
+    "name": "Невязка температуры приточного воздуха SAT при полной команде клапана",
+    "execution_status": "VIOLATED",
+    "evaluation_mode": "MECHANICAL_COOLING_CONFIRMED",
+    "scope_validity": "IN_SCOPE",
+    "threshold": "+1.5 °C deviation for >= 30 min",
+    "observed_value": "+4.1 °C deviation for 45 min",
+    "quality_status": "VALID_OBSERVABILITY"
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-01",
+      "code": "COOLING_VALVE_STUCK",
+      "name": "Заклинивание штока клапана охлаждения в закрытом/частичном положении",
+      "evidence_status": "SUPPORTED_UNDER_OBSERVABILITY_LIMITS",
+      "confidence_statement": "Симптом согласуется с неисправностью привода. Отсутствие независимого датчика штока в BASIC исключает физическое подтверждение.",
+      "supporting_evidence": [
+        "Команда CHWC_VLV_DM удерживается на 100% более 45 минут",
+        "SAT остается на 4.1 °C выше уставки при температуре смеси MAT = 26.0 °C",
+        "Вентилятор SF подтвержден как работающий (SF_SPD_DM > 0.5)"
+      ],
+      "contradicting_evidence": [],
+      "missing_evidence": [
+        "Фактический датчик положения штока CHWC_VLV отсутствует в текущем профиле BASIC",
+        "Температура теплоносителя (CHWST/CHWRT) не заведена в систему"
+      ]
+    },
+    {
+      "id": "hyp-02",
+      "code": "SAT_SENSOR_POSITIVE_BIAS",
+      "name": "Систематическое завышение показаний датчика температуры притока SAT",
+      "evidence_status": "PLAUSIBLE_UNEXCLUDED",
+      "confidence_statement": "При смещении датчика контроллер также выводит команду в 100%. Требуется контрольный термометр.",
+      "supporting_evidence": [
+        "Рассогласование SAT и уставки SA_TEMPSPT монотонно положительное"
+      ],
+      "contradicting_evidence": [
+        "Модель виртуального датчика vs-sa-temp-v2 по независимым физическим входам также ожидает охлаждение до 15.3 °C"
+      ],
+      "missing_evidence": [
+        "Вторичный дублирующий датчик SAT отсутствует"
+      ]
+    },
+    {
+      "id": "hyp-03",
+      "code": "CHILLER_PLANT_SUPPLY_FAILURE",
+      "name": "Отсутствие холодного теплоносителя от центрального чиллера",
+      "evidence_status": "UNKNOWN_UNMONITORED",
+      "confidence_statement": "Тепловой баланс не может быть замкнут без температуры и расхода хладоносителя.",
+      "supporting_evidence": [],
+      "contradicting_evidence": [],
+      "missing_evidence": [
+        "Входная температура охлаждающей воды CHW_SUP_TEMP",
+        "Перепад давления на теплообменнике CHW_DP"
+      ]
+    }
+  ],
+  "unexecutable_checks": [
+    {
+      "check_id": "CHK_VALVE_STEM_TRACKING",
+      "name": "Сверка команды контроллера с фактическим положением штока (|CHWC_VLV_DM - CHWC_VLV| < 5%)",
+      "reason_code": "SIGNAL_PHYSICALLY_ABSENT_IN_PROFILE",
+      "reason_ru": "Канал обратной связи штока CHWC_VLV не смонтирован на установке (профиль BASIC).",
+      "resolution": "Подключить канал CHWC_VLV в Sensor Lab для разблокировки автоматической верификации."
+    },
+    {
+      "check_id": "CHK_HEAT_EXCHANGER_ENTHALPY",
+      "name": "Расчет теплосъема по воде (Q_water = c * m * ΔT)",
+      "reason_code": "NO_FLOW_METER",
+      "reason_ru": "Расходомер охлаждающей воды и датчики температур трубопроводов отсутствуют.",
+      "resolution": "Ограничиться анализом по воздушной стороне AHU."
+    }
+  ],
+  "recommended_actions_whitelist": [
+    {
+      "action_id": "REC_ACTUATOR_INSPECTION",
+      "priority": "HIGH",
+      "title": "Инспекция привода клапана по месту",
+      "instruction": "Визуально осмотреть положение индикатора штока клапана CHWC. Проверить подачу управляющего сигнала 0–10 В / 4–20 мА на клеммах привода.",
+      "preconditions": "Соблюдать технику безопасности в венткамере при работающем оборудовании.",
+      "safety_note": "Не выполнять принудительное ручное переопределение без уведомления дежурного инженера."
+    },
+    {
+      "action_id": "REC_SAT_HANDHELD_VERIFICATION",
+      "priority": "MEDIUM",
+      "title": "Контрольный замер температуры притока",
+      "instruction": "Выполнить измерение температуры воздуха в приточном воздуховоде поверенным переносным термометром через технологический лючок.",
+      "preconditions": "AHU в стационарном режиме не менее 15 минут.",
+      "safety_note": "Исключить касание датчиком внутренних стенок воздуховода."
+    }
+  ],
+  "causality_graph": {
+    "nodes": [
+      {"id": "node_sat_viol", "label": "Симптом: SAT > SPT (+4.1 °C)", "type": "symptom", "status": "violated"},
+      {"id": "node_cmd_100", "label": "Условие: CHWC_VLV_DM = 100%", "type": "context", "status": "active"},
+      {"id": "node_hyp_valve", "label": "Гипотеза: Заклинивание клапана", "type": "hypothesis", "status": "plausible"},
+      {"id": "node_hyp_sensor", "label": "Гипотеза: Смещение SAT", "type": "hypothesis", "status": "unexcluded"},
+      {"id": "node_miss_fbk", "label": "Свидетельство: CHWC_VLV отсутствует", "type": "missing", "status": "absent"}
+    ],
+    "links": [
+      {"source": "node_sat_viol", "target": "node_hyp_valve", "relation": "SUPPORTS"},
+      {"source": "node_cmd_100", "target": "node_hyp_valve", "relation": "SUPPORTS"},
+      {"source": "node_sat_viol", "target": "node_hyp_sensor", "relation": "SUPPORTS"},
+      {"source": "node_miss_fbk", "target": "node_hyp_valve", "relation": "PREVENTS_ISOLATION"}
+    ]
+  }
+}

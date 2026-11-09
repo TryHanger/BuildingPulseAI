@@ -1,0 +1,57 @@
+{
+  "id": "bp-ml-transfer-design-05.v1",
+  "phase": "STOP_BEFORE_TARGET_SCORE",
+  "target_approval": "INDEPENDENT_OWNER_REVIEW_REQUIRED",
+  "candidate": "reduced-thermal-sat-v1",
+  "domain": "INDEPENDENT_SIMULATION_DESIGN_ONLY",
+  "publisher": {
+    "source_inventory": "https://fdddata.lbl.gov/data/Simulated_LBNL_FDD_Data_Sets_SDAHU/LBNL_FDD_Data_Sets_SDAHU.pdf",
+    "target_inventory": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12796274/",
+    "target_repository": "https://doi.org/10.6084/m9.figshare.29297999"
+  },
+  "files": {
+    "source": {"name": "AHU_annual.csv", "member": "LBNL_FDD_Dataset_SDAHU/AHU_annual.csv", "sha256": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b", "archive_sha256": "8295fcf0f55bc955937cb4ec0198512c28e5ede32e6bbf735257b0df55426471", "rows": 525540, "clock": "Datetime", "first": "2018-01-01 01:00:00", "last": "2018-12-31 23:59:00", "clock_basis": "SOURCE_LOCAL_WITHOUT_VERIFIED_UTC_OFFSET"},
+    "target_reference": {"name": "BaselineSystem.csv", "member": "g36-1wk/CoolingSeason/BaselineSystem.csv", "sha256": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3", "rows": 10081, "clock": "time (s)", "first": 17625600, "last": 18230400, "clock_basis": "MODEL_SECONDS"},
+    "target_probe": {"name": "CooCoiValStuck_0.csv", "member": "g36-1wk-probe/CooCoiValStuck_0.csv", "sha256": "46c3e2833a5baddc7159d4424ad0d9e072d1cda06c10c1a96dfcba12c5f94a59", "rows": 10081, "clock": "time (s)", "first": 17625600, "last": 18230400, "clock_basis": "MODEL_SECONDS"}
+  },
+  "feature_order": ["MA_TEMP", "OA_TEMP", "RA_TEMP"],
+  "ablation": null,
+  "bindings": {
+    "SA_TEMP": {"source": "SA_TEMP", "target": "AHU Supply Air Temperature (°K)", "source_unit": "degF", "target_unit": "K", "role": "MEASURED_TARGET"},
+    "MA_TEMP": {"source": "MA_TEMP", "target": "AHU Mixed Air Temperature (°K)", "source_unit": "degF", "target_unit": "K", "role": "MEASUREMENT"},
+    "OA_TEMP": {"source": "OA_TEMP", "target": "AHU Outdoor Air Dry Bulb Temperature (°K)", "source_unit": "degF", "target_unit": "K", "role": "MEASUREMENT"},
+    "RA_TEMP": {"source": "RA_TEMP", "target": "AHU Return Air Temperature (°K)", "source_unit": "degF", "target_unit": "K", "role": "MEASUREMENT"},
+    "SA_TEMPSPT": {"source": "SA_TEMPSPT", "target": "AHU Supply Air Temperature Setpoint (°K)", "source_unit": "degF", "target_unit": "K", "role": "ACTIVE_SETPOINT"},
+    "SF_STATUS": {"source": "SF_SPD_DM", "target": "AHU Supply Air Fan Status (0: off, 1: on)", "source_unit": "binary", "target_unit": "binary", "role": "SUPPLY_FAN_STATUS"}
+  },
+  "audit_only": {
+    "source_bands": {"warm_above_degF": 60, "basis": "LBNL inventory 1.2, cooling loop enabled under occupied warm conditions; water-side operation not verified"},
+    "target_cooling_mode": {"header": "Cooling Mode Control Signal (1: free cooling , 2: partial mechanical, 3: full mechanical, 4: off)", "known_codes": [1, 2, 3, 4], "role": "PLANT_CONTROL_CONTEXT_ONLY"},
+    "target_pair_quality_columns": [
+      "AHU Outdoor Air Wet Bulb Temperature (°K)",
+      "AHU Supply Air Fan Speed Control Signal (fraction, 0: fan speed should be 0% to 1:fan speed should be 100%)",
+      "Control Signal for AHU Cooling Coil Valve from BAS (fraction, 0: valve should be fully closed to 1: valve should be fully open)"
+    ]
+  },
+  "units": {"model_temperature": "degF", "K_to_degF": "(K - 273.15) * 1.8 + 32", "valid_temperature_degF": [-60, 150]},
+  "partition": {"start": "2018-01-02", "train_end_exclusive": "2018-08-08", "cal_end_exclusive": "2018-10-20", "end_exclusive": "2019-01-01", "source_holdout": "SOURCE_NORMAL_EXPLORATORY"},
+  "mask": {"step_s": 60, "fan_hold_s": 300, "source_local_midnight": true, "target_block_anchor_model_s": 17625600, "target_complete_blocks": 7, "minutes_per_block": 1440, "minimum_minutes": 120, "minimum_contiguous_minutes": 30, "minimum_coverage": 0.8, "eligibility_denominator": "WARM_RUNNING_WITH_KNOWN_OAT", "source_input_support": "PER_FEATURE_TRAIN_MIN_MAX_INCLUSIVE", "target_unknown_mode": "ABSTAIN", "cross_run_minute_intersection": "DESCRIPTIVE_SECONDARY_ONLY"},
+  "models": {
+    "lightgbm": {"objective": "regression", "n_estimators": 300, "max_depth": 6, "learning_rate": 0.05, "min_child_samples": 50, "subsample": 0.8, "subsample_freq": 0, "colsample_bytree": 0.8, "random_state": 42, "n_jobs": 1, "verbosity": -1, "deterministic": true, "force_col_wise": true},
+    "ridge": {"alpha": 1.0, "scaler": "STANDARD_SCALER_TRAIN_ONLY"},
+    "setpoint": "ABSOLUTE_SAT_MINUS_ACTIVE_SAT_SETPOINT"
+  },
+  "calibration": {"statistic": "DAILY_MEAN_ABSOLUTE_ERROR_DEGF", "center": "SOURCE_NORMAL_CALIBRATION_MEAN", "scale": "SOURCE_NORMAL_CALIBRATION_POPULATION_SD", "minimum_evaluated_days": 10, "minimum_scale": 1e-12, "alarm_operator": ">", "alarm_z": 3},
+  "healthy_gate": {"minimum_evaluated_blocks": 3, "minimum_coverage": 0.8, "maximum_lightgbm_alarm_blocks": 0, "evaluate_before_fault": true, "require_complete_fan_and_oat": true},
+  "evaluation": {
+    "independent_unit": "ORIGINAL_RUN_OR_INTERVENTION_EPISODE",
+    "primary": "COVERAGE_AND_LIGHTGBM_FALSE_ALARMS_ON_TARGET_NORMAL",
+    "secondary": "DESCRIPTIVE_EPISODE_DETECTION_WITH_SHARED_METHOD_MASKS",
+    "latency": "ONLY_WITH_INDEPENDENT_ONSET_AND_NON_LEFT_CENSORED_DATA",
+    "paired_causal_claim": false,
+    "target_calibration": false,
+    "single_run_per_class_auc_f1_ci": "NOT_COMPARABLE",
+    "annotation": "EPISODES_05.csv is metadata only; unavailable to all feature builders"
+  },
+  "versions": {"python": "3.12.3", "lightgbm": "4.6.0", "scikit-learn": "1.9.1", "pandas": "2.3.3", "numpy": "2.5.4"}
+}

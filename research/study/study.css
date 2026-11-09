@@ -1,0 +1,24 @@
+:root { color-scheme: light; font: 16px/1.4 system-ui, sans-serif; color: #14213a; background: #edf1f7; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1400px; margin: auto; padding: 16px; }
+h1, h2, p { margin: 0 0 8px; }
+h1 { font-size: 24px; }
+h2 { font-size: 18px; }
+.layout { display: grid; grid-template-columns: minmax(0, 2.35fr) minmax(0, 1fr); gap: 12px; }
+section, aside, form { padding: 12px; border: 1px solid #b6c4da; border-radius: 6px; background: #fff; min-width: 0; }
+aside { margin-top: 8px; }
+.table-wrap { overflow: auto; max-width: 100%; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 13px; white-space: nowrap; }
+td, th { padding: 4px 6px; text-align: right; border-bottom: 1px solid #d8e1f0; }
+tr[aria-current="true"] { background: #d2e4ff; }
+tr:last-child th { border-left: 3px solid #174784; }
+dl { display: grid; grid-template-columns: 1fr 1fr; margin: 0; gap: 4px 8px; }
+dd { margin: 0; overflow-wrap: anywhere; }
+input[type=range] { display: block; width: 100%; }
+form { margin-top: 10px; }
+.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+textarea { display: block; width: 100%; min-height: 52px; font: inherit; }
+button { margin: 8px 6px 0 0; padding: 6px 9px; }
+:focus-visible { outline: 3px solid #174784; outline-offset: 2px; }
+@media (max-width: 720px) { .layout, .answers { grid-template-columns: 1fr; } }

@@ -1,0 +1,50 @@
+{
+  "alarm.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "no-alarm.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "conflict.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "missing-feedback.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "invalid-sat.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "invalid-sat-independent-alarm.json": {
+    "schema": "EvidenceV1",
+    "source_type": "DEMO_FIXTURE",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "simulation-metadata.json": {
+    "schema": "Dataset",
+    "source_type": "SIMULATION",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  },
+  "real-field-metadata.json": {
+    "schema": "Dataset",
+    "source_type": "REAL_FIELD",
+    "demo_fixture": true,
+    "contract_revision": "1.0.0-rc.11"
+  }
+}

@@ -1,0 +1,19 @@
+case,decision,evidence
+missing or altered original,STOP_SOURCE_PROVENANCE,test_missing_or_altered_publisher_original
+duplicate or reversed timestamp,UNKNOWN_CLOCK_DUPLICATE_OR_REVERSED,test_bad_clock
+60 second cadence or gap,UNKNOWN_CLOCK_NOT_NATIVE_300S,test_bad_clock
+timezone unknown,UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S,all original traces
+open or inverted interval,UNKNOWN_CLOCK_OPEN_OR_INVALID_INTERVAL,test_half_open_off_grid_and_open_interval
+window outside source grid,UNKNOWN_CLOCK_OUT_OF_GRID,test_half_open_off_grid_and_open_interval
+exact end sample,EXCLUDED_HALF_OPEN,four selected end annotations and unit test
+all-off precontext,ABSTAIN_NEW_CHANGE,test_baseline_off_missing_and_inapplicable
+one tick or interrupted samples,ABSTAIN_NEW_CHANGE,test_two_consecutive_and_transition_bound
+drive command without supply status,INSUFFICIENT_DATA,test_command_and_fault_removed_or_present_do_not_change_inputs
+publisher label present or removed,SAME_RULE_INPUT,test_command_and_fault_removed_or_present_do_not_change_inputs
+site-wide intervention day or next day,EXCLUDED_CONTROL,test_site_wide_intervention_and_next_day and 54 screened windows
+AHU2 and AHU8 missing both BAS statuses,ABSTAIN_A_AND_B,EVENT_OUTCOMES.csv
+AHU23 supply off exhaust on,NO_OBSERVED_PAIRED_CHANGE,EVENT_OUTCOMES.csv
+AHU24 lacks qualified paired-on precontext,ABSTAIN_B_CHANGE,EVENT_OUTCOMES.csv
+AHU23 and AHU24 DP reportedly broken,UNKNOWN_PHYSICAL_LINEAGE,held-side publisher notes
+incident authorization or route request,NO_ROUTE_NO_AUTHORIZATION,test_no_research_replay_route_or_incident_authorization
+optional temperature plausibility,STOP_THIS_CONTROL,point crosswalk and independent limit not established

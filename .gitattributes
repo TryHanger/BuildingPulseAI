@@ -1,0 +1,2 @@
+# Preserve accepted artifact bytes for checksum verification across Windows/Linux.
+* -text

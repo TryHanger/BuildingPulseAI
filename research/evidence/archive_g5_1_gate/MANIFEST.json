@@ -1,0 +1,83 @@
+{
+  "contract_version": "1.0.0-rc.7",
+  "product_closeout": "PASS",
+  "scientific_verdict": "STOP_NO_QUALIFIED_INTERVENTION_FAMILY",
+  "qualified_blocks": 0,
+  "verified_reference_blocks": 0,
+  "validation_scope": "RETROSPECTIVE_ONLY",
+  "baseline_zip": "BUILDINGPULSE_G4_1_G5_DATA_GATE_REVIEW.zip",
+  "baseline_sha256": "beaba01bcf4350065ea2cf0d70bc865c7a2c49d71a32c333fffa698f4e0aeab3",
+  "protocol_sha256": "0fa8593465358f11821622e623c27b9e10c0c3267b95b058ec13eaed29674233",
+  "overlay": [
+    {
+      "path": "API_CHANGELOG.md",
+      "baseline_sha256": "c07092aaa61fd192a98df17647712d91a948677fda1ad8c73ec6ae87b4adef8c",
+      "sha256": "712f57fbd4ae479f873ac07455a0c6b433266d4b125b3b62d00b26725508950f"
+    },
+    {
+      "path": "backend/app/services/g4_investigation.py",
+      "baseline_sha256": "bfcef61609fce649348afec949e16d4084efb7f82f124e818fcf4da86ec35abb",
+      "sha256": "57f526dd0294f65997c2f83697ee1532373e998dc1fc7452cbd93f4614f37042"
+    },
+    {
+      "path": "backend/tests/test_g4_investigation.py",
+      "baseline_sha256": "eb5cf2519082eaa4020e2504cd9b5044ea250a7342335860e4d4ccc5dfbf4353",
+      "sha256": "1af1781c1f57aee609c39377e02efdac35045759c924789bdabdcb5c5bf44143"
+    },
+    {
+      "path": "contracts/CONTRACT_V1.md",
+      "baseline_sha256": "af11c02f3929df49c6ac69d05e917305bb584bbd0a573e46c2f0db45371dc20c",
+      "sha256": "0643e2c4c8059f3ac6e37db282d42263340af5df6131c98eb5177e47f74f5d4b"
+    },
+    {
+      "path": "contracts/openapi-v1.yaml",
+      "baseline_sha256": "8c3750d98ab614006d087c9b29ced0a323db37262be9c5fcdc2b3f2529286492",
+      "sha256": "db5f275b4a446c169a065da0a9cc333c74166c53ad19b7ccc23c626a7df01eab"
+    },
+    {
+      "path": "contracts/fixtures/demo_manifest.json",
+      "baseline_sha256": "a34c314839d8aa0cb7d7b4bf38d3f57552963c9a8cf8ece8d510b2c70be24599",
+      "sha256": "b98b7af03ac17998d237ed64f92871ea480086bc0d3e2db1b0444700a5f654ab"
+    },
+    {
+      "path": "frontend/src/components/InvestigationEvidence.tsx",
+      "baseline_sha256": "17c9bd10c30560d83859b04fab6b8fbfa9bdba80307e12e2518ce7c07626f35a",
+      "sha256": "e750c84673c6110fc248f2d0d1bef948639bd3095728d17354825183c5ab9e6e"
+    },
+    {
+      "path": "frontend/src/pages/RuntimeIncidentPage.tsx",
+      "baseline_sha256": "23365cc35580e81b8d9b411ae229bb386bd1f1642a919707d6ea33bc44bde5a5",
+      "sha256": "a2654dabfaa91cdfc2ec00e51756a924b855887d8916488c747d86bfed182dba"
+    },
+    {
+      "path": "frontend/src/types/openapi-v1.generated.ts",
+      "baseline_sha256": "3f899da7d2a4fc07965b78cc09b10433cac89f136df7c4d77f7af5f2e3410d18",
+      "sha256": "04e5392014f04836d6b1d108255529deb027122cca71436c7d53ac5b704951cc"
+    },
+    {
+      "path": "scripts/build_g4_demo.py",
+      "baseline_sha256": "62cb5632d80bb8cc452ee86aa6cf24d59a9432d40cde0266095677db2bb212f5",
+      "sha256": "664787933e29800391d5de298ecebbd54936b7d4b9bd99ebd29fcb8df8688896"
+    },
+    {
+      "path": "scripts/test_playwright_g4.py",
+      "baseline_sha256": "a63f02948d1f09bc8a58957cf2870cfad7ee086ed17844788cdb875361c73c58",
+      "sha256": "a77fdb432ca5d13be6600f2e9887426766b01b1c9b383f138e8663f0e845e882"
+    },
+    {
+      "path": "scripts/smoke_g01_container.py",
+      "baseline_sha256": "3e5c86e02f6f7b757a3108598e15a61ca7e714afc4550958c2be94e6337462b7",
+      "sha256": "6e6cd39cc3e73cb061094b06effb55ad9e19b9b7a692c049b2351681921310c6"
+    },
+    {
+      "path": "research/g51/qualify_interventions.py",
+      "baseline_sha256": null,
+      "sha256": "0e2e24aa4bcdbf68ed7a63326adb15d7151221f5069a5a3499f7069107b9f5f8"
+    },
+    {
+      "path": "tests/test_g51_intervention_qualification.py",
+      "baseline_sha256": null,
+      "sha256": "7360d4c865b0f884c5e4a86a7242600c8f2b0bc9aeaeadd326170b4de6558c26"
+    }
+  ]
+}

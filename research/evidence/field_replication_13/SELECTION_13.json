@@ -1,0 +1,41 @@
+{
+  "selection_sealed_at": "2026-11-09T11:16:57.635296+05:00",
+  "site": "CTU-UCEEB_Bustehrad",
+  "selected": {
+    "18": {
+      "2019-03-08": "event",
+      "2019-04-19": "comparison"
+    },
+    "19": {
+      "2019-03-08": "event",
+      "2019-04-19": "comparison"
+    },
+    "20": {
+      "2019-03-08": "event",
+      "2019-05-03": "comparison"
+    },
+    "25": {
+      "2019-03-15": "event",
+      "2019-05-03": "comparison"
+    },
+    "28": {
+      "2019-03-15": "event",
+      "2019-04-19": "comparison"
+    },
+    "30": {
+      "2019-03-15": "event",
+      "2019-05-03": "comparison"
+    },
+    "29": {
+      "2019-03-15": "event",
+      "2019-04-19": "comparison"
+    }
+  },
+  "selection_input": "native clock + finite SAT flag + BAS context + schedule bounds",
+  "limits": [
+    "CAUSAL_EFFECT_NOT_IDENTIFIED",
+    "FIELD_FDD_ACCURACY_NOT_EVALUATED",
+    "SAME_SITE_TWO_DATES",
+    "NOT_INDEPENDENT_BUILDING_VALIDATION"
+  ]
+}

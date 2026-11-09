@@ -1,0 +1,58 @@
+{
+  "cohort_sha256": "5adb2e3656e053aa29112ee86acfb06ce3ab81c49ddd802e6dca34640249786a",
+  "historical_sha256": "daf7069f16da8e1fcbf28e9825c198b4e47ede103ddce92d42cec905b1cf2648",
+  "threshold": 3,
+  "primary": {
+    "member": "coi_bias_2_annual.csv",
+    "alias_status": "UNVERIFIED_PUBLISHER_ALIAS",
+    "policy": "sat-daily-coverage@1.0.0",
+    "scope": "MATCHED_MINUTES",
+    "calendar_days": 73,
+    "evaluated_days": 59,
+    "not_evaluated_days": 14,
+    "evaluated_paired_minutes_per_side": 53088,
+    "calendar_minutes_per_side": 105120,
+    "metrics": {
+      "sat_only": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9810399310542948
+      },
+      "system_max_8": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 22,
+        "tn": 59,
+        "auc": 0.9485779948290721
+      },
+      "sat_minus_setpoint": {
+        "tp": 33,
+        "fp": 0,
+        "fn": 26,
+        "tn": 59,
+        "auc": 0.709566216604424
+      }
+    },
+    "ridge_pca_common_dates": {
+      "ridge": 6,
+      "pca_paper": 6,
+      "pca_input_matched": 6
+    },
+    "sat_only_days_vs_setpoint": [
+      "2018-10-20",
+      "2018-11-04",
+      "2018-11-29",
+      "2018-12-14"
+    ],
+    "setpoint_only_days_vs_sat": []
+  },
+  "alarm_parity": {
+    "checked_alarm_flags": 4248,
+    "changed_alarm_flags": 0,
+    "divergent_rows": 20,
+    "tolerance": 1e-09,
+    "max_absolute_delta": 0.00013432234953825173
+  }
+}

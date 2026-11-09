@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "absolute_tolerance": 1e-09,
+  "http_points": 10981,
+  "maximum_absolute_http_delta": {
+    "actual": 0.0,
+    "predicted": 0.0,
+    "absolute_residual": 0.0,
+    "z": 0.0,
+    "daily_score": 3.552713678800501e-15
+  },
+  "ui_timestamps": {
+    "1440-healthy": "2018-10-20 05:07:00",
+    "1440-sa-plus-2": "2018-10-20 06:06:00",
+    "390-healthy": "2018-10-20 05:07:00",
+    "390-sa-plus-2": "2018-10-20 06:06:00"
+  },
+  "reference": {
+    "healthy": {
+      "case_id": "healthy",
+      "timestamp": "2018-10-20 05:07:00",
+      "actual": "54.472916",
+      "predicted": "54.260270169833966",
+      "absolute_residual": "0.2126458301660321",
+      "z": "1.6917211194572375",
+      "daily_score": "0.066547830136298"
+    },
+    "sa-plus-2": {
+      "case_id": "sa-plus-2",
+      "timestamp": "2018-10-20 06:06:00",
+      "actual": "54.619583",
+      "predicted": "54.195728717336415",
+      "absolute_residual": "0.4238542826635836",
+      "z": "3.6172244845498955",
+      "daily_score": "5.525844244049511"
+    }
+  }
+}

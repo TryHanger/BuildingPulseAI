@@ -1,0 +1,13 @@
+{
+  "status": "DESCRIPTIVE_OBSERVED",
+  "scope": "EXPLORATORY_REPORTED_SENSOR_ASSOCIATION",
+  "causal": "CAUSAL_EFFECT_NOT_IDENTIFIED",
+  "field_fdd": "FIELD_FDD_ACCURACY_NOT_EVALUATED",
+  "stage11_causal_gate": "STOP",
+  "sat_window_minus_pre_C": {
+    "event": -5.577857076350099,
+    "comparison": 2.20259776536313
+  },
+  "event_minus_comparison_change_C": -7.7804548417132295,
+  "calculated_at": "2026-11-09T00:01:46.628401+05:00"
+}

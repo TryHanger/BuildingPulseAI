@@ -1,0 +1,72 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: buildingpulse_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-buildingpulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-buildingpulse_db}
+    ports:
+      - "${DB_PORT:-5455}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-buildingpulse} -d ${POSTGRES_DB:-buildingpulse_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - buildingpulse_net
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: buildingpulse_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-buildingpulse}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/${POSTGRES_DB:-buildingpulse_db}
+      API_PORT: 8050
+      WEB_PORT: ${WEB_PORT:-5180}
+      DATA_ROOT: /app/data
+      CORS_ORIGINS: '["http://localhost:${WEB_PORT:-5180}","http://127.0.0.1:${WEB_PORT:-5180}"]'
+    ports:
+      - "${API_PORT:-8050}:8050"
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8050/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - buildingpulse_net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: buildingpulse_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://backend:8050
+    ports:
+      - "${WEB_PORT:-5180}:5180"
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - buildingpulse_net
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  buildingpulse_net:
+    driver: bridge

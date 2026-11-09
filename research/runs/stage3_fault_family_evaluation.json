@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-11-02T18:43:46.045468+00:00",
+  "train_scenarios": [
+    {
+      "scenario_id": "sc_3556175a5da2",
+      "class": "FAULT_FREE",
+      "name": "AHU_annual (Normal Train Days 1-9)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_835609dfd906",
+      "class": "SENSOR_BIAS_SA",
+      "name": "coi_bias_-4_annual.csv (-4°C)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_90decfb04993",
+      "class": "SENSOR_BIAS_SA",
+      "name": "coi_bias_4_annual.csv (+4°C)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_276968373895",
+      "class": "COOLING_VALVE_STUCK",
+      "name": "coi_stuck_025_annual.csv (25%)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_4ca7822e8e04",
+      "class": "COOLING_VALVE_STUCK",
+      "name": "coi_stuck_075_annual.csv (75%)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_1e3ca900a8d7",
+      "class": "OUTDOOR_DAMPER_STUCK",
+      "name": "damper_stuck_025_annual.csv (25%)",
+      "slice": [
+        0,
+        12960
+      ]
+    },
+    {
+      "scenario_id": "sc_48ae2acfcea2",
+      "class": "OUTDOOR_DAMPER_STUCK",
+      "name": "damper_stuck_100_annual_short.csv (100%)",
+      "slice": [
+        0,
+        12960
+      ]
+    }
+  ],
+  "test_scenarios": [
+    {
+      "scenario_id": "sc_3556175a5da2",
+      "class": "FAULT_FREE",
+      "name": "AHU_annual (Held-out Test Days 12-14)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_4c635ed85f83",
+      "class": "SENSOR_BIAS_SA",
+      "name": "coi_bias_-2_annual.csv (-2°C)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_22370df7e61a",
+      "class": "SENSOR_BIAS_SA",
+      "name": "coi_bias_2_annual.csv (+2°C)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_2541462c0f4a",
+      "class": "COOLING_VALVE_STUCK",
+      "name": "coi_stuck_010_annual.csv (10%)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_413e7074ae9e",
+      "class": "COOLING_VALVE_STUCK",
+      "name": "coi_stuck_050_annual.csv (50%)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_a04b8cceeebc",
+      "class": "OUTDOOR_DAMPER_STUCK",
+      "name": "damper_stuck_010_annual.csv (10%)",
+      "slice": [
+        15840,
+        20160
+      ]
+    },
+    {
+      "scenario_id": "sc_ef6581a6ce7b",
+      "class": "OUTDOOR_DAMPER_STUCK",
+      "name": "damper_stuck_075_annual.csv (75%)",
+      "slice": [
+        15840,
+        20160
+      ]
+    }
+  ],
+  "results": {
+    "Rule-based Engineering Baseline": {
+      "macro_f1": 0.1197,
+      "confusion_matrix": [
+        [
+          2627,
+          0,
+          6,
+          0
+        ],
+        [
+          4384,
+          4,
+          696,
+          0
+        ],
+        [
+          1344,
+          497,
+          708,
+          0
+        ],
+        [
+          2621,
+          5,
+          9,
+          0
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.2393,
+          "recall": 0.9951,
+          "f1": 0.3859,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.0079,
+          "recall": 0.0008,
+          "f1": 0.0014,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 0.4989,
+          "recall": 0.1341,
+          "f1": 0.2114,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5280
+        }
+      }
+    },
+    "Ridge Linear Classifier Baseline": {
+      "macro_f1": 0.3975,
+      "confusion_matrix": [
+        [
+          0,
+          1757,
+          8,
+          875
+        ],
+        [
+          0,
+          4098,
+          24,
+          1158
+        ],
+        [
+          0,
+          2253,
+          2016,
+          1011
+        ],
+        [
+          0,
+          2344,
+          13,
+          2923
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.3921,
+          "recall": 0.7761,
+          "f1": 0.521,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 0.9782,
+          "recall": 0.3818,
+          "f1": 0.5492,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 0.4899,
+          "recall": 0.5536,
+          "f1": 0.5198,
+          "support": 5280
+        }
+      }
+    },
+    "LightGBM Family Classifier": {
+      "macro_f1": 0.5367,
+      "confusion_matrix": [
+        [
+          2284,
+          8,
+          3,
+          345
+        ],
+        [
+          2457,
+          1299,
+          698,
+          826
+        ],
+        [
+          202,
+          726,
+          4330,
+          22
+        ],
+        [
+          2099,
+          910,
+          1,
+          2270
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.3243,
+          "recall": 0.8652,
+          "f1": 0.4718,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.4414,
+          "recall": 0.246,
+          "f1": 0.3159,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 0.8605,
+          "recall": 0.8201,
+          "f1": 0.8398,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 0.6555,
+          "recall": 0.4299,
+          "f1": 0.5193,
+          "support": 5280
+        }
+      }
+    }
+  },
+  "rule_unresolved": {
+    "count": 5579,
+    "pct": 30.2
+  }
+}

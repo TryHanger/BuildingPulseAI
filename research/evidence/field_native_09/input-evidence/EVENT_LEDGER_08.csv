@@ -1,0 +1,119 @@
+schedule_row,ahu,fault_id,title,original_date,start_naive,end_naive,status,publisher_note,repair_or_washout_verified,matched_grid_rows,exact_id_or_title_label_rows,publisher_no_fault_rows,both_fan_status_available_rows
+2,AHU1,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:05:00,2019-03-01 11:10:00,BOUNDED_NAIVE,,False,25,25,0,25
+3,AHU2,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:10:00,2019-03-01 11:10:00,BOUNDED_NAIVE,,False,24,24,0,0
+4,AHU8,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:10:00,2019-03-01 11:12:00,BOUNDED_NAIVE,,False,25,25,0,0
+5,AHU18,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:07:00,2019-03-01 11:10:00,BOUNDED_NAIVE,,False,24,24,0,24
+6,AHU23,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:15:00,2019-03-01 11:13:00,BOUNDED_NAIVE,,False,24,24,0,24
+7,AHU24,Fault 1,Dampers are closed during heating regime,2019-03-01 00:00:00,2019-03-01 09:15:00,2019-03-01 11:15:00,BOUNDED_NAIVE,,False,24,24,0,24
+8,AHU1,Fault 2,Dampers are closed during cooling regime,11.6.2019,2019-06-11 12:00:00,2019-06-11 14:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+9,AHU18,Fault 2,Dampers are closed during cooling regime,11.6.2019,2019-06-11 12:00:00,2019-06-11 14:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+10,AHU23,Fault 2,Dampers are closed during cooling regime,11.6.2019,2019-06-11 12:00:00,2019-06-11 14:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+11,AHU24,Fault 2,Dampers are closed during cooling regime,11.6.2019,2019-06-11 12:00:00,2019-06-11 14:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+12,AHU1,Fault 3,Dampres are closed during ventilate regime,2019-05-24 00:00:00,2019-05-24 10:03:00,2019-05-24 12:03:00,BOUNDED_NAIVE,,False,24,24,0,24
+13,AHU2,Fault 3,Dampres are closed during ventilate regime,2019-05-24 00:00:00,2019-05-24 10:05:00,2019-05-24 12:05:00,BOUNDED_NAIVE,,False,24,24,0,0
+14,AHU8,Fault 3,Dampres are closed during ventilate regime,2019-05-24 00:00:00,2019-05-24 10:05:00,2019-05-24 12:05:00,BOUNDED_NAIVE,,False,24,24,0,0
+15,AHU1,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:00:00,2019-03-08 11:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+16,AHU2,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:15:00,2019-03-08 11:15:00,BOUNDED_NAIVE,,False,24,0,0,0
+17,AHU8,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:15:00,2019-03-08 11:15:00,BOUNDED_NAIVE,,False,24,24,0,0
+18,AHU18,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:00:00,2019-03-08 11:00:00,BOUNDED_NAIVE,,False,24,24,0,24
+19,AHU23,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:30:00,2019-03-08 11:30:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,24,24,0,24
+20,AHU24,Fault 4,Heating valve is closed during heating regime,2019-03-08 00:00:00,2019-03-08 09:30:00,2019-03-08 11:30:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,24,24,0,24
+21,AHU1,Fault 5,Cooling valve is closed during cooling regime,10.6.2019,2019-06-10 09:30:00,2019-06-10 12:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+22,AHU18,Fault 5,Cooling valve is closed during cooling regime,10.6.2019,2019-06-10 09:30:00,2019-06-10 12:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+23,AHU23,Fault 5,Cooling valve is closed during cooling regime,10.6.2019,2019-06-10 09:35:00,2019-06-10 12:05:00,BOUNDED_NAIVE,,False,30,30,0,30
+24,AHU24,Fault 5,Cooling valve is closed during cooling regime,10.6.2019,2019-06-10 09:35:00,2019-06-10 12:05:00,BOUNDED_NAIVE,,False,30,30,0,30
+25,AHU1,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 09:30:00,2019-03-15 11:30:00,BOUNDED_NAIVE,,False,24,24,0,24
+26,AHU2,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 09:45:00,2019-03-15 11:45:00,BOUNDED_NAIVE,,False,24,0,0,0
+27,AHU8,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 09:45:00,2019-03-15 11:45:00,BOUNDED_NAIVE,AHU did not heat at the time of test.,False,24,24,0,0
+28,AHU18,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 09:30:00,2019-03-15 11:30:00,BOUNDED_NAIVE,,False,24,24,0,24
+29,AHU23,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 11:30:00,2019-03-15 12:00:00,BOUNDED_NAIVE,,False,6,6,0,6
+30,AHU24,Fault 6,Heating pump is OFF during heating regime,2019-03-15 00:00:00,2019-03-15 10:00:00,2019-03-15 12:00:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,24,24,0,24
+31,AHU1,Fault 7,Heating pump is ON during ventilate regime,2019-05-24 00:00:00,2019-05-24 13:00:00,2019-05-24 15:30:00,BOUNDED_NAIVE,,False,30,30,0,30
+32,AHU2,Fault 7,Heating pump is ON during ventilate regime,2019-05-24 00:00:00,2019-05-24 13:10:00,2019-05-24 15:40:00,BOUNDED_NAIVE,,False,30,30,0,0
+33,AHU8,Fault 7,Heating pump is ON during ventilate regime,2019-05-24 00:00:00,2019-05-24 13:10:00,2019-05-24 15:40:00,BOUNDED_NAIVE,,False,30,30,0,0
+34,AHU18,Fault 7,Heating pump is ON during ventilate regime,2019-05-25 00:00:00,2019-05-25 13:05:00,2019-05-25 15:35:00,BOUNDED_NAIVE,,False,30,30,0,30
+35,AHU23,Fault 7,Heating pump is ON during ventilate regime,2019-05-24 00:00:00,2019-05-24 13:10:00,2019-05-24 15:40:00,BOUNDED_NAIVE,,False,30,30,0,30
+36,AHU24,Fault 7,Heating pump is ON during ventilate regime,2019-06-07 00:00:00,2019-06-07 09:33:00,2019-06-07 12:03:00,BOUNDED_NAIVE,,False,30,30,0,30
+37,AHU1,Fault 8,Cooling pump is ON during heating regime,2019-04-12 00:00:00,2019-04-12 12:35:00,2019-04-12 15:35:00,BOUNDED_NAIVE,,False,36,36,0,36
+38,AHU2,Fault 8,Cooling pump is ON during heating regime,2019-04-12 00:00:00,2019-04-12 12:35:00,2019-04-12 15:35:00,BOUNDED_NAIVE,,False,36,36,0,0
+39,AHU8,Fault 8,Cooling pump is ON during heating regime,2019-04-12 00:00:00,2019-04-12 12:35:00,2019-04-12 15:35:00,BOUNDED_NAIVE,,False,36,36,0,0
+40,AHU23,Fault 8,Cooling pump is ON during heating regime,12.4.2019,2019-04-12 12:35:00,2019-04-12 15:35:00,BOUNDED_NAIVE,,False,36,36,0,36
+41,AHU1,Fault 9,Heating valve is ON during ventilate regime,11.6.2019,2019-06-11 08:30:00,2019-06-11 11:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+42,AHU18,Fault 9,Heating valve is ON during ventilate regime,11.6.2019,2019-06-11 08:30:00,2019-06-11 11:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+43,AHU23,Fault 9,Heating valve is ON during ventilate regime,11.6.2019,2019-06-11 08:30:00,2019-06-11 11:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+44,AHU24,Fault 9,Heating valve is ON during ventilate regime,11.6.2019,2019-06-11 08:30:00,2019-06-11 11:00:00,BOUNDED_NAIVE,,False,30,30,0,30
+45,AHU1,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:00:00,2019-03-15 15:30:00,BOUNDED_NAIVE,,False,30,0,0,30
+46,AHU2,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:15:00,2019-03-15 15:45:00,BOUNDED_NAIVE,AHU was in humidifying regime at the time of the test.,False,30,0,0,0
+47,AHU8,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:15:00,2019-03-15 15:45:00,BOUNDED_NAIVE,,False,30,0,0,0
+48,AHU18,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:05:00,2019-03-15 15:35:00,BOUNDED_NAIVE,,False,30,0,0,30
+49,AHU23,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:30:00,2019-03-15 16:00:00,BOUNDED_NAIVE,,False,30,0,0,30
+50,AHU24,Fault 10,Heating valve is stuck on 50 % during heating regime,2019-03-15 00:00:00,2019-03-15 13:30:00,2019-03-15 16:00:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,30,0,0,30
+51,AHU1,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:15:00,2019-03-08 15:15:00,BOUNDED_NAIVE,,False,24,24,0,24
+52,AHU2,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:30:00,2019-03-08 15:30:00,BOUNDED_NAIVE,AHU was in humidifying regime at the time of the test.,False,24,24,0,0
+53,AHU8,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:30:00,2019-03-08 15:30:00,BOUNDED_NAIVE,,False,24,24,0,0
+54,AHU18,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:15:00,2019-03-08 15:15:00,BOUNDED_NAIVE,,False,24,24,0,24
+55,AHU23,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:45:00,2019-03-08 15:45:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,24,24,0,24
+56,AHU24,Fault 11,Heating valve is open to the maximum level during heating regime,2019-03-08 00:00:00,2019-03-08 13:45:00,2019-03-08 15:45:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,24,24,0,24
+57,AHU1,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:30:00,2019-03-01 15:00:00,BOUNDED_NAIVE,,False,18,18,0,18
+58,AHU2,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:37:00,2019-03-01 15:07:00,BOUNDED_NAIVE,,False,18,18,0,0
+59,AHU8,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:37:00,2019-03-01 15:07:00,BOUNDED_NAIVE,,False,18,18,0,0
+60,AHU18,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:30:00,2019-03-01 15:00:00,BOUNDED_NAIVE,,False,18,18,0,18
+61,AHU23,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:40:00,2019-03-01 15:10:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,18,18,0,18
+62,AHU24,Fault 12,Fans are OFF during heating regime,2019-03-01 00:00:00,2019-03-01 13:40:00,2019-03-01 15:10:00,BOUNDED_NAIVE,The differential pressure sensor was broken at the time of the test.,False,18,18,0,18
+63,AHU1,Fault 13,Both tubes of differential pressure sensor disconnected,10.5.2019,2019-05-10 13:40:00,2019-05-10 14:55:00,BOUNDED_NAIVE,,False,15,0,0,15
+64,AHU2,Fault 13,Both tubes of differential pressure sensor disconnected,2019-05-10 00:00:00,2019-05-10 13:47:00,2019-05-10 14:56:00,BOUNDED_NAIVE,,False,14,0,0,0
+65,AHU8,Fault 13,Both tubes of differential pressure sensor disconnected,2019-05-10 00:00:00,2019-05-10 13:47:00,2019-05-10 14:56:00,BOUNDED_NAIVE,,False,14,0,0,0
+66,AHU18,Fault 13,Both tubes of differential pressure sensor disconnected,2019-05-10 00:00:00,2019-05-10 13:40:00,2019-05-10 14:55:00,BOUNDED_NAIVE,,False,15,0,0,15
+67,AHU23,Fault 13,Both tubes of differential pressure sensor disconnected,2019-05-10 00:00:00,2019-05-10 13:50:00,2019-05-10 14:59:00,BOUNDED_NAIVE,,False,14,0,0,14
+68,AHU24,Fault 13,Both tubes of differential pressure sensor disconnected,2019-05-10 00:00:00,2019-05-10 13:48:00,2019-05-10 15:00:00,BOUNDED_NAIVE,,False,14,0,0,14
+69,AHU1,Fault 14,Tube of differential pressure sensor disconnected (negative pressure),2019-05-10 00:00:00,2019-05-10 09:23:00,2019-05-10 12:30:00,BOUNDED_NAIVE,,False,37,0,0,37
+70,AHU2,Fault 14,Tube of differential pressure sensor disconnected (negative pressure),2019-05-10 00:00:00,2019-05-10 09:26:00,2019-05-10 12:30:00,BOUNDED_NAIVE,,False,36,0,0,0
+71,AHU8,Fault 14,Tube of differential pressure sensor disconnected (negative pressure),2019-05-10 00:00:00,2019-05-10 09:25:00,2019-05-10 12:30:00,BOUNDED_NAIVE,,False,37,0,0,0
+72,AHU18,Fault 14,Tube of differential pressure sensor disconnected (negative pressure),2019-05-10 00:00:00,2019-05-10 09:24:00,2019-05-10 12:30:00,BOUNDED_NAIVE,,False,37,0,0,37
+73,AHU23,Fault 14,Tube of differential pressure sensor disconnected (negative pressure),2019-05-10 00:00:00,2019-05-10 09:28:00,2019-05-10 12:30:00,BOUNDED_NAIVE,,False,36,0,0,36
+74,AHU1,Fault 15,Quick regimes cycling,2019-04-23 00:00:00,2019-04-23 09:00:00,2019-04-23 10:00:00,BOUNDED_NAIVE,,False,12,12,0,12
+75,AHU2,Fault 15,Quick regimes cycling,23.4.2019,2019-04-23 10:35:00,2019-04-23 11:35:00,BOUNDED_NAIVE,,False,12,12,0,0
+76,AHU8,Fault 15,Quick regimes cycling,2019-04-16 00:00:00,2019-04-16 10:30:00,2019-04-16 11:30:00,BOUNDED_NAIVE,,False,12,12,0,0
+77,AHU18,Fault 15,Quick regimes cycling,2019-04-23 00:00:00,2019-04-23 10:30:00,2019-04-23 11:30:00,BOUNDED_NAIVE,,False,12,12,0,12
+78,AHU23,Fault 15,Quick regimes cycling,16.4.2019,2019-04-16 10:35:00,2019-04-16 11:35:00,BOUNDED_NAIVE,,False,12,12,0,12
+79,AHU24,Fault 15,Quick regimes cycling,23.4.2019,2019-04-23 09:05:00,2019-04-23 10:05:00,BOUNDED_NAIVE,,False,12,12,0,12
+80,AHU1,Fault 16,Heating pump is ON and valve is opened during ventilate regime,10.6.2019,2019-06-10 13:30:00,2019-06-10 14:30:00,BOUNDED_NAIVE,,False,12,12,0,12
+81,AHU18,Fault 16,Heating pump is ON and valve is opened during ventilate regime,10.6.2019,2019-06-10 13:35:00,2019-06-10 14:35:00,BOUNDED_NAIVE,,False,12,12,0,12
+82,AHU23,Fault 16,Heating pump is ON and valve is opened during ventilate regime,10.6.2019,2019-06-10 13:40:00,2019-06-10 14:40:00,BOUNDED_NAIVE,,False,12,12,0,12
+83,AHU24,Fault 16,Heating pump is ON and valve is opened during ventilate regime,10.6.2019,2019-06-10 13:45:00,2019-06-10 14:45:00,BOUNDED_NAIVE,,False,12,12,0,12
+84,AHU2,Fault 17,Heating pump is OFF during humidifying regime,2019-03-15 00:00:00,2019-03-15 09:45:00,2019-03-15 11:45:00,BOUNDED_NAIVE,,False,24,24,0,0
+85,AHU2,Fault 18,Heating valve is OFF during humidifying regime,2019-03-08 00:00:00,2019-03-08 09:15:00,2019-03-08 11:15:00,BOUNDED_NAIVE,,False,24,24,0,0
+86,AHU1,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 09:30:00,2019-03-22 11:00:00,BOUNDED_NAIVE,,False,18,0,0,18
+87,AHU2,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 09:45:00,2019-03-22 11:15:00,BOUNDED_NAIVE,,False,18,0,0,0
+88,AHU8,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 09:45:00,2019-03-22 11:15:00,BOUNDED_NAIVE,,False,18,0,0,0
+89,AHU18,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 09:30:00,2019-03-22 11:00:00,BOUNDED_NAIVE,,False,18,0,0,18
+90,AHU23,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 10:00:00,2019-03-22 11:30:00,BOUNDED_NAIVE,,False,18,0,0,18
+91,AHU24,Fault 19,Zone inlet temperature sensor reports -20 °C,2019-03-22 00:00:00,2019-03-22 10:00:00,2019-03-22 11:30:00,BOUNDED_NAIVE,,False,18,0,0,18
+92,AHU1,Fault 20,Zone inlet temperature sensor reports 150 °C,17.7.2019,2019-07-17 13:25:00,2019-07-17 14:55:00,BOUNDED_NAIVE,,False,18,0,0,18
+93,AHU2,Fault 20,Zone inlet temperature sensor reports 150 °C,17.7.2019,2019-07-17 13:30:00,2019-07-17 15:00:00,BOUNDED_NAIVE,,False,18,0,0,0
+94,AHU18,Fault 20,Zone inlet temperature sensor reports 150 °C,17.7.2019,2019-07-17 13:25:00,2019-07-17 14:55:00,BOUNDED_NAIVE,,False,18,0,0,18
+95,AHU23,Fault 20,Zone inlet temperature sensor reports 150 °C,17.7.2019,2019-07-17 13:30:00,2019-07-17 15:00:00,BOUNDED_NAIVE,,False,18,0,0,18
+96,AHU24,Fault 20,Zone inlet temperature sensor reports 150 °C,17.7.2019,2019-07-17 13:30:00,2019-07-17 15:00:00,BOUNDED_NAIVE,,False,18,0,0,18
+97,AHU1,Fault 21,Zone outlet temperature sensor reports -20 ° C,2019-03-29 00:00:00,2019-03-29 13:15:00,2019-03-29 15:15:00,BOUNDED_NAIVE,,False,24,0,0,24
+98,AHU2,Fault 21,Zone outlet temperature sensor reports -20 ° C,2019-03-29 00:00:00,2019-03-29 13:20:00,2019-03-29 15:20:00,BOUNDED_NAIVE,,False,24,0,0,0
+99,AHU8,Fault 21,Zone outlet temperature sensor reports -20 ° C,2019-03-29 00:00:00,2019-03-29 13:20:00,2019-03-29 15:20:00,BOUNDED_NAIVE,,False,24,0,0,0
+100,AHU23,Fault 21,Zone outlet temperature sensor reports -20 ° C,2019-03-29 00:00:00,2019-03-29 13:25:00,2019-03-29 15:25:00,BOUNDED_NAIVE,,False,24,0,0,24
+101,AHU24,Fault 21,Zone outlet temperature sensor reports -20 ° C,29.3.2019,2019-03-29 13:25:00,2019-03-29 15:25:00,BOUNDED_NAIVE,,False,24,0,0,24
+102,AHU1,Fault 22,Zone outlet temperature sensor reports 150 °C ,2019-03-29 00:00:00,2019-03-29 09:30:00,2019-03-29 11:05:00,BOUNDED_NAIVE,,False,19,0,0,19
+103,AHU2,Fault 22,Zone outlet temperature sensor reports 150 °C ,2019-03-29 00:00:00,2019-03-29 09:35:00,2019-03-29 11:05:00,BOUNDED_NAIVE,,False,18,0,0,0
+104,AHU8,Fault 22,Zone outlet temperature sensor reports 150 °C ,2019-03-29 00:00:00,2019-03-29 09:35:00,2019-03-29 11:05:00,BOUNDED_NAIVE,,False,18,0,0,0
+105,AHU18,Fault 22,Zone outlet temperature sensor reports 150 °C ,21.8.2019,2019-08-21 13:20:00,2019-08-21 15:05:00,BOUNDED_NAIVE,,False,21,0,0,21
+106,AHU23,Fault 22,Zone outlet temperature sensor reports 150 °C ,21.8.2019,2019-08-21 13:20:00,2019-08-21 15:05:00,BOUNDED_NAIVE,,False,21,0,0,21
+107,AHU24,Fault 22,Zone outlet temperature sensor reports 150 °C ,21.8.2019,2019-08-21 13:20:00,2019-08-21 15:05:00,BOUNDED_NAIVE,,False,21,0,0,21
+108,AHU1,Fault 23,Heat exchanger is closed,2019-04-05 00:00:00,2019-04-05 09:40:00,2019-04-05 13:00:00,BOUNDED_NAIVE,,False,40,40,0,40
+109,AHU2,Fault 23,Heat exchanger is closed,2019-04-05 00:00:00,2019-04-05 09:40:00,2019-04-05 13:00:00,BOUNDED_NAIVE,,False,40,40,0,0
+110,AHU8,Fault 23,Heat exchanger is closed,2019-04-05 00:00:00,2019-04-05 09:40:00,2019-04-05 13:00:00,BOUNDED_NAIVE,,False,40,40,0,0
+111,AHU1,Fault 24,Cooling valve is stuck on 50 % during cooling regime,24.7.2019,2019-07-24 12:15:00,2019-07-24 13:45:00,BOUNDED_NAIVE,,False,18,0,0,18
+112,AHU2,Fault 24,Cooling valve is stuck on 50 % during cooling regime,24.7.2019,2019-07-24 12:15:00,2019-07-24 13:45:00,BOUNDED_NAIVE,,False,18,0,0,0
+113,AHU18,Fault 24,Cooling valve is stuck on 50 % during cooling regime,24.7.2019,2019-07-24 12:20:00,2019-07-24 13:50:00,BOUNDED_NAIVE,,False,18,0,0,18
+114,AHU23,Fault 24,Cooling valve is stuck on 50 % during cooling regime,24.7.2019,2019-07-24 12:20:00,2019-07-24 13:50:00,BOUNDED_NAIVE,,False,18,0,0,18
+115,AHU24,Fault 24,Cooling valve is stuck on 50 % during cooling regime,24.7.2019,2019-07-24 12:20:00,2019-07-24 13:50:00,BOUNDED_NAIVE,,False,18,0,0,18
+116,AHU1,Fault 25,Cooling valve is open to the maximum level during cooling regime,7.8.2019,2019-08-07 10:30:00,2019-08-07 12:00:00,BOUNDED_NAIVE,,False,18,0,0,18
+117,AHU2,Fault 25,Cooling valve is open to the maximum level during cooling regime,7.8.2019,2019-08-07 10:30:00,2019-08-07 12:00:00,BOUNDED_NAIVE,,False,18,0,0,0
+118,AHU8,Fault 25,Cooling valve is open to the maximum level during cooling regime,7.8.2019,2019-08-07 10:30:00,2019-08-07 12:00:00,BOUNDED_NAIVE,,False,18,0,0,0
+119,AHU18,Fault 25,Cooling valve is open to the maximum level during cooling regime,7.8.2019,2019-08-07 10:30:00,2019-08-07 12:00:00,BOUNDED_NAIVE,,False,18,0,0,18

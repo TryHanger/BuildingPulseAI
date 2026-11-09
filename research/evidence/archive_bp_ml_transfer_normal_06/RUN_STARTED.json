@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-11-08T14:25:25.923764+00:00",
+  "role": "target_reference",
+  "sha256": {
+    "TRANSFER_05_PROTOCOL.json": "7efbb52918b8ffb004318bf538fbe58774600aeefebe93cdaebc7ab72fee0fd0",
+    "AHU_annual.csv": "13a61e5b3e62dcf214b387dc57632073a8044c794eb8102d90d074aa80702d8b",
+    "BaselineSystem.csv": "624e3c4e823e265e98d7c982f8498718b263ab1aff4d3fb4f2eb5ff787d370b3",
+    "SOURCE_FIT_RECEIPT.json": "1187a8aa96ff7c64ef4e4c0613bee91e8acf5d3bbc794c7d314889ee451fff84",
+    "REDUCED_SAT.lightgbm.txt": "643f08b6f50edef8487783f41ea7067e9863c83c9860181df4eda152d5751625",
+    "REDUCED_SAT_RIDGE.json": "a0e122b112ad2ae6b914635bf161d8977b5a11283b75260b620504dfd317f7de"
+  },
+  "target_normal_only": true
+}

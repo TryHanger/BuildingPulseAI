@@ -1,0 +1,53 @@
+{
+  "channels": [
+    {
+      "id": "RBC_AHU2_BETWEEN_COIL",
+      "label": "RBC‑Nesbitt AHU2 · Between-coil #62",
+      "status": "FIELD_RECORDED_UNMAPPED",
+      "detail": "Колонка опубликована. Привязка к физическому входу и место установки не подтверждены.",
+      "source": "RBC_NESBITT"
+    },
+    {
+      "id": "RBC_AHU2_SAT",
+      "label": "RBC‑Nesbitt AHU2 · SAT #55",
+      "status": "FIELD_RECORDED_UNMAPPED",
+      "detail": "Приточная температура в архиве. Отдельный физический вход для проверки пары #62/#55 не подтверждён.",
+      "source": "RBC_NESBITT"
+    },
+    {
+      "id": "RBC_CHW_FLOW",
+      "label": "RBC‑Nesbitt · расход холодной воды #7",
+      "status": "FIELD_RECORDED_UNMAPPED",
+      "detail": "HYDRONIC_SCOPE_UNVERIFIED · Предположительно общесистемная точка. Ветвевой расход AHU2 не подтверждён.",
+      "source": "RBC_NESBITT"
+    },
+    {
+      "id": "RBC_AHU2_BRANCH_FLOW",
+      "label": "RBC‑Nesbitt AHU2 · расход ветви змеевика",
+      "status": "NOT_AVAILABLE",
+      "detail": "В проверенном источнике не найдено подтверждённое измерение этой ветви.",
+      "source": "RBC_NESBITT"
+    },
+    {
+      "id": "MODELLED_COIL_DISCHARGE",
+      "label": "G36 · температура после охладителя",
+      "status": "PUBLISHED_SIMULATION",
+      "detail": "Исследовательская переменная EXTRA_SIMULATED. Величина модели, за пределами BASIC.",
+      "source": "G36"
+    },
+    {
+      "id": "MODELLED_CHW_FLOW",
+      "label": "G36 · расход воды через змеевик",
+      "status": "PUBLISHED_SIMULATION",
+      "detail": "Внутренняя величина модели, за пределами BASIC.",
+      "source": "G36"
+    },
+    {
+      "id": "TRUE_VALVE_POSITION",
+      "label": "G36 · True Valve Position",
+      "status": "ORACLE_FORBIDDEN",
+      "detail": "Издательская метка для просмотра в EXTRA_SIMULATED. Исключена из диагностических входов.",
+      "source": "G36"
+    }
+  ]
+}

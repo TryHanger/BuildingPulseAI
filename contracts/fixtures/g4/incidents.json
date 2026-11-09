@@ -1,0 +1,135 @@
+{
+  "datasets": {
+    "demo-g4-mat": {
+      "coverage": {
+        "NOT_EVALUABLE": 10,
+        "NOT_VIOLATED": 7,
+        "VIOLATED": 15
+      },
+      "episodes": [
+        {
+          "closed_at": "2018-01-02T11:20:00",
+          "confirmation_trace": [
+            [
+              "2018-01-02T11:05:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:06:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:07:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:08:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:09:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:10:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:11:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:12:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:13:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:14:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ],
+            [
+              "2018-01-02T11:15:00",
+              {
+                "MA_TEMP": 18.0,
+                "OA_TEMP": 40.0,
+                "RA_TEMP": 70.0,
+                "SF_CS": 0.6,
+                "SF_SPD_DM": 1.0
+              }
+            ]
+          ],
+          "confirmed_at": "2018-01-02T11:15:00",
+          "first_observed": "2018-01-02T11:05:00",
+          "gap_reason": "PREDICATE_CLEARED",
+          "last_seen": "2018-01-02T11:19:00"
+        }
+      ],
+      "source_sha256": "03f35a45643fa9b361fb7e96fabcb5aed3b29b98d120062acf734c0088347e84"
+    }
+  },
+  "index_version": 1,
+  "rule_fingerprint": "c4f6c5f63faaa8cc74d5de9bb1c3e2b3f435ea26cd5058d6b91c1f03b19aacfc"
+}

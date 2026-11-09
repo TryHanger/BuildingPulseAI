@@ -1,0 +1,52 @@
+{
+  "audit_name": "STAGE 6 GATE 0: CSIRO AHU9 Zero-Shot Transfer Reproduction & Audit",
+  "created_at": "2026-11-03T10:42:08.984869+00:00",
+  "scenario_id": "sc_89e2c6028b4f",
+  "source_kind": "REAL_FIELD_BMS",
+  "building": "CSIRO Energy Centre, Newcastle, Australia",
+  "ahu_target": "AHU9",
+  "model_id": "vs-sa-temp-v2",
+  "model_sha256": "9fd340dd28b137e90d37dc4195dc8309e9766130091b82c31082928819c6e48d",
+  "transformer_sha256": "6f59b7f6e3df488e510cd49b3b2ea2fe71a387b5742b8ba8d7d0632220b926ee",
+  "raw_csiro_ahu9_sha256": "d43028c46d6fadbed7f2deb749626f78be277573ead1e8b1abe8babd7515db6d",
+  "raw_csiro_fault_experiments_sha256": "b7ebad8a25baa8da7740186eb52a1eb62d0602c82dcc394ed0527ea5c6fd65f2",
+  "processed_parquet_sha256": "bb5a838a23566b8c3b046215953a8c1dd309a875cedf5683b5117a012badabca",
+  "datetime_range": {
+    "start": "2013-10-28 09:00:00",
+    "end": "2013-11-12 16:59:00",
+    "total_rows": 7666,
+    "sampling_step_minutes": 1
+  },
+  "reproduced_metrics": {
+    "overall_operating": {
+      "count": 5735,
+      "mae_degC": 4.4666,
+      "rmse_degC": 4.8518,
+      "mean_bias_degC": 4.4622,
+      "r2_score": -1.9244,
+      "threshold_breach_rate": 0.9855
+    },
+    "normal_healthy_operating_points": {
+      "count": 3956,
+      "mae_degC": 4.2956,
+      "rmse_degC": 4.6727,
+      "mean_bias_degC": 4.2912,
+      "r2_score": -1.7794,
+      "threshold_breach_rate": 0.9866
+    },
+    "fault_injected_operating_points": {
+      "count": 1779,
+      "mae_degC": 4.8469,
+      "rmse_degC": 5.2281,
+      "mean_bias_degC": 4.8424,
+      "r2_score": -2.5735,
+      "threshold_breach_rate": 0.9831
+    }
+  },
+  "critical_audit_findings": [
+    "AHU9ahuMaTemp and AHU9ahuSaTemp are 100% identical in raw data (diff=0 for all 457k rows); true pre-coil mixed air temperature is not physically logged.",
+    "SA_TEMPSPT was constant 12.89 degC (55.2 F) during LBNL model training, so LightGBM split importance for setpoint was 0; the model cannot extrapolate to CSIRO setpoints of 18-20 degC.",
+    "Stage 5 report stated 7 fault episodes, but official ground truth contains 54 fault episodes in this slice (RA damper, OA damper, zone drift, valves).",
+    "Stage 5 98.6% false alarm rate was computed across the entire slice; when isolated to strictly healthy points (3,956 points), breach rate is 98.66% with MAE=4.2956 degC and Bias=+4.2912 degC."
+  ]
+}

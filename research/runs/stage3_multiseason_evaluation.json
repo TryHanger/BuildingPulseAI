@@ -1,0 +1,392 @@
+{
+  "evaluation_timestamp": "2026-11-02T18:43:54.157668+00:00",
+  "normal_scenario_id": "sc_bd7fe667fc33",
+  "models_evaluated": [
+    "vs-sa-temp-v2",
+    "vs-sa-temp-baseline-ridge-v2"
+  ],
+  "normal_held_out_results": {
+    "vs-sa-temp-v2": {
+      "model_type": "lightgbm",
+      "total_test_points": 10082,
+      "overall": {
+        "mae_degC": 0.0387,
+        "rmse_degC": 0.1739,
+        "r2": 0.7534,
+        "threshold_3sigma_degC": 0.919,
+        "threshold_q95_degC": 0.178,
+        "threshold_mad_degC": 0.043,
+        "false_alarm_points_3s": 0,
+        "false_alarm_episodes_3s": 0,
+        "false_alarm_points_q95": 68,
+        "false_alarm_episodes_q95": 3,
+        "false_alarm_points_mad": 1622,
+        "false_alarm_episodes_mad": 25
+      },
+      "by_season": {
+        "winter": {
+          "operating_points": 2640,
+          "mae_degC": 0.1682,
+          "rmse_degC": 0.3511,
+          "r2": -0.6323,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "spring": {
+          "operating_points": 2880,
+          "mae_degC": 0.0383,
+          "rmse_degC": 0.0622,
+          "r2": 0.6579,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "summer": {
+          "operating_points": 2881,
+          "mae_degC": 0.0263,
+          "rmse_degC": 0.1491,
+          "r2": 0.4415,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "autumn": {
+          "operating_points": 1681,
+          "mae_degC": 0.0658,
+          "rmse_degC": 0.3197,
+          "r2": 0.3369,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        }
+      }
+    },
+    "vs-sa-temp-baseline-ridge-v2": {
+      "model_type": "ridge",
+      "total_test_points": 10082,
+      "overall": {
+        "mae_degC": 0.1083,
+        "rmse_degC": 0.2548,
+        "r2": 0.4707,
+        "threshold_3sigma_degC": 1.635,
+        "threshold_q95_degC": 0.587,
+        "threshold_mad_degC": 0.428,
+        "false_alarm_points_3s": 0,
+        "false_alarm_episodes_3s": 0,
+        "false_alarm_points_q95": 0,
+        "false_alarm_episodes_q95": 0,
+        "false_alarm_points_mad": 72,
+        "false_alarm_episodes_mad": 3
+      },
+      "by_season": {
+        "winter": {
+          "operating_points": 2640,
+          "mae_degC": 0.2502,
+          "rmse_degC": 0.3469,
+          "r2": -0.5933,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "spring": {
+          "operating_points": 2880,
+          "mae_degC": 0.0594,
+          "rmse_degC": 0.0962,
+          "r2": 0.1827,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "summer": {
+          "operating_points": 2881,
+          "mae_degC": 0.1265,
+          "rmse_degC": 0.2916,
+          "r2": -1.1363,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        },
+        "autumn": {
+          "operating_points": 1681,
+          "mae_degC": 0.1262,
+          "rmse_degC": 0.3404,
+          "r2": 0.248,
+          "false_alarm_points_3s": 0,
+          "false_alarm_episodes_3s": 0
+        }
+      }
+    }
+  },
+  "fault_detection_results": [
+    {
+      "scenario_id": "sc_835609dfd906",
+      "filename": "coi_bias_-4_annual.csv",
+      "family": "SENSOR_BIAS_SA",
+      "severity": "-4.0°C",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 1.691,
+      "alarms_3sigma": {
+        "points": 685,
+        "ratio_pct": 25.9,
+        "episodes": 1
+      },
+      "alarms_q95": {
+        "points": 2611,
+        "ratio_pct": 98.9,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_4c635ed85f83",
+      "filename": "coi_bias_-2_annual.csv",
+      "family": "SENSOR_BIAS_SA",
+      "severity": "-2.0°C",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 1.001,
+      "alarms_3sigma": {
+        "points": 687,
+        "ratio_pct": 26.0,
+        "episodes": 1
+      },
+      "alarms_q95": {
+        "points": 2451,
+        "ratio_pct": 92.8,
+        "episodes": 4
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_22370df7e61a",
+      "filename": "coi_bias_2_annual.csv",
+      "family": "SENSOR_BIAS_SA",
+      "severity": "+2.0°C",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 0.262,
+      "alarms_3sigma": {
+        "points": 174,
+        "ratio_pct": 6.6,
+        "episodes": 1
+      },
+      "alarms_q95": {
+        "points": 707,
+        "ratio_pct": 26.8,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 764,
+        "ratio_pct": 28.9,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_90decfb04993",
+      "filename": "coi_bias_4_annual.csv",
+      "family": "SENSOR_BIAS_SA",
+      "severity": "+4.0°C",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 1.039,
+      "alarms_3sigma": {
+        "points": 683,
+        "ratio_pct": 25.9,
+        "episodes": 1
+      },
+      "alarms_q95": {
+        "points": 2404,
+        "ratio_pct": 91.1,
+        "episodes": 5
+      },
+      "alarms_mad": {
+        "points": 2452,
+        "ratio_pct": 92.9,
+        "episodes": 5
+      }
+    },
+    {
+      "scenario_id": "sc_2541462c0f4a",
+      "filename": "coi_stuck_010_annual.csv",
+      "family": "COOLING_VALVE_STUCK",
+      "severity": "10% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 4.73,
+      "alarms_3sigma": {
+        "points": 2432,
+        "ratio_pct": 92.1,
+        "episodes": 4
+      },
+      "alarms_q95": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_276968373895",
+      "filename": "coi_stuck_025_annual.csv",
+      "family": "COOLING_VALVE_STUCK",
+      "severity": "25% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 3.269,
+      "alarms_3sigma": {
+        "points": 2610,
+        "ratio_pct": 98.9,
+        "episodes": 3
+      },
+      "alarms_q95": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_413e7074ae9e",
+      "filename": "coi_stuck_050_annual.csv",
+      "family": "COOLING_VALVE_STUCK",
+      "severity": "50% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 1.325,
+      "alarms_3sigma": {
+        "points": 1428,
+        "ratio_pct": 54.1,
+        "episodes": 7
+      },
+      "alarms_q95": {
+        "points": 2391,
+        "ratio_pct": 90.6,
+        "episodes": 7
+      },
+      "alarms_mad": {
+        "points": 2541,
+        "ratio_pct": 96.2,
+        "episodes": 6
+      }
+    },
+    {
+      "scenario_id": "sc_4ca7822e8e04",
+      "filename": "coi_stuck_075_annual.csv",
+      "family": "COOLING_VALVE_STUCK",
+      "severity": "75% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 3.541,
+      "alarms_3sigma": {
+        "points": 2612,
+        "ratio_pct": 98.9,
+        "episodes": 3
+      },
+      "alarms_q95": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_a04b8cceeebc",
+      "filename": "damper_stuck_010_annual.csv",
+      "family": "OUTDOOR_DAMPER_STUCK",
+      "severity": "10% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 0.037,
+      "alarms_3sigma": {
+        "points": 0,
+        "ratio_pct": 0.0,
+        "episodes": 0
+      },
+      "alarms_q95": {
+        "points": 11,
+        "ratio_pct": 0.4,
+        "episodes": 2
+      },
+      "alarms_mad": {
+        "points": 99,
+        "ratio_pct": 3.8,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_1e3ca900a8d7",
+      "filename": "damper_stuck_025_annual.csv",
+      "family": "OUTDOOR_DAMPER_STUCK",
+      "severity": "25% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 0.039,
+      "alarms_3sigma": {
+        "points": 0,
+        "ratio_pct": 0.0,
+        "episodes": 0
+      },
+      "alarms_q95": {
+        "points": 7,
+        "ratio_pct": 0.3,
+        "episodes": 1
+      },
+      "alarms_mad": {
+        "points": 165,
+        "ratio_pct": 6.2,
+        "episodes": 4
+      }
+    },
+    {
+      "scenario_id": "sc_ef6581a6ce7b",
+      "filename": "damper_stuck_075_annual.csv",
+      "family": "OUTDOOR_DAMPER_STUCK",
+      "severity": "75% stuck",
+      "operating_points": 2640,
+      "mean_abs_residual_degC": 4.659,
+      "alarms_3sigma": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      },
+      "alarms_q95": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      },
+      "alarms_mad": {
+        "points": 2613,
+        "ratio_pct": 99.0,
+        "episodes": 3
+      }
+    },
+    {
+      "scenario_id": "sc_48ae2acfcea2",
+      "filename": "damper_stuck_100_annual_short.csv",
+      "family": "OUTDOOR_DAMPER_STUCK",
+      "severity": "100% stuck",
+      "operating_points": 2880,
+      "mean_abs_residual_degC": 0.369,
+      "alarms_3sigma": {
+        "points": 515,
+        "ratio_pct": 17.9,
+        "episodes": 4
+      },
+      "alarms_q95": {
+        "points": 943,
+        "ratio_pct": 32.7,
+        "episodes": 11
+      },
+      "alarms_mad": {
+        "points": 1589,
+        "ratio_pct": 55.2,
+        "episodes": 11
+      }
+    }
+  ]
+}

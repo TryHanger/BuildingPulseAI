@@ -1,0 +1,12 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "SHA-256 digests for three explicitly named OpenAPI files in prior audit manifests"
+condition = "AND"
+regexTarget = "line"
+paths = ['''^research/evidence/archive_[^/]+/MANIFEST\.json$''']
+regexes = ['''^\s*"(contracts/openapi-v1\.yaml|frontend/src/types/openapi-v1\.generated\.ts|research/ml_repro_02/export_openapi\.py)"\s*:\s*"[a-f0-9]{64}",?\s*$''']

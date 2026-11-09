@@ -1,0 +1,26 @@
+source_member,status,g56_access,qualification
+20160601_Baseline.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20160712_Baseline.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20170618_Baseline.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20170702_Baseline.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20170714_Baseline.csv,EXPLORATORY_EXPOSED,HEADER_AND_NOMINAL_TEMPERATURES,Previously viewed in G5.5 and independently reviewed. No threshold or performance use.
+20170718_OADamStuck_100.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20170729_Baseline.csv,EXPLORATORY_EXPOSED,HEADER_AND_NOMINAL_TEMPERATURES,Previously viewed in G5.5 and independently reviewed. No threshold or performance use.
+20170811_CooCoiValStuck_100.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20180710_OADamStuck_30.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+20180711_CooCoiValStuck_80.csv,HISTORICAL_PROJECT_EXPOSED,FILENAME_ONLY,Prior project collection. Treat conservatively as exposed.
+holdout/20160722_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20160803_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20160819_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20160831_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20161201_OADamStuck_90.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20161205_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20170103_OADamStuck_80.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20170115_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20170215_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20170317_Baseline.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20170711_OADamStuck_90.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20180709_TSup_m3.5.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+holdout/20180718_OADamStuck_60.csv,HISTORICAL_HOLDOUT_EXPOSED,FILENAME_ONLY,Prior holdout collection. Not admitted as a blinded campaign.
+Future nominal campaign,POTENTIAL_NOT_QUALIFIED,NOT_ACCESSED,"Require independent selection, verified I/O, run-proof and provenance."
+Future competing intervention campaign,POTENTIAL_NOT_QUALIFIED,NOT_ACCESSED,Require verified independent cohort and event mechanism; keep labels sealed.

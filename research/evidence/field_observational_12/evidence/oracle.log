@@ -1,0 +1,3 @@
+PASS 8 V1 SHA, 118 schedule rows, 27 day masks, ranks and controls
+PASS 72 exact native rows, 720 numeric cells, 60 feasibility records and 10 independently recomputed metric rows
+PASS publisher annotations checked in a separate table; omitted from eligibility and numerical columns

@@ -1,0 +1,44 @@
+version: BP-ML-REPRO-01.v1
+article: 10.3390/s26113465
+dataset: 10.25984/1881324
+targets: [SA_TEMP, MA_TEMP, RA_TEMP, ZONE_TEMP_1, ZONE_TEMP_2, ZONE_TEMP_3, ZONE_TEMP_4, ZONE_TEMP_5]
+timestamp: Datetime
+temperature_unit: degF
+bias_label_unit: degC
+day: source-local 00:00..24:00, no UTC conversion
+season: {winter: [12, 1, 2], spring: [3, 4, 5], summer: [6, 7, 8], autumn: [9, 10, 11]}
+finite_policy: common complete-case mask per arm; never impute
+paper:
+  arm: PAPER_FULL_REPRO
+  mask: SYS_CTL >= 1 for each run
+  split: first floor(0.8*N) healthy eligible minutes train; rest calibration and comparator
+  fault_test: same dates and >= first healthy calibration timestamp
+  context: [hour, month, day_of_week, occupancy]
+  sys_ctl_duplicate: distinct feature names; raw SYS_CTL plus occupancy from SYS_CTL >= 1 as Figure 15
+  isolation: full source year, descriptive training reuse in healthy
+strict:
+  arm: STRICT_HOLDOUT
+  split: chronological whole source days floor(0.6*N) and floor(0.8*N), train/calibrate/test
+  mask: lbnl-fan-hold@1.0.0 RUNNING, 300 s, gap resets
+  remove: [SYS_CTL]
+  context: [hour, month, day_of_week]
+  isolation: test only
+basic:
+  arm: PRODUCT_BASIC
+  split: same as strict
+  mask: same as strict
+  registry: research/g0-g1/SIGNAL_MAP_V1.yaml basic_eligible and known units
+  min_graph_neighbors_before_time_context: 3
+  ablation: WITHOUT_COMMANDS removes registry COMMAND features, not mode eligibility
+lightgbm: {n_estimators: 300, max_depth: 6, learning_rate: 0.05, subsample: 0.8, colsample_bytree: 0.8, random_state: 42, min_child_samples: 50, subsample_freq: 0}
+seed_sweep: {seeds: [0,1,2,3,4,5,6,7,8,9], scope: PAPER_FULL_REPRO LightGBM daily AUC, condition: only after seed 42 and if resources allow}
+ridge: {alpha: 1.0, scaler: train-only}
+pca_paper: {inputs: all permitted numeric source columns without temporal extras, standardize: train-only, retained_variance: 0.95, score: mean daily standardized reconstruction MSE}
+pca_input_matched: {inputs: same graph neighborhood and context per target as regressors, scaler: train-only, retained_variance: 0.95, regression: OLS on PC scores}
+sat_comparator: daily mean absolute SAT minus SAT setpoint
+calibration: {target_residual: absolute, sd_ddof: 0, near_zero_sd: 1.0e-12, near_zero_policy: abstain, decision: daily score strictly greater than 3}
+daily_aggregation: mean z per target then max across targets; PCA-paper and SAT threshold standardize calibration daily aggregates only
+comparison: day intersection separately per scenario with identical comparator days; report coverage and confusion and no independent-day CIs
+discrimination: FULL only, mean absolute command-position discrepancies on run eligible evaluation minutes
+metrics: daily ROC AUC, precision, recall, FPR, confusion, covered counts, seasons; calibration per-target RMSE MAE median abs SD
+packages: {lightgbm: 4.6.0, pandas: 2.3.3, numpy: 2.5.4, scikit-learn: 1.9.1, rdflib: 7.4.0, pyarrow: 19.0.1}

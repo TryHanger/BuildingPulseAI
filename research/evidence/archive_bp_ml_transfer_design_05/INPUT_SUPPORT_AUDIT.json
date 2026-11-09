@@ -1,0 +1,59 @@
+{
+  "scope": "INPUTS_ONLY",
+  "target_prediction_executed": false,
+  "target_healthy_gate": "NOT_EXECUTED",
+  "paired_pre_support_intersection_minutes": 5423,
+  "normal_warm_running_minutes": 5425,
+  "normal_usable_minutes_after_source_input_support": 5425,
+  "normal_block_coverage_before_any_scoring": [
+    {
+      "block": "0",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "1",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "2",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "3",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "4",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "5",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    },
+    {
+      "block": "6",
+      "warm_running_minutes": 775,
+      "usable_minutes": 775,
+      "longest_run": 775,
+      "status": "EVALUABLE"
+    }
+  ]
+}

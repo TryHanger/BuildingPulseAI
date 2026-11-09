@@ -1,0 +1,377 @@
+{
+  "run_id": "stage4_observability_eval_01",
+  "created_at": "2026-11-03T11:55:28.992989+00:00",
+  "profiles_evaluated": {
+    "BASIC": {
+      "macro_f1": 0.5196,
+      "feature_count": 11,
+      "features": [
+        "res_sa_signed",
+        "res_sa_abs",
+        "res_sa_roll_mean_15",
+        "res_sa_roll_std_15",
+        "delta_t_chwc",
+        "delta_t_mixing",
+        "error_spt",
+        "chwc_vlv_dm",
+        "oa_dmpr_dm",
+        "oa_temp",
+        "cooling_demand_discrepancy"
+      ],
+      "confusion_matrix": [
+        [
+          2469,
+          6,
+          1,
+          164
+        ],
+        [
+          3092,
+          697,
+          692,
+          799
+        ],
+        [
+          135,
+          1399,
+          3717,
+          29
+        ],
+        [
+          2219,
+          9,
+          0,
+          3052
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.3119,
+          "recall": 0.9352,
+          "f1": 0.4678,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.3302,
+          "recall": 0.132,
+          "f1": 0.1886,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 0.8429,
+          "recall": 0.704,
+          "f1": 0.7672,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 0.7547,
+          "recall": 0.578,
+          "f1": 0.6547,
+          "support": 5280
+        }
+      }
+    },
+    "BASIC_PLUS_VALVE": {
+      "macro_f1": 0.6722,
+      "feature_count": 14,
+      "features": [
+        "res_sa_signed",
+        "res_sa_abs",
+        "res_sa_roll_mean_15",
+        "res_sa_roll_std_15",
+        "delta_t_chwc",
+        "delta_t_mixing",
+        "error_spt",
+        "chwc_vlv_dm",
+        "oa_dmpr_dm",
+        "oa_temp",
+        "cooling_demand_discrepancy",
+        "chwc_vlv_fb",
+        "vlv_pos_discrepancy",
+        "vlv_pos_discrepancy_roll_15"
+      ],
+      "confusion_matrix": [
+        [
+          2517,
+          8,
+          0,
+          115
+        ],
+        [
+          2158,
+          1957,
+          0,
+          1165
+        ],
+        [
+          0,
+          2,
+          5276,
+          2
+        ],
+        [
+          2288,
+          7,
+          0,
+          2985
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.3615,
+          "recall": 0.9534,
+          "f1": 0.5242,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.9914,
+          "recall": 0.3706,
+          "f1": 0.5396,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 1.0,
+          "recall": 0.9992,
+          "f1": 0.9996,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 0.6996,
+          "recall": 0.5653,
+          "f1": 0.6253,
+          "support": 5280
+        }
+      }
+    },
+    "BASIC_PLUS_DAMPER": {
+      "macro_f1": 0.5123,
+      "feature_count": 14,
+      "features": [
+        "res_sa_signed",
+        "res_sa_abs",
+        "res_sa_roll_mean_15",
+        "res_sa_roll_std_15",
+        "delta_t_chwc",
+        "delta_t_mixing",
+        "error_spt",
+        "chwc_vlv_dm",
+        "oa_dmpr_dm",
+        "oa_temp",
+        "cooling_demand_discrepancy",
+        "oa_dmpr_fb",
+        "dmpr_pos_discrepancy",
+        "dmpr_pos_discrepancy_roll_15"
+      ],
+      "confusion_matrix": [
+        [
+          2639,
+          0,
+          1,
+          0
+        ],
+        [
+          4358,
+          229,
+          693,
+          0
+        ],
+        [
+          221,
+          1405,
+          3654,
+          0
+        ],
+        [
+          1930,
+          0,
+          0,
+          3350
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.2885,
+          "recall": 0.9996,
+          "f1": 0.4477,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.1401,
+          "recall": 0.0434,
+          "f1": 0.0662,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 0.8404,
+          "recall": 0.692,
+          "f1": 0.759,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 1.0,
+          "recall": 0.6345,
+          "f1": 0.7764,
+          "support": 5280
+        }
+      }
+    },
+    "BASIC_PLUS_BOTH": {
+      "macro_f1": 0.6755,
+      "feature_count": 17,
+      "features": [
+        "res_sa_signed",
+        "res_sa_abs",
+        "res_sa_roll_mean_15",
+        "res_sa_roll_std_15",
+        "delta_t_chwc",
+        "delta_t_mixing",
+        "error_spt",
+        "chwc_vlv_dm",
+        "oa_dmpr_dm",
+        "oa_temp",
+        "cooling_demand_discrepancy",
+        "chwc_vlv_fb",
+        "vlv_pos_discrepancy",
+        "vlv_pos_discrepancy_roll_15",
+        "oa_dmpr_fb",
+        "dmpr_pos_discrepancy",
+        "dmpr_pos_discrepancy_roll_15"
+      ],
+      "confusion_matrix": [
+        [
+          2639,
+          1,
+          0,
+          0
+        ],
+        [
+          3767,
+          1513,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          5275,
+          0
+        ],
+        [
+          1930,
+          0,
+          0,
+          3350
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.3164,
+          "recall": 0.9996,
+          "f1": 0.4806,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.9993,
+          "recall": 0.2866,
+          "f1": 0.4454,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 1.0,
+          "recall": 0.9991,
+          "f1": 0.9995,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 1.0,
+          "recall": 0.6345,
+          "f1": 0.7764,
+          "support": 5280
+        }
+      }
+    },
+    "FULL": {
+      "macro_f1": 0.6766,
+      "feature_count": 19,
+      "features": [
+        "res_sa_signed",
+        "res_sa_abs",
+        "res_sa_roll_mean_15",
+        "res_sa_roll_std_15",
+        "delta_t_chwc",
+        "delta_t_mixing",
+        "error_spt",
+        "chwc_vlv_dm",
+        "oa_dmpr_dm",
+        "oa_temp",
+        "cooling_demand_discrepancy",
+        "chwc_vlv_fb",
+        "vlv_pos_discrepancy",
+        "vlv_pos_discrepancy_roll_15",
+        "oa_dmpr_fb",
+        "dmpr_pos_discrepancy",
+        "dmpr_pos_discrepancy_roll_15",
+        "sf_wat",
+        "oa_cfm_ratio"
+      ],
+      "confusion_matrix": [
+        [
+          2639,
+          1,
+          0,
+          0
+        ],
+        [
+          3751,
+          1529,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          5275,
+          0
+        ],
+        [
+          1930,
+          0,
+          0,
+          3350
+        ]
+      ],
+      "per_class": {
+        "FAULT_FREE": {
+          "precision": 0.317,
+          "recall": 0.9996,
+          "f1": 0.4813,
+          "support": 2640
+        },
+        "SENSOR_BIAS_SA": {
+          "precision": 0.9993,
+          "recall": 0.2896,
+          "f1": 0.449,
+          "support": 5280
+        },
+        "COOLING_VALVE_STUCK": {
+          "precision": 1.0,
+          "recall": 0.9991,
+          "f1": 0.9995,
+          "support": 5280
+        },
+        "OUTDOOR_DAMPER_STUCK": {
+          "precision": 1.0,
+          "recall": 0.6345,
+          "f1": 0.7764,
+          "support": 5280
+        }
+      }
+    }
+  },
+  "empirical_value_delta": {
+    "valve_feedback_f1_gain": 0.1526,
+    "damper_feedback_f1_gain": -0.0073,
+    "both_actuators_f1_gain": 0.1559,
+    "full_observability_f1_gain": 0.157
+  }
+}
