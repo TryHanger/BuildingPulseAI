@@ -1,0 +1,13 @@
+{
+  "assignment_sequences_checked": 8,
+  "case_condition_pairs": 8,
+  "stimulus_displays": 32,
+  "choice_labels_and_status_match": true,
+  "key_or_prefilled_answer_in_stimulus": false,
+  "loading_excluded_and_visibility_flagged": true,
+  "local_download_and_offline_scoring": true,
+  "default_build_disabled": true,
+  "wrong_code_and_source_failure_blocked": true,
+  "response_network_writes": 0,
+  "participant_sessions_run": 0
+}
