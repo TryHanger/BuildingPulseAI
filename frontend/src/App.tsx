@@ -12,6 +12,7 @@ import { DiagnosticsPage } from './pages/DiagnosticsPage';
 import { ResearchPage } from './pages/ResearchPage';
 import { VirtualSensorResearchPage } from './pages/VirtualSensorResearchPage';
 
+import { EvidenceToActionPage } from './pages/EvidenceToActionPage';
 import { FieldEvidencePage } from './pages/FieldEvidencePage';
 
 export function App() {
@@ -143,9 +144,10 @@ export function App() {
   };
 
   const isInvestigator = currentRoute === 'investigator';
+  const evidenceTrace = isInvestigator && activeAssetId === 'evidence-to-action';
   const g36Benchmark = isInvestigator && activeAssetId === 'ahu-g36';
   const g4Demo = (currentRoute === 'incidents' && g4DemoFeed) || (isInvestigator && provenanceKind !== 'DEMO_FIXTURE' && seekDatasetId === demoDatasetId);
-  const displayedProvenance = currentRoute === 'field-evidence' ? 'REAL_BMS_REPORTED' : g36Benchmark ? 'SIMULATED_BENCHMARK' : g4Demo ? 'DEMO_FIXTURE' : isInvestigator ? provenanceKind
+  const displayedProvenance = evidenceTrace ? 'RESEARCH_EVIDENCE' : currentRoute === 'field-evidence' ? 'REAL_BMS_REPORTED' : g36Benchmark ? 'SIMULATED_BENCHMARK' : g4Demo ? 'DEMO_FIXTURE' : isInvestigator ? provenanceKind
     : currentRoute === 'incident-detail' || (currentRoute === 'incidents' && incidentsDemo) ? 'DEMO_FIXTURE'
     : currentRoute === 'incidents' || currentRoute === 'virtual-sensor-research' ? 'SIMULATED_BENCHMARK' : 'LEGACY_ANALYSIS';
 
@@ -157,9 +159,9 @@ export function App() {
         onNavigate={navigate}
         activeAssetId={activeAssetId}
         provenanceKind={displayedProvenance}
-        runtimeDemo={g4Demo && !g36Benchmark}
+        runtimeDemo={g4Demo && !g36Benchmark && !evidenceTrace}
         g36Benchmark={g36Benchmark}
-        onSelectProvenance={isInvestigator && !g36Benchmark ? kind => {
+        onSelectProvenance={isInvestigator && !g36Benchmark && !evidenceTrace ? kind => {
           if (g4Demo && kind === 'DEMO_FIXTURE') return;
           setProvenanceKind(kind);
           const url = new URL(window.location.href);
@@ -186,9 +188,14 @@ export function App() {
           LEGACY_ANALYSIS · прежний API
         </div>}
         {g36Benchmark && <G36BenchmarkPage />}
-        {isInvestigator && !g36Benchmark && provenanceKind !== 'DEMO_FIXTURE' && <RuntimeInvestigatorPage
+        {evidenceTrace && <EvidenceToActionPage />}
+        {isInvestigator && !evidenceTrace && !g36Benchmark && provenanceKind !== 'DEMO_FIXTURE' &&
+          <a className="inline-block px-4 pt-3 text-sm text-sky-200 underline" href="/assets/evidence-to-action">
+            От сигнала к проверке · BP-15
+          </a>}
+        {isInvestigator && !g36Benchmark && !evidenceTrace && provenanceKind !== 'DEMO_FIXTURE' && <RuntimeInvestigatorPage
           key={`${seekDatasetId ?? ''}:${seekTimestamp ?? ''}`} initialDatasetId={seekDatasetId} initialTimestamp={seekTimestamp} />}
-        {isInvestigator && !g36Benchmark && provenanceKind === 'DEMO_FIXTURE' && (
+        {isInvestigator && !g36Benchmark && !evidenceTrace && provenanceKind === 'DEMO_FIXTURE' && (
           <AHUInvestigatorPage
             assetId={activeAssetId}
             initialTimestamp={seekTimestamp}

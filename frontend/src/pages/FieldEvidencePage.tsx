@@ -27,7 +27,7 @@ type EvidenceWindow = {
   evaluation_metadata: Record<string, string>;
 };
 type SourceFile = { file_id: string; publisher_sha256: string };
-type Evidence = {
+export type FieldEvidence = {
   provenance: {
     dataset_doi: string;
     dataset_url: string;
@@ -186,7 +186,7 @@ function Timeline({ item }: { item: EvidenceWindow }) {
   );
 }
 
-function Provenance({ item, provenance }: { item: EvidenceWindow; provenance: Evidence['provenance'] }) {
+function Provenance({ item, provenance }: { item: EvidenceWindow; provenance: FieldEvidence['provenance'] }) {
   const file = item.archived_outcome.raw_file;
   const source = provenance.files[file];
   const schedule = provenance.files["Faults_schedule_and_description.xlsx"];
@@ -211,7 +211,7 @@ function Provenance({ item, provenance }: { item: EvidenceWindow; provenance: Ev
 }
 
 export function FieldEvidencePage() {
-  const [evidence, setEvidence] = useState<Evidence>();
+  const [evidence, setEvidence] = useState<FieldEvidence>();
   const [unavailable, setUnavailable] = useState(false);
   const [ahu, setAhu] = useState('AHU1');
   const [selection, setSelection] = useState('event-AHU1');
@@ -221,7 +221,7 @@ export function FieldEvidencePage() {
     fetch('/api/research/field-evidence', { signal: controller.signal, cache: 'no-store' })
       .then((response) => {
         if (!response.ok) throw new Error('SOURCE_PROVENANCE_UNVERIFIED');
-        return response.json() as Promise<Evidence>;
+        return response.json() as Promise<FieldEvidence>;
       })
       .then(setEvidence)
       .catch(() => {
