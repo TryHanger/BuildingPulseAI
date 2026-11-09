@@ -1,0 +1,16 @@
+{
+  "scope": "STAGE14_FINAL_SOURCE_QUALIFICATION",
+  "disposition": "STOP_RULE_INPUTS_UNQUALIFIED",
+  "candidate": "NISTIR_6994_TABLE_2_1_RULE_3_HEATING_MODE_1",
+  "method": "APAR_INSPIRED_NOT_PAPER_REPLICATION",
+  "gate_a": "STOP",
+  "gate_a_reason": "STOP_NO_ACTIVE_SUPPLY_AIR_SETPOINT",
+  "gate_b": "NOT_EXECUTED",
+  "gate_c": "NOT_EXECUTED",
+  "qualified_native_ticks": 0,
+  "scoring_executed": false,
+  "confirmatory_blind_validation": false,
+  "stage11_causal_gate": "STOP",
+  "source_result": "GATE_RESULT_14.json",
+  "requirements_matrix": "REQUIREMENTS_MATRIX_14.md"
+}
