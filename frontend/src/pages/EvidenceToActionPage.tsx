@@ -13,7 +13,7 @@ const panel = 'rounded-xl border border-slate-800 bg-slate-900 p-4 sm:p-5';
 const muted = 'text-sm leading-relaxed text-slate-300';
 const colors = ['#38bdf8', '#fbbf24', '#c4b5fd', '#34d399'];
 
-function Telemetry({ trace, id }: { trace: DecisionTrace; id: CaseId }) {
+function Telemetry({ trace, id, staticPlot }: { trace: DecisionTrace; id: CaseId; staticPlot: boolean }) {
   const [cursor, setCursor] = useState(0);
   const sample = trace.samples[cursor];
   const hasValues = trace.samples.some(point => point.values.some(value => value !== null));
@@ -42,6 +42,7 @@ function Telemetry({ trace, id }: { trace: DecisionTrace; id: CaseId }) {
             aria-label="График телеметрии"
             style={{ height: 250 }}
             option={{
+              ...(staticPlot ? { animation: false } : {}),
               color: colors,
               legend: { top: 0, type: 'scroll', textStyle: { color: '#cbd5e1' } },
               grid: { top: 45, left: field ? 125 : 50, right: 30, bottom: 30 },
@@ -99,35 +100,56 @@ function CaseTrace({ id, simple }: { id: CaseId; simple: boolean }) {
     </section>;
   }
 
+  return simple ? <SignalOnly anomaly={result.anomaly} /> : <EvidencePresentation result={result} id={id} />;
+}
+
+export function SignalOnly({ anomaly }: { anomaly: string }) {
+  return (
+    <section className={panel} aria-label="Только сигнал">
+      <p className="text-sm text-slate-300">Аномалия / наблюдение</p>
+      <h2 className="mt-1 break-words font-mono text-lg text-sky-200" data-testid="anomaly">{anomaly}</h2>
+    </section>
+  );
+}
+
+export function EvidencePresentation({ result, id, participant = false }: {
+  result: DecisionTrace;
+  id: CaseId;
+  participant?: boolean;
+}) {
+  const statuses = (
+    <div className={`grid gap-3 ${participant ? '' : 'sm:grid-cols-2'}`}>
+      <section className={panel}><h2 className="text-sm text-slate-300">Аномалия / наблюдение</h2>
+        <p data-testid="anomaly" className="mt-1 break-words font-mono text-sky-200">{result.anomaly}</p></section>
+      <section className={panel}><h2 className="text-sm text-slate-300">Физическая причина</h2>
+        <p data-testid="cause" className="mt-1 font-mono text-amber-200">{result.cause}</p></section>
+    </div>
+  );
   return <>
-    {simple ? (
-      <section className={panel} aria-label="Только сигнал">
-        <p className="text-sm text-slate-300">Аномалия / наблюдение</p>
-        <h2 className="mt-1 break-words font-mono text-lg text-sky-200" data-testid="anomaly">{result.anomaly}</h2>
-      </section>
-    ) : <>
-      <section className={panel} aria-labelledby="bp15-source">
-        <h2 id="bp15-source" className="font-semibold">{result.source}</h2>
-        <p data-testid="quality" className={`mt-2 ${muted}`}>{result.quality}</p>
-        <p data-testid="applicability" className={muted}>{result.applicability}</p>
-        <details className="mt-3 text-sm">
-          <summary className="cursor-pointer text-sky-200">Источник, версии и контрольные суммы</summary>
-          <a href={result.sourceUrl} className="my-2 inline-block text-sky-200 underline">Запись издателя</a>
-          <dl className="grid gap-2 sm:grid-cols-2">
-            {result.provenance.map(([label, value]) => <div key={label}>
-              <dt className="text-slate-300">{label}</dt>
-              <dd className="break-all font-mono text-xs">{value}</dd>
-            </div>)}
-          </dl>
-        </details>
-      </section>
-      <Telemetry trace={result} id={id} />
-      <div className="grid gap-3 sm:grid-cols-2">
-        <section className={panel}><h2 className="text-sm text-slate-300">Аномалия / наблюдение</h2>
-          <p data-testid="anomaly" className="mt-1 break-words font-mono text-sky-200">{result.anomaly}</p></section>
-        <section className={panel}><h2 className="text-sm text-slate-300">Физическая причина</h2>
-          <p data-testid="cause" className="mt-1 font-mono text-amber-200">{result.cause}</p></section>
-      </div>
+    {participant && statuses}
+    <section className={panel} aria-labelledby="bp15-source">
+      <h2 id="bp15-source" className="font-semibold">{result.source}</h2>
+      <p data-testid="quality" className={`mt-2 ${muted}`}>{result.quality}</p>
+      <p data-testid="applicability" className={muted}>{participant ? result.pilot.method : result.applicability}</p>
+      <details className="mt-3 text-sm">
+        <summary className="cursor-pointer text-sky-200">Источник, версии и контрольные суммы</summary>
+        {!participant && <a href={result.sourceUrl} className="my-2 inline-block text-sky-200 underline">Запись издателя</a>}
+        <dl className="grid gap-2 sm:grid-cols-2">
+          {result.provenance.map(([label, value]) => <div key={label}>
+            <dt className="text-slate-300">{label}</dt>
+            <dd className="break-all font-mono text-xs">{value}</dd>
+          </div>)}
+        </dl>
+      </details>
+    </section>
+    <Telemetry trace={result} id={id} staticPlot={participant} />
+    {!participant && statuses}
+    {participant ? <section className={panel} aria-labelledby="bp15-evidence">
+      <h2 id="bp15-evidence" className="font-semibold">Свидетельства</h2>
+      <ul className={`mt-2 list-disc space-y-2 pl-5 ${muted}`}>
+        {result.pilot.observations.map(observation => <li key={observation}>{observation}</li>)}
+      </ul>
+    </section> : <>
       <section className={panel} aria-labelledby="bp15-evidence">
         <h2 id="bp15-evidence" className="font-semibold">Свидетельства</h2>
         <dl className={`mt-2 space-y-2 ${muted}`}>
@@ -140,16 +162,16 @@ function CaseTrace({ id, simple }: { id: CaseId; simple: boolean }) {
         <h2 className="font-semibold text-sky-100">Следующая проверка инженера</h2>
         <p data-testid="action" className={`mt-2 ${muted}`}>{result.action}</p>
       </section>
-      {result.blocks && <section className={panel}>
-        <h2 className="font-semibold">Сохранённые блочные решения Stage06</h2>
-        <table className="mt-2 w-full text-left text-sm">
-          <thead><tr><th scope="col">Блок</th><th scope="col">Начало (с)</th><th scope="col">z</th><th scope="col">Результат</th></tr></thead>
-          <tbody>{result.blocks.map(block => <tr key={block.block} className="border-t border-slate-800">
-            <td>{block.block}</td><td>{block.start_model_s}</td><td>{block.z}</td><td>{block.decision}</td>
-          </tr>)}</tbody>
-        </table>
-      </section>}
     </>}
+    {result.blocks && <section className={panel}>
+      <h2 className="font-semibold">Сохранённые блочные решения Stage06</h2>
+      <table className="mt-2 w-full text-left text-sm">
+        <thead><tr><th scope="col">Блок</th><th scope="col">Начало (с)</th><th scope="col">z</th><th scope="col">Результат</th></tr></thead>
+        <tbody>{result.blocks.map(block => <tr key={block.block} className="border-t border-slate-800">
+          <td>{block.block}</td><td>{block.start_model_s}</td><td>{block.z}</td><td>{block.decision}</td>
+        </tr>)}</tbody>
+      </table>
+    </section>}
   </>;
 }
 
