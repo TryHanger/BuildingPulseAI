@@ -22,7 +22,7 @@ export type AppViewRoute =
   | 'monitoring'
   | 'diagnostics';
 
-export type ProvenanceKind = 'SIMULATED_BENCHMARK' | 'LEGACY_ANALYSIS' | 'DEMO_FIXTURE' | 'REAL_BMS_REPORTED';
+export type ProvenanceKind = 'SIMULATED_BENCHMARK' | 'LEGACY_ANALYSIS' | 'DEMO_FIXTURE' | 'REAL_BMS_REPORTED' | 'RESEARCH_EVIDENCE';
 
 interface TopNavigationBarProps {
   currentRoute: AppViewRoute;
@@ -56,6 +56,8 @@ export const TopNavigationBar: React.FC<TopNavigationBarProps> = ({
         );
       case 'REAL_BMS_REPORTED':
         return <span className="text-xs text-sky-200">REAL_BMS_REPORTED · Stage09</span>;
+      case 'RESEARCH_EVIDENCE':
+        return <span className="text-xs text-sky-200">BP-15 · RESEARCH_ONLY</span>;
       case 'LEGACY_ANALYSIS':
         return <span className="text-xs text-slate-300">LEGACY_ANALYSIS</span>;
       case 'DEMO_FIXTURE':
