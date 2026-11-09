@@ -1,0 +1,32 @@
+{
+  "A": {
+    "evaluated_minutes": 955,
+    "daily_z": 5.52584424404951,
+    "source_identity": "UNAVAILABLE"
+  },
+  "B": {
+    "minutes_compared": 60,
+    "blocks_compared": 7,
+    "gate": "STOP_OOD_HEALTHY"
+  },
+  "C": {
+    "samples_compared": 20,
+    "rule_a": "BAS_ON_TO_OFF_OBSERVED",
+    "rule_b": "NO_OBSERVED_CHANGE",
+    "physical_fault": "ABSTAIN"
+  },
+  "D": {
+    "samples_compared": 20,
+    "rule_a": "ABSTAIN",
+    "rule_b": "ABSTAIN",
+    "physical_fault": "ABSTAIN"
+  },
+  "negative": {
+    "missing_stage02": "PASS",
+    "missing_stage06": "PASS",
+    "malformed_stage10": "PASS",
+    "stale_display": "PASS",
+    "writes": 0,
+    "page_errors": 0
+  }
+}
