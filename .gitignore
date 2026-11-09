@@ -75,3 +75,7 @@ Thumbs.db
 data/g36-5wk/
 data/g36-1wk/
 !research/evidence/**/*.log
+
+# Local BP-16 participant records
+bp16-response-*.json
+bp16-local/

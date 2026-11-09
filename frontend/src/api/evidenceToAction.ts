@@ -25,6 +25,7 @@ export type DecisionTrace = {
   clock: string;
   channels: string[];
   samples: Sample[];
+  pilot: { method: string; observations: string[] };
   blocks?: { block: number; start_model_s: number; z: number; decision: string }[];
 };
 
@@ -93,6 +94,14 @@ function lbnl(day: Day): DecisionTrace {
     conflict: 'UNAVAILABLE · подтверждённая инъекция SAT bias. Имя члена ZIP отличается от таблицы издателя (UNVERIFIED_PUBLISHER_ALIAS, G0/G1 D002).',
     missing: 'Однозначное сопоставление члена ZIP с инъекцией и независимое измерение SAT.',
     action: 'Запросить у LBNL таблицу соответствия или журнал инъекции. Для локализации смещения сравнить SAT с независимым калиброванным датчиком в том же сечении и режиме.',
+    pilot: {
+      method: `Stage02 · ${day.method} / ${day.metadata.arm} · ${day.metadata.policy_version} · ${day.status}`,
+      observations: [
+        evaluated ? `Средний z остатка ${day.daily_score!.toFixed(4)} · порог > ${day.threshold}.` : 'Суточный остаток недоступен.',
+        `Член ZIP ${day.case.member} · статус соответствия таблице издателя: ${day.case.alias_status}.`,
+        'Измеренный в симуляции SAT и прогноз относятся к одному прогону.',
+      ],
+    },
     clock: 'Минуты от начала дня по часам источника, смещение UTC неизвестно',
     channels: ['SAT источника, °F', 'Прогноз SAT, °F'],
     samples: day.points.map(point => ({
@@ -132,6 +141,14 @@ function g36(trace: TransferTrace, contract: TransferContract): DecisionTrace {
     conflict: `Референсный прогон задан без инъекции. Активная уставка меняется, при обучении она составляла ${contract.training_setpoint_support.span[0]} °F. Прохождение одномерных диапазонов не подтверждает переносимость режима.`,
     missing: 'Независимые нормальные прогоны и подтверждённая карта режима, измерений и уставки на целевой установке.',
     action: 'Проверить по журналу контроллера активную уставку SAT и режим работы. Собрать независимые нормальные прогоны в этих режимах и проверить частоту ложных тревог перед эксплуатационным применением.',
+    pilot: {
+      method: `Stage06 / Stage07 · ${contract.candidate}`,
+      observations: [
+        `${alertCount} / ${trace.blocks.length} блоков с ALERT (z > ${trace.threshold}) · ${trace.independent_normal_runs} референсный симуляционный прогон без инъекции.`,
+        `В обучающем источнике зарегистрировано одно значение активной уставки SAT: ${contract.training_setpoint_support.span[0]} °F.`,
+        'Минутная трасса и блочные решения относятся к одному прогону.',
+      ],
+    },
     clock: 'Секунды модели (MODEL_SECONDS)',
     channels: ['SAT источника, °F', 'Активная уставка SAT, °F', 'Сохранённый прогноз SAT, °F'],
     samples: trace.points.map(point => ({
@@ -187,6 +204,18 @@ function field(payload: FieldEvidence, ahu: 'AHU23' | 'AHU2'): DecisionTrace {
     action: observed
       ? 'Сверить привязку тегов с приводами, снять обратную связь с каждого привода и измерить расход либо перепад давления исправным прибором.'
       : 'Восстановить тренды статусов обоих вентиляторов и запросов нагрева и охлаждения. Снять обратную связь с приводов и независимый расход, затем повторить проверку.',
+    pilot: {
+      method: `Stage09 / Stage10 · ${origin.rule_version} · A: ${outcome.A_status} · B: ${outcome.B_status}`,
+      observations: [
+        `Приток (A): ${outcome.A_change}. Пара тегов (B): ${outcome.B_change}.`,
+        observed
+          ? `Первый OFF притока: ${outcome.A_first_off_inclusive}, повтор: ${outcome.A_confirm_off}. Приток OFF / вытяжка ON: ${outcome.pair_01_ticks} отсчётов.`
+          : 'Пустые ячейки сохранены при отображении.',
+        observed
+          ? 'Оба правила используют одну книгу BAS. В журнале издателя отмечена неисправность датчика перепада давления.'
+          : 'Оба правила используют одну книгу BAS.',
+      ],
+    },
     clock: `Секунды от начала окна по часам книги, шаг ${origin.cadence_seconds} с. Смещение UTC неизвестно`,
     channels: ['Приток BAS', 'Вытяжка BAS', 'Запрос нагрева', 'Запрос охлаждения'],
     samples: item.observations.map(tick => ({

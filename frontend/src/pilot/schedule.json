@@ -1,0 +1,7 @@
+{
+  "orders": [["A", "B", "D", "C"], ["B", "C", "A", "D"], ["C", "D", "B", "A"], ["D", "A", "C", "B"]],
+  "conditions": [
+    ["signal-only", "evidence-to-action", "evidence-to-action", "signal-only"],
+    ["evidence-to-action", "signal-only", "signal-only", "evidence-to-action"]
+  ]
+}
