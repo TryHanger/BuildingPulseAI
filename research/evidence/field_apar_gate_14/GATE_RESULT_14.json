@@ -1,0 +1,27 @@
+{
+  "scope": "PROVISIONAL_SOURCE_GATE_PENDING_FULL_STAGE14_TASK",
+  "method": "APAR_INSPIRED_NOT_PAPER_REPLICATION",
+  "gate_a": "STOP_NO_ACTIVE_SUPPLY_AIR_SETPOINT",
+  "gate_b": "NOT_RUN_GATE_A_STOP",
+  "publisher_originals_sha256_verified": 8,
+  "manuscript_sha256_verified": "4a03914e8064ae3b42ffce9a806a724f7451bae7596d940ff3884b6c50a072ef",
+  "registered_schedule_rows": 118,
+  "registered_intervention_dates": 19,
+  "site_count": 1,
+  "ahu_count": 6,
+  "ledger_blocks": 1104,
+  "native_ticks": 316230,
+  "native_context_match_ticks": 27600,
+  "site_buffer_ticks": 89856,
+  "qualified_ticks": 0,
+  "comparisons_computed": 0,
+  "thresholds": {
+    "valve_command_tolerance_fraction": null,
+    "sat_deficit_C": null,
+    "status": "UNSET_NO_PUBLISHER_SITE_CALIBRATION"
+  },
+  "workbook_fault_labels_used": false,
+  "stage11_causal_gate": "STOP",
+  "causal_effect_identified": false,
+  "field_fdd_accuracy_evaluated": false
+}

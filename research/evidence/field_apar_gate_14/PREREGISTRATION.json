@@ -1,0 +1,25 @@
+{
+  "scope": "PROVISIONAL_SOURCE_GATE_PENDING_FULL_STAGE14_TASK",
+  "method": "APAR_INSPIRED_NOT_PAPER_REPLICATION",
+  "reference": "NISTIR 6994 Table 2.1 Rule 3",
+  "dataset_doi": "10.17632/jkw85sm4v4.1",
+  "source_manifest_sha256": "e7f2188e8cdc2fd3f4d2da20ab09c214bf3ac68f957f464f81d2930ceb4299e0",
+  "paper_sha256": "4a03914e8064ae3b42ffce9a806a724f7451bae7596d940ff3884b6c50a072ef",
+  "clock": "UNKNOWN_CLOCK_NAIVE_WORKBOOK_300S",
+  "cadence_seconds": 300,
+  "valve_command": "signal__required_value__heater_valve",
+  "sat": "air_temperature__real_value__supply_air_outlet",
+  "sat_setpoint": "air_temperature__required_value__supply_air_outlet",
+  "context": {
+    "logic__required_value__heater": 1,
+    "logic__required_value__chiller": 0,
+    "logic__real_value__fan_fresh_air": 1
+  },
+  "thresholds": {
+    "valve_command_tolerance_fraction": null,
+    "sat_deficit_C": null,
+    "status": "UNSET_NO_PUBLISHER_SITE_CALIBRATION"
+  },
+  "date_buffer_days": 1,
+  "workbook_fault_labels_used": false
+}
