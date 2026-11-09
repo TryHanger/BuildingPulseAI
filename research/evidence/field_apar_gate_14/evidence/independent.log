@@ -1,0 +1,7 @@
+PASS AHU1 header absence, 52705 native ticks, 184 ledger rows
+PASS AHU2 header absence, 52705 native ticks, 184 ledger rows
+PASS AHU8 header absence, 52705 native ticks, 184 ledger rows
+PASS AHU18 header absence, 52705 native ticks, 184 ledger rows
+PASS AHU23 header absence, 52705 native ticks, 184 ledger rows
+PASS AHU24 header absence, 52705 native ticks, 184 ledger rows
+PASS complete source and ledger parity; no scoring ran
